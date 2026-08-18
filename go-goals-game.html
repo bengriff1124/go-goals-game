@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Goals! &mdash; SDG Board Game</title>
+<style>
+  :root{
+    --teal-bg: #d9f0ee;
+    --teal-bg2: #bfe6e2;
+    --panel: #ffffff;
+    --ink: #17323a;
+    --muted: #5b7480;
+    --line: #cfe3e0;
+    --accent: #1c8c8c;
+    --accent-dark: #146868;
+    --radius: 14px;
+    --shadow: 0 6px 20px rgba(15,60,60,.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 800px at 20% -10%, #eafaf7, var(--teal-bg) 45%, var(--teal-bg2) 100%);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  h1,h2,h3{margin:0 0 6px;}
+  button{font-family:inherit;cursor:pointer;}
+  .hidden{display:none !important;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 22px; gap: 12px; flex-wrap: wrap;
+    position:relative; z-index:60; background:var(--teal-bg);
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand .wheel{
+    width:34px;height:34px;border-radius:50%;
+    background: conic-gradient(#E5243B 0 21deg,#DDA63A 21deg 42deg,#4C9F38 42deg 63deg,#C5192D 63deg 84deg,#FF3A21 84deg 106deg,#26BDE2 106deg 127deg,#FCC30B 127deg 148deg,#A21942 148deg 169deg,#FD6925 169deg 191deg,#DD1367 191deg 212deg,#FD9D24 212deg 233deg,#BF8B2E 233deg 254deg,#3F7E44 254deg 276deg,#0A97D9 276deg 297deg,#56C02B 297deg 318deg,#00689D 318deg 339deg,#19486A 339deg 360deg);
+    box-shadow: inset 0 0 0 2px #fff, 0 1px 3px rgba(0,0,0,.25);
+  }
+  .brand-text .t1{font-size:12px; letter-spacing:.12em; color:var(--muted); font-weight:700; text-transform:uppercase;}
+  .brand-text .t2{font-size:22px; font-weight:800; color:var(--accent-dark);}
+  .topbtns{display:flex; gap:8px;}
+  .ghost-btn{
+    background:#fff; border:1px solid var(--line); color:var(--ink);
+    padding:8px 14px; border-radius:999px; font-size:13px; font-weight:600;
+    box-shadow: var(--shadow);
+  }
+  .ghost-btn:hover{border-color:var(--accent); color:var(--accent-dark);}
+
+  /* ---------- Setup screen ---------- */
+  .setup-wrap{
+    max-width: 760px; margin: 10px auto 60px; padding: 0 20px;
+  }
+  .card{
+    background:var(--panel); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 26px 28px; margin-bottom:18px;
+  }
+  .card p.lead{color:var(--muted); margin:0 0 18px; line-height:1.5; font-size:14.5px;}
+  .count-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px;}
+  .count-btn{
+    width:44px;height:44px;border-radius:50%; border:2px solid var(--line); background:#fff;
+    font-weight:800; font-size:16px; color:var(--ink);
+  }
+  .count-btn.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .hint{font-size:12.5px; color:var(--muted); margin-top:6px;}
+  .teams-grid{display:flex; flex-direction:column; gap:10px; margin-top:16px;}
+  .player-row{
+    display:flex; align-items:center; gap:10px; background:#f6fbfa; border:1px solid var(--line);
+    border-radius:10px; padding:8px 10px;
+  }
+  .swatch{width:28px;height:28px;border-radius:50%; flex:none; border:2px solid #fff; box-shadow:0 0 0 2px currentColor;}
+  .player-row input[type=text]{
+    flex:1; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:14px;
+  }
+  .color-dots{display:flex; gap:6px;}
+  .color-dot{
+    width:22px;height:22px;border-radius:50%; border:2px solid transparent; cursor:pointer;
+  }
+  .color-dot.selected{border-color:var(--ink); transform:scale(1.12);}
+  .member-stepper{display:flex; align-items:center; gap:5px; flex:none;}
+  .step-btn{
+    width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:#fff;
+    font-weight:800; font-size:15px; color:var(--ink); line-height:1; padding:0;
+  }
+  .step-btn:hover:not(:disabled){border-color:var(--accent); color:var(--accent-dark);}
+  .step-btn:disabled{opacity:.35; cursor:not-allowed;}
+  .member-count{min-width:64px; text-align:center; font-size:12px; font-weight:700; color:var(--muted);}
+  .start-btn{
+    display:block; width:100%; margin-top:20px; background:var(--accent); color:#fff; border:none;
+    padding:14px; border-radius:12px; font-size:16px; font-weight:800; letter-spacing:.02em;
+    box-shadow: var(--shadow);
+  }
+  .start-btn:hover{background:var(--accent-dark);}
+  details.rules summary{cursor:pointer; font-weight:700; color:var(--accent-dark); outline:none;}
+  details.rules[open] summary{margin-bottom:10px;}
+  .rules ol, .rules ul{margin:8px 0 0; padding-left:20px; color:var(--ink); font-size:14px; line-height:1.6;}
+  .credit{font-size:12px; color:var(--muted); text-align:center; margin-top:8px; line-height:1.5;}
+  .credit a{color:var(--accent-dark);}
+
+  /* ---------- Game layout ---------- */
+  .game-wrap{
+    display:flex; flex-direction:column; gap:18px; max-width:1000px; margin:0 auto 40px; padding: 0 18px;
+  }
+  .board-panel{
+    background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:18px; width:100%;
+  }
+  .board-outer{ position:relative; width:100%; }
+  .board-grid{
+    display:grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(7, 1fr);
+    gap:6px; width:100%; aspect-ratio: 9 / 7;
+  }
+  .cell{
+    position:relative; border-radius:10px; background:#f2faf9; border:1px solid #e1efec;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-size:11px; color:var(--muted); text-align:center; padding:2px; overflow:hidden;
+  }
+  .cell .num{position:absolute; top:3px; left:5px; font-size:10px; font-weight:700; color:#9fb4b0;}
+  .cell.finish{ background:linear-gradient(135deg,#ffe98a,#ffd23f); border-color:#f2c200; }
+  .cell.finish .num{display:none;}
+  .cell.goal{ border-width:2px; }
+  .goal-badge{
+    width:64%; aspect-ratio:1/1; border-radius:9px; display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:800; font-size:15px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.35);
+  }
+  .goal-label{font-size:8.5px; font-weight:700; margin-top:2px; line-height:1.1; color:var(--ink); max-width:95%;}
+  .cell.persona{
+    background: repeating-linear-gradient(135deg, #f4ecfb, #f4ecfb 6px, #ece0f9 6px, #ece0f9 12px);
+    border: 2px dashed #9b59d0;
+  }
+  .cell.persona .persona-icon{ font-size:20px; }
+  .cell.persona .persona-sub{ font-size:8px; font-weight:800; color:#7a3fb0; letter-spacing:.03em; text-transform:uppercase; margin-top:1px; }
+  .cell.consequence{
+    background: repeating-linear-gradient(135deg, #fdf0e2, #fdf0e2 6px, #fbe3cb 6px, #fbe3cb 12px);
+    border: 2px dashed #d98324;
+  }
+  .cell.consequence .persona-sub{ color:#a85f12; }
+  .cell.advocate{
+    background: repeating-linear-gradient(135deg, #e6eefb, #e6eefb 6px, #d5e2f7 6px, #d5e2f7 12px);
+    border: 2px dashed #3f6fd0;
+  }
+  .cell.advocate .persona-sub{ color:#2b539e; }
+  .start-badge{
+    position:absolute; left:-2px; bottom:-2px; transform:translate(-6%, 6%);
+  }
+  .tokens-layer, .fx-layer{ position:absolute; inset:0; pointer-events:none; }
+  .token{
+    position:absolute; width:22px; height:22px; border-radius:50%; border:2px solid #fff;
+    box-shadow:0 2px 5px rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:800; font-size:10px;
+    transition: transform .55s cubic-bezier(.5,.05,.2,1);
+    top:0; left:0;
+  }
+  .token .persona-badge{
+    position:absolute; top:-8px; right:-8px; width:15px; height:15px; border-radius:50%;
+    background:#fff; border:1px solid #d8c2ef; font-size:10px; display:flex; align-items:center; justify-content:center;
+    line-height:1;
+  }
+  .token .persona-badge:empty{ display:none; }
+  .legend{
+    display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:14px; font-size:11.5px; color:var(--muted);
+    align-items:center;
+  }
+  .legend span.dot{display:inline-block; width:10px;height:10px;border-radius:3px; margin-right:5px; vertical-align:-1px;}
+
+  /* ---------- Compact control row: turn/dice + standings side by side ---------- */
+  .control-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:stretch; }
+  .turn-card{
+    background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 18px;
+    display:flex; align-items:center; gap:14px; flex:1 1 300px;
+  }
+  .turn-info{ flex:1 1 auto; min-width:0; }
+  .turn-title{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; font-weight:700;}
+  .turn-name{font-size:17px; font-weight:800; margin:2px 0 0; display:flex; align-items:center; gap:7px;}
+  .turn-name .dotc{width:13px;height:13px;border-radius:50%; flex:none;}
+  .turn-persona{
+    display:inline-flex; align-items:center; gap:6px; background:#f4ecfb; border:1px solid #ddc6f2;
+    color:#6a3fb5; font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; margin-top:6px;
+  }
+  .turn-nation{
+    display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700;
+    color:var(--muted); margin-top:5px; flex-wrap:wrap;
+  }
+  .speed-tag{
+    display:inline-block; padding:2px 7px; border-radius:999px; font-size:10.5px; font-weight:800;
+  }
+  .speed-fast{ background:#e3f7e6; color:#1e7d33; }
+  .speed-normal{ background:#eef3f2; color:#5b7480; }
+  .speed-slow{ background:#fbe7e7; color:#b23c38; }
+  .info-btn{
+    display:inline-flex; align-items:center; justify-content:center; width:19px; height:19px;
+    border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--muted);
+    font-size:11px; font-weight:800; flex:none; padding:0; line-height:1;
+  }
+  .info-btn:hover{ border-color:var(--accent); color:var(--accent-dark); }
+  .nation-dots{ display:flex; flex-wrap:wrap; gap:3px; margin-top:6px; }
+  .nation-dots.large{ gap:6px; margin-top:10px; }
+  .nation-dot{
+    width:12px; height:12px; border-radius:4px; border:1.5px solid #d7e3e1; background:#f2f6f5; flex:none;
+  }
+  .nation-dots.large .nation-dot{ width:22px; height:22px; border-radius:6px; }
+  .nation-dot.covered{ border-color:transparent; }
+
+  .brief-modal{ max-width:420px; text-align:center; }
+  .brief-emoji{ font-size:46px; line-height:1; }
+  .brief-name{ font-size:20px; font-weight:800; margin:6px 0 2px; }
+  .brief-sub{ font-size:13px; color:var(--muted); margin-bottom:10px; }
+  .brief-blurb{ font-size:13.5px; color:var(--ink); line-height:1.5; margin-bottom:14px; }
+  .brief-stats{ display:flex; gap:10px; justify-content:center; margin-bottom:6px; }
+  .brief-stat{
+    background:#f6fbfa; border:1px solid var(--line); border-radius:10px; padding:8px 14px; flex:1 1 0;
+  }
+  .brief-stat .num{ font-size:16px; font-weight:800; color:var(--ink); }
+  .brief-stat .lbl{ font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-weight:700; }
+  .brief-legend{ font-size:11.5px; color:var(--muted); margin-top:12px; text-align:left; line-height:1.5; }
+  .brief-legend b{ color:var(--ink); }
+  .dice{
+    width:44px; height:44px; flex:none; background:#fff; border-radius:11px;
+    border:2px solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-size:22px; box-shadow: var(--shadow);
+  }
+  .dice.rolling{ animation: shake .12s linear infinite; }
+  @keyframes shake{ 0%{transform:rotate(0deg);} 25%{transform:rotate(-8deg);} 75%{transform:rotate(8deg);} 100%{transform:rotate(0deg);} }
+  .roll-btn{
+    flex:none; padding:12px 20px; border:none; border-radius:12px; background:var(--accent); color:#fff;
+    font-weight:800; font-size:14px; box-shadow:var(--shadow); white-space:nowrap;
+  }
+  .roll-btn:disabled{ background:#b9c9c6; cursor:not-allowed; box-shadow:none; }
+  .roll-btn:not(:disabled):hover{ background:var(--accent-dark); }
+
+  .standings-card, .log-card{ background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px 18px; }
+  .standings-card{ flex:1 1 260px; }
+  .log-card{ width:100%; }
+  .standings-card h3, .log-card h3{font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);}
+  .standing-row{ display:flex; align-items:center; gap:8px; padding:6px 0; font-size:14px; border-bottom:1px solid #f0f5f4; }
+  .standing-row:last-child{border-bottom:none;}
+  .standing-row .dotc{width:12px;height:12px;border-radius:50%; flex:none;}
+  .standing-row .persona-emoji{font-size:13px;}
+  .standing-row .pos{margin-left:auto; color:var(--muted); font-size:12.5px;}
+  .log-list{ max-height:180px; overflow-y:auto; font-size:12.5px; color:var(--muted); line-height:1.6; }
+  .log-list div{padding:2px 0; border-bottom:1px dashed #eef3f2;}
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(10,30,30,.55); display:flex; align-items:center; justify-content:center;
+    z-index:50; padding:16px;
+  }
+  .modal{
+    background:#fff; border-radius:16px; max-width:480px; width:100%; padding:26px 26px 22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35); max-height:88vh; overflow-y:auto;
+  }
+  .modal .goal-chip{
+    display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; color:#fff;
+    font-weight:800; font-size:12.5px; margin-bottom:14px;
+  }
+  .resource-note{
+    font-size:12px; font-weight:700; color:#b23c38; background:#fdf0ee; border:1px solid #f7d4cf;
+    border-radius:8px; padding:6px 10px; margin:-6px 0 12px;
+  }
+  .resource-note.positive{ color:#1e7d33; background:#eaf7ec; border-color:#cdeed3; }
+  .modal h2{font-size:19px; line-height:1.35;}
+  .options{display:flex; flex-direction:column; gap:9px; margin-top:16px;}
+  .opt-btn{
+    text-align:left; padding:11px 14px; border-radius:10px; border:2px solid var(--line); background:#fafefe;
+    font-size:14.5px; color:var(--ink);
+  }
+  .opt-btn:hover:not(:disabled){border-color:var(--accent);}
+  .opt-btn.correct{ background:#e3f7e6; border-color:#3fa14c; color:#1e5c28; font-weight:700; }
+  .opt-btn.wrong{ background:#fbe7e7; border-color:#d9534f; color:#8a2222; font-weight:700; }
+  .opt-btn:disabled{ cursor:default; }
+
+  /* ---------- Team Huddle collaboration tool ---------- */
+  .huddle-title{ font-size:12px; font-weight:800; color:var(--accent-dark); text-transform:uppercase; letter-spacing:.04em; margin:14px 0 8px; }
+  .vote-row{
+    display:grid; grid-template-columns: 1fr auto auto auto; align-items:center; gap:8px;
+    padding:9px 10px; border-radius:10px; border:2px solid var(--line); background:#fafefe; margin-bottom:8px;
+  }
+  .vote-row.correct{ background:#e3f7e6; border-color:#3fa14c; }
+  .vote-row.wrong{ background:#fbe7e7; border-color:#d9534f; }
+  .vote-label{ font-size:13.5px; color:var(--ink); }
+  .vote-bar-track{ width:60px; height:8px; border-radius:5px; background:#e7f0ef; overflow:hidden; }
+  .vote-bar-fill{ height:100%; width:0%; background:var(--accent); border-radius:5px; transition:width .3s; }
+  .vote-count{ font-size:13px; font-weight:800; color:var(--muted); min-width:16px; text-align:center; }
+  .vote-btn{
+    background:#fff; border:1px solid var(--accent); color:var(--accent-dark); font-weight:700; font-size:11.5px;
+    padding:5px 9px; border-radius:8px; white-space:nowrap;
+  }
+  .vote-btn:hover:not(:disabled){ background:var(--accent); color:#fff; }
+  .vote-btn:disabled{ opacity:.4; cursor:not-allowed; }
+  .huddle-progress{ font-size:12.5px; color:var(--muted); margin:4px 0 12px; text-align:center; }
+  .huddle-lock{ width:100%; }
+  .huddle-lock:disabled{ background:#b9c9c6; cursor:not-allowed; }
+
+  .pq-textarea{
+    width:100%; border:2px solid var(--line); border-radius:10px; padding:10px 12px; font-size:14px;
+    font-family:inherit; resize:vertical; min-height:64px; margin-top:14px;
+  }
+  .pq-textarea:focus{ outline:none; border-color:var(--accent); }
+  .pq-share-btn{ width:100%; margin-top:10px; }
+  .pq-share-btn:disabled{ background:#b9c9c6; cursor:not-allowed; }
+  .thumbs-row{ display:flex; gap:10px; }
+  .thumb-btn{
+    flex:1; background:#fff; border:2px solid var(--line); border-radius:10px; padding:12px 8px;
+    font-size:13px; font-weight:700; color:var(--ink); display:flex; flex-direction:column; align-items:center; gap:4px;
+  }
+  .thumb-btn:hover:not(:disabled){ border-color:#9b59d0; }
+  .thumb-btn:disabled{ opacity:.5; cursor:not-allowed; }
+  .thumb-btn .vote-count{ font-size:16px; color:#6a3fb5; }
+  .fact-box{
+    margin-top:14px; background:#eaf6f4; border:1px solid #cdeae5; border-radius:10px; padding:11px 14px;
+    font-size:13.5px; color:#146868; line-height:1.5;
+  }
+  .feedback{ margin-top:16px; font-size:14px; font-weight:700; min-height:20px; }
+  .feedback.good{color:#1e7d33;}
+  .feedback.bad{color:#c0392b;}
+  .modal-actions{margin-top:18px; text-align:right;}
+  .primary-btn{
+    background:var(--accent); color:#fff; border:none; padding:11px 20px; border-radius:10px; font-weight:800;
+  }
+  .primary-btn:hover{background:var(--accent-dark);}
+
+  .confirm-modal{ max-width:400px; }
+  .confirm-modal h2{ font-size:20px; margin-bottom:8px; }
+  .confirm-modal p{ color:var(--muted); font-size:14px; line-height:1.55; margin:0; }
+  .confirm-actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:22px; }
+  .btn-cancel{
+    background:#fff; border:2px solid var(--line); color:var(--ink);
+    padding:10px 18px; border-radius:10px; font-weight:700; font-size:14px;
+  }
+  .btn-cancel:hover{ border-color:var(--muted); }
+  .btn-danger{
+    background:#d9534f; color:#fff; border:none;
+    padding:11px 20px; border-radius:10px; font-weight:800; font-size:14px;
+  }
+  .btn-danger:hover{ background:#c0392b; }
+
+  /* ---------- 2030 Reveal ---------- */
+  .reveal-wrap{ max-width:1000px; margin:10px auto 60px; padding:0 18px; }
+  .reveal-hero{
+    background: linear-gradient(135deg,#146868,#1c8c8c); color:#fff; border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:32px 30px; text-align:center; margin-bottom:18px;
+  }
+  .reveal-hero h1{ font-size:26px; margin:6px 0 4px; }
+  .reveal-hero .sub{ font-size:14px; opacity:.9; max-width:560px; margin:0 auto; line-height:1.55; }
+  .reveal-winner{
+    display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:8px 18px; margin-top:16px;
+    font-weight:800; font-size:15px;
+  }
+  .reveal-section{ background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px 24px; margin-bottom:18px; }
+  .reveal-section h2{ font-size:16px; margin-bottom:14px; }
+  .goal-status-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap:12px; }
+  .goal-status-tile{ border-radius:12px; border:2px solid var(--line); padding:12px 14px; background:#fafefe; }
+  .goal-status-tile.achieved{ background:#eafaf0; border-color:#3fa14c; }
+  .goal-status-tile.progress{ background:#fff9ec; border-color:#e0a730; }
+  .goal-status-tile .gst-head{ display:flex; align-items:center; gap:8px; font-weight:800; font-size:13px; margin-bottom:6px; }
+  .gst-badge{ width:22px;height:22px;border-radius:6px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:800; flex:none; }
+  .gst-status{ margin-left:auto; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.03em; }
+  .gst-status.s-achieved{ color:#1e7d33; }
+  .gst-status.s-progress{ color:#a3760f; }
+  .gst-status.s-none{ color:var(--muted); }
+  .gst-behaviors{ list-style:none; margin:0; padding:0; font-size:11.5px; color:var(--ink); line-height:1.6; }
+  .gst-behaviors li{ display:flex; align-items:center; gap:6px; }
+  .gst-behaviors .bdot{ width:9px;height:9px;border-radius:50%; flex:none; }
+  .gst-behaviors .missing{ color:#b9b9b9; }
+
+  .harmful-list{ list-style:none; margin:0; padding:0; font-size:13.5px; line-height:1.9; }
+  .harmful-list li{ display:flex; align-items:center; gap:8px; }
+  .harmful-list .hdot{ width:10px;height:10px;border-radius:50%; flex:none; }
+
+  .team-report-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:14px; }
+  .team-report{ border-radius:12px; border:2px solid var(--line); padding:14px 16px; }
+  .team-report .tr-head{ display:flex; align-items:center; gap:8px; font-weight:800; font-size:14px; margin-bottom:4px; }
+  .team-report .tr-nation{ font-size:12.5px; color:var(--muted); margin-bottom:10px; }
+  .team-report .tr-stats{ display:flex; gap:14px; font-size:12px; color:var(--ink); }
+  .team-report .tr-stats b{ display:block; font-size:17px; }
+
+  .debrief-box{
+    background:#fdf6ee; border:1px solid #f2ddc2; border-left:4px solid #d98324; border-radius:10px;
+    padding:16px 18px; font-size:14.5px; line-height:1.65; color:var(--ink);
+  }
+  .reveal-actions{ text-align:center; margin-top:6px; }
+  .reveal-actions .primary-btn{ padding:13px 28px; font-size:15px; }
+
+  .persona-modal{ text-align:center; }
+  .persona-card-wrap{ perspective:1200px; width:190px; height:240px; margin:4px auto 18px; }
+  .persona-card{
+    position:relative; width:100%; height:100%; transform-style:preserve-3d;
+    transition: transform .7s cubic-bezier(.34,1.2,.4,1);
+  }
+  .persona-card.flipped{ transform:rotateY(180deg); }
+  .persona-face{
+    position:absolute; inset:0; backface-visibility:hidden; border-radius:16px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(60,20,90,.25);
+  }
+  .persona-back{
+    background: repeating-linear-gradient(135deg,#7a3fb5,#7a3fb5 10px,#6a34a0 10px,#6a34a0 20px);
+    color:#fff;
+  }
+  .persona-back .mask{font-size:58px; filter: drop-shadow(0 4px 6px rgba(0,0,0,.3));}
+  .persona-back .back-label{margin-top:10px; font-size:11px; letter-spacing:.15em; text-transform:uppercase; font-weight:800; opacity:.85;}
+  .persona-front{
+    background:#fff; border:3px solid #9b59d0; transform:rotateY(180deg); padding:14px;
+  }
+  .persona-front .emoji{font-size:52px; line-height:1;}
+  .persona-front .pname{font-weight:800; font-size:16px; margin-top:8px; color:#4b2278; line-height:1.25;}
+  .persona-blurb{ font-size:14px; color:var(--ink); line-height:1.55; text-align:left; margin-top:4px; }
+  .persona-hint{
+    margin-top:14px; background:#f4ecfb; border:1px solid #ddc6f2; border-radius:10px; padding:10px 14px;
+    font-size:13px; color:#6a3fb5; text-align:left; line-height:1.5;
+  }
+  .persona-hint b{color:#4b2278;}
+
+  /* ---------- Consequence & Advocate spaces ---------- */
+  .event-chip{
+    display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:999px;
+    font-weight:800; font-size:12.5px; margin-bottom:12px; background:#d98324; color:#fff;
+  }
+  .event-chip.advocate-chip{ background:#3f6fd0; }
+  .event-text{
+    background:#fdf6ee; border:1px solid #f2ddc2; border-left:4px solid #d98324; border-radius:10px;
+    padding:12px 14px; font-size:14.5px; line-height:1.55; color:var(--ink); margin-bottom:6px;
+  }
+  .event-prompt{ font-size:15px; font-weight:700; color:var(--ink); margin-top:14px; line-height:1.45; }
+  .advocate-targets{ display:flex; flex-direction:column; gap:9px; margin-top:12px; }
+  .target-btn{
+    display:flex; align-items:center; gap:10px; text-align:left; padding:11px 14px; border-radius:10px;
+    border:2px solid var(--line); background:#fafefe; font-size:14.5px; color:var(--ink); font-weight:600;
+  }
+  .target-btn:hover{ border-color:#3f6fd0; }
+  .target-btn .dotc{ width:13px;height:13px;border-radius:50%; flex:none; }
+  .target-btn .t-emoji{ font-size:18px; }
+  .target-btn .t-persona{ margin-left:auto; font-size:12px; color:var(--muted); font-weight:700; }
+  .advocate-prompt{
+    background:#eef3fc; border:1px solid #cfdcf5; border-left:4px solid #3f6fd0; border-radius:10px;
+    padding:12px 14px; font-size:14.5px; line-height:1.55; color:var(--ink); margin-top:6px;
+  }
+  .judge-note{ font-size:12.5px; color:var(--muted); text-align:center; margin:4px 0 10px; }
+
+  @media (max-width: 640px){
+    .turn-card, .standings-card{ flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="wheel"></div>
+    <div class="brand-text">
+      <div class="t1">Sustainable Development Goals</div>
+      <div class="t2">Go Goals!</div>
+    </div>
+  </div>
+  <div class="topbtns">
+    <button class="ghost-btn" id="rulesBtn">How to Play</button>
+    <button class="ghost-btn hidden" id="newGameBtn">New Game</button>
+  </div>
+</div>
+
+<!-- ============ SETUP SCREEN ============ -->
+<div class="setup-wrap" id="setupScreen">
+  <div class="card">
+    <h2>Play &amp; build the future</h2>
+    <p class="lead">A digital adaptation of the UN board game about the 17 Sustainable Development Goals &mdash; now played as competing nations racing the same deadline from very different starting lines. Each team draws a random <strong>nation</strong> that quietly sets how fast they move and which goals come easy. Every correct answer secretly builds toward the real behaviors the world needs to achieve each goal &mdash; hidden until <strong>2030</strong>, when a final round plays out and the results are revealed all at once.</p>
+
+    <div><strong>How many teams?</strong></div>
+    <div class="count-row" id="countRow"></div>
+    <div class="hint">Each team shares one token and draws a nation at random. Set how many players sit on each team below.</div>
+
+    <div class="teams-grid" id="playersGrid"></div>
+
+    <button class="start-btn" id="startBtn">Start Game</button>
+  </div>
+
+  <div class="card">
+    <details class="rules">
+      <summary>Official rules</summary>
+      <ol>
+        <li>Set up 2&ndash;4 <strong>teams</strong> and how many players are on each. Every team shares one token and draws a random <strong>nation</strong> &mdash; permanent for the whole game, and shown openly all game long.</li>
+        <li>A nation sets two things: how fast it moves (double speed, normal, or half speed) and which of the 17 goals it already has the infrastructure for.</li>
+        <li>There are 63 spaces on the board, numbered in one continuous path from Start to 2030 &mdash; follow the arrowed guide line to see which way the path turns. Teams take turns rolling a single die and moving forward that many spaces, multiplied by their nation's speed.</li>
+        <li>You cannot roll past a numbered SDG space (1&ndash;17) &mdash; if your move would carry you over one, you stop there first and answer it before continuing.</li>
+        <li>Every question is answered with the <strong>Team Huddle</strong> tool: every player on the acting team taps in their guess before the team locks in a final answer.</li>
+        <li>If your nation already has what a goal needs, one correct answer is enough. If it doesn't, you must answer <strong>two questions correctly in a row</strong> &mdash; missing either ends your turn.</li>
+        <li>What you're actually building is hidden: every correct answer quietly adopts one real behavior a society needs for that goal, credited to your team. None of this is shown until the game ends.</li>
+        <li>Playing a Persona? Your question becomes an open-ended challenge written for that character instead &mdash; type an idea, huddle with your team, see a fact, and continue (no privilege gate on these).</li>
+        <li>Land on a purple Persona space &rarr; draw a new character for your team to play until your next one. Amber <strong>Consequence</strong> spaces hit your team with something they didn't choose. Blue <strong>Speak Up</strong> spaces let you argue on behalf of a rival team's character &mdash; get it right and you roll again.</li>
+        <li>Reaching <strong>2030</strong> doesn't win the game &mdash; it's a deadline. The first team to arrive triggers one final turn for every other team, then the results are revealed: which goals the world actually achieved, and which team's nation made that easy or hard.</li>
+      </ol>
+    </details>
+  </div>
+
+  <p class="credit">Rules, artwork inspiration and question content adapted from the official <strong>&ldquo;Go Goals!&rdquo;</strong> board game created by the United Nations Regional Information Centre (UNRIC) with artist Yacine A&iuml;t Kaci (YAK) &mdash; <a href="https://go-goals.org" target="_blank" rel="noopener">go-goals.org</a>. This is an unofficial fan-made digital version for educational use; not affiliated with or endorsed by the UN.</p>
+</div>
+
+<!-- ============ GAME SCREEN ============ -->
+<div class="game-wrap hidden" id="gameScreen">
+  <div class="control-row">
+    <div class="turn-card">
+      <div class="turn-info">
+        <div class="turn-title" id="turnTitle">Current Turn</div>
+        <div class="turn-name" id="turnName"></div>
+        <div class="turn-nation" id="turnNation"></div>
+        <div class="nation-dots" id="turnNationDots"></div>
+        <div class="turn-persona hidden" id="turnPersona"></div>
+      </div>
+      <button class="info-btn" id="nationInfoBtn" title="What can this nation do?">ⓘ</button>
+      <div class="dice" id="dice">1</div>
+      <button class="roll-btn" id="rollBtn">Roll the Die</button>
+    </div>
+
+    <div class="standings-card">
+      <h3>Standings</h3>
+      <div id="standingsList"></div>
+    </div>
+  </div>
+
+  <div class="board-panel">
+    <div class="board-outer" id="boardOuter">
+      <div class="board-grid" id="boardGrid"></div>
+      <svg class="fx-layer" id="fxLayer"></svg>
+      <div class="tokens-layer" id="tokensLayer"></div>
+    </div>
+    <div class="legend">
+      <span><span class="dot" style="background:#ffd23f"></span>2030 &mdash; Deadline</span>
+      <span>→ Arrowed line = path direction, Start to 2030</span>
+      <span>Colored tile = SDG question space</span>
+      <span>🎭 Purple tile = Persona space</span>
+      <span>⛈️ Amber tile = Consequence space</span>
+      <span>🗣️ Blue tile = Speak Up space</span>
+    </div>
+  </div>
+
+  <div class="log-card">
+    <h3>Game Log</h3>
+    <div class="log-list" id="logList"></div>
+  </div>
+</div>
+
+<!-- ============ QUESTION MODAL ============ -->
+<div class="modal-overlay hidden" id="questionModal">
+  <div class="modal">
+    <div class="goal-chip" id="qGoalChip"></div>
+    <div class="resource-note hidden" id="qResourceNote"></div>
+    <h2 id="qText"></h2>
+
+    <!-- Standard multiple-choice mode -->
+    <div id="mcSection">
+      <div class="huddle-title">🖥️ Team Huddle &mdash; tap once for each teammate's guess</div>
+      <div class="options" id="qOptions"></div>
+      <div class="huddle-progress" id="mcProgress"></div>
+      <button class="primary-btn huddle-lock" id="mcLockBtn" disabled>Lock In Team Answer</button>
+    </div>
+
+    <!-- Persona-adaptive subjective challenge mode -->
+    <div id="personaQSection" class="hidden">
+      <textarea id="pqAnswer" class="pq-textarea" rows="3" placeholder="Type your idea here..."></textarea>
+      <button class="primary-btn pq-share-btn" id="pqShareBtn" disabled>Share with the Team</button>
+
+      <div class="hidden" id="pqHuddleWrap">
+        <div class="huddle-title">🖥️ Team Huddle &mdash; what does the table think?</div>
+        <div class="thumbs-row">
+          <button class="thumb-btn" id="pqThumbUp">👍<br>Brilliant idea<span class="vote-count" id="pqUpCount">0</span></button>
+          <button class="thumb-btn" id="pqThumbMore">🤔<br>Needs more thought<span class="vote-count" id="pqMoreCount">0</span></button>
+        </div>
+        <div class="huddle-progress" id="pqProgress"></div>
+      </div>
+
+      <div class="fact-box hidden" id="pqFactBox"></div>
+    </div>
+
+    <div class="feedback" id="qFeedback"></div>
+    <div class="modal-actions">
+      <button class="primary-btn hidden" id="qContinueBtn">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PERSONA MODAL ============ -->
+<div class="modal-overlay hidden" id="personaModal">
+  <div class="modal persona-modal">
+    <h2 id="pmTitle" style="margin-bottom:2px;">New Persona!</h2>
+    <p style="color:var(--muted); font-size:13px; margin:0 0 14px;" id="pmSubtitle"></p>
+
+    <div class="persona-card-wrap">
+      <div class="persona-card" id="personaCard">
+        <div class="persona-face persona-back">
+          <div class="mask">🎭</div>
+          <div class="back-label">Persona Card</div>
+        </div>
+        <div class="persona-face persona-front">
+          <div class="emoji" id="pmEmoji"></div>
+          <div class="pname" id="pmName"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="persona-blurb" id="pmBlurb"></div>
+    <div class="persona-hint" id="pmHint"></div>
+
+    <div class="modal-actions">
+      <button class="primary-btn" id="personaContinueBtn">Take on this Persona</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONSEQUENCE MODAL ============ -->
+<div class="modal-overlay hidden" id="consequenceModal">
+  <div class="modal">
+    <div class="event-chip"><span id="cqEmoji">⛈️</span> Consequence &mdash; this happens to you</div>
+    <h2 id="cqTitle"></h2>
+    <div class="event-text" id="cqText"></div>
+    <div class="event-prompt" id="cqPrompt"></div>
+
+    <textarea id="cqAnswer" class="pq-textarea" rows="3" placeholder="Type what this would be like..."></textarea>
+    <button class="primary-btn pq-share-btn" id="cqShareBtn" disabled>Share with the Team</button>
+
+    <div class="hidden" id="cqHuddleWrap">
+      <div class="huddle-title">🖥️ Team Huddle &mdash; how does that land?</div>
+      <div class="thumbs-row">
+        <button class="thumb-btn" id="cqAckA">😮<br>I hadn't thought of that<span class="vote-count" id="cqAckACount">0</span></button>
+        <button class="thumb-btn" id="cqAckB">💙<br>That would be hard<span class="vote-count" id="cqAckBCount">0</span></button>
+      </div>
+      <div class="huddle-progress" id="cqProgress"></div>
+    </div>
+
+    <div class="fact-box hidden" id="cqFactBox"></div>
+    <div class="modal-actions">
+      <button class="primary-btn hidden" id="cqContinueBtn">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADVOCATE MODAL ============ -->
+<div class="modal-overlay hidden" id="advocateModal">
+  <div class="modal">
+    <div class="event-chip advocate-chip">🗣️ Speak Up &mdash; argue for someone else</div>
+    <h2 id="adTitle">Whose world will you speak for?</h2>
+
+    <div id="adPickWrap">
+      <div class="advocate-targets" id="adTargets"></div>
+    </div>
+
+    <div class="hidden" id="adPromptWrap">
+      <div class="advocate-prompt" id="adPrompt"></div>
+      <textarea id="adAnswer" class="pq-textarea" rows="3" placeholder="Speak on their behalf..."></textarea>
+      <button class="primary-btn pq-share-btn" id="adShareBtn" disabled>Speak On Their Behalf</button>
+
+      <div class="hidden" id="adJudgeWrap">
+        <div class="huddle-title" id="adJudgeTitle"></div>
+        <div class="judge-note" id="adJudgeNote"></div>
+        <div class="thumbs-row">
+          <button class="thumb-btn" id="adRight">✅<br>You got my world right</button>
+          <button class="thumb-btn" id="adWrong">🤔<br>Not quite my world</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fact-box hidden" id="adFactBox"></div>
+    <div class="feedback" id="adFeedback"></div>
+    <div class="modal-actions">
+      <button class="primary-btn hidden" id="adContinueBtn">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NATION BRIEFING MODAL ============ -->
+<div class="modal-overlay hidden" id="briefModal">
+  <div class="modal brief-modal">
+    <div class="brief-emoji" id="briefEmoji"></div>
+    <div class="brief-name" id="briefName"></div>
+    <div class="brief-sub" id="briefSub"></div>
+    <div class="brief-blurb" id="briefBlurb"></div>
+    <div class="brief-stats">
+      <div class="brief-stat">
+        <div class="num" id="briefSpeed"></div>
+        <div class="lbl">Roll Speed</div>
+      </div>
+      <div class="brief-stat">
+        <div class="num" id="briefResCount"></div>
+        <div class="lbl">Goals, 1 Question</div>
+      </div>
+    </div>
+    <div class="nation-dots large" id="briefDots" style="justify-content:center;"></div>
+    <div class="brief-legend">
+      <div><b>Colored</b> = your nation has the infrastructure. Land here and one correct answer is enough.</div>
+      <div style="margin-top:4px;"><b>Grey</b> = no infrastructure yet. You'll need two correct answers in a row.</div>
+    </div>
+    <div class="modal-actions" style="text-align:center; margin-top:16px;">
+      <button class="primary-btn" id="briefCloseBtn">Got it — Roll the Die</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONFIRM MODAL ============ -->
+<div class="modal-overlay hidden" id="confirmModal">
+  <div class="modal confirm-modal">
+    <h2 id="confirmTitle">Start a new game?</h2>
+    <p id="confirmMessage">Your current game will be lost.</p>
+    <div class="confirm-actions">
+      <button class="btn-cancel" id="confirmCancelBtn">Cancel</button>
+      <button class="btn-danger" id="confirmOkBtn">Start New Game</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2030 REVEAL ============ -->
+<div class="reveal-wrap hidden" id="revealScreen">
+  <div class="reveal-hero">
+    <div style="font-size:36px;">🌍</div>
+    <h1>2030 Has Arrived</h1>
+    <p class="sub">Here's what the world actually built — and what it left behind. Every question you answered quietly shaped this outcome; none of it was shown to you until now.</p>
+    <div class="reveal-winner" id="revealWinner"></div>
+  </div>
+
+  <div class="reveal-section">
+    <h2>The 17 Goals</h2>
+    <div class="goal-status-grid" id="goalStatusGrid"></div>
+  </div>
+
+  <div class="reveal-section hidden" id="harmfulSection">
+    <h2>⚠️ Practices the World Entrenched</h2>
+    <ul class="harmful-list" id="harmfulList"></ul>
+  </div>
+
+  <div class="reveal-section">
+    <h2>Every Nation</h2>
+    <div class="team-report-grid" id="teamReportGrid"></div>
+  </div>
+
+  <div class="reveal-section">
+    <h2>What Actually Happened</h2>
+    <div class="debrief-box" id="debriefBox"></div>
+  </div>
+
+  <div class="reveal-actions">
+    <button class="primary-btn" id="playAgainBtn">Play Again</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- SDG data ---------------- */
+  const SDG = {
+    1:{name:"No Poverty", color:"#E5243B"},
+    2:{name:"Zero Hunger", color:"#DDA63A"},
+    3:{name:"Good Health & Well-being", color:"#4C9F38"},
+    4:{name:"Quality Education", color:"#C5192D"},
+    5:{name:"Gender Equality", color:"#FF3A21"},
+    6:{name:"Clean Water & Sanitation", color:"#26BDE2"},
+    7:{name:"Affordable & Clean Energy", color:"#FCC30B"},
+    8:{name:"Decent Work & Economic Growth", color:"#A21942"},
+    9:{name:"Industry, Innovation & Infrastructure", color:"#FD6925"},
+    10:{name:"Reduced Inequalities", color:"#DD1367"},
+    11:{name:"Sustainable Cities & Communities", color:"#FD9D24"},
+    12:{name:"Responsible Consumption & Production", color:"#BF8B2E"},
+    13:{name:"Climate Action", color:"#3F7E44"},
+    14:{name:"Life Below Water", color:"#0A97D9"},
+    15:{name:"Life on Land", color:"#56C02B"},
+    16:{name:"Peace, Justice & Strong Institutions", color:"#00689D"},
+    17:{name:"Partnerships for the Goals", color:"#19486A"}
+  };
+
+  /* ---------------- Question bank (from official Go Goals! question cards) ---------------- */
+  const QUESTIONS = {
+    1:[
+      {q:"How can you tell that someone is living in poverty?", opts:["The person doesn't have a smartphone","The person is not able to fulfil their basic needs, including food, healthcare, education among others","The person is not well dressed"], correct:1},
+      {q:"Are there fewer people living in poverty now than there were 25 years ago?", opts:["No, 1 billion more people are now living in poverty","Yes, 1 billion people have been lifted out of poverty"], correct:1},
+      {q:"How many people are living in extreme poverty worldwide?", opts:["Around 800 people","Around 8,000 people","Over 800 million people"], correct:2},
+      {q:"Most of the people living in poverty live in:", opts:["Europe","North and South America","Africa and Asia"], correct:2},
+      {q:"In 1990, almost four in ten people (38%) lived in extreme poverty. How many people live in extreme poverty now?", opts:["1 in 10","3 in 10","5 in 10"], correct:0}
+    ],
+    2:[
+      {q:"Is enough food produced in the world to feed everyone?", opts:["No, because I get hungry all the time","Enough healthy food is produced, but not enough sweets and fizzy drinks","There is enough food but not everyone can afford to buy food"], correct:2},
+      {q:"True or false: the number of starving people in the world is decreasing.", opts:["True","False"], correct:0},
+      {q:"How many people in the world are not eating enough to be in good health?", opts:["Almost 90 people","Almost 9,000 people","Almost 900 million people"], correct:2},
+      {q:"Which of these statements is true?", opts:["You need at least one sweetened fizzy drink per day to stay healthy","There is enough food to feed the world","You can stay healthy if you don't eat vegetables and fruits"], correct:1},
+      {q:"What is malnutrition?", opts:["When you don't have a three-course meal","When you don't eat meat every day","When you don't eat enough healthy food for a certain period of time"], correct:2}
+    ],
+    3:[
+      {q:"What is the average life expectancy in the world?", opts:["50 years","60 years","70 years"], correct:2},
+      {q:"Which pair of things could most help stop children under 5 from dying?", opts:["Nutritious food and clean drinking water","Mobile phones and fizzy drinks","Nutritious food and mobile phones","Clean drinking water and fizzy drinks"], correct:0},
+      {q:"What is best for a newborn baby?", opts:["Being bottle fed","Drinking water","Breastfeeding"], correct:2},
+      {q:"How many minutes of exercise should children between 5 and 17 do every day?", opts:["60 minutes","30 minutes","Children don't need to exercise every day"], correct:0},
+      {q:"Which of these insects has helped spread the disease malaria?", opts:["Mosquitoes","Dragonflies","Fireflies"], correct:0}
+    ],
+    4:[
+      {q:"Most of the children who do not go to school live on which continent?", opts:["Europe","Asia","America","Africa"], correct:3},
+      {q:"True or false: fewer girls than boys attend school worldwide.", opts:["False","True"], correct:1},
+      {q:"Education…", opts:["Will make it hard for you to get a job","Will help you get a job and improve your life","Is only useful for very smart kids"], correct:1},
+      {q:"Quality education is good for…", opts:["Improving health","Reducing poverty","Both"], correct:2},
+      {q:"What percentage of adults today are literate, meaning they can read and write?", opts:["80%","60%","30%"], correct:0}
+    ],
+    5:[
+      {q:"Only one country in the world had more women than men in parliament in 2017. Which country is it?", opts:["The United Kingdom","Norway","France","Rwanda","Peru"], correct:3},
+      {q:"Which country was the first in the world to give women full political rights (the right to vote and be elected)?", opts:["France","The United States of America","Finland"], correct:2},
+      {q:"How many countries in the world had a woman as president or head of state in 2017?", opts:["5","20","100"], correct:0},
+      {q:"Who should do the cooking and cleaning in the house?", opts:["The males in the house","The females in the house","Everyone should help out"], correct:2,
+        harmful:{0:"Assigning household work by gender", 1:"Leaving all the care work to women and girls"}},
+      {q:"What percentage of researchers in science and technology are women?", opts:["50%","30%","70%"], correct:1}
+    ],
+    6:[
+      {q:"How can you use less water?", opts:["There's no shortage of water where I live, I can use as much as I like","By taking a shower rather than a bath","By drinking sweetened fizzy drinks instead of water"], correct:1,
+        harmful:{0:"Treating fresh water as unlimited"}},
+      {q:"Potable water is:", opts:["Water that is safe to drink","Water that we can find in flower pots","Water that looks clean"], correct:0},
+      {q:"Where does most of the wastewater resulting from human activities go?", opts:["It is treated and recycled","It is stored in safe places","It is discharged into rivers or seas without any treatment against pollution"], correct:2},
+      {q:"Which statement is correct?", opts:["More people have a mobile phone than a toilet","Most people have toilets but can't afford a mobile phone","Everyone has both a mobile phone and a toilet"], correct:0},
+      {q:"What percentage of water in the world is potable?", opts:["Only 3%","Half of all water, 50%","Almost all of it, 97%"], correct:0}
+    ],
+    7:[
+      {q:"Spot the wrong answer. Clean energy can be produced with…", opts:["Coal","Sun","Wind","Waves"], correct:0},
+      {q:"What does energy efficiency mean?", opts:["When a lamp gives a bright light","When you can use energy without having to worry about your consumption","A device or building that uses relatively little energy to provide it with the power it needs"], correct:2},
+      {q:"Global warming happens mainly because of an increase of a certain gas in the atmosphere. Which gas is it?", opts:["Ozone","Carbon dioxide","Helium"], correct:1},
+      {q:"Some energy sources are renewable, why?", opts:["Because they do not pollute","Because they are brand new","Because they can be replenished by nature in a short time"], correct:2},
+      {q:"Which of these is a renewable energy source?", opts:["Oil","Gas","Sunlight"], correct:2}
+    ],
+    8:[
+      {q:"Should women be paid the same as men if they have the same job?", opts:["Yes, men and women have the same rights","No, men should be paid more because they are stronger"], correct:0,
+        harmful:{1:"Paying women less for the same work"}},
+      {q:"If you have a job, does that mean you are safe from poverty?", opts:["Yes, because you work to earn money","No, you can have a job and live in poverty"], correct:1},
+      {q:"What does \"economic growth\" mean?", opts:["You save more money every month","Prices are increasing","An increase in the value of goods and services produced by a country"], correct:2},
+      {q:"How many people are jobless worldwide?", opts:["2 million","20 million","200 million"], correct:2},
+      {q:"True or false: every adult possesses a bank account.", opts:["True","False"], correct:1}
+    ],
+    9:[
+      {q:"What is a sustainable factory?", opts:["A factory that has been built long ago and is still functioning","A factory that produces toxic waste","A factory that causes no damage to the environment"], correct:2},
+      {q:"True or false: everyone has access to the internet.", opts:["True","False"], correct:1},
+      {q:"True or false: everyone has access to electricity.", opts:["True","False"], correct:1},
+      {q:"Which one of these innovations is the best at fighting climate change?", opts:["An electric car","A diesel car","A petrol car"], correct:0,
+        harmful:{1:"Staying locked into fossil-fuel transport", 2:"Staying locked into fossil-fuel transport"}},
+      {q:"What infrastructure is important for quality education?", opts:["Playgrounds and snacks","Clean schools, teachers and books","Soft beverage dispenser"], correct:1}
+    ],
+    10:[
+      {q:"What is the best way to fight poverty?", opts:["Do nothing and ignore the problem","Share the wealth produced in the world","Prevent foreigners from entering your country"], correct:1,
+        harmful:{0:"Ignoring poverty as someone else's problem", 2:"Blaming migrants instead of tackling poverty"}},
+      {q:"True or false: in the last 25 years, the number of people in extreme poverty has NOT gone down.", opts:["True","False"], correct:1},
+      {q:"At school…", opts:["Girls should learn to knit and cook","Boys should learn science and technology","Girls and boys should have equal learning opportunities"], correct:2,
+        harmful:{0:"Steering girls and boys into different subjects", 1:"Steering girls and boys into different subjects"}},
+      {q:"We can fight inequalities by:", opts:["Making sure that all children have access to a good education","Making sure that everyone wears the same clothes","Making sure that everyone watches the same TV"], correct:0},
+      {q:"To reduce health inequalities all children should have access to:", opts:["Clean drinking water","Medical care","Vaccines","All of the above"], correct:3}
+    ],
+    11:[
+      {q:"How many people in developing countries live in slums?", opts:["30%","55%","80%"], correct:0},
+      {q:"Solutions to save energy and protect the planet already exist. Which of these is not real?", opts:["Bicycles","Electric buses","Flying cars"], correct:2},
+      {q:"What is renewable energy?", opts:["Energy that comes from natural sources and never runs out","Energy from outer space","A form of energy used by the pharaohs of ancient Egypt"], correct:0},
+      {q:"Where is the fastest urbanisation in the world happening?", opts:["Europe","The United States of America","In developing countries"], correct:2},
+      {q:"In 2030, what percentage of the world's population will live in urban areas?", opts:["60%","100%","20%"], correct:0}
+    ],
+    12:[
+      {q:"Statement: there are plenty of fish in the sea.", opts:["True, I can eat as many as I want!","False. Overfishing, pollution and climate change are reducing fish populations in the oceans"], correct:1,
+        harmful:{0:"Fishing as though the ocean cannot run out"}},
+      {q:"How much food is wasted every day worldwide?", opts:["None, as all the food is eaten or frozen","One third of all food produced","Very little, as people have dramatically reduced waste"], correct:1},
+      {q:"Oil is the most polluting industry in the world. Which industry comes second?", opts:["Coal extraction","Textile industry","Cellphone industry"], correct:1},
+      {q:"Plastic bags are a big problem for our environment. Which country was the first to ban plastic bags?", opts:["Sweden","Russia","Rwanda"], correct:2},
+      {q:"How do bees help our environment?", opts:["They help plants grow and make food","They do not help, they just make honey","They eat other insects"], correct:0}
+    ],
+    13:[
+      {q:"What is renewable energy?", opts:["A brand of energy drink","Energy generated from natural resources—such as sunlight and wind","A source of energy with a renewable subscription fee"], correct:1},
+      {q:"Which of the following statements is correct?", opts:["Global warming doesn't exist because last winter was really cold","Global warming doesn't exist because there are still global icecaps","Global warming will lead to more flooding and heavy storms"], correct:2,
+        harmful:{0:"Denying climate change", 1:"Denying climate change"}},
+      {q:"Countries should make sure they use more:", opts:["Coal and oil for energy","Nuclear energy","Energy from the sun, wind and waves"], correct:2,
+        harmful:{0:"Expanding coal and oil use"}},
+      {q:"Who is in charge of looking after the planet?", opts:["Scientists","Famous people","Government officials","Everyone"], correct:3},
+      {q:"In 2015, where did world leaders agree to a plan for our climate?", opts:["Paris (Paris Agreement)","London (Big Ben Agreement)","New York (The Manhattan Agreement)"], correct:0}
+    ],
+    14:[
+      {q:"Which of the following contribute to marine pollution…", opts:["Litter on the beach","Jellyfish and crabs","Seaweed"], correct:0},
+      {q:"True or false: if we do not change our habits, by 2050 there will be more plastic in the ocean than there are fish.", opts:["True","False"], correct:0},
+      {q:"What percentage of all the species living in the ocean have been identified?", opts:["Around 5%","Around 50%","More than 80%"], correct:2},
+      {q:"What is overfishing?", opts:["Eating too much fish and getting sick","Taking more fish out of the sea than can be replaced naturally","Overfeeding fish so they get bigger"], correct:1},
+      {q:"Plastic bags are dangerous for turtles because sometimes they think they are…", opts:["Food","A toy","A shell"], correct:0}
+    ],
+    15:[
+      {q:"We must protect our forests to fight climate change because:", opts:["Forests are good places to play","Trees produce oxygen","We need wood for building houses"], correct:1},
+      {q:"Globally, forests are…", opts:["Growing, there are trees everywhere","Being cut down at the same rate they are being replanted","Vanishing, around half of all forests have already disappeared"], correct:2},
+      {q:"Biodiversity is…", opts:["The diversity of animal and plant species living on our planet","The variety of healthy products you can find in a supermarket","The number of planets where humans could live"], correct:0},
+      {q:"The extinction of animal species is due to…", opts:["Human activities","Animals eating each other","The frequency emissions of mobile phones"], correct:0},
+      {q:"Trees are essential because…", opts:["They are a habitat for wildlife","You can climb them","Plastic is produced from trees"], correct:0}
+    ],
+    16:[
+      {q:"Which of the following is a democracy?", opts:["A country ruled by a dictator","A country ruled by the people","A country ruled only by men"], correct:1},
+      {q:"What is a child soldier?", opts:["A child who plays war games with other children","A child who is recruited or used by an armed force or group","A soldier's pet"], correct:1},
+      {q:"A \"blue helmet\" is…", opts:["A soldier who works with the United Nations to maintain peace","A firefighter in the navy","A child soldier"], correct:0},
+      {q:"What is a refugee camp?", opts:["A summer camp in the mountains","A camp for the protection of people when they flee from their homes","A military camp"], correct:1},
+      {q:"What is child displacement?", opts:["When a child goes on holiday","When a child is displaced due to armed conflict","When a child spends the night at a friend's home"], correct:1}
+    ],
+    17:[
+      {q:"A partnership is…", opts:["When you play with a friend and pretend to be parents","When people and organisations support each other to achieve a common goal","When two pupils eat at the same table every day"], correct:1},
+      {q:"How does fairtrade contribute to the SDGs?", opts:["It offers better trading conditions to producers and workers","It increases profits for industries","It encourages producers to hire children"], correct:0},
+      {q:"What has made communication among partners easier?", opts:["Messenger pigeons","The internet","Messages in bottles"], correct:1},
+      {q:"What is needed to achieve the 17 Sustainable Development Goals?", opts:["The involvement of all countries","The developed countries leading the change alone","The developing countries leading the change alone"], correct:0},
+      {q:"Who should be involved in partnerships to achieve the 17 SDGs?", opts:["Citizens","Governments","Companies","All of the above"], correct:3}
+    ]
+  };
+
+  /* ---------------- Board layout: 63 spaces, 9x7 boustrophedon ---------------- */
+  const GOAL_CELLS = {4:1,8:2,12:3,16:4,20:5,24:6,28:7,32:8,36:9,40:10,44:11,48:12,52:13,55:14,58:15,60:16,62:17};
+  const FINISH = 63;
+  const PERSONA_CELLS = [5, 11, 19, 25, 31, 38, 46, 53, 57, 61];
+  const CONSEQUENCE_CELLS = [7, 18, 30, 42, 51];
+  const ADVOCATE_CELLS = [10, 23, 35, 45, 56];
+
+  /* ---------------- Consequence cards: something happens TO your persona ---------------- */
+  const CONSEQUENCES = [
+    { emoji:"🌊", title:"The Water Rises",
+      text:"Overnight, water floods the lowest part of {name}'s world. By morning, the place you sleep is gone.",
+      prompt:"What do you save first — and what do you have to leave behind?",
+      real:"Floods displace millions of people every year, often with only hours of warning." },
+    { emoji:"🔌", title:"The Power Fails",
+      text:"The power in {name}'s world cuts out. Nobody can tell you when it will come back — it could be weeks.",
+      prompt:"What's the hardest part of the first week without it?",
+      real:"Around 675 million people live without any access to electricity." },
+    { emoji:"🍞", title:"Half Rations",
+      text:"Food deliveries to {name}'s world stop. What's left has to stretch to half the usual amount, for a month.",
+      prompt:"What do you change first, and who do you make sure eats?",
+      real:"Hunger is usually about access and cost, not a lack of food in the world." },
+    { emoji:"🏫", title:"The School Closes",
+      text:"The only school in {name}'s world shuts its doors, with no date to reopen.",
+      prompt:"Beyond lessons, what do the kids in your world lose?",
+      real:"For many children, school is also their safest place and their main meal of the day." },
+    { emoji:"🚪", title:"Told to Move On",
+      text:"Officials decide {name}'s community has to relocate. You have one week's notice.",
+      prompt:"What would you want them to understand before they made that decision?",
+      real:"Over 120 million people worldwide have been forced to leave their homes." },
+    { emoji:"🩺", title:"The Clinic Is Far",
+      text:"The nearest medical help to {name} is now two days' travel away. Someone you care about gets sick.",
+      prompt:"Walk us through your day.",
+      real:"Roughly half the world lacks full access to essential health services." },
+    { emoji:"🗑️", title:"Nowhere For The Waste",
+      text:"Nothing gets collected in {name}'s world anymore. A month's worth of waste piles up where people live.",
+      prompt:"What does your world look, smell and feel like now?",
+      real:"About 2 billion people have no reliable waste collection where they live." },
+    { emoji:"💸", title:"The Work Dries Up",
+      text:"The work that paid for everything in {name}'s world disappears with no warning.",
+      prompt:"What's the very first thing you stop paying for?",
+      real:"Having a job doesn't always protect people from poverty." }
+  ];
+
+  /* ---------------- Advocate prompts: argue on behalf of someone else's persona ---------------- */
+  const ADVOCATE_PROMPTS = [
+    "What is one thing about their world that outsiders always get wrong?",
+    "What do they need most right now — and why is it not what people assume?",
+    "What would they ask the world for, if everyone was finally listening?",
+    "What are they most proud of about their world?",
+    "What is something they'd never give up, even if it made life easier?",
+    "What does a good day look like in their world?"
+  ];
+
+  /* ---------------- Persona cards (inspired by imaginative character-design games) ---------------- */
+  const PERSONAS = [
+    { name:"The Off-Grid Islander", emoji:"🏝️", blurb:"You live on a tiny volcanic island with no power lines for a thousand miles. Every lightbulb, fridge and phone charger in your world runs on sun, wind or waves.", hint:"Answer your next question like someone who's never plugged anything into a wall socket." },
+    { name:"The Vertical Farmer", emoji:"🌆", blurb:"Your farm is stacked forty storeys high in the middle of a mega-city, growing food under LED sunshine with zero soil in sight.", hint:"Talk about your next move like you're squeezing a whole harvest onto one windowsill." },
+    { name:"The Deep-Sea Guardian", emoji:"🤿", blurb:"Half scientist, half submarine pilot, you spend weeks at a time patrolling coral reefs, chasing off illegal trawlers and rescuing tangled turtles.", hint:"Speak slowly and calmly for your next turn — sound travels strangely underwater." },
+    { name:"The Storm-Chasing Engineer", emoji:"🌪️", blurb:"You build flood-proof villages in the hours before a hurricane makes landfall, racing the wind with a toolbox in one hand and a weather radio in the other.", hint:"Announce your next move like a countdown — the storm is coming!" },
+    { name:"The Nomad Schoolteacher", emoji:"🐫", blurb:"Your classroom is strapped to the back of a camel. Wherever the herd stops for the night, that's where today's lesson happens.", hint:"Turn your next answer into a mini lesson for imaginary students." },
+    { name:"The Recycled-City Architect", emoji:"🏙️", blurb:"You've never bought a single brick — every tower you design is built entirely from yesterday's bottles, tyres and shipping pallets.", hint:"Describe your next move as if you're building it out of trash." },
+    { name:"The Canopy Ranger", emoji:"🌳", blurb:"Home is a rope bridge forty metres above the rainforest floor. You zipline between treehouses, guarding the last wild jaguars from poachers.", hint:"Whisper your next answer — you don't want to startle the wildlife." },
+    { name:"The Water Wizard", emoji:"💧", blurb:"A giant pump strapped to your back turns muddy puddles into crystal-clear drinking water for every village you wander into.", hint:"Make a big 'whoosh' sound before your next answer, like you're pumping water." },
+    { name:"The Pocket Peacekeeper", emoji:"🤖", blurb:"A palm-sized robot diplomat, you parachute into playground disputes and refugee camps alike, brokering peace one toy-swap treaty at a time.", hint:"Answer your next question in your most formal, diplomatic robot voice." },
+    { name:"The Micro-Business Mogul", emoji:"🛵", blurb:"Just eleven years old, you run a hundred pop-up market stalls from a solar-powered scooter, and half your neighbourhood works for you.", hint:"Negotiate your next answer like you're closing a business deal." }
+  ];
+
+  /* ---------------- Persona-adaptive challenge prompts, one per SDG ---------------- */
+  const GOAL_CHALLENGES = {
+    1:"As {name}, someone in your world has lost everything they own. What's the very first thing you do to help — and why does it matter most?",
+    2:"As {name}, food is running low in your world. Describe your boldest idea to make sure nobody around you goes hungry.",
+    3:"As {name}, what's the biggest health risk in your unusual world, and how do you protect the people (or creatures) you care about from it?",
+    4:"As {name}, how would you teach a curious kid everything they need to know to survive and thrive in your world?",
+    5:"As {name}, imagine someone says a job in your world is 'not for them' because of who they are. What do you say back?",
+    6:"As {name}, clean water just ran out in your world. What's your emergency plan to find or make more?",
+    7:"As {name}, the power just went out. What clever, resourceful way do you keep your world running?",
+    8:"As {name}, describe the fairest possible workday you could design for everyone in your world.",
+    9:"As {name}, what's one invention your world desperately needs — and how would you build it?",
+    10:"As {name}, who gets left out or left behind in your world, and what's your plan to include them?",
+    11:"As {name}, design the perfect, sustainable home base for your world. What does it look like?",
+    12:"As {name}, what's one wasteful habit in your world you'd ban forever — and what would you replace it with?",
+    13:"As {name}, a sudden climate disaster is heading your way. What's your survival plan?",
+    14:"As {name}, how would you convince someone to stop polluting the waters near your world?",
+    15:"As {name}, which creature in your world needs the most protecting, and how do you protect it?",
+    16:"As {name}, two rivals in your world are about to fight. How do you make peace between them?",
+    17:"As {name}, which other Extraordinary character would you team up with to solve a huge problem — and what would you build together?"
+  };
+
+  const GOAL_FACTS = {
+    1:"Did you know? Over 800 million people worldwide are living in extreme poverty right now.",
+    2:"Did you know? Almost 900 million people don't have enough food to stay healthy.",
+    3:"Did you know? Global average life expectancy is around 70 years — but it's not equal everywhere.",
+    4:"Did you know? Millions of children worldwide still don't have access to a quality education.",
+    5:"Did you know? Only about 30% of the world's science and technology researchers are women.",
+    6:"Did you know? Only about 3% of all the water on Earth is fresh drinking water.",
+    7:"Did you know? Sunlight, wind and waves can all be turned into clean, renewable electricity.",
+    8:"Did you know? Around 200 million people worldwide don't have a job.",
+    9:"Did you know? Millions of people still don't have reliable access to electricity or the internet.",
+    10:"Did you know? Sharing wealth and opportunity fairly is one of the fastest ways to fight poverty.",
+    11:"Did you know? By 2030, roughly 60% of the world's population will live in cities.",
+    12:"Did you know? About one third of all the food produced in the world is wasted.",
+    13:"Did you know? Rising CO2 in our atmosphere is the main driver of global warming.",
+    14:"Did you know? Overfishing and pollution are shrinking fish populations faster than they can recover.",
+    15:"Did you know? Roughly half of the world's original forests have already disappeared.",
+    16:"Did you know? 'Blue helmets' are UN peacekeepers sent to protect people in conflict zones.",
+    17:"Did you know? None of the 17 Goals can be solved alone — they need everyone working together."
+  };
+
+  /* ---------------- Nation cards: each team's permanent privilege ----------------
+     rollMultiplier 2 = moves at double speed, 1 = normal, 0.5 = half (rounded up, min 1).
+     resources = the SDG numbers this nation has the capacity to address in a single
+     question. Any goal NOT in this list costs the team two correct answers instead. */
+  const NATIONS = [
+    { name:"Highvale", sub:"Wealthy Industrial Nation", emoji:"🏙️", tier:"A", rollMultiplier:2,
+      blurb:"Deep public funding, universal services and world-class infrastructure — but one of the highest consumption footprints on the planet.",
+      resources:[1,2,3,4,6,7,8,9,11,16] },
+    { name:"Meridian Federation", sub:"Wealthy Service Economy", emoji:"🏛️", tier:"A", rollMultiplier:2,
+      blurb:"Wealthy, highly educated and politically stable, with strong institutions — though it imports most of its food and energy.",
+      resources:[1,3,4,5,8,9,10,16,17] },
+    { name:"Terraverde", sub:"Fast-Growing Economy", emoji:"🏭", tier:"B", rollMultiplier:1,
+      blurb:"Industrialising fast with a booming young workforce, but public services and environmental protection haven't caught up.",
+      resources:[1,2,8,9,11,12] },
+    { name:"Kaya Republic", sub:"Agricultural Middle-Income Nation", emoji:"🌾", tier:"B", rollMultiplier:1,
+      blurb:"Rich farmland and deep ecological knowledge feed the region, but schools, clinics and power grids are stretched thin.",
+      resources:[2,6,12,13,15] },
+    { name:"Isla Menor", sub:"Small Island Developing State", emoji:"🏝️", tier:"C", rollMultiplier:0.5,
+      blurb:"Unmatched expertise in oceans, climate and renewable power — and almost no budget, land or leverage to act on anything else.",
+      resources:[7,13,14] },
+    { name:"Sahel Union", sub:"Post-Conflict Nation", emoji:"🕊️", tier:"C", rollMultiplier:0.5,
+      blurb:"Rebuilding after years of conflict. Strong community bonds and hard-won peacebuilding skill, but almost every system starts from zero.",
+      resources:[2,16,17] }
+  ];
+
+  /* ---------------- Key behaviors society must adopt for each goal ----------------
+     Hidden from teams for the whole game. Correct answers quietly adopt these onto a
+     shared global track; a goal is only Achieved once every one of its behaviors is in. */
+  const BEHAVIORS = {
+    1:["Guarantee a basic safety net for everyone","Make sure work actually pays a living wage","Protect families from sudden disaster costs"],
+    2:["Grow food in ways the land can sustain","Make healthy food affordable for every household","Stop throwing away food that could be eaten"],
+    3:["Fund clinics and vaccines for all","Keep clean water and nutrition within reach","Treat mental health as real health"],
+    4:["Keep every child in school, girls included","Pay and train teachers properly","Keep learning going for adults too"],
+    5:["Pay equally for equal work","Share care work at home fairly","Open every job and office to women"],
+    6:["Treat wastewater before it reaches rivers","Build toilets and clean supply for all","Waste less water day to day"],
+    7:["Shift the grid to sun, wind and waves","Make buildings and devices energy efficient","Get power to communities still without it"],
+    8:["Protect workers' rights and safety","Create decent jobs for young people","End child labour in supply chains"],
+    9:["Build infrastructure that lasts and adapts","Get everyone connected to the internet","Fund research and clean innovation"],
+    10:["Give everyone equal access to good schooling","Include people who are usually left out","Share wealth and opportunity more fairly"],
+    11:["Build affordable, safe housing","Make public transport the easy option","Keep green space in every neighbourhood"],
+    12:["Design products to be reused and repaired","Cut waste across the whole supply chain","Choose fair trade and honest sourcing"],
+    13:["Cut carbon emissions sharply","Prepare communities for extreme weather","Teach climate literacy everywhere"],
+    14:["Keep plastic and litter out of the ocean","Fish only what the sea can replace","Protect reefs and marine habitats"],
+    15:["Stop deforestation and replant","Protect habitats so species recover","Farm without poisoning the soil"],
+    16:["Keep institutions honest and accountable","Protect children from conflict and exploitation","Give everyone fair access to justice"],
+    17:["Work across borders on shared problems","Fund the goals properly and follow through","Share knowledge and technology openly"]
+  };
+
+  const PLAYER_COLORS = ["#2563eb","#16a34a","#f97316","#9333ea","#e11d48","#0891b2"];
+
+  function buildRows(){
+    const rows = [];
+    for(let r=6;r>=0;r--){
+      const row = [];
+      for(let c=0;c<9;c++) row.push(r*9+c+1);
+      if(r%2===1) row.reverse();
+      rows.push(row);
+    }
+    return rows; // top row first
+  }
+
+  function luminance(hex){
+    const c = hex.replace('#','');
+    const r=parseInt(c.substr(0,2),16), g=parseInt(c.substr(2,2),16), b=parseInt(c.substr(4,2),16);
+    return (0.299*r+0.587*g+0.114*b)/255;
+  }
+
+  /* ---------------- State ---------------- */
+  let teams = [];
+  let currentIdx = 0;
+  let rolling = false;
+  let questionQueues = {};
+  let gameOver = false;
+  let finalRound = false;
+  let finalRoundTrigger = null;
+
+  /* Shared global goal track. adopted[goal] = [{idx, teamId}] — a goal is Achieved only
+     once every one of its behaviors has been adopted, by any team. Never shown in play. */
+  let world = { adopted:{}, harmful:[] };
+
+  function actingTeam(){ return teams[currentIdx]; }
+  /* Huddle votes come from the acting team's own members, not the whole table. */
+  function huddleSize(){ const t = actingTeam(); return t ? t.memberCount : 1; }
+  function hasResource(team, goal){ return team.nation.resources.includes(goal); }
+  function goalAchieved(goal){
+    return (world.adopted[goal] || []).length >= BEHAVIORS[goal].length;
+  }
+  function adoptBehavior(team, goal){
+    const taken = world.adopted[goal] || (world.adopted[goal] = []);
+    if(taken.length >= BEHAVIORS[goal].length) return null;
+    const entry = { idx: taken.length, teamId: team.id };
+    taken.push(entry);
+    team.contributed++;
+    return entry;
+  }
+  function recordHarmful(team, text){
+    if(!world.harmful.some(h=> h.text === text)){
+      world.harmful.push({ text, teamId: team.id });
+    }
+  }
+
+  function shuffledQueue(goal){
+    const arr = QUESTIONS[goal].map((q,i)=>i);
+    for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+    return arr;
+  }
+  function nextQuestion(goal){
+    if(!questionQueues[goal] || questionQueues[goal].length===0) questionQueues[goal] = shuffledQueue(goal);
+    const idx = questionQueues[goal].pop();
+    return QUESTIONS[goal][idx];
+  }
+
+  let personaDeck = [];
+  function shuffledPersonaDeck(){
+    const arr = PERSONAS.map((p,i)=>i);
+    for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+    return arr;
+  }
+  function nextPersona(excludeName){
+    if(!personaDeck.length) personaDeck = shuffledPersonaDeck();
+    let idx = personaDeck.pop();
+    if(PERSONAS[idx].name === excludeName && personaDeck.length){
+      const swapIdx = personaDeck.pop();
+      personaDeck.push(idx);
+      idx = swapIdx;
+    }
+    return PERSONAS[idx];
+  }
+
+  function shuffleIndices(len){
+    const arr = Array.from({length:len}, (_,i)=>i);
+    for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+    return arr;
+  }
+  let consequenceDeck = [], advocateDeck = [];
+  function nextConsequence(){
+    if(!consequenceDeck.length) consequenceDeck = shuffleIndices(CONSEQUENCES.length);
+    return CONSEQUENCES[consequenceDeck.pop()];
+  }
+  function nextAdvocatePrompt(){
+    if(!advocateDeck.length) advocateDeck = shuffleIndices(ADVOCATE_PROMPTS.length);
+    return ADVOCATE_PROMPTS[advocateDeck.pop()];
+  }
+
+  /* ---------------- Setup screen ---------------- */
+  const countRow = document.getElementById('countRow');
+  const playersGrid = document.getElementById('playersGrid');
+  let teamCount = 2;
+
+  function renderCountRow(){
+    countRow.innerHTML = '';
+    for(let n=2;n<=4;n++){
+      const b = document.createElement('button');
+      b.className = 'count-btn' + (n===teamCount ? ' active' : '');
+      b.textContent = n;
+      b.addEventListener('click', ()=>{ teamCount=n; renderCountRow(); renderPlayerInputs(); });
+      countRow.appendChild(b);
+    }
+  }
+
+  let draftPlayers = [];
+  function renderPlayerInputs(){
+    while(draftPlayers.length < teamCount){
+      const i = draftPlayers.length;
+      draftPlayers.push({name:'Team '+(i+1), color: PLAYER_COLORS[i % PLAYER_COLORS.length], members:2});
+    }
+    draftPlayers = draftPlayers.slice(0, teamCount);
+
+    playersGrid.innerHTML = '';
+    draftPlayers.forEach((p, i)=>{
+      const row = document.createElement('div');
+      row.className = 'player-row';
+
+      const sw = document.createElement('div');
+      sw.className = 'swatch';
+      sw.style.background = p.color;
+      sw.style.color = p.color;
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = p.name;
+      input.maxLength = 18;
+      input.addEventListener('input', e=>{ draftPlayers[i].name = e.target.value || ('Team '+(i+1)); });
+
+      const dots = document.createElement('div');
+      dots.className = 'color-dots';
+      PLAYER_COLORS.forEach(col=>{
+        const dot = document.createElement('div');
+        dot.className = 'color-dot' + (col===p.color ? ' selected' : '');
+        dot.style.background = col;
+        dot.addEventListener('click', ()=>{
+          draftPlayers[i].color = col;
+          renderPlayerInputs();
+        });
+        dots.appendChild(dot);
+      });
+
+      const stepper = document.createElement('div');
+      stepper.className = 'member-stepper';
+      const minus = document.createElement('button');
+      minus.className = 'step-btn';
+      minus.textContent = '−';
+      minus.disabled = p.members <= 1;
+      minus.addEventListener('click', ()=>{
+        draftPlayers[i].members = Math.max(1, draftPlayers[i].members - 1);
+        renderPlayerInputs();
+      });
+      const cnt = document.createElement('div');
+      cnt.className = 'member-count';
+      cnt.textContent = p.members + (p.members === 1 ? ' player' : ' players');
+      const plus = document.createElement('button');
+      plus.className = 'step-btn';
+      plus.textContent = '+';
+      plus.disabled = p.members >= 6;
+      plus.addEventListener('click', ()=>{
+        draftPlayers[i].members = Math.min(6, draftPlayers[i].members + 1);
+        renderPlayerInputs();
+      });
+      stepper.append(minus, cnt, plus);
+
+      row.appendChild(sw);
+      row.appendChild(input);
+      row.appendChild(stepper);
+      row.appendChild(dots);
+      playersGrid.appendChild(row);
+    });
+  }
+
+  renderCountRow();
+  renderPlayerInputs();
+
+  document.getElementById('startBtn').addEventListener('click', ()=>{
+    const nationDeck = shuffleIndices(NATIONS.length);
+    teams = draftPlayers.map((p,i)=>({
+      id:i,
+      name:p.name.trim() || ('Team '+(i+1)),
+      color:p.color,
+      memberCount: p.members,
+      nation: NATIONS[nationDeck.pop()],
+      position:0, finished:false, persona:null,
+      contributed:0
+    }));
+    currentIdx = 0;
+    gameOver = false;
+    finalRound = false;
+    finalRoundTrigger = null;
+    questionQueues = {};
+    personaDeck = [];
+    consequenceDeck = [];
+    advocateDeck = [];
+    world = { adopted:{}, harmful:[] };
+
+    document.getElementById('setupScreen').classList.add('hidden');
+    document.getElementById('gameScreen').classList.remove('hidden');
+    document.getElementById('newGameBtn').classList.remove('hidden');
+    initBoard();
+    renderStandings();
+    updateTurnUI();
+    log('The race to 2030 begins with ' + teams.length + ' nations.');
+    teams.forEach(t=> log(t.name + ' is ' + t.nation.emoji + ' ' + t.nation.name + ' (' + t.nation.sub + ').'));
+  });
+
+  /* ---------------- Confirmation dialog ---------------- */
+  const confirmModal = document.getElementById('confirmModal');
+  const confirmTitle = document.getElementById('confirmTitle');
+  const confirmMessage = document.getElementById('confirmMessage');
+  const confirmOkBtn = document.getElementById('confirmOkBtn');
+  const confirmCancelBtn = document.getElementById('confirmCancelBtn');
+  let confirmAction = null;
+
+  function showConfirm(title, message, okLabel, onConfirm){
+    confirmTitle.textContent = title;
+    confirmMessage.textContent = message;
+    confirmOkBtn.textContent = okLabel;
+    confirmAction = onConfirm;
+    confirmModal.classList.remove('hidden');
+  }
+  function closeConfirm(){
+    confirmModal.classList.add('hidden');
+    confirmAction = null;
+  }
+  confirmCancelBtn.addEventListener('click', closeConfirm);
+  confirmOkBtn.addEventListener('click', ()=>{
+    const act = confirmAction;
+    closeConfirm();
+    if(act) act();
+  });
+  confirmModal.addEventListener('click', e=>{ if(e.target === confirmModal) closeConfirm(); });
+
+  /* Resets in-app rather than reloading the page: location.reload() is blocked in
+     sandboxed/embedded contexts, which is why the old New Game button did nothing. */
+  function resetToSetup(){
+    ['questionModal','personaModal','consequenceModal','advocateModal','confirmModal','briefModal']
+      .forEach(id=> document.getElementById(id).classList.add('hidden'));
+
+    teams = [];
+    currentIdx = 0;
+    rolling = false;
+    gameOver = false;
+    finalRound = false;
+    finalRoundTrigger = null;
+    lastBriefedTeamId = null;
+    world = { adopted:{}, harmful:[] };
+    move = null;
+    questionQueues = {};
+    personaDeck = [];
+    consequenceDeck = [];
+    advocateDeck = [];
+    currentQCtx = null;
+    cqCtx = null;
+    adCtx = null;
+    pendingPersonaPlayer = null;
+
+    tokensLayer.innerHTML = '';
+    document.getElementById('logList').innerHTML = '';
+    document.getElementById('standingsList').innerHTML = '';
+    diceEl.classList.remove('rolling');
+    diceEl.textContent = '1';
+
+    document.getElementById('gameScreen').classList.add('hidden');
+    document.getElementById('revealScreen').classList.add('hidden');
+    document.getElementById('newGameBtn').classList.add('hidden');
+    document.getElementById('setupScreen').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById('newGameBtn').addEventListener('click', ()=>{
+    showConfirm(
+      'Start a new game?',
+      'Your current game will be lost, including every persona and all progress on the board.',
+      'Start New Game',
+      resetToSetup
+    );
+  });
+
+  document.getElementById('playAgainBtn').addEventListener('click', resetToSetup);
+  document.getElementById('rulesBtn').addEventListener('click', ()=>{
+    const el = document.querySelector('details.rules');
+    if(document.getElementById('setupScreen').classList.contains('hidden')){
+      alert('HOW TO PLAY\n\n1. 2-4 teams, each sharing one token and a randomly drawn nation (permanent, always visible).\n2. Your nation sets your roll speed (x2, normal, or half) and which goals it already has infrastructure for.\n3. You can\'t roll past an SDG space (1-17) — you stop and answer it before moving further, even mid-roll.\n4. Every question uses the Team Huddle tool: every player on the acting team taps their guess before the team locks in an answer.\n5. Resourced for that goal? One correct answer is enough. Not resourced? You need two correct answers in a row — missing either ends your turn.\n6. Correct answers secretly adopt real-world behaviors toward that goal, credited to your team. Nothing about this is shown until the game ends.\n7. Playing a persona? That question becomes an open-ended challenge for your character instead — no privilege gate on these.\n8. The board is one continuous numbered path from Start to 2030 — follow the arrowed guide line for which way it turns.\n9. Purple Persona space → draw a new character. Amber Consequence space → something happens TO your team. Blue Speak Up space → argue for a rival team\'s character; get it right and roll again.\n10. Reaching 2030 doesn\'t win — it\'s a deadline. Every other team gets one final turn, then the results are revealed: which goals the world achieved, and why.');
+    } else {
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth'});
+    }
+  });
+
+  /* ---------------- Board rendering ---------------- */
+  const boardGrid = document.getElementById('boardGrid');
+  const tokensLayer = document.getElementById('tokensLayer');
+  const fxLayer = document.getElementById('fxLayer');
+  const cellEls = {};
+
+  function initBoard(){
+    boardGrid.innerHTML = '';
+    const rows = buildRows();
+    rows.forEach(row=>{
+      row.forEach(num=>{
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.dataset.cell = num;
+
+        const numEl = document.createElement('div');
+        numEl.className = 'num';
+        numEl.textContent = num;
+        cell.appendChild(numEl);
+
+        if(num === FINISH){
+          cell.classList.add('finish');
+          const lab = document.createElement('div');
+          lab.style.fontWeight='800'; lab.style.fontSize='13px'; lab.style.color='#8a6300';
+          lab.textContent = '2030';
+          const sub = document.createElement('div');
+          sub.style.fontSize='9px'; sub.style.color='#8a6300';
+          sub.textContent = 'FINISH';
+          cell.appendChild(lab); cell.appendChild(sub);
+        } else if(GOAL_CELLS[num]){
+          const g = GOAL_CELLS[num];
+          const info = SDG[g];
+          cell.classList.add('goal');
+          cell.style.borderColor = info.color;
+          cell.style.background = '#fff';
+          const badge = document.createElement('div');
+          badge.className = 'goal-badge';
+          badge.style.background = info.color;
+          badge.style.color = luminance(info.color) > 0.6 ? '#3a3a3a' : '#fff';
+          badge.textContent = g;
+          cell.appendChild(badge);
+          const label = document.createElement('div');
+          label.className = 'goal-label';
+          label.textContent = info.name;
+          cell.appendChild(label);
+        } else if(PERSONA_CELLS.includes(num)){
+          cell.classList.add('persona');
+          const icon = document.createElement('div');
+          icon.className = 'persona-icon';
+          icon.textContent = '🎭';
+          cell.appendChild(icon);
+          const sub = document.createElement('div');
+          sub.className = 'persona-sub';
+          sub.textContent = 'Persona';
+          cell.appendChild(sub);
+        } else if(CONSEQUENCE_CELLS.includes(num)){
+          cell.classList.add('consequence');
+          const icon = document.createElement('div');
+          icon.className = 'persona-icon';
+          icon.textContent = '⛈️';
+          cell.appendChild(icon);
+          const sub = document.createElement('div');
+          sub.className = 'persona-sub';
+          sub.textContent = 'Event';
+          cell.appendChild(sub);
+        } else if(ADVOCATE_CELLS.includes(num)){
+          cell.classList.add('advocate');
+          const icon = document.createElement('div');
+          icon.className = 'persona-icon';
+          icon.textContent = '🗣️';
+          cell.appendChild(icon);
+          const sub = document.createElement('div');
+          sub.className = 'persona-sub';
+          sub.textContent = 'Speak Up';
+          cell.appendChild(sub);
+        } else {
+          if(num % 2 === 0) cell.style.background = '#eaf6f4';
+        }
+
+        if(num === 1){
+          const s = document.createElement('div');
+          s.className = 'start-badge';
+          s.style.fontSize = '9px';
+          s.style.color = '#6b8f88';
+          s.style.fontWeight = '700';
+          s.textContent = 'START →';
+          cell.appendChild(s);
+        }
+
+        boardGrid.appendChild(cell);
+        cellEls[num] = cell;
+      });
+    });
+
+    drawPathGuide();
+    createTokens();
+    positionTokens(false);
+  }
+
+  window.addEventListener('resize', debounce(()=>{
+    if(!teams.length) return;
+    drawPathGuide();
+    positionTokens(false);
+  }, 150));
+
+  function createTokens(){
+    tokensLayer.innerHTML = '';
+    teams.forEach(p=>{
+      const el = document.createElement('div');
+      el.className = 'token';
+      el.style.background = p.color;
+      el.textContent = p.name.trim().charAt(0).toUpperCase() || '?';
+      el.title = p.name;
+      el.style.transition = 'none';
+      const badge = document.createElement('span');
+      badge.className = 'persona-badge';
+      el.appendChild(badge);
+      tokensLayer.appendChild(el);
+      p._el = el;
+      p._badgeEl = badge;
+    });
+  }
+
+  function syncPersonaBadge(p){
+    if(p._badgeEl) p._badgeEl.textContent = p.persona ? p.persona.emoji : '';
+    p._el.title = p.persona ? (p.name + ' — ' + p.persona.name) : p.name;
+  }
+
+  function debounce(fn, ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; }
+
+  function cellCenter(num){
+    const outer = document.getElementById('boardOuter').getBoundingClientRect();
+    const el = cellEls[num];
+    if(!el) return {x:0,y:0};
+    const r = el.getBoundingClientRect();
+    return { x: r.left - outer.left + r.width/2, y: r.top - outer.top + r.height/2, w:r.width, h:r.height };
+  }
+
+  /* Draws one continuous guide line through every cell in travel order, with sparse
+     arrowheads, so the snaking direction of the board is obvious without needing
+     ladders/slides or memorising which way each row alternates. */
+  function drawPathGuide(){
+    const outer = document.getElementById('boardOuter').getBoundingClientRect();
+    fxLayer.setAttribute('viewBox', '0 0 ' + outer.width + ' ' + outer.height);
+    fxLayer.setAttribute('width', outer.width);
+    fxLayer.setAttribute('height', outer.height);
+    fxLayer.innerHTML = '';
+
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const defs = document.createElementNS(svgNS, 'defs');
+    const marker = document.createElementNS(svgNS, 'marker');
+    marker.setAttribute('id', 'pathArrow');
+    marker.setAttribute('viewBox', '0 0 10 10');
+    marker.setAttribute('refX', '6');
+    marker.setAttribute('refY', '5');
+    marker.setAttribute('markerWidth', '7');
+    marker.setAttribute('markerHeight', '7');
+    marker.setAttribute('orient', 'auto');
+    const arrowHead = document.createElementNS(svgNS, 'path');
+    arrowHead.setAttribute('d', 'M0,0 L10,5 L0,10 z');
+    arrowHead.setAttribute('fill', '#1c8c8c');
+    arrowHead.setAttribute('opacity', '0.75');
+    marker.appendChild(arrowHead);
+    defs.appendChild(marker);
+    fxLayer.appendChild(defs);
+
+    for(let n = 1; n < FINISH; n++){
+      const p1 = cellCenter(n), p2 = cellCenter(n + 1);
+
+      /* A light halo first so the dashed line stays readable over colored and
+         striped tiles, not just the plain background. */
+      const halo = document.createElementNS(svgNS, 'line');
+      halo.setAttribute('x1', p1.x); halo.setAttribute('y1', p1.y);
+      halo.setAttribute('x2', p2.x); halo.setAttribute('y2', p2.y);
+      halo.setAttribute('stroke', '#ffffff');
+      halo.setAttribute('stroke-width', '6');
+      halo.setAttribute('stroke-linecap', 'round');
+      halo.setAttribute('opacity', '0.55');
+      fxLayer.appendChild(halo);
+
+      const el = document.createElementNS(svgNS, 'line');
+      el.setAttribute('x1', p1.x); el.setAttribute('y1', p1.y);
+      el.setAttribute('x2', p2.x); el.setAttribute('y2', p2.y);
+      el.setAttribute('stroke', '#1c8c8c');
+      el.setAttribute('stroke-width', '2.5');
+      el.setAttribute('stroke-linecap', 'round');
+      el.setAttribute('stroke-dasharray', '6 5');
+      el.setAttribute('opacity', '0.65');
+      if(n % 3 === 0) el.setAttribute('marker-end', 'url(#pathArrow)');
+      fxLayer.appendChild(el);
+    }
+  }
+
+  function positionTokens(animate){
+    if(!teams.length || !teams[0]._el) return;
+    const byCell = {};
+    teams.forEach(p=>{ (byCell[p.position] = byCell[p.position]||[]).push(p); });
+
+    teams.forEach(p=>{ p._el.style.transition = animate ? '' : 'none'; });
+
+    requestAnimationFrame(()=>{
+      Object.entries(byCell).forEach(([cellNum, group])=>{
+        group.forEach((p, i)=>{
+          let cx, cy, cw=30, ch=30;
+          if(+cellNum === 0){
+            const first = cellEls[1].getBoundingClientRect();
+            const outer = document.getElementById('boardOuter').getBoundingClientRect();
+            cx = first.left - outer.left - 16;
+            cy = first.top - outer.top + first.height/2;
+            cw = first.width; ch = first.height;
+          } else {
+            const c = cellCenter(+cellNum);
+            cx = c.x; cy = c.y; cw = c.w; ch = c.h;
+          }
+          const n = group.length;
+          const offsetR = Math.min(cw,ch) * 0.22;
+          const angle = (Math.PI*2 / Math.max(n,1)) * i - Math.PI/2;
+          const ox = n>1 ? Math.cos(angle)*offsetR : 0;
+          const oy = n>1 ? Math.sin(angle)*offsetR : 0;
+          p._el.style.transform = 'translate(' + (cx+ox-11) + 'px,' + (cy+oy-11) + 'px)';
+        });
+      });
+      if(!animate){
+        tokensLayer.querySelectorAll('.token').forEach(t=>{ t.offsetHeight; t.style.transition=''; });
+      }
+    });
+  }
+
+  /* ---------------- Standings / log ---------------- */
+  function renderStandings(){
+    const list = document.getElementById('standingsList');
+    list.innerHTML = '';
+    const sorted = [...teams].sort((a,b)=> b.position - a.position);
+    sorted.forEach(p=>{
+      const row = document.createElement('div');
+      row.className = 'standing-row';
+      const dot = document.createElement('div');
+      dot.className = 'dotc';
+      dot.style.background = p.color;
+      const name = document.createElement('div');
+      name.textContent = p.name;
+      const nat = document.createElement('div');
+      nat.className = 'persona-emoji';
+      nat.textContent = p.nation.emoji;
+      nat.title = p.nation.name + ' — ' + p.nation.sub;
+      row.appendChild(dot); row.appendChild(name); row.appendChild(nat);
+      if(p.persona){
+        const pe = document.createElement('div');
+        pe.className = 'persona-emoji';
+        pe.textContent = p.persona.emoji;
+        pe.title = p.persona.name;
+        row.appendChild(pe);
+      }
+      const pos = document.createElement('div');
+      pos.className = 'pos';
+      pos.textContent = p.position === 0 ? 'Start' : (p.position===FINISH ? '2030 🏆' : 'Space ' + p.position);
+      row.appendChild(pos);
+      list.appendChild(row);
+    });
+  }
+
+  function log(msg){
+    const el = document.getElementById('logList');
+    const line = document.createElement('div');
+    line.textContent = msg;
+    el.insertBefore(line, el.firstChild);
+  }
+
+  /* ---------------- Turn flow ---------------- */
+  const rollBtn = document.getElementById('rollBtn');
+  const diceEl = document.getElementById('dice');
+
+  /* Renders one dot per SDG, colored in that goal's own color when the nation has the
+     infrastructure for it, grey when it doesn't — the "before the roll" reminder of
+     exactly what a nation can and can't do in a single question. */
+  function buildNationDots(container, nation){
+    container.innerHTML = '';
+    for(let g = 1; g <= 17; g++){
+      const covered = nation.resources.includes(g);
+      const d = document.createElement('div');
+      d.className = 'nation-dot' + (covered ? ' covered' : '');
+      if(covered) d.style.background = SDG[g].color;
+      d.title = 'Goal ' + g + ' — ' + SDG[g].name + (covered ? ' (1 question)' : ' (2 questions)');
+      container.appendChild(d);
+    }
+  }
+
+  function speedLabel(m){
+    return m > 1 ? '×2 speed' : (m < 1 ? '÷2 speed' : 'normal speed');
+  }
+
+  const briefModal = document.getElementById('briefModal');
+  function showNationBriefing(p){
+    document.getElementById('briefEmoji').textContent = p.nation.emoji;
+    document.getElementById('briefName').textContent = p.name + ' — ' + p.nation.name;
+    document.getElementById('briefSub').textContent = p.nation.sub;
+    document.getElementById('briefBlurb').textContent = p.nation.blurb;
+    document.getElementById('briefSpeed').textContent = speedLabel(p.nation.rollMultiplier);
+    document.getElementById('briefResCount').textContent = p.nation.resources.length + '/17';
+    buildNationDots(document.getElementById('briefDots'), p.nation);
+    briefModal.classList.remove('hidden');
+  }
+  document.getElementById('briefCloseBtn').addEventListener('click', ()=> briefModal.classList.add('hidden'));
+  document.getElementById('nationInfoBtn').addEventListener('click', ()=> showNationBriefing(teams[currentIdx]));
+
+  /* Auto-briefed once per team change (not on same-team bonus rerolls), so nobody can
+     roll without having seen what their nation can and can't do this game. */
+  let lastBriefedTeamId = null;
+
+  function updateTurnUI(){
+    const p = teams[currentIdx];
+    const titleEl = document.getElementById('turnTitle');
+    titleEl.textContent = finalRound ? '🏁 Final Round — Current Turn' : 'Current Turn';
+    const nameEl = document.getElementById('turnName');
+    nameEl.innerHTML = '';
+    const dot = document.createElement('div');
+    dot.className = 'dotc';
+    dot.style.background = p.color;
+    nameEl.appendChild(dot);
+    nameEl.appendChild(document.createTextNode(p.name));
+
+    const nationEl = document.getElementById('turnNation');
+    nationEl.innerHTML = '';
+    const nat = document.createElement('span');
+    nat.textContent = p.nation.emoji + ' ' + p.nation.name;
+    const speed = document.createElement('span');
+    const m = p.nation.rollMultiplier;
+    speed.className = 'speed-tag ' + (m > 1 ? 'speed-fast' : (m < 1 ? 'speed-slow' : 'speed-normal'));
+    speed.textContent = speedLabel(m);
+    const res = document.createElement('span');
+    res.textContent = p.nation.resources.length + '/17 goals in one question';
+    nationEl.append(nat, speed, res);
+    buildNationDots(document.getElementById('turnNationDots'), p.nation);
+
+    const personaEl = document.getElementById('turnPersona');
+    if(p.persona){
+      personaEl.textContent = p.persona.emoji + ' Playing as ' + p.persona.name;
+      personaEl.classList.remove('hidden');
+    } else {
+      personaEl.classList.add('hidden');
+    }
+
+    rollBtn.disabled = false;
+    rollBtn.textContent = 'Roll the Die';
+
+    if(p.id !== lastBriefedTeamId){
+      lastBriefedTeamId = p.id;
+      showNationBriefing(p);
+    }
+  }
+
+  function advanceTurn(){
+    if(gameOver) return;
+    const startIdx = currentIdx;
+    do{
+      currentIdx = (currentIdx + 1) % teams.length;
+      if(finalRound && teams[currentIdx].id === finalRoundTrigger){
+        endGame();
+        return;
+      }
+    } while(teams[currentIdx].finished && currentIdx !== startIdx);
+    updateTurnUI();
+  }
+
+  rollBtn.addEventListener('click', ()=>{
+    if(rolling || gameOver) return;
+    rolling = true;
+    rollBtn.disabled = true;
+    diceEl.classList.add('rolling');
+
+    let ticks = 0;
+    const spin = setInterval(()=>{
+      diceEl.textContent = String(1 + Math.floor(Math.random()*6));
+      ticks++;
+      if(ticks > 8){
+        clearInterval(spin);
+        diceEl.classList.remove('rolling');
+        const roll = 1 + Math.floor(Math.random()*6);
+        diceEl.textContent = String(roll);
+        handleRoll(roll);
+      }
+    }, 70);
+  });
+
+  /* A roll can no longer sail past an SDG space untouched: we walk the exact path of
+     cells the token crosses and force a stop at every goal cell along the way (in order),
+     before the token is allowed to reach its true destination. */
+  let move = null; // { p, stops, idx, finalPos, bounced }
+
+  function buildPath(from, finalPos, bounced){
+    const path = [];
+    if(!bounced){
+      for(let c=from+1; c<=finalPos; c++) path.push(c);
+    } else {
+      for(let c=from+1; c<=FINISH; c++) path.push(c);
+      for(let c=FINISH-1; c>=finalPos; c--) path.push(c);
+    }
+    return path;
+  }
+
+  function computeStops(path, finalPos){
+    const seen = new Set();
+    const stops = [];
+    path.forEach(c=>{ if(GOAL_CELLS[c] && !seen.has(c)){ seen.add(c); stops.push(c); } });
+    if(!stops.length || stops[stops.length-1] !== finalPos) stops.push(finalPos);
+    return stops;
+  }
+
+  function handleRoll(roll){
+    const p = teams[currentIdx];
+    /* A nation's privilege is felt first here: wealthy nations cover double the ground
+       per turn, the least resourced cover half. Nothing lets a slow nation catch up. */
+    const mult = p.nation.rollMultiplier;
+    const steps = mult >= 1 ? roll * mult : Math.max(1, Math.ceil(roll * mult));
+    if(steps !== roll){
+      log(p.name + ' rolled a ' + roll + ' → moves ' + steps + ' (' + p.nation.name + ', ' +
+          (mult > 1 ? 'double speed' : 'half speed') + ').');
+    } else {
+      log(p.name + ' rolled a ' + roll + '.');
+    }
+    const from = p.position;
+    const target = from + steps;
+
+    let finalPos, bounced = false;
+    if(target === FINISH){
+      finalPos = FINISH;
+    } else if(target > FINISH){
+      const surplus = target - FINISH;
+      finalPos = FINISH - surplus;
+      bounced = true;
+    } else {
+      finalPos = target;
+    }
+
+    const path = buildPath(from, finalPos, bounced);
+    const stops = computeStops(path, finalPos);
+    move = { p, stops, idx:0, finalPos, bounced };
+    advanceMove();
+  }
+
+  function advanceMove(){
+    const mv = move;
+    const cellNum = mv.stops[mv.idx];
+    mv.p.position = cellNum;
+    renderStandings();
+    positionTokens(true);
+
+    setTimeout(()=>{
+      const isLastStop = (mv.idx === mv.stops.length - 1);
+      if(mv.bounced && isLastStop){
+        log(mv.p.name + ' overshot 2030 and bounced back to space ' + mv.finalPos + '.');
+      }
+      if(cellNum === FINISH){ finishGame(mv.p); return; }
+      if(GOAL_CELLS[cellNum]){
+        openQuestion(mv.p, GOAL_CELLS[cellNum], {
+          isFinalStop: isLastStop,
+          onlyStop: mv.stops.length === 1 && !mv.bounced
+        });
+      } else {
+        settleFinal(mv.p, cellNum);
+      }
+    }, 620);
+  }
+
+  function continueMove(){
+    move.idx++;
+    if(move.idx < move.stops.length){
+      advanceMove();
+    } else {
+      rolling = false;
+      advanceTurn();
+    }
+  }
+
+  function settleFinal(p, pos){
+    if(pos === FINISH){ finishGame(p); return; }
+    if(PERSONA_CELLS.includes(pos)){ openPersona(p); return; }
+    if(CONSEQUENCE_CELLS.includes(pos)){ openConsequence(p); return; }
+    if(ADVOCATE_CELLS.includes(pos)){ openAdvocate(p); return; }
+    rolling = false;
+    advanceTurn();
+  }
+
+  /* 2030 is a deadline, not a finish line: reaching it doesn't win the game, it starts
+     a final round so every other nation gets one last turn before the world is judged. */
+  function finishGame(p){
+    p.finished = true;
+    renderStandings();
+    if(!finalRound){
+      finalRound = true;
+      finalRoundTrigger = p.id;
+      log('🏁 ' + p.name + ' reached 2030 first! Every other nation gets one final turn before the world is judged.');
+    } else {
+      log('🏁 ' + p.name + ' also reached 2030.');
+    }
+    rolling = false;
+    advanceTurn();
+  }
+
+  function computeScores(){
+    const scores = {};
+    teams.forEach(t=> scores[t.id] = { achieved:0, total:t.contributed });
+    Object.keys(world.adopted).forEach(goalNum=>{
+      const entries = world.adopted[goalNum];
+      if(entries.length >= BEHAVIORS[goalNum].length){
+        entries.forEach(e=>{ scores[e.teamId].achieved++; });
+      }
+    });
+    return scores;
+  }
+
+  function endGame(){
+    gameOver = true;
+    rollBtn.disabled = true;
+    renderStandings();
+    log('⏳ 2030 has arrived. The results are in.');
+    showReveal();
+  }
+
+  /* The reveal is where every hidden behavior finally surfaces — it has to carry the
+     whole lesson, since nothing about the privilege gap was explained during play. */
+  function showReveal(){
+    const scores = computeScores();
+    let winner = teams[0];
+    teams.forEach(t=>{
+      const s = scores[t.id], w = scores[winner.id];
+      if(s.achieved > w.achieved || (s.achieved === w.achieved && s.total > w.total)) winner = t;
+    });
+
+    const winnerEl = document.getElementById('revealWinner');
+    winnerEl.innerHTML = '';
+    const wDot = document.createElement('span');
+    wDot.className = 'dotc';
+    wDot.style.background = winner.color;
+    wDot.style.display = 'inline-block';
+    winnerEl.append('🏆 ', wDot, ' ' + winner.name + ' — ' + winner.nation.emoji + ' ' + winner.nation.name +
+      ' — ' + scores[winner.id].achieved + ' goals achieved, ' + scores[winner.id].total + ' behaviors contributed');
+
+    let achievedCount = 0;
+    const goalGrid = document.getElementById('goalStatusGrid');
+    goalGrid.innerHTML = '';
+    for(let g=1; g<=17; g++){
+      const info = SDG[g];
+      const entries = world.adopted[g] || [];
+      const total = BEHAVIORS[g].length;
+      const achieved = entries.length >= total;
+      if(achieved) achievedCount++;
+      const status = achieved ? 'achieved' : (entries.length ? 'progress' : 'none');
+
+      const tile = document.createElement('div');
+      tile.className = 'goal-status-tile ' + (status === 'none' ? '' : status);
+
+      const head = document.createElement('div');
+      head.className = 'gst-head';
+      const badge = document.createElement('span');
+      badge.className = 'gst-badge';
+      badge.style.background = info.color;
+      badge.textContent = g;
+      const label = document.createElement('span');
+      label.textContent = info.name;
+      const statusTag = document.createElement('span');
+      statusTag.className = 'gst-status s-' + status;
+      statusTag.textContent = achieved ? 'Achieved' : (entries.length ? 'In progress' : 'Not started');
+      head.append(badge, label, statusTag);
+
+      const list = document.createElement('ul');
+      list.className = 'gst-behaviors';
+      BEHAVIORS[g].forEach((text, i)=>{
+        const li = document.createElement('li');
+        const entry = entries.find(e=> e.idx === i);
+        if(entry){
+          const dot = document.createElement('span');
+          dot.className = 'bdot';
+          const contributor = teams.find(t=> t.id === entry.teamId);
+          dot.style.background = contributor ? contributor.color : '#999';
+          li.append(dot, text);
+        } else {
+          li.className = 'missing';
+          li.textContent = '— ' + text;
+        }
+        list.appendChild(li);
+      });
+
+      tile.append(head, list);
+      goalGrid.appendChild(tile);
+    }
+
+    const harmfulSection = document.getElementById('harmfulSection');
+    const harmfulList = document.getElementById('harmfulList');
+    harmfulList.innerHTML = '';
+    if(world.harmful.length){
+      harmfulSection.classList.remove('hidden');
+      world.harmful.forEach(h=>{
+        const li = document.createElement('li');
+        const dot = document.createElement('span');
+        dot.className = 'hdot';
+        const contributor = teams.find(t=> t.id === h.teamId);
+        dot.style.background = contributor ? contributor.color : '#999';
+        li.append(dot, h.text + (contributor ? ' (chosen by ' + contributor.name + ')' : ''));
+        harmfulList.appendChild(li);
+      });
+    } else {
+      harmfulSection.classList.add('hidden');
+    }
+
+    const teamGrid = document.getElementById('teamReportGrid');
+    teamGrid.innerHTML = '';
+    teams.forEach(t=>{
+      const card = document.createElement('div');
+      card.className = 'team-report';
+      card.style.borderColor = t.color;
+
+      const head = document.createElement('div');
+      head.className = 'tr-head';
+      const dot = document.createElement('span');
+      dot.className = 'dotc';
+      dot.style.background = t.color;
+      head.append(dot, t.name);
+
+      const nationLine = document.createElement('div');
+      nationLine.className = 'tr-nation';
+      const m = t.nation.rollMultiplier;
+      const speedTxt = m > 1 ? '×2 speed' : (m < 1 ? '÷2 speed' : 'normal speed');
+      nationLine.textContent = t.nation.emoji + ' ' + t.nation.name + ' (' + t.nation.sub + ') — ' +
+        speedTxt + ', ' + t.nation.resources.length + '/17 goals in one question';
+
+      const stats = document.createElement('div');
+      stats.className = 'tr-stats';
+      const s = scores[t.id];
+      stats.innerHTML = '<div><b>' + s.achieved + '</b>goals achieved</div><div><b>' + s.total + '</b>behaviors contributed</div>';
+
+      card.append(head, nationLine, stats);
+      teamGrid.appendChild(card);
+    });
+
+    const fastest = teams.reduce((a,b)=> b.nation.rollMultiplier > a.nation.rollMultiplier ? b : a);
+    const slowest = teams.reduce((a,b)=> b.nation.rollMultiplier < a.nation.rollMultiplier ? b : a);
+    function speedPhrase(m){
+      return m > 1 ? 'moved at double speed' : (m < 1 ? 'moved at half speed' : 'moved at normal speed');
+    }
+    const debrief = document.getElementById('debriefBox');
+    let debriefHtml = '<p>The world achieved <b>' + achievedCount + ' of the 17 Goals</b> by 2030.</p>';
+    if(fastest.nation.rollMultiplier !== slowest.nation.rollMultiplier){
+      debriefHtml += '<p><b>' + fastest.name + '</b> played ' + fastest.nation.emoji + ' ' + fastest.nation.name +
+        ' and ' + speedPhrase(fastest.nation.rollMultiplier) + ', with the infrastructure to answer ' + fastest.nation.resources.length +
+        ' of 17 goals in a single question. <b>' + slowest.name + '</b> played ' + slowest.nation.emoji + ' ' +
+        slowest.nation.name + ' and ' + speedPhrase(slowest.nation.rollMultiplier) + ', needing two correct answers for ' +
+        (17 - slowest.nation.resources.length) + ' of the 17 goals. Neither team chose their nation, and nothing in the game let ' +
+        slowest.name + ' close that gap.</p>';
+    }
+    if(world.harmful.length){
+      debriefHtml += '<p>Along the way, the world also locked in ' + world.harmful.length +
+        ' harmful practice' + (world.harmful.length>1?'s':'') + ' — see above.</p>';
+    }
+    debriefHtml += '<p>That\'s what the real Sustainable Development Goals are up against: every country pursuing the same 17 goals from a different starting line, on the same deadline.</p>';
+    debrief.innerHTML = debriefHtml;
+
+    document.getElementById('gameScreen').classList.add('hidden');
+    document.getElementById('revealScreen').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------------- Question modal ---------------- */
+  const qModal = document.getElementById('questionModal');
+  const qGoalChip = document.getElementById('qGoalChip');
+  const qText = document.getElementById('qText');
+  const mcSection = document.getElementById('mcSection');
+  const qOptions = document.getElementById('qOptions');
+  const mcProgress = document.getElementById('mcProgress');
+  const mcLockBtn = document.getElementById('mcLockBtn');
+  const personaQSection = document.getElementById('personaQSection');
+  const pqAnswer = document.getElementById('pqAnswer');
+  const pqShareBtn = document.getElementById('pqShareBtn');
+  const pqHuddleWrap = document.getElementById('pqHuddleWrap');
+  const pqThumbUp = document.getElementById('pqThumbUp');
+  const pqThumbMore = document.getElementById('pqThumbMore');
+  const pqUpCount = document.getElementById('pqUpCount');
+  const pqMoreCount = document.getElementById('pqMoreCount');
+  const pqProgress = document.getElementById('pqProgress');
+  const pqFactBox = document.getElementById('pqFactBox');
+  const qFeedback = document.getElementById('qFeedback');
+  const qContinueBtn = document.getElementById('qContinueBtn');
+
+  let currentQCtx = null;
+  let mcVotes = [];
+  let personaVotes = { up:0, more:0 };
+
+  function openQuestion(p, goalNum, moveInfo){
+    const info = SDG[goalNum];
+    qGoalChip.style.background = info.color;
+    qGoalChip.style.color = luminance(info.color) > 0.6 ? '#3a3a3a' : '#fff';
+    qGoalChip.textContent = 'Goal ' + goalNum + ' — ' + info.name;
+    qFeedback.textContent = '';
+    qFeedback.className = 'feedback';
+    qContinueBtn.classList.add('hidden');
+
+    /* A nation without the resources for this goal cannot clear it on one question —
+       it must answer two in a row, same as a resourced nation answering one. This is
+       where "cheaper goal progress" for privileged nations actually lives. */
+    const needTwo = !p.persona && !hasResource(p, goalNum);
+    currentQCtx = { p, goalNum, moveInfo, mode: p.persona ? 'persona' : 'mc', correct:false, needTwo, stage:1 };
+
+    const noteEl = document.getElementById('qResourceNote');
+    if(p.persona){
+      noteEl.classList.add('hidden');
+    } else if(needTwo){
+      noteEl.textContent = '⚠️ ' + p.nation.name + ' has no infrastructure for ' + info.name + ' — answer two questions correctly to make progress.';
+      noteEl.className = 'resource-note';
+      noteEl.classList.remove('hidden');
+    } else {
+      noteEl.textContent = '✅ ' + p.nation.name + ' already has the infrastructure for ' + info.name + ' — one correct answer is all you need.';
+      noteEl.className = 'resource-note positive';
+      noteEl.classList.remove('hidden');
+    }
+
+    if(p.persona){
+      mcSection.classList.add('hidden');
+      personaQSection.classList.remove('hidden');
+      renderPersonaChallenge(p, goalNum);
+    } else {
+      personaQSection.classList.add('hidden');
+      mcSection.classList.remove('hidden');
+      renderStandardQuestion(goalNum);
+    }
+
+    qModal.classList.remove('hidden');
+  }
+
+  /* ----- Standard multiple-choice mode, answered via the Team Huddle vote tool ----- */
+  function renderStandardQuestion(goalNum){
+    const question = nextQuestion(goalNum);
+    currentQCtx.question = question;
+    const noteEl = document.getElementById('qResourceNote');
+    if(currentQCtx.needTwo){
+      noteEl.textContent = '⚠️ ' + currentQCtx.p.nation.name + ' has no infrastructure here — question ' +
+        currentQCtx.stage + ' of 2.';
+      noteEl.classList.remove('hidden');
+    }
+    qText.textContent = question.q;
+    mcVotes = question.opts.map(()=>0);
+
+    qOptions.innerHTML = '';
+    question.opts.forEach((opt, i)=>{
+      const row = document.createElement('div');
+      row.className = 'vote-row';
+
+      const label = document.createElement('div');
+      label.className = 'vote-label';
+      label.textContent = opt;
+
+      const bar = document.createElement('div');
+      bar.className = 'vote-bar-track';
+      const fill = document.createElement('div');
+      fill.className = 'vote-bar-fill';
+      bar.appendChild(fill);
+
+      const count = document.createElement('div');
+      count.className = 'vote-count';
+      count.textContent = '0';
+
+      const btn = document.createElement('button');
+      btn.className = 'vote-btn';
+      btn.textContent = '+1 Vote';
+      btn.addEventListener('click', ()=> castMcVote(i));
+
+      row.append(label, bar, count, btn);
+      qOptions.appendChild(row);
+    });
+
+    mcLockBtn.disabled = true;
+    mcLockBtn.onclick = lockInTeamAnswer;
+    updateMcHuddleUI();
+  }
+
+  function castMcVote(i){
+    const total = mcVotes.reduce((a,b)=>a+b,0);
+    if(total >= huddleSize()) return;
+    mcVotes[i]++;
+    updateMcHuddleUI();
+  }
+
+  function updateMcHuddleUI(){
+    const total = mcVotes.reduce((a,b)=>a+b,0);
+    const need = huddleSize();
+    const max = Math.max(...mcVotes, 1);
+    const rows = qOptions.querySelectorAll('.vote-row');
+    rows.forEach((row, i)=>{
+      row.querySelector('.vote-count').textContent = mcVotes[i];
+      row.querySelector('.vote-bar-fill').style.width = (mcVotes[i]/max*100) + '%';
+      row.querySelector('.vote-btn').disabled = total >= need;
+    });
+    mcProgress.textContent = 'Votes: ' + total + ' / ' + need + ' teammate' + (need>1?'s':'');
+    mcLockBtn.disabled = total < need;
+  }
+
+  function lockInTeamAnswer(){
+    let bestIdx = 0;
+    mcVotes.forEach((v,i)=>{ if(v > mcVotes[bestIdx]) bestIdx = i; });
+    finalizeMcAnswer(bestIdx);
+  }
+
+  function finalizeMcAnswer(chosenIdx){
+    const { p, question, moveInfo, goalNum } = currentQCtx;
+    const rows = qOptions.querySelectorAll('.vote-row');
+    rows.forEach(r => r.querySelector('.vote-btn').disabled = true);
+    mcLockBtn.disabled = true;
+
+    const correct = chosenIdx === question.correct;
+    currentQCtx.correct = correct;
+    rows[chosenIdx].classList.add(correct ? 'correct' : 'wrong');
+    if(!correct) rows[question.correct].classList.add('correct');
+
+    /* Behaviors and entrenched practices are logged silently — never surfaced here. */
+    if(!correct && question.harmful && question.harmful[chosenIdx] !== undefined){
+      recordHarmful(p, question.harmful[chosenIdx]);
+    }
+
+    if(correct && currentQCtx.needTwo && currentQCtx.stage === 1){
+      currentQCtx.stage = 2;
+      currentQCtx.awaitingSecond = true;
+      qFeedback.textContent = '✅ First question correct. One more to go for ' + p.name + '.';
+      qFeedback.classList.add('good');
+      log(p.name + "'s team answered the first question correctly on Goal " + goalNum + '.');
+      qContinueBtn.classList.remove('hidden');
+      return;
+    }
+
+    if(correct){
+      adoptBehavior(p, goalNum);
+      if(moveInfo.isFinalStop && moveInfo.onlyStop){
+        qFeedback.textContent = '✅ The team got it! ' + p.name + ' rolls again.';
+      } else if(moveInfo.isFinalStop){
+        qFeedback.textContent = '✅ The team got it! Turn complete.';
+      } else {
+        qFeedback.textContent = '✅ The team got it! ' + p.name + ' continues moving.';
+      }
+      qFeedback.classList.add('good');
+      log(p.name + "'s team answered correctly on Goal " + goalNum + '.');
+    } else {
+      qFeedback.textContent = '❌ Not quite. ' + p.name + "'s turn ends here.";
+      qFeedback.classList.add('bad');
+      log(p.name + "'s team answered incorrectly on Goal " + goalNum + '. Turn ends.');
+    }
+    qContinueBtn.classList.remove('hidden');
+  }
+
+  /* ----- Persona-adaptive subjective challenge mode ----- */
+  function renderPersonaChallenge(p, goalNum){
+    const template = GOAL_CHALLENGES[goalNum];
+    qText.innerHTML = template.replace('{name}', '<strong>' + p.persona.name + '</strong>');
+    currentQCtx.fact = GOAL_FACTS[goalNum];
+
+    pqAnswer.value = '';
+    pqAnswer.disabled = false;
+    pqShareBtn.disabled = true;
+    pqShareBtn.classList.remove('hidden');
+    pqHuddleWrap.classList.add('hidden');
+    pqFactBox.classList.add('hidden');
+    personaVotes = { up:0, more:0 };
+    updatePersonaHuddleUI();
+  }
+
+  pqAnswer.addEventListener('input', ()=>{
+    pqShareBtn.disabled = pqAnswer.value.trim().length < 8;
+  });
+
+  pqShareBtn.addEventListener('click', ()=>{
+    const { p, goalNum } = currentQCtx;
+    log(p.name + ' shared an idea for Goal ' + goalNum + ': "' + pqAnswer.value.trim() + '"');
+    pqAnswer.disabled = true;
+    pqShareBtn.classList.add('hidden');
+    pqHuddleWrap.classList.remove('hidden');
+  });
+
+  function castPersonaVote(kind){
+    const total = personaVotes.up + personaVotes.more;
+    if(total >= huddleSize()) return;
+    personaVotes[kind]++;
+    updatePersonaHuddleUI();
+    const newTotal = personaVotes.up + personaVotes.more;
+    if(newTotal >= huddleSize()){
+      pqFactBox.textContent = '💡 ' + currentQCtx.fact;
+      pqFactBox.classList.remove('hidden');
+      currentQCtx.correct = true;
+      qFeedback.textContent = '';
+      qContinueBtn.classList.remove('hidden');
+    }
+  }
+
+  function updatePersonaHuddleUI(){
+    const total = personaVotes.up + personaVotes.more;
+    const need = huddleSize();
+    pqUpCount.textContent = personaVotes.up;
+    pqMoreCount.textContent = personaVotes.more;
+    pqThumbUp.disabled = total >= need;
+    pqThumbMore.disabled = total >= need;
+    pqProgress.textContent = 'Votes: ' + total + ' / ' + need + ' teammate' + (need>1?'s':'');
+  }
+
+  pqThumbUp.addEventListener('click', ()=> castPersonaVote('up'));
+  pqThumbMore.addEventListener('click', ()=> castPersonaVote('more'));
+
+  /* ----- Shared continue logic: resumes the gated move or ends the turn ----- */
+  qContinueBtn.addEventListener('click', ()=>{
+    const ctx = currentQCtx;
+
+    if(ctx.mode === 'mc' && ctx.awaitingSecond){
+      ctx.awaitingSecond = false;
+      qFeedback.textContent = '';
+      qFeedback.className = 'feedback';
+      qContinueBtn.classList.add('hidden');
+      renderStandardQuestion(ctx.goalNum);
+      return;
+    }
+
+    qModal.classList.add('hidden');
+
+    if(ctx.mode === 'mc' && !ctx.correct){
+      rolling = false;
+      advanceTurn();
+      return;
+    }
+
+    if(ctx.moveInfo.isFinalStop){
+      rolling = false;
+      if(ctx.mode === 'mc' && ctx.moveInfo.onlyStop){
+        updateTurnUI();
+      } else {
+        advanceTurn();
+      }
+    } else {
+      continueMove();
+    }
+  });
+
+  /* ---------------- Persona modal ---------------- */
+  const personaModal = document.getElementById('personaModal');
+  const personaCard = document.getElementById('personaCard');
+  const pmTitle = document.getElementById('pmTitle');
+  const pmSubtitle = document.getElementById('pmSubtitle');
+  const pmEmoji = document.getElementById('pmEmoji');
+  const pmName = document.getElementById('pmName');
+  const pmBlurb = document.getElementById('pmBlurb');
+  const pmHint = document.getElementById('pmHint');
+  const personaContinueBtn = document.getElementById('personaContinueBtn');
+  let pendingPersonaPlayer = null;
+
+  function openPersona(p){
+    const previous = p.persona ? p.persona.name : null;
+    const persona = nextPersona(previous);
+    pendingPersonaPlayer = p;
+
+    pmTitle.textContent = previous ? 'A New Persona!' : 'Your First Persona!';
+    pmSubtitle.textContent = p.name + ' drew a Persona card';
+    pmEmoji.textContent = persona.emoji;
+    pmName.textContent = persona.name;
+    pmBlurb.textContent = persona.blurb;
+    pmHint.innerHTML = '<b>In character:</b> ' + persona.hint;
+    personaCard.classList.remove('flipped');
+    personaModal._persona = persona;
+
+    personaModal.classList.remove('hidden');
+    void personaCard.offsetWidth;
+    setTimeout(()=> personaCard.classList.add('flipped'), 400);
+  }
+
+  personaContinueBtn.addEventListener('click', ()=>{
+    if(pendingPersonaPlayer){
+      const p = pendingPersonaPlayer;
+      p.persona = personaModal._persona;
+      syncPersonaBadge(p);
+      log(p.name + ' became ' + p.persona.emoji + ' ' + p.persona.name + '!');
+      renderStandings();
+    }
+    personaModal.classList.add('hidden');
+    pendingPersonaPlayer = null;
+    rolling = false;
+    advanceTurn();
+  });
+
+  /* ---------------- Consequence modal ---------------- */
+  const consequenceModal = document.getElementById('consequenceModal');
+  const cqEmoji = document.getElementById('cqEmoji');
+  const cqTitle = document.getElementById('cqTitle');
+  const cqText = document.getElementById('cqText');
+  const cqPrompt = document.getElementById('cqPrompt');
+  const cqAnswer = document.getElementById('cqAnswer');
+  const cqShareBtn = document.getElementById('cqShareBtn');
+  const cqHuddleWrap = document.getElementById('cqHuddleWrap');
+  const cqAckA = document.getElementById('cqAckA');
+  const cqAckB = document.getElementById('cqAckB');
+  const cqAckACount = document.getElementById('cqAckACount');
+  const cqAckBCount = document.getElementById('cqAckBCount');
+  const cqProgress = document.getElementById('cqProgress');
+  const cqFactBox = document.getElementById('cqFactBox');
+  const cqContinueBtn = document.getElementById('cqContinueBtn');
+  let cqCtx = null;
+  let cqVotes = { a:0, b:0 };
+
+  function worldNameFor(p){ return p.persona ? p.persona.name : p.name; }
+
+  function openConsequence(p){
+    const card = nextConsequence();
+    cqCtx = { p, card };
+
+    cqEmoji.textContent = card.emoji;
+    cqTitle.textContent = card.title;
+    cqText.textContent = card.text.replace('{name}', worldNameFor(p));
+    cqPrompt.textContent = card.prompt;
+
+    cqAnswer.value = '';
+    cqAnswer.disabled = false;
+    cqShareBtn.disabled = true;
+    cqShareBtn.classList.remove('hidden');
+    cqHuddleWrap.classList.add('hidden');
+    cqFactBox.classList.add('hidden');
+    cqContinueBtn.classList.add('hidden');
+    cqVotes = { a:0, b:0 };
+    updateCqHuddleUI();
+
+    log(p.name + ' hit a Consequence: ' + card.title + ' ' + card.emoji);
+    consequenceModal.classList.remove('hidden');
+  }
+
+  cqAnswer.addEventListener('input', ()=>{
+    cqShareBtn.disabled = cqAnswer.value.trim().length < 8;
+  });
+
+  cqShareBtn.addEventListener('click', ()=>{
+    log(cqCtx.p.name + ' described life after ' + cqCtx.card.title + ': "' + cqAnswer.value.trim() + '"');
+    cqAnswer.disabled = true;
+    cqShareBtn.classList.add('hidden');
+    cqHuddleWrap.classList.remove('hidden');
+  });
+
+  function castCqVote(kind){
+    const total = cqVotes.a + cqVotes.b;
+    if(total >= teams.length) return;
+    cqVotes[kind]++;
+    updateCqHuddleUI();
+    if(cqVotes.a + cqVotes.b >= teams.length){
+      cqFactBox.textContent = '💡 ' + cqCtx.card.real;
+      cqFactBox.classList.remove('hidden');
+      cqContinueBtn.classList.remove('hidden');
+    }
+  }
+
+  function updateCqHuddleUI(){
+    const total = cqVotes.a + cqVotes.b;
+    cqAckACount.textContent = cqVotes.a;
+    cqAckBCount.textContent = cqVotes.b;
+    cqAckA.disabled = total >= teams.length;
+    cqAckB.disabled = total >= teams.length;
+    cqProgress.textContent = 'Responses: ' + total + ' / ' + teams.length + ' nation' + (teams.length>1?'s':'');
+  }
+
+  cqAckA.addEventListener('click', ()=> castCqVote('a'));
+  cqAckB.addEventListener('click', ()=> castCqVote('b'));
+
+  cqContinueBtn.addEventListener('click', ()=>{
+    consequenceModal.classList.add('hidden');
+    cqCtx = null;
+    rolling = false;
+    advanceTurn();
+  });
+
+  /* ---------------- Advocate modal ---------------- */
+  const advocateModal = document.getElementById('advocateModal');
+  const adTitle = document.getElementById('adTitle');
+  const adPickWrap = document.getElementById('adPickWrap');
+  const adTargets = document.getElementById('adTargets');
+  const adPromptWrap = document.getElementById('adPromptWrap');
+  const adPrompt = document.getElementById('adPrompt');
+  const adAnswer = document.getElementById('adAnswer');
+  const adShareBtn = document.getElementById('adShareBtn');
+  const adJudgeWrap = document.getElementById('adJudgeWrap');
+  const adJudgeTitle = document.getElementById('adJudgeTitle');
+  const adJudgeNote = document.getElementById('adJudgeNote');
+  const adRight = document.getElementById('adRight');
+  const adWrong = document.getElementById('adWrong');
+  const adFactBox = document.getElementById('adFactBox');
+  const adFeedback = document.getElementById('adFeedback');
+  const adContinueBtn = document.getElementById('adContinueBtn');
+  let adCtx = null;
+
+  function openAdvocate(p){
+    const eligible = teams.filter(o=> o.id !== p.id && o.persona);
+    adCtx = { p, target:null, earnedRoll:false };
+
+    adFeedback.textContent = '';
+    adFeedback.className = 'feedback';
+    adFactBox.classList.add('hidden');
+    adContinueBtn.classList.add('hidden');
+    adPromptWrap.classList.add('hidden');
+    adJudgeWrap.classList.add('hidden');
+    adPickWrap.classList.remove('hidden');
+    adTargets.innerHTML = '';
+
+    if(!eligible.length){
+      adTitle.textContent = 'Nobody to speak for yet';
+      adPickWrap.classList.add('hidden');
+      adFactBox.textContent = "💡 Once another team has drawn a Persona, landing here lets you argue on their behalf — and they decide whether you got their world right.";
+      adFactBox.classList.remove('hidden');
+      adContinueBtn.classList.remove('hidden');
+      log(p.name + ' landed on Speak Up, but no one else has a Persona yet.');
+      advocateModal.classList.remove('hidden');
+      return;
+    }
+
+    adTitle.textContent = 'Whose world will you speak for?';
+    eligible.forEach(o=>{
+      const b = document.createElement('button');
+      b.className = 'target-btn';
+
+      const dot = document.createElement('span');
+      dot.className = 'dotc';
+      dot.style.background = o.color;
+
+      const em = document.createElement('span');
+      em.className = 't-emoji';
+      em.textContent = o.persona.emoji;
+
+      const nm = document.createElement('span');
+      nm.textContent = o.name;
+
+      const pn = document.createElement('span');
+      pn.className = 't-persona';
+      pn.textContent = o.persona.name;
+
+      b.append(dot, em, nm, pn);
+      b.addEventListener('click', ()=> beginAdvocacy(o));
+      adTargets.appendChild(b);
+    });
+
+    log(p.name + ' landed on Speak Up 🗣️');
+    advocateModal.classList.remove('hidden');
+  }
+
+  function beginAdvocacy(target){
+    adCtx.target = target;
+    const prompt = nextAdvocatePrompt();
+
+    adTitle.textContent = 'Speak as ' + target.persona.name;
+    adPickWrap.classList.add('hidden');
+    adPromptWrap.classList.remove('hidden');
+    adPrompt.innerHTML = 'You are speaking on behalf of <strong>' + target.persona.name + '</strong> (' +
+      target.persona.emoji + ' ' + target.name + ').<br><br>' + prompt;
+
+    adAnswer.value = '';
+    adAnswer.disabled = false;
+    adShareBtn.disabled = true;
+    adShareBtn.classList.remove('hidden');
+    adJudgeWrap.classList.add('hidden');
+  }
+
+  adAnswer.addEventListener('input', ()=>{
+    adShareBtn.disabled = adAnswer.value.trim().length < 8;
+  });
+
+  adShareBtn.addEventListener('click', ()=>{
+    const { p, target } = adCtx;
+    log(p.name + ' spoke for ' + target.persona.name + ': "' + adAnswer.value.trim() + '"');
+    adAnswer.disabled = true;
+    adShareBtn.classList.add('hidden');
+    adJudgeTitle.textContent = '🖥️ Over to ' + target.name;
+    adJudgeNote.textContent = target.name + ', you play ' + target.persona.name + ' — did they get your world right?';
+    adJudgeWrap.classList.remove('hidden');
+  });
+
+  function judgeAdvocacy(gotItRight){
+    const { p, target } = adCtx;
+    adRight.disabled = true;
+    adWrong.disabled = true;
+
+    if(gotItRight){
+      adCtx.earnedRoll = true;
+      adFeedback.textContent = '✅ ' + target.name + ' says you understood their world. ' + p.name + ' rolls again!';
+      adFeedback.classList.add('good');
+      log(target.name + ' confirmed ' + p.name + ' understood their world. Extra roll earned.');
+    } else {
+      adFeedback.textContent = '🤔 ' + target.name + " says there's more to their world than that. Turn passes.";
+      adFeedback.classList.add('bad');
+      log(target.name + ' felt ' + p.name + ' missed part of their world.');
+    }
+    adFactBox.textContent = '💡 Speaking for someone else is how real advocates work — you have to understand a world before you can represent it.';
+    adFactBox.classList.remove('hidden');
+    adContinueBtn.classList.remove('hidden');
+  }
+
+  adRight.addEventListener('click', ()=> judgeAdvocacy(true));
+  adWrong.addEventListener('click', ()=> judgeAdvocacy(false));
+
+  adContinueBtn.addEventListener('click', ()=>{
+    const earned = adCtx && adCtx.earnedRoll;
+    advocateModal.classList.add('hidden');
+    adRight.disabled = false;
+    adWrong.disabled = false;
+    adCtx = null;
+    rolling = false;
+    if(earned){ updateTurnUI(); } else { advanceTurn(); }
+  });
+
+})();
+</script>
+</body>
+</html>
