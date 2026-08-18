@@ -273,27 +273,10 @@
   .opt-btn.wrong{ background:#fbe7e7; border-color:#d9534f; color:#8a2222; font-weight:700; }
   .opt-btn:disabled{ cursor:default; }
 
-  /* ---------- Team Huddle collaboration tool ---------- */
+  /* ---------- Team Huddle collaboration tool (reactions only; no answer voting) ---------- */
   .huddle-title{ font-size:12px; font-weight:800; color:var(--accent-dark); text-transform:uppercase; letter-spacing:.04em; margin:14px 0 8px; }
-  .vote-row{
-    display:grid; grid-template-columns: 1fr auto auto auto; align-items:center; gap:8px;
-    padding:9px 10px; border-radius:10px; border:2px solid var(--line); background:#fafefe; margin-bottom:8px;
-  }
-  .vote-row.correct{ background:#e3f7e6; border-color:#3fa14c; }
-  .vote-row.wrong{ background:#fbe7e7; border-color:#d9534f; }
-  .vote-label{ font-size:13.5px; color:var(--ink); }
-  .vote-bar-track{ width:60px; height:8px; border-radius:5px; background:#e7f0ef; overflow:hidden; }
-  .vote-bar-fill{ height:100%; width:0%; background:var(--accent); border-radius:5px; transition:width .3s; }
   .vote-count{ font-size:13px; font-weight:800; color:var(--muted); min-width:16px; text-align:center; }
-  .vote-btn{
-    background:#fff; border:1px solid var(--accent); color:var(--accent-dark); font-weight:700; font-size:11.5px;
-    padding:5px 9px; border-radius:8px; white-space:nowrap;
-  }
-  .vote-btn:hover:not(:disabled){ background:var(--accent); color:#fff; }
-  .vote-btn:disabled{ opacity:.4; cursor:not-allowed; }
   .huddle-progress{ font-size:12.5px; color:var(--muted); margin:4px 0 12px; text-align:center; }
-  .huddle-lock{ width:100%; }
-  .huddle-lock:disabled{ background:#b9c9c6; cursor:not-allowed; }
 
   .pq-textarea{
     width:100%; border:2px solid var(--line); border-radius:10px; padding:10px 12px; font-size:14px;
@@ -486,7 +469,7 @@
         <li>A nation sets two things: how fast it moves (double speed, normal, or half speed) and which of the 17 goals it already has the infrastructure for.</li>
         <li>There are 63 spaces on the board, numbered in one continuous path from Start to 2030 &mdash; follow the arrowed guide line to see which way the path turns. Teams take turns rolling a single die and moving forward that many spaces, multiplied by their nation's speed.</li>
         <li>You cannot roll past a numbered SDG space (1&ndash;17) &mdash; if your move would carry you over one, you stop there first and answer it before continuing.</li>
-        <li>Every question is answered with the <strong>Team Huddle</strong> tool: every player on the acting team taps in their guess before the team locks in a final answer.</li>
+        <li>Talk it over as a team, then pick an answer together — whoever's holding the device taps it in.</li>
         <li>If your nation already has what a goal needs, one correct answer is enough. If it doesn't, you must answer <strong>two questions correctly in a row</strong> &mdash; missing either ends your turn.</li>
         <li>What you're actually building is hidden: every correct answer quietly adopts one real behavior a society needs for that goal, credited to your team. None of this is shown until the game ends.</li>
         <li>Playing a Persona? Your question becomes an open-ended challenge written for that character instead &mdash; type an idea, huddle with your team, see a fact, and continue (no privilege gate on these).</li>
@@ -552,10 +535,8 @@
 
     <!-- Standard multiple-choice mode -->
     <div id="mcSection">
-      <div class="huddle-title">🖥️ Team Huddle &mdash; tap once for each teammate's guess</div>
+      <div class="huddle-title">Agree on an answer as a team, then pick it</div>
       <div class="options" id="qOptions"></div>
-      <div class="huddle-progress" id="mcProgress"></div>
-      <button class="primary-btn huddle-lock" id="mcLockBtn" disabled>Lock In Team Answer</button>
     </div>
 
     <!-- Persona-adaptive subjective challenge mode -->
@@ -1348,7 +1329,7 @@
   document.getElementById('rulesBtn').addEventListener('click', ()=>{
     const el = document.querySelector('details.rules');
     if(document.getElementById('setupScreen').classList.contains('hidden')){
-      alert('HOW TO PLAY\n\n1. 2-4 teams, each sharing one token and a randomly drawn nation (permanent, always visible).\n2. Your nation sets your roll speed (x2, normal, or half) and which goals it already has infrastructure for.\n3. You can\'t roll past an SDG space (1-17) — you stop and answer it before moving further, even mid-roll.\n4. Every question uses the Team Huddle tool: every player on the acting team taps their guess before the team locks in an answer.\n5. Resourced for that goal? One correct answer is enough. Not resourced? You need two correct answers in a row — missing either ends your turn.\n6. Correct answers secretly adopt real-world behaviors toward that goal, credited to your team. Nothing about this is shown until the game ends.\n7. Playing a persona? That question becomes an open-ended challenge for your character instead — no privilege gate on these.\n8. The board is one continuous numbered path from Start to 2030 — follow the arrowed guide line for which way it turns.\n9. Purple Persona space → draw a new character. Amber Consequence space → something happens TO your team. Blue Speak Up space → argue for a rival team\'s character; get it right and roll again.\n10. Reaching 2030 doesn\'t win — it\'s a deadline. Every other team gets one final turn, then the results are revealed: which goals the world achieved, and why.');
+      alert('HOW TO PLAY\n\n1. 2-4 teams, each sharing one token and a randomly drawn nation (permanent, always visible).\n2. Your nation sets your roll speed (x2, normal, or half) and which goals it already has infrastructure for.\n3. You can\'t roll past an SDG space (1-17) — you stop and answer it before moving further, even mid-roll.\n4. Talk it over as a team and tap the answer you agree on — no vote tallying, just pick it.\n5. Resourced for that goal? One correct answer is enough. Not resourced? You need two correct answers in a row — missing either ends your turn.\n6. Correct answers secretly adopt real-world behaviors toward that goal, credited to your team. Nothing about this is shown until the game ends.\n7. Playing a persona? That question becomes an open-ended challenge for your character instead — no privilege gate on these.\n8. The board is one continuous numbered path from Start to 2030 — follow the arrowed guide line for which way it turns.\n9. Purple Persona space → draw a new character. Amber Consequence space → something happens TO your team. Blue Speak Up space → argue for a rival team\'s character; get it right and roll again.\n10. Reaching 2030 doesn\'t win — it\'s a deadline. Every other team gets one final turn, then the results are revealed: which goals the world achieved, and why.');
     } else {
       el.open = true;
       el.scrollIntoView({behavior:'smooth'});
@@ -2023,8 +2004,6 @@
   const qText = document.getElementById('qText');
   const mcSection = document.getElementById('mcSection');
   const qOptions = document.getElementById('qOptions');
-  const mcProgress = document.getElementById('mcProgress');
-  const mcLockBtn = document.getElementById('mcLockBtn');
   const personaQSection = document.getElementById('personaQSection');
   const pqAnswer = document.getElementById('pqAnswer');
   const pqShareBtn = document.getElementById('pqShareBtn');
@@ -2039,7 +2018,6 @@
   const qContinueBtn = document.getElementById('qContinueBtn');
 
   let currentQCtx = null;
-  let mcVotes = [];
   let personaVotes = { up:0, more:0 };
 
   function openQuestion(p, goalNum, moveInfo){
@@ -2083,7 +2061,7 @@
     qModal.classList.remove('hidden');
   }
 
-  /* ----- Standard multiple-choice mode, answered via the Team Huddle vote tool ----- */
+  /* ----- Standard multiple-choice mode: team discusses, then one tap answers ----- */
   function renderStandardQuestion(goalNum){
     const question = nextQuestion(goalNum);
     currentQCtx.question = question;
@@ -2094,78 +2072,26 @@
       noteEl.classList.remove('hidden');
     }
     qText.textContent = question.q;
-    mcVotes = question.opts.map(()=>0);
 
     qOptions.innerHTML = '';
     question.opts.forEach((opt, i)=>{
-      const row = document.createElement('div');
-      row.className = 'vote-row';
-
-      const label = document.createElement('div');
-      label.className = 'vote-label';
-      label.textContent = opt;
-
-      const bar = document.createElement('div');
-      bar.className = 'vote-bar-track';
-      const fill = document.createElement('div');
-      fill.className = 'vote-bar-fill';
-      bar.appendChild(fill);
-
-      const count = document.createElement('div');
-      count.className = 'vote-count';
-      count.textContent = '0';
-
       const btn = document.createElement('button');
-      btn.className = 'vote-btn';
-      btn.textContent = '+1 Vote';
-      btn.addEventListener('click', ()=> castMcVote(i));
-
-      row.append(label, bar, count, btn);
-      qOptions.appendChild(row);
+      btn.className = 'opt-btn';
+      btn.textContent = opt;
+      btn.addEventListener('click', ()=> finalizeMcAnswer(i));
+      qOptions.appendChild(btn);
     });
-
-    mcLockBtn.disabled = true;
-    mcLockBtn.onclick = lockInTeamAnswer;
-    updateMcHuddleUI();
-  }
-
-  function castMcVote(i){
-    const total = mcVotes.reduce((a,b)=>a+b,0);
-    if(total >= huddleSize()) return;
-    mcVotes[i]++;
-    updateMcHuddleUI();
-  }
-
-  function updateMcHuddleUI(){
-    const total = mcVotes.reduce((a,b)=>a+b,0);
-    const need = huddleSize();
-    const max = Math.max(...mcVotes, 1);
-    const rows = qOptions.querySelectorAll('.vote-row');
-    rows.forEach((row, i)=>{
-      row.querySelector('.vote-count').textContent = mcVotes[i];
-      row.querySelector('.vote-bar-fill').style.width = (mcVotes[i]/max*100) + '%';
-      row.querySelector('.vote-btn').disabled = total >= need;
-    });
-    mcProgress.textContent = 'Votes: ' + total + ' / ' + need + ' teammate' + (need>1?'s':'');
-    mcLockBtn.disabled = total < need;
-  }
-
-  function lockInTeamAnswer(){
-    let bestIdx = 0;
-    mcVotes.forEach((v,i)=>{ if(v > mcVotes[bestIdx]) bestIdx = i; });
-    finalizeMcAnswer(bestIdx);
   }
 
   function finalizeMcAnswer(chosenIdx){
     const { p, question, moveInfo, goalNum } = currentQCtx;
-    const rows = qOptions.querySelectorAll('.vote-row');
-    rows.forEach(r => r.querySelector('.vote-btn').disabled = true);
-    mcLockBtn.disabled = true;
+    const opts = qOptions.querySelectorAll('.opt-btn');
+    opts.forEach(b => b.disabled = true);
 
     const correct = chosenIdx === question.correct;
     currentQCtx.correct = correct;
-    rows[chosenIdx].classList.add(correct ? 'correct' : 'wrong');
-    if(!correct) rows[question.correct].classList.add('correct');
+    opts[chosenIdx].classList.add(correct ? 'correct' : 'wrong');
+    if(!correct) opts[question.correct].classList.add('correct');
 
     /* Behaviors and entrenched practices are logged silently — never surfaced here. */
     if(!correct && question.harmful && question.harmful[chosenIdx] !== undefined){
