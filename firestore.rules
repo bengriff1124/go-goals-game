@@ -1,0 +1,43 @@
+rules_version = '2';
+
+// Security model for this game, by design:
+//
+// This is a classroom game with no user accounts. A game session is found by an
+// unguessable short code (the document ID under `games/`), and resuming/joining
+// it asks for a short PIN — but that PIN is checked CLIENT-SIDE only, as a
+// friendly guard against typos and accidental collisions, not as real security.
+// Firestore rules have no way to validate a PIN sent from an untrusted client
+// without a backend function or Firebase Auth, and adding either would be a lot
+// of infrastructure for what is fundamentally a "everyone at the table already
+// trusts each other" game (the in-game Team Huddle already works the same way).
+//
+// What these rules DO enforce: writes are confined to the `games` collection,
+// documents must look like a game (not arbitrary data), and nothing outside
+// `games/*` is reachable at all.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /games/{gameId} {
+      allow read: if true;
+
+      allow create: if isWellFormedGame(request.resource.data)
+                    && gameId.matches('[a-zA-Z0-9]{4,8}');
+
+      allow update: if isWellFormedGame(request.resource.data)
+                    && request.resource.data.code == resource.data.code;
+
+      allow delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+
+  function isWellFormedGame(data) {
+    return data.keys().hasAll(['code', 'phase', 'updatedAt'])
+      && data.code is string
+      && data.phase in ['lobby', 'playing', 'revealed']
+      && data.size() < 50;
+  }
+}

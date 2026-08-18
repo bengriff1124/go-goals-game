@@ -60,6 +60,50 @@
     padding: 26px 28px; margin-bottom:18px;
   }
   .card p.lead{color:var(--muted); margin:0 0 18px; line-height:1.5; font-size:14.5px;}
+
+  /* ---------- Play-mode switcher (local vs host vs join) ---------- */
+  .mode-tabs{ display:flex; gap:8px; max-width:760px; margin:10px auto 0; padding:0 20px; flex-wrap:wrap; }
+  .mode-tab{
+    flex:1 1 160px; background:#fff; border:2px solid var(--line); border-radius:12px; padding:12px 14px;
+    text-align:left; cursor:pointer;
+  }
+  .mode-tab .mt-title{ font-weight:800; font-size:14px; color:var(--ink); display:flex; align-items:center; gap:6px; }
+  .mode-tab .mt-sub{ font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .mode-tab.active{ border-color:var(--accent); background:#f2faf9; }
+  .mode-tab.active .mt-title{ color:var(--accent-dark); }
+
+  /* ---------- Hosted lobby / join flow ---------- */
+  .game-code{
+    font-size:38px; font-weight:800; letter-spacing:.12em; color:var(--accent-dark);
+    background:#f2faf9; border:2px dashed var(--accent); border-radius:12px; padding:16px; text-align:center;
+    margin:14px 0;
+  }
+  .lobby-slot{
+    display:flex; align-items:center; gap:10px; padding:11px 14px; border-radius:10px;
+    border:2px solid var(--line); background:#fafefe; margin-bottom:8px;
+  }
+  .lobby-slot.open{ border-style:dashed; color:var(--muted); }
+  .lobby-slot.filled{ border-color:#bfe6e2; background:#f6fbfa; }
+  .lobby-slot .ls-dot{ width:14px;height:14px;border-radius:50%; flex:none; }
+  .lobby-slot .ls-name{ font-weight:700; flex:1 1 auto; }
+  .lobby-slot .ls-meta{ font-size:12px; color:var(--muted); }
+  .join-btn-sm{
+    background:var(--accent); color:#fff; border:none; padding:7px 14px; border-radius:8px;
+    font-weight:700; font-size:12.5px;
+  }
+  .join-btn-sm:hover{ background:var(--accent-dark); }
+  .field-label{ font-size:12px; font-weight:700; color:var(--muted); margin:12px 0 4px; text-transform:uppercase; letter-spacing:.04em; }
+  .text-input{
+    width:100%; border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:15px;
+  }
+  .text-input.code-input{ text-align:center; font-size:22px; letter-spacing:.15em; font-weight:800; text-transform:uppercase; }
+  .waiting-banner{
+    background:#fdf6ee; border:1px solid #f2ddc2; border-radius:12px; padding:14px 16px; text-align:center;
+    font-size:14px; color:#8a5a1a; font-weight:700; margin-bottom:14px;
+  }
+  .waiting-banner .spin{ display:inline-block; animation: spin 1.4s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .setup-error{ color:#b23c38; font-size:13px; font-weight:700; margin-top:8px; min-height:16px; }
   .count-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px;}
   .count-btn{
     width:44px;height:44px;border-radius:50%; border:2px solid var(--line); background:#fff;
@@ -429,6 +473,11 @@
     .turn-card, .standings-card{ flex: 1 1 100%; }
   }
 </style>
+<!-- Compat (non-module, global-namespace) build: type="module" imports are blocked by
+     CORS when this file is opened directly via file://, which is a supported way to
+     play this game offline/locally. The compat SDK works the same over file:// or https. -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -451,7 +500,25 @@
   <div class="card">
     <h2>Play &amp; build the future</h2>
     <p class="lead">A digital adaptation of the UN board game about the 17 Sustainable Development Goals &mdash; now played as competing nations racing the same deadline from very different starting lines. Each team draws a random <strong>nation</strong> that quietly sets how fast they move and which goals come easy. Every correct answer secretly builds toward the real behaviors the world needs to achieve each goal &mdash; hidden until <strong>2030</strong>, when a final round plays out and the results are revealed all at once.</p>
+  </div>
 
+  <div class="mode-tabs" id="modeTabs">
+    <div class="mode-tab active" data-mode="local">
+      <div class="mt-title">📍 One Device</div>
+      <div class="mt-sub">Everyone plays together, passing this device around the table.</div>
+    </div>
+    <div class="mode-tab" data-mode="host">
+      <div class="mt-title">🖥️ Host for Teams</div>
+      <div class="mt-sub">You run the game on a shared screen; each team joins from their own Chromebook.</div>
+    </div>
+    <div class="mode-tab" data-mode="join">
+      <div class="mt-title">📱 Join a Game</div>
+      <div class="mt-sub">A teacher already started a hosted game &mdash; enter its code to join as a team.</div>
+    </div>
+  </div>
+
+  <!-- ---- Local (single-device) setup ---- -->
+  <div class="card" id="localSetupPanel">
     <div><strong>How many teams?</strong></div>
     <div class="count-row" id="countRow"></div>
     <div class="hint">Each team shares one token and draws a nation at random. Set how many players sit on each team below.</div>
@@ -461,7 +528,56 @@
     <button class="start-btn" id="startBtn">Start Game</button>
   </div>
 
-  <div class="card">
+  <!-- ---- Host setup + lobby ---- -->
+  <div class="card hidden" id="hostSetupPanel">
+    <div id="hostPickWrap">
+      <div><strong>How many teams will join?</strong></div>
+      <div class="count-row" id="hostCountRow"></div>
+      <div class="hint">You'll get a short game code to share with each team. They join from their own Chromebook and fill in their own team name, color and player count.</div>
+      <button class="start-btn" id="hostCreateBtn">Create Game</button>
+      <div class="setup-error" id="hostCreateError"></div>
+    </div>
+
+    <div class="hidden" id="hostLobbyWrap">
+      <div class="hint">Share this code with each team:</div>
+      <div class="game-code" id="hostCodeDisplay"></div>
+      <div id="hostSlotList"></div>
+      <button class="start-btn" id="hostStartBtn" disabled>Waiting for at least 2 teams…</button>
+    </div>
+  </div>
+
+  <!-- ---- Join a hosted game ---- -->
+  <div class="card hidden" id="joinSetupPanel">
+    <div id="joinCodeWrap">
+      <div class="field-label">Game Code</div>
+      <input type="text" class="text-input code-input" id="joinCodeInput" maxlength="8" placeholder="ABCD12" autocomplete="off">
+      <button class="start-btn" id="joinFindBtn" style="margin-top:14px;">Find Game</button>
+      <div class="setup-error" id="joinFindError"></div>
+    </div>
+
+    <div class="hidden" id="joinSlotWrap">
+      <div class="hint">Pick your team's open slot:</div>
+      <div id="joinSlotList"></div>
+    </div>
+
+    <div class="hidden" id="joinFormWrap">
+      <div class="field-label">Team Name</div>
+      <input type="text" class="text-input" id="joinTeamName" maxlength="18" placeholder="Team name">
+      <div class="field-label">Team Color</div>
+      <div class="color-dots" id="joinColorDots" style="margin-bottom:4px;"></div>
+      <div class="field-label">How many players at this device?</div>
+      <div class="member-stepper" id="joinMemberStepper" style="justify-content:flex-start;"></div>
+      <button class="start-btn" id="joinSubmitBtn" style="margin-top:16px;">Join Game</button>
+      <div class="setup-error" id="joinSubmitError"></div>
+    </div>
+
+    <div class="hidden" id="joinWaitWrap">
+      <div class="waiting-banner"><span class="spin">⏳</span> Waiting for the host to start the game…</div>
+      <div id="joinWaitSlotList"></div>
+    </div>
+  </div>
+
+  <div class="card" id="rulesCard">
     <details class="rules">
       <summary>Official rules</summary>
       <ol>
@@ -484,6 +600,7 @@
 
 <!-- ============ GAME SCREEN ============ -->
 <div class="game-wrap hidden" id="gameScreen">
+  <div class="waiting-banner hidden" id="waitingTurnBanner"></div>
   <div class="control-row">
     <div class="turn-card">
       <div class="turn-info">
@@ -1134,6 +1251,188 @@
     return ADVOCATE_PROMPTS[advocateDeck.pop()];
   }
 
+  /* ================= Live multiplayer: Firebase sync =================
+     Local pass-the-device play never touches any of this — syncMode stays 'local'
+     and every function below becomes a no-op. It only activates for hosted games. */
+
+  // TODO(task #12): replace with the real project's config once it exists.
+  const FIREBASE_CONFIG = {
+    apiKey: "TODO",
+    authDomain: "TODO.firebaseapp.com",
+    projectId: "TODO"
+  };
+
+  let fbReady = false, db = null;
+  function ensureFirebase(){
+    if(fbReady) return true;
+    if(FIREBASE_CONFIG.apiKey === "TODO"){
+      console.warn('Firebase project not configured yet — hosted/join modes are unavailable until then.');
+      return false;
+    }
+    try{
+      firebase.initializeApp(FIREBASE_CONFIG);
+      db = firebase.firestore();
+      fbReady = true;
+    } catch(e){
+      console.error('Firebase init failed', e);
+    }
+    return fbReady;
+  }
+
+  let syncMode = 'local';      // 'local' | 'host' | 'team'
+  let currentGameId = null;
+  let myTeamId = null;
+  let unsubscribeSnapshot = null;
+  let revealShownFromSync = false;
+  let applyingRemote = false;  // true while applyState() runs, so its own renderStandings() call doesn't re-push what we just received
+
+  function gameDocRef(gameId){ return db.collection('games').doc(gameId); }
+
+  function randomCode(len){
+    const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no 0/O/1/I/L — easy to read aloud
+    let s = '';
+    for(let i=0;i<len;i++) s += chars[Math.floor(Math.random()*chars.length)];
+    return s;
+  }
+
+  function speedPhrase(m){
+    return m > 1 ? 'moved at double speed' : (m < 1 ? 'moved at half speed' : 'moved at normal speed');
+  }
+
+  /* ---- Serialize / apply: the entire synced game state is one flat document ---- */
+  function serializeState(phase){
+    return {
+      code: currentGameId,
+      phase: phase,
+      teams: teams.map(t=> ({
+        id: t.id, name: t.name, color: t.color, memberCount: t.memberCount,
+        nationIdx: NATIONS.indexOf(t.nation),
+        position: t.position, finished: t.finished,
+        personaIdx: t.persona ? PERSONAS.indexOf(t.persona) : -1,
+        contributed: t.contributed
+      })),
+      currentIdx, gameOver, finalRound, finalRoundTrigger,
+      world: { adopted: world.adopted, harmful: world.harmful },
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+  }
+
+  function hydrateTeam(t){
+    return {
+      id: t.id, name: t.name, color: t.color, memberCount: t.memberCount,
+      nation: NATIONS[t.nationIdx],
+      position: t.position, finished: t.finished,
+      persona: t.personaIdx >= 0 ? PERSONAS[t.personaIdx] : null,
+      contributed: t.contributed
+    };
+  }
+
+  /* Applies a remote snapshot to local state. Mutates existing team objects in place
+     (matched by id) rather than replacing the array outright, so each team keeps its
+     _el/_badgeEl token DOM references and positionTokens() can still animate smoothly
+     between positions instead of popping. Only the very first snapshot after a lobby
+     (when local `teams` doesn't exist yet) builds fresh objects and the board itself. */
+  function applyState(data){
+    applyingRemote = true;
+    const firstApply = !teams.length;
+
+    if(firstApply){
+      teams = data.teams.map(hydrateTeam);
+    } else {
+      data.teams.forEach(t=>{
+        const local = teams.find(x=> x.id === t.id);
+        if(!local) return;
+        local.name = t.name; local.color = t.color; local.memberCount = t.memberCount;
+        local.nation = NATIONS[t.nationIdx];
+        local.position = t.position; local.finished = t.finished;
+        local.persona = t.personaIdx >= 0 ? PERSONAS[t.personaIdx] : null;
+        local.contributed = t.contributed;
+        if(local._el) syncPersonaBadge(local);
+      });
+    }
+
+    currentIdx = data.currentIdx;
+    gameOver = data.gameOver;
+    finalRound = data.finalRound;
+    finalRoundTrigger = data.finalRoundTrigger;
+    world = { adopted: data.world.adopted || {}, harmful: data.world.harmful || [] };
+
+    if(firstApply){
+      document.getElementById('setupScreen').classList.add('hidden');
+      document.getElementById('gameScreen').classList.remove('hidden');
+      document.getElementById('newGameBtn').classList.remove('hidden');
+      initBoard();
+      log('The race to 2030 begins with ' + teams.length + ' nations.');
+      teams.forEach(t=> log(t.name + ' is ' + t.nation.emoji + ' ' + t.nation.name + ' (' + t.nation.sub + ').'));
+    }
+
+    renderStandings();
+    updateTurnUI();
+    positionTokens(true);
+    updateActingUI();
+
+    if(data.phase === 'revealed' && !revealShownFromSync){
+      revealShownFromSync = true;
+      showReveal();
+    }
+    applyingRemote = false;
+  }
+
+  let pushTimer = null;
+  function schedulePushState(){
+    if(syncMode === 'local' || !fbReady || !currentGameId || applyingRemote) return;
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(()=>{
+      const phase = gameOver ? (revealShownFromSync ? 'revealed' : 'playing') : 'playing';
+      gameDocRef(currentGameId).set(serializeState(phase), { merge:false }).catch(e=>{
+        console.error('Sync write failed', e);
+      });
+      if(gameOver){
+        // Give the reveal a moment to render locally, then flip phase so every
+        // other connected device also gets the reveal on its next snapshot.
+        setTimeout(()=>{
+          gameDocRef(currentGameId).set(serializeState('revealed'), { merge:false }).catch(()=>{});
+        }, 600);
+      }
+    }, 300);
+  }
+
+  function attachSnapshotListener(gameId){
+    if(unsubscribeSnapshot) unsubscribeSnapshot();
+    unsubscribeSnapshot = gameDocRef(gameId).onSnapshot(snap=>{
+      if(!snap.exists) return;
+      const data = snap.data();
+      if(data.phase === 'playing' || data.phase === 'revealed'){
+        applyState(data);
+      }
+      onLobbySnapshot(data);
+    }, err=> console.error('Snapshot listener error', err));
+  }
+
+  /* Turn-lock rendering: only the device whose team matches the acting team gets
+     live controls. Everyone else (host, and every non-acting team) sees the same
+     board/standings/log but a disabled roll button and a waiting banner instead. */
+  function updateActingUI(){
+    const banner = document.getElementById('waitingTurnBanner');
+    if(syncMode === 'local' || gameOver){
+      if(banner) banner.classList.add('hidden');
+      rollBtn.classList.remove('hidden');
+      return;
+    }
+    const acting = teams[currentIdx];
+    const canAct = syncMode === 'team' && acting && acting.id === myTeamId;
+    rollBtn.classList.toggle('hidden', !canAct);
+    if(banner){
+      if(canAct){
+        banner.classList.add('hidden');
+      } else {
+        banner.textContent = '⏳ Waiting for ' + (acting ? acting.name : '…') + "'s turn" +
+          (syncMode==='host' ? ' — you\'re watching as host.' : '.');
+        banner.classList.remove('hidden');
+      }
+    }
+  }
+
   /* ---------------- Setup screen ---------------- */
   const countRow = document.getElementById('countRow');
   const playersGrid = document.getElementById('playersGrid');
@@ -1221,6 +1520,225 @@
   renderCountRow();
   renderPlayerInputs();
 
+  /* ---------------- Play-mode tabs (local / host / join) ---------------- */
+  const MODE_PANELS = { local:'localSetupPanel', host:'hostSetupPanel', join:'joinSetupPanel' };
+  document.getElementById('modeTabs').addEventListener('click', e=>{
+    const tab = e.target.closest('.mode-tab');
+    if(!tab) return;
+    document.querySelectorAll('.mode-tab').forEach(t=> t.classList.toggle('active', t === tab));
+    Object.entries(MODE_PANELS).forEach(([mode, id])=>{
+      document.getElementById(id).classList.toggle('hidden', mode !== tab.dataset.mode);
+    });
+  });
+
+  /* ---------------- Host flow: create game, run the lobby ---------------- */
+  let hostSlotCount = 2;
+  const hostCountRow = document.getElementById('hostCountRow');
+  function renderHostCountRow(){
+    hostCountRow.innerHTML = '';
+    for(let n=2;n<=4;n++){
+      const b = document.createElement('button');
+      b.className = 'count-btn' + (n===hostSlotCount ? ' active' : '');
+      b.textContent = n;
+      b.addEventListener('click', ()=>{ hostSlotCount=n; renderHostCountRow(); });
+      hostCountRow.appendChild(b);
+    }
+  }
+  renderHostCountRow();
+
+  document.getElementById('hostCreateBtn').addEventListener('click', ()=>{
+    const errEl = document.getElementById('hostCreateError');
+    errEl.textContent = '';
+    if(!ensureFirebase()){
+      errEl.textContent = 'Online play isn\'t available yet — the Firebase project hasn\'t been configured. Use One Device mode for now.';
+      return;
+    }
+    const code = randomCode(5);
+    syncMode = 'host';
+    currentGameId = code;
+    gameDocRef(code).set({
+      code, phase:'lobby', slots: hostSlotCount, joined: [],
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(()=>{
+      document.getElementById('hostPickWrap').classList.add('hidden');
+      document.getElementById('hostLobbyWrap').classList.remove('hidden');
+      document.getElementById('hostCodeDisplay').textContent = code;
+      attachSnapshotListener(code);
+    }).catch(e=>{
+      syncMode = 'local'; currentGameId = null;
+      errEl.textContent = 'Could not create the game: ' + e.message;
+    });
+  });
+
+  function renderLobbySlots(container, data, joinable){
+    container.innerHTML = '';
+    for(let s=0; s<data.slots; s++){
+      const entry = (data.joined || []).find(j=> j.slot === s);
+      const row = document.createElement('div');
+      row.className = 'lobby-slot ' + (entry ? 'filled' : 'open');
+      if(entry){
+        const dot = document.createElement('span');
+        dot.className = 'ls-dot';
+        dot.style.background = entry.color;
+        const nm = document.createElement('span');
+        nm.className = 'ls-name';
+        nm.textContent = entry.name;
+        const meta = document.createElement('span');
+        meta.className = 'ls-meta';
+        meta.textContent = entry.members + (entry.members===1?' player':' players');
+        row.append(dot, nm, meta);
+      } else {
+        const nm = document.createElement('span');
+        nm.className = 'ls-name';
+        nm.textContent = 'Open slot ' + (s+1);
+        row.append(nm);
+        if(joinable){
+          const btn = document.createElement('button');
+          btn.className = 'join-btn-sm';
+          btn.textContent = 'This is us';
+          btn.addEventListener('click', ()=> pickJoinSlot(s));
+          row.append(btn);
+        }
+      }
+      container.appendChild(row);
+    }
+  }
+
+  function onLobbySnapshot(data){
+    if(data.phase !== 'lobby') return;
+    if(syncMode === 'host'){
+      renderLobbySlots(document.getElementById('hostSlotList'), data, false);
+      const joinedCount = (data.joined || []).length;
+      const btn = document.getElementById('hostStartBtn');
+      btn.disabled = joinedCount < 2;
+      btn.textContent = joinedCount < 2
+        ? 'Waiting for at least 2 teams… (' + joinedCount + ' joined)'
+        : 'Start Game with ' + joinedCount + ' teams';
+      latestLobby = data;
+    } else if(syncMode === 'team'){
+      if(myTeamId === null){
+        renderLobbySlots(document.getElementById('joinSlotList'), data, true);
+      } else {
+        renderLobbySlots(document.getElementById('joinWaitSlotList'), data, false);
+      }
+      latestLobby = data;
+    }
+  }
+  let latestLobby = null;
+
+  document.getElementById('hostStartBtn').addEventListener('click', ()=>{
+    if(!latestLobby || (latestLobby.joined || []).length < 2) return;
+    /* Build the serialized game directly from the lobby rather than via local `teams`,
+       so the host's own snapshot takes the same firstApply path as every team device. */
+    const nationDeck = shuffleIndices(NATIONS.length);
+    const joined = [...latestLobby.joined].sort((a,b)=> a.slot - b.slot);
+    const teamDocs = joined.map(j=> ({
+      id: j.slot, name: j.name, color: j.color, memberCount: j.members,
+      nationIdx: nationDeck.pop(),
+      position: 0, finished: false, personaIdx: -1, contributed: 0
+    }));
+    gameDocRef(currentGameId).set({
+      code: currentGameId, phase: 'playing',
+      teams: teamDocs,
+      currentIdx: 0, gameOver: false, finalRound: false, finalRoundTrigger: null,
+      world: { adopted: {}, harmful: [] },
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  });
+
+  /* ---------------- Join flow: find game, claim a slot ---------------- */
+  let joinDraft = { name:'', color: PLAYER_COLORS[0], members:2, slot:null };
+
+  document.getElementById('joinFindBtn').addEventListener('click', ()=>{
+    const errEl = document.getElementById('joinFindError');
+    errEl.textContent = '';
+    if(!ensureFirebase()){
+      errEl.textContent = 'Online play isn\'t available yet — the Firebase project hasn\'t been configured.';
+      return;
+    }
+    const code = document.getElementById('joinCodeInput').value.trim().toUpperCase();
+    if(code.length < 4){ errEl.textContent = 'Enter the game code your teacher shared.'; return; }
+    gameDocRef(code).get().then(snap=>{
+      if(!snap.exists){ errEl.textContent = 'No game found with that code — check it and try again.'; return; }
+      const data = snap.data();
+      if(data.phase !== 'lobby'){ errEl.textContent = 'That game has already started.'; return; }
+      syncMode = 'team';
+      currentGameId = code;
+      document.getElementById('joinCodeWrap').classList.add('hidden');
+      document.getElementById('joinSlotWrap').classList.remove('hidden');
+      attachSnapshotListener(code);
+      onLobbySnapshot(data);
+    }).catch(e=>{ errEl.textContent = 'Could not look up that game: ' + e.message; });
+  });
+
+  function pickJoinSlot(slot){
+    joinDraft.slot = slot;
+    joinDraft.name = 'Team ' + (slot+1);
+    document.getElementById('joinSlotWrap').classList.add('hidden');
+    document.getElementById('joinFormWrap').classList.remove('hidden');
+    document.getElementById('joinTeamName').value = joinDraft.name;
+    renderJoinColorDots();
+    renderJoinStepper();
+  }
+
+  function renderJoinColorDots(){
+    const wrap = document.getElementById('joinColorDots');
+    wrap.innerHTML = '';
+    PLAYER_COLORS.forEach(col=>{
+      const dot = document.createElement('div');
+      dot.className = 'color-dot' + (col===joinDraft.color ? ' selected' : '');
+      dot.style.background = col;
+      dot.addEventListener('click', ()=>{ joinDraft.color = col; renderJoinColorDots(); });
+      wrap.appendChild(dot);
+    });
+  }
+
+  function renderJoinStepper(){
+    const wrap = document.getElementById('joinMemberStepper');
+    wrap.innerHTML = '';
+    const minus = document.createElement('button');
+    minus.className = 'step-btn'; minus.textContent = '−';
+    minus.disabled = joinDraft.members <= 1;
+    minus.addEventListener('click', ()=>{ joinDraft.members = Math.max(1, joinDraft.members-1); renderJoinStepper(); });
+    const cnt = document.createElement('div');
+    cnt.className = 'member-count';
+    cnt.textContent = joinDraft.members + (joinDraft.members===1?' player':' players');
+    const plus = document.createElement('button');
+    plus.className = 'step-btn'; plus.textContent = '+';
+    plus.disabled = joinDraft.members >= 6;
+    plus.addEventListener('click', ()=>{ joinDraft.members = Math.min(6, joinDraft.members+1); renderJoinStepper(); });
+    wrap.append(minus, cnt, plus);
+  }
+
+  document.getElementById('joinSubmitBtn').addEventListener('click', ()=>{
+    const errEl = document.getElementById('joinSubmitError');
+    errEl.textContent = '';
+    joinDraft.name = document.getElementById('joinTeamName').value.trim() || joinDraft.name;
+    const ref = gameDocRef(currentGameId);
+    /* Transaction so two devices grabbing the same slot at the same moment can't both win. */
+    db.runTransaction(tx=>
+      tx.get(ref).then(snap=>{
+        const data = snap.data();
+        if(data.phase !== 'lobby') throw new Error('The game already started.');
+        if((data.joined || []).some(j=> j.slot === joinDraft.slot)) throw new Error('Another team just took that slot — pick a different one.');
+        tx.update(ref, {
+          joined: [...(data.joined || []), { slot: joinDraft.slot, name: joinDraft.name, color: joinDraft.color, members: joinDraft.members }],
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      })
+    ).then(()=>{
+      myTeamId = joinDraft.slot;
+      document.getElementById('joinFormWrap').classList.add('hidden');
+      document.getElementById('joinWaitWrap').classList.remove('hidden');
+    }).catch(e=>{
+      errEl.textContent = e.message;
+      if(e.message.includes('slot')){
+        document.getElementById('joinFormWrap').classList.add('hidden');
+        document.getElementById('joinSlotWrap').classList.remove('hidden');
+      }
+    });
+  });
+
   document.getElementById('startBtn').addEventListener('click', ()=>{
     const nationDeck = shuffleIndices(NATIONS.length);
     teams = draftPlayers.map((p,i)=>({
@@ -1302,6 +1820,23 @@
     cqCtx = null;
     adCtx = null;
     pendingPersonaPlayer = null;
+
+    /* Tear down any hosted-game connection and put the setup panels back to defaults. */
+    if(unsubscribeSnapshot){ unsubscribeSnapshot(); unsubscribeSnapshot = null; }
+    syncMode = 'local';
+    currentGameId = null;
+    myTeamId = null;
+    revealShownFromSync = false;
+    applyingRemote = false;
+    latestLobby = null;
+    joinDraft = { name:'', color: PLAYER_COLORS[0], members:2, slot:null };
+    document.getElementById('hostPickWrap').classList.remove('hidden');
+    document.getElementById('hostLobbyWrap').classList.add('hidden');
+    document.getElementById('joinCodeWrap').classList.remove('hidden');
+    ['joinSlotWrap','joinFormWrap','joinWaitWrap'].forEach(id=> document.getElementById(id).classList.add('hidden'));
+    document.getElementById('joinCodeInput').value = '';
+    document.getElementById('waitingTurnBanner').classList.add('hidden');
+    rollBtn.classList.remove('hidden');
 
     tokensLayer.innerHTML = '';
     document.getElementById('logList').innerHTML = '';
@@ -1595,6 +2130,10 @@
       row.appendChild(pos);
       list.appendChild(row);
     });
+    /* renderStandings runs after essentially every state-changing action in the game
+       (movement, answers, personas, finish), so it's the natural single hook for
+       broadcasting to Firestore in hosted games — see the sync module below. */
+    schedulePushState();
   }
 
   function log(msg){
@@ -1681,10 +2220,15 @@
     rollBtn.disabled = false;
     rollBtn.textContent = 'Roll the Die';
 
-    if(p.id !== lastBriefedTeamId){
+    /* Auto-brief only where the turn will actually be played: everywhere in local
+       mode, but in hosted games only on the acting team's own device — spectators
+       shouldn't get another team's briefing modal popping over their board. */
+    const briefHere = syncMode === 'local' || (syncMode === 'team' && p.id === myTeamId);
+    if(briefHere && p.id !== lastBriefedTeamId){
       lastBriefedTeamId = p.id;
       showNationBriefing(p);
     }
+    updateActingUI();
   }
 
   function advanceTurn(){
@@ -1858,6 +2402,7 @@
   /* The reveal is where every hidden behavior finally surfaces — it has to carry the
      whole lesson, since nothing about the privilege gap was explained during play. */
   function showReveal(){
+    revealShownFromSync = true; // idempotence: the device that ends the game must not re-show when its own 'revealed' snapshot echoes back
     const scores = computeScores();
     let winner = teams[0];
     teams.forEach(t=>{
@@ -1973,9 +2518,6 @@
 
     const fastest = teams.reduce((a,b)=> b.nation.rollMultiplier > a.nation.rollMultiplier ? b : a);
     const slowest = teams.reduce((a,b)=> b.nation.rollMultiplier < a.nation.rollMultiplier ? b : a);
-    function speedPhrase(m){
-      return m > 1 ? 'moved at double speed' : (m < 1 ? 'moved at half speed' : 'moved at normal speed');
-    }
     const debrief = document.getElementById('debriefBox');
     let debriefHtml = '<p>The world achieved <b>' + achievedCount + ' of the 17 Goals</b> by 2030.</p>';
     if(fastest.nation.rollMultiplier !== slowest.nation.rollMultiplier){
