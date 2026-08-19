@@ -538,16 +538,15 @@
   <!-- ---- Host setup + lobby ---- -->
   <div class="card hidden" id="hostSetupPanel">
     <div id="hostPickWrap">
-      <div><strong>How many teams will join?</strong></div>
-      <div class="count-row" id="hostCountRow"></div>
-      <div class="hint">You'll get a short game code to share with each team. They join from their own Chromebook and fill in their own team name, color and player count.</div>
+      <div class="hint">You'll get a short game code to share with the room. Teams add themselves from their own Chromebooks &mdash; you start the game when everyone's in.</div>
       <button class="start-btn" id="hostCreateBtn">Create Game</button>
       <div class="setup-error" id="hostCreateError"></div>
     </div>
 
     <div class="hidden" id="hostLobbyWrap">
-      <div class="hint">Share this code with each team:</div>
+      <div class="hint">Share this code with the room:</div>
       <div class="game-code" id="hostCodeDisplay"></div>
+      <div class="field-label" id="hostLobbyCount">Teams joined</div>
       <div id="hostSlotList"></div>
       <button class="start-btn" id="hostStartBtn" disabled>Waiting for at least 2 teams…</button>
     </div>
@@ -562,12 +561,8 @@
       <div class="setup-error" id="joinFindError"></div>
     </div>
 
-    <div class="hidden" id="joinSlotWrap">
-      <div class="hint">Pick your team's open slot:</div>
-      <div id="joinSlotList"></div>
-    </div>
-
     <div class="hidden" id="joinFormWrap">
+      <div class="hint" id="joinFoundHint" style="margin-bottom:10px;"></div>
       <div class="field-label">Team Name</div>
       <input type="text" class="text-input" id="joinTeamName" maxlength="18" placeholder="Team name">
       <div class="field-label">Team Color</div>
@@ -1297,6 +1292,10 @@
   let unsubscribeSnapshot = null;
   let revealShownFromSync = false;
   let applyingRemote = false;  // true while applyState() runs, so its own renderStandings() call doesn't re-push what we just received
+  /* Only true once the game has actually left the lobby. Without this, any stray
+     renderStandings() on a host/team device writes phase:'playing' with whatever
+     `teams` happens to be in local memory — silently starting the game for everyone. */
+  let gameStarted = false;
 
   function gameDocRef(gameId){ return db.collection('games').doc(gameId); }
 
@@ -1362,6 +1361,7 @@
      (when local `teams` doesn't exist yet) builds fresh objects and the board itself. */
   function applyState(data){
     applyingRemote = true;
+    gameStarted = true; // we're receiving a live game, so pushes are legitimate from here
     const firstApply = !teams.length;
 
     if(firstApply){
@@ -1418,6 +1418,8 @@
      away (and after it) or the earlier snapshot echoes back and undoes it. */
   function schedulePushState(immediate){
     if(syncMode === 'local' || !fbReady || !currentGameId || applyingRemote) return;
+    if(!gameStarted) return; // never let a lobby-phase render start the game
+
     clearTimeout(pushTimer);
     if(immediate){ pushStateNow(); return; }
     pushTimer = setTimeout(pushStateNow, 300);
@@ -1551,26 +1553,31 @@
   document.getElementById('modeTabs').addEventListener('click', e=>{
     const tab = e.target.closest('.mode-tab');
     if(!tab) return;
+
+    /* Abandon any half-finished hosted session when switching modes. Otherwise a stale
+       syncMode/currentGameId leaks into the next flow and can write over a live game. */
+    if(unsubscribeSnapshot){ unsubscribeSnapshot(); unsubscribeSnapshot = null; }
+    syncMode = 'local';
+    currentGameId = null;
+    myTeamId = null;
+    gameStarted = false;
+    latestLobby = null;
+    document.getElementById('hostPickWrap').classList.remove('hidden');
+    document.getElementById('hostLobbyWrap').classList.add('hidden');
+    document.getElementById('joinCodeWrap').classList.remove('hidden');
+    ['joinFormWrap','joinWaitWrap'].forEach(id=> document.getElementById(id).classList.add('hidden'));
+
     document.querySelectorAll('.mode-tab').forEach(t=> t.classList.toggle('active', t === tab));
     Object.entries(MODE_PANELS).forEach(([mode, id])=>{
       document.getElementById(id).classList.toggle('hidden', mode !== tab.dataset.mode);
     });
   });
 
-  /* ---------------- Host flow: create game, run the lobby ---------------- */
-  let hostSlotCount = 2;
-  const hostCountRow = document.getElementById('hostCountRow');
-  function renderHostCountRow(){
-    hostCountRow.innerHTML = '';
-    for(let n=2;n<=4;n++){
-      const b = document.createElement('button');
-      b.className = 'count-btn' + (n===hostSlotCount ? ' active' : '');
-      b.textContent = n;
-      b.addEventListener('click', ()=>{ hostSlotCount=n; renderHostCountRow(); });
-      hostCountRow.appendChild(b);
-    }
-  }
-  renderHostCountRow();
+  /* ---------------- Host flow: create game, run the lobby ----------------
+     The host never declares a team count — teams add themselves and the lobby grows.
+     The only ceiling is that every team draws a distinct nation, so MAX_TEAMS is however
+     many nations exist. */
+  const MAX_TEAMS = NATIONS.length;
 
   document.getElementById('hostCreateBtn').addEventListener('click', ()=>{
     const errEl = document.getElementById('hostCreateError');
@@ -1583,7 +1590,7 @@
     syncMode = 'host';
     currentGameId = code;
     gameDocRef(code).set({
-      code, phase:'lobby', slots: hostSlotCount, joined: [],
+      code, phase:'lobby', joined: [],
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(()=>{
       document.getElementById('hostPickWrap').classList.add('hidden');
@@ -1597,64 +1604,64 @@
     });
   });
 
-  function renderLobbySlots(container, data, joinable){
+  /* Renders whoever has joined so far — the list simply grows as teams add themselves,
+     with a single trailing placeholder so an empty or partial lobby doesn't look broken. */
+  function renderLobbySlots(container, data){
     container.innerHTML = '';
-    for(let s=0; s<data.slots; s++){
-      const entry = (data.joined || []).find(j=> j.slot === s);
+    const joined = [...(data.joined || [])].sort((a,b)=> a.slot - b.slot);
+
+    joined.forEach(entry=>{
       const row = document.createElement('div');
-      row.className = 'lobby-slot ' + (entry ? 'filled' : 'open');
-      if(entry){
-        const dot = document.createElement('span');
-        dot.className = 'ls-dot';
-        dot.style.background = entry.color;
-        const nm = document.createElement('span');
-        nm.className = 'ls-name';
-        nm.textContent = entry.name;
-        const meta = document.createElement('span');
-        meta.className = 'ls-meta';
-        meta.textContent = entry.members + (entry.members===1?' player':' players');
-        row.append(dot, nm, meta);
-      } else {
-        const nm = document.createElement('span');
-        nm.className = 'ls-name';
-        nm.textContent = 'Open slot ' + (s+1);
-        row.append(nm);
-        if(joinable){
-          const btn = document.createElement('button');
-          btn.className = 'join-btn-sm';
-          btn.textContent = 'This is us';
-          btn.addEventListener('click', ()=> pickJoinSlot(s));
-          row.append(btn);
-        }
-      }
+      row.className = 'lobby-slot filled';
+      const dot = document.createElement('span');
+      dot.className = 'ls-dot';
+      dot.style.background = entry.color;
+      const nm = document.createElement('span');
+      nm.className = 'ls-name';
+      nm.textContent = entry.name + (entry.slot === myTeamId ? ' (you)' : '');
+      const meta = document.createElement('span');
+      meta.className = 'ls-meta';
+      meta.textContent = entry.members + (entry.members===1?' player':' players');
+      row.append(dot, nm, meta);
+      container.appendChild(row);
+    });
+
+    if(joined.length < MAX_TEAMS){
+      const row = document.createElement('div');
+      row.className = 'lobby-slot open';
+      const nm = document.createElement('span');
+      nm.className = 'ls-name';
+      nm.textContent = joined.length
+        ? 'Waiting for more teams to join…'
+        : 'No teams yet — share the code above.';
+      row.append(nm);
       container.appendChild(row);
     }
   }
 
   function onLobbySnapshot(data){
     if(data.phase !== 'lobby') return;
+    latestLobby = data;
+    const joinedCount = (data.joined || []).length;
+
     if(syncMode === 'host'){
-      renderLobbySlots(document.getElementById('hostSlotList'), data, false);
-      const joinedCount = (data.joined || []).length;
+      renderLobbySlots(document.getElementById('hostSlotList'), data);
+      document.getElementById('hostLobbyCount').textContent =
+        joinedCount === 0 ? 'Teams joined' : 'Teams joined (' + joinedCount + ')';
       const btn = document.getElementById('hostStartBtn');
       btn.disabled = joinedCount < 2;
       btn.textContent = joinedCount < 2
         ? 'Waiting for at least 2 teams… (' + joinedCount + ' joined)'
         : 'Start Game with ' + joinedCount + ' teams';
-      latestLobby = data;
-    } else if(syncMode === 'team'){
-      if(myTeamId === null){
-        renderLobbySlots(document.getElementById('joinSlotList'), data, true);
-      } else {
-        renderLobbySlots(document.getElementById('joinWaitSlotList'), data, false);
-      }
-      latestLobby = data;
+    } else if(syncMode === 'team' && myTeamId !== null){
+      renderLobbySlots(document.getElementById('joinWaitSlotList'), data);
     }
   }
   let latestLobby = null;
 
   document.getElementById('hostStartBtn').addEventListener('click', ()=>{
     if(!latestLobby || (latestLobby.joined || []).length < 2) return;
+    gameStarted = true; // the one legitimate lobby → playing transition
     /* Build the serialized game directly from the lobby rather than via local `teams`,
        so the host's own snapshot takes the same firstApply path as every team device. */
     const nationDeck = shuffleIndices(NATIONS.length);
@@ -1673,8 +1680,24 @@
     });
   });
 
-  /* ---------------- Join flow: find game, claim a slot ---------------- */
+  /* ---------------- Join flow: find game, add ourselves ---------------- */
   let joinDraft = { name:'', color: PLAYER_COLORS[0], members:2, slot:null };
+
+  /* Suggest a name/color that don't collide with teams already in the lobby. The real
+     slot is assigned server-side in the join transaction, not here. */
+  function prefillJoinDraft(data){
+    const joined = data.joined || [];
+    const takenColors = new Set(joined.map(j=> j.color));
+    joinDraft.color = PLAYER_COLORS.find(c=> !takenColors.has(c)) || PLAYER_COLORS[0];
+    joinDraft.name = 'Team ' + (joined.length + 1);
+    document.getElementById('joinTeamName').value = joinDraft.name;
+    document.getElementById('joinFoundHint').textContent =
+      joined.length === 0
+        ? 'Found game ' + data.code + '. You\'re the first team in!'
+        : 'Found game ' + data.code + '. ' + joined.length + ' team' + (joined.length>1?'s':'') + ' already joined.';
+    renderJoinColorDots();
+    renderJoinStepper();
+  }
 
   document.getElementById('joinFindBtn').addEventListener('click', ()=>{
     const errEl = document.getElementById('joinFindError');
@@ -1689,24 +1712,18 @@
       if(!snap.exists){ errEl.textContent = 'No game found with that code — check it and try again.'; return; }
       const data = snap.data();
       if(data.phase !== 'lobby'){ errEl.textContent = 'That game has already started.'; return; }
+      if((data.joined || []).length >= MAX_TEAMS){
+        errEl.textContent = 'That game is full (' + MAX_TEAMS + ' teams max).';
+        return;
+      }
       syncMode = 'team';
       currentGameId = code;
       document.getElementById('joinCodeWrap').classList.add('hidden');
-      document.getElementById('joinSlotWrap').classList.remove('hidden');
+      document.getElementById('joinFormWrap').classList.remove('hidden');
+      prefillJoinDraft(data);
       attachSnapshotListener(code);
-      onLobbySnapshot(data);
     }).catch(e=>{ errEl.textContent = 'Could not look up that game: ' + e.message; });
   });
-
-  function pickJoinSlot(slot){
-    joinDraft.slot = slot;
-    joinDraft.name = 'Team ' + (slot+1);
-    document.getElementById('joinSlotWrap').classList.add('hidden');
-    document.getElementById('joinFormWrap').classList.remove('hidden');
-    document.getElementById('joinTeamName').value = joinDraft.name;
-    renderJoinColorDots();
-    renderJoinStepper();
-  }
 
   function renderJoinColorDots(){
     const wrap = document.getElementById('joinColorDots');
@@ -1740,31 +1757,39 @@
   document.getElementById('joinSubmitBtn').addEventListener('click', ()=>{
     const errEl = document.getElementById('joinSubmitError');
     errEl.textContent = '';
+    /* Guard against a submit firing before the form is actually live (double-tap, Enter
+       key, or a stray click while still on the code screen) — that would join with a
+       half-initialised draft and create a malformed team. */
+    if(document.getElementById('joinFormWrap').classList.contains('hidden')) return;
+    if(syncMode !== 'team' || !currentGameId || myTeamId !== null) return;
     joinDraft.name = document.getElementById('joinTeamName').value.trim() || joinDraft.name;
     const ref = gameDocRef(currentGameId);
     /* Transaction so two devices grabbing the same slot at the same moment can't both win. */
+    /* The slot id is chosen inside the transaction from the server's current list, so two
+       Chromebooks hitting Join at the same instant can't land on the same id. */
+    let assignedSlot = null;
     db.runTransaction(tx=>
       tx.get(ref).then(snap=>{
         const data = snap.data();
         if(data.phase !== 'lobby') throw new Error('The game already started.');
-        if((data.joined || []).some(j=> j.slot === joinDraft.slot)) throw new Error('Another team just took that slot — pick a different one.');
+        const joined = data.joined || [];
+        if(joined.length >= MAX_TEAMS) throw new Error('This game just filled up (' + MAX_TEAMS + ' teams max).');
+        const used = new Set(joined.map(j=> j.slot));
+        assignedSlot = 0;
+        while(used.has(assignedSlot)) assignedSlot++;
         tx.update(ref, {
-          joined: [...(data.joined || []), { slot: joinDraft.slot, name: joinDraft.name, color: joinDraft.color, members: joinDraft.members }],
+          joined: [...joined, { slot: assignedSlot, name: joinDraft.name, color: joinDraft.color, members: joinDraft.members }],
           updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         });
       })
     ).then(()=>{
-      myTeamId = joinDraft.slot;
+      myTeamId = assignedSlot;
+      joinDraft.slot = assignedSlot;
       saveSession();
       document.getElementById('joinFormWrap').classList.add('hidden');
       document.getElementById('joinWaitWrap').classList.remove('hidden');
-    }).catch(e=>{
-      errEl.textContent = e.message;
-      if(e.message.includes('slot')){
-        document.getElementById('joinFormWrap').classList.add('hidden');
-        document.getElementById('joinSlotWrap').classList.remove('hidden');
-      }
-    });
+      if(latestLobby) renderLobbySlots(document.getElementById('joinWaitSlotList'), latestLobby);
+    }).catch(e=>{ errEl.textContent = e.message; });
   });
 
   /* ---------------- Resume an interrupted hosted game ---------------- */
@@ -1809,6 +1834,14 @@
   offerResume();
 
   document.getElementById('startBtn').addEventListener('click', ()=>{
+    /* One Device is always standalone — make sure a previously created/joined hosted
+       session can't still be attached, or this local start would clobber that game. */
+    if(unsubscribeSnapshot){ unsubscribeSnapshot(); unsubscribeSnapshot = null; }
+    syncMode = 'local';
+    currentGameId = null;
+    myTeamId = null;
+    gameStarted = false;
+
     const nationDeck = shuffleIndices(NATIONS.length);
     teams = draftPlayers.map((p,i)=>({
       id:i,
@@ -1894,6 +1927,7 @@
     if(unsubscribeSnapshot){ unsubscribeSnapshot(); unsubscribeSnapshot = null; }
     clearSession();
     document.getElementById('resumeCard').classList.add('hidden');
+    gameStarted = false;
     syncMode = 'local';
     currentGameId = null;
     myTeamId = null;
@@ -1904,7 +1938,7 @@
     document.getElementById('hostPickWrap').classList.remove('hidden');
     document.getElementById('hostLobbyWrap').classList.add('hidden');
     document.getElementById('joinCodeWrap').classList.remove('hidden');
-    ['joinSlotWrap','joinFormWrap','joinWaitWrap'].forEach(id=> document.getElementById(id).classList.add('hidden'));
+    ['joinFormWrap','joinWaitWrap'].forEach(id=> document.getElementById(id).classList.add('hidden'));
     document.getElementById('joinCodeInput').value = '';
     document.getElementById('waitingTurnBanner').classList.add('hidden');
     rollBtn.classList.remove('hidden');
