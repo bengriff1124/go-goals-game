@@ -1,0 +1,914 @@
+{
+  "goal": 12,
+  "goalName": "Responsible Consumption and Production",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 12",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-12/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g12-001",
+      "src": "SDGR25",
+      "prompt": "How much food does the world throw away each year in shops, restaurants and homes?",
+      "options": [
+        "10,500 metric tons",
+        "1.05 million metric tons",
+        "1.05 billion metric tons"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "1.05 billion tons a year — thrown away while one in eleven people goes hungry.",
+      "whyWrong": [
+        "Vastly too low.",
+        "A thousand times too low.",
+        null
+      ],
+      "action": "Weigh what your household bins in one week."
+    },
+    {
+      "id": "g12-002",
+      "src": "SDGR25",
+      "prompt": "How much food does the average person waste per year?",
+      "options": [
+        "13 kilograms",
+        "1,320 kilograms",
+        "132 kilograms"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "132 kg — roughly your own body weight in food, binned every year, by every person on average.",
+      "whyWrong": [
+        "Ten times too low.",
+        "Ten times too high.",
+        null
+      ],
+      "action": "Compare 132 kg with your own weight."
+    },
+    {
+      "id": "g12-003",
+      "src": "SDGR25",
+      "prompt": "While the world wastes a billion tons of food, how many people go hungry?",
+      "options": [
+        "1 in 11",
+        "1 in 1,100",
+        "Nobody"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1 in 11 people are hungry, and 1 in 3 cannot afford a healthy diet. Hunger is a distribution problem, not a production problem.",
+      "whyWrong": [
+        null,
+        "A hundred times too low.",
+        "Hunger affects hundreds of millions."
+      ],
+      "action": "Ask why food is wasted in one place and scarce in another."
+    },
+    {
+      "id": "g12-004",
+      "src": "SDGR25",
+      "prompt": "How many people cannot afford a healthy diet?",
+      "options": [
+        "1 in 30",
+        "1 in 3",
+        "1 in 300"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1 in 3 — around 2.8 billion people. They may get enough calories, but not enough nutrition.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Price out a week of healthy meals where you live."
+    },
+    {
+      "id": "g12-005",
+      "src": "SDGR25",
+      "prompt": "What share of food is lost before it ever reaches a shop?",
+      "options": [
+        "1.3%",
+        "13%",
+        "50%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "13% is lost in harvest, storage and transport — on top of the 1.05 billion tons wasted at shops and homes.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Too high — but combined with retail waste, total losses approach a third."
+      ],
+      "action": "Ask what happens to crops with no refrigerated transport."
+    },
+    {
+      "id": "g12-006",
+      "src": "SDGR25",
+      "prompt": "What share of the world's greenhouse gases comes from wasted food?",
+      "options": [
+        "40%",
+        "0.8%",
+        "8-10%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "8–10% — if food waste were a country, it would be one of the world's biggest emitters. Growing, shipping and rotting food all release carbon.",
+      "whyWrong": [
+        "Far too high.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what happens to food rotting in a landfill."
+    },
+    {
+      "id": "g12-007",
+      "src": "SDGR25",
+      "prompt": "What does food waste cost the world each year?",
+      "options": [
+        "Over $1 billion",
+        "Over $1 trillion",
+        "Over $1 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Over $1 trillion a year — money spent growing, shipping and storing food that nobody eats.",
+      "whyWrong": [
+        "A thousand times too low.",
+        null,
+        "A million times too low."
+      ],
+      "action": "Estimate what your family spends on food it throws out."
+    },
+    {
+      "id": "g12-008",
+      "src": "SDGR25",
+      "prompt": "Japan cut its food waste by how much?",
+      "options": [
+        "3%",
+        "31%",
+        "It rose"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "31% — and the UK cut 18%. Both prove that food waste is a solvable problem when a country decides to solve it.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Japan achieved a substantial reduction."
+      ],
+      "action": "Look up one thing Japan did to cut food waste."
+    },
+    {
+      "id": "g12-009",
+      "src": "SDGR25",
+      "prompt": "The United Kingdom reduced food waste by:",
+      "options": [
+        "80%",
+        "1.8%",
+        "18%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "18% — solid progress, though behind Japan's 31%. Both used a mix of labelling changes, redistribution and public campaigns.",
+      "whyWrong": [
+        "Far more than achieved.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Check the difference between 'use by' and 'best before'."
+    },
+    {
+      "id": "g12-010",
+      "src": "SDGR25",
+      "prompt": "How much electronic waste does the world produce each year?",
+      "options": [
+        "62,000 kilograms",
+        "62 million kilograms",
+        "62 billion kilograms"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "62 billion kg in 2022 — about 7.8 kg for every person alive, and heading for 82 billion by 2030.",
+      "whyWrong": [
+        "Vastly too low.",
+        "A thousand times too low.",
+        null
+      ],
+      "action": "Count the electronic devices in your home."
+    },
+    {
+      "id": "g12-011",
+      "src": "SDGR25",
+      "prompt": "What share of e-waste is formally collected and recycled properly?",
+      "options": [
+        "22.3%",
+        "82.3%",
+        "92.3%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Only 22.3%. Over three quarters of the world's electronics are dumped, burned or dismantled by hand without protection.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Nowhere near this level."
+      ],
+      "action": "Find out where to recycle a phone near you."
+    },
+    {
+      "id": "g12-012",
+      "src": "SDGR25",
+      "prompt": "How much e-waste does each person generate per year?",
+      "options": [
+        "7.8 kilograms",
+        "78 kilograms",
+        "0.78 kilograms"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "7.8 kg per person — and only 1.7 kg of that gets properly recycled.",
+      "whyWrong": [
+        null,
+        "Ten times too high.",
+        "Ten times too low."
+      ],
+      "action": "Weigh an old laptop and compare with 7.8 kg."
+    },
+    {
+      "id": "g12-013",
+      "src": "SDGR25",
+      "prompt": "How much e-waste per person is properly recycled?",
+      "options": [
+        "1.7 kg",
+        "7.8 kg",
+        "5 kg"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Just 1.7 kg of the 7.8 kg generated. The rest contains gold, copper and rare metals that are simply lost.",
+      "whyWrong": [
+        null,
+        "That's the amount generated, not recycled.",
+        "Far more than is actually recovered."
+      ],
+      "action": "Look up what metals are inside a smartphone."
+    },
+    {
+      "id": "g12-014",
+      "src": "SDGR25",
+      "prompt": "By 2030, annual e-waste is projected to reach:",
+      "options": [
+        "62 billion kilograms",
+        "82 billion kilograms",
+        "42 billion kilograms"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "82 billion kg — up from 62 billion in 2022. E-waste is growing far faster than recycling capacity.",
+      "whyWrong": [
+        "That's the current figure.",
+        null,
+        "E-waste is rising, not falling."
+      ],
+      "action": "Ask why devices are replaced faster than they break."
+    },
+    {
+      "id": "g12-015",
+      "src": "SDGR25",
+      "prompt": "How much e-waste crosses international borders each year?",
+      "options": [
+        "5.1 million kilograms",
+        "5.1 billion kilograms",
+        "None — it's banned"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "5.1 billion kg is shipped abroad annually, and only 35% of that trade is formally controlled. The rest is largely unregulated.",
+      "whyWrong": [
+        "A thousand times too low.",
+        null,
+        "It happens at massive scale despite treaties."
+      ],
+      "action": "Ask why a country would ship its waste elsewhere."
+    },
+    {
+      "id": "g12-016",
+      "src": "SDGR25",
+      "prompt": "What share of cross-border e-waste shipments are formally 'controlled'?",
+      "options": [
+        "95%",
+        "35%",
+        "5%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "35% — so roughly two thirds of the e-waste crossing borders moves outside proper regulation.",
+      "whyWrong": [
+        "Far too optimistic.",
+        null,
+        "Too pessimistic — about a third is controlled."
+      ],
+      "action": "Look up the Basel Convention on waste shipments."
+    },
+    {
+      "id": "g12-017",
+      "src": "SDGR25",
+      "prompt": "How much new electrical equipment entered the market in 2022?",
+      "options": [
+        "9.6 billion kilograms",
+        "96 billion kilograms",
+        "960 million kilograms"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "96 billion kg — 50% more than in 2010. Every kilogram sold becomes waste eventually.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask how long your last device lasted."
+    },
+    {
+      "id": "g12-018",
+      "src": "SDGR25",
+      "prompt": "New electrical equipment sales compared with 2010 are:",
+      "options": [
+        "50% lower",
+        "About the same",
+        "50% higher"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "50% more equipment enters the market than in 2010 — while proper recycling only reaches 22.3%.",
+      "whyWrong": [
+        "The trend is strongly upward.",
+        "Sales grew substantially.",
+        null
+      ],
+      "action": "Ask what devices exist now that didn't in 2010."
+    },
+    {
+      "id": "g12-019",
+      "src": "SDGR25",
+      "prompt": "How much raw material does the world consume each year?",
+      "options": [
+        "11.3 billion metric tons",
+        "113.6 billion metric tons",
+        "1.13 billion metric tons"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "113.6 billion tons in 2022 — up 23.3% from 92.1 billion in 2015. Consumption is accelerating, not slowing.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Look up what 'domestic material consumption' counts."
+    },
+    {
+      "id": "g12-020",
+      "src": "SDGR25",
+      "prompt": "Material consumption grew how much between 2015 and 2022?",
+      "options": [
+        "It fell",
+        "2.3%",
+        "23.3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "23.3% in seven years — the world is pulling far more stuff out of the ground since the SDGs began, not less.",
+      "whyWrong": [
+        "Consumption rose sharply.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what 'decoupling growth from materials' means."
+    },
+    {
+      "id": "g12-021",
+      "src": "SDGR25",
+      "prompt": "How many tons of material does each person consume per year?",
+      "options": [
+        "1.4 tons",
+        "14.2 tons",
+        "142 tons"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "14.2 tons per person, up from 12.4 in 2015 — roughly ten cars' worth of material per person per year, mostly sand, gravel and stone.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Ask what makes up most of that 14.2 tons."
+    },
+    {
+      "id": "g12-022",
+      "src": "SDGR25",
+      "prompt": "Which material category is growing fastest?",
+      "options": [
+        "Non-metallic minerals like sand, gravel and cement",
+        "Fossil fuels",
+        "Metal ores"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Non-metallic minerals rose 39.0% — from 43.4 to 60.3 billion tons. The world's biggest material appetite is for concrete, not oil.",
+      "whyWrong": [
+        null,
+        "Fossil fuels grew only 6.2%.",
+        "Metal ores grew 7.4%."
+      ],
+      "action": "Look at how much concrete is in one building near you."
+    },
+    {
+      "id": "g12-023",
+      "src": "SDGR25",
+      "prompt": "Which region increased material consumption the most since 2015?",
+      "options": [
+        "Latin America and the Caribbean, up 132%",
+        "Europe, up 5%",
+        "Nowhere increased"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Latin America and the Caribbean more than doubled, up 132% — far beyond the global 23.3% rise.",
+      "whyWrong": [
+        null,
+        "Europe was not the fastest-growing region.",
+        "Global consumption rose 23.3%."
+      ],
+      "action": "Ask what drives a doubling of material use."
+    },
+    {
+      "id": "g12-024",
+      "src": "SDGR25",
+      "prompt": "Sand, gravel and cement consumption rose from 43.4 to:",
+      "options": [
+        "45 billion tons",
+        "60.3 billion tons",
+        "43.4 billion tons"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "60.3 billion tons — a 39% jump. Sand is now the second most-consumed resource on Earth after water.",
+      "whyWrong": [
+        "Far below the actual increase.",
+        null,
+        "It changed substantially."
+      ],
+      "action": "Look up why the world is running short of usable sand."
+    },
+    {
+      "id": "g12-025",
+      "src": "SDGR25",
+      "prompt": "Fossil fuel material consumption grew how much since 2015?",
+      "options": [
+        "6.2%",
+        "60%",
+        "It halved"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "6.2% — the slowest-growing category, and a genuine sign that energy transition is starting to bite.",
+      "whyWrong": [
+        null,
+        "Ten times too high.",
+        "Consumption still grew, just slowly."
+      ],
+      "action": "Compare 6.2% for fossil fuels with 39% for minerals."
+    },
+    {
+      "id": "g12-026",
+      "src": "SDGR25",
+      "prompt": "Biomass consumption — crops, timber, fish — grew how much since 2015?",
+      "options": [
+        "11.8%",
+        "1.18%",
+        "It fell 12%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "11.8% — faster than fossil fuels or metals, driven by food and construction timber for a growing population.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Biomass use rose."
+      ],
+      "action": "Rank the four material categories by growth."
+    },
+    {
+      "id": "g12-027",
+      "src": "SDGR25",
+      "prompt": "The world's material footprint grew how much between 2015 and 2022?",
+      "options": [
+        "2.1%",
+        "21.3%",
+        "It shrank"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "21.3% — the footprint counts everything extracted to make what a country consumes, including materials mined abroad.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "The footprint grew substantially."
+      ],
+      "action": "Ask why a country's footprint can exceed what it mines."
+    },
+    {
+      "id": "g12-028",
+      "src": "SDGR25",
+      "prompt": "How many sustainable consumption policies exist worldwide?",
+      "options": [
+        "530 across 71 countries",
+        "53 across 7 countries",
+        "5,300 across 171 countries"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "530 policies in 71 countries as of 2024 — up 6% in a year. Real momentum, though only about a third of countries participate.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Ten times too high."
+      ],
+      "action": "Find one sustainability policy your country has."
+    },
+    {
+      "id": "g12-029",
+      "src": "SDGR25",
+      "prompt": "How many countries have sustainable public procurement policies?",
+      "options": [
+        "7",
+        "67",
+        "167"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "67 countries, up from 40 in 2020. Governments are enormous buyers, so what they choose to purchase shifts whole markets.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Far more than actually report."
+      ],
+      "action": "Ask what your school or council buys most of."
+    },
+    {
+      "id": "g12-030",
+      "src": "SDGR25",
+      "prompt": "What share of the world's 250 largest companies publish sustainability reports?",
+      "options": [
+        "16%",
+        "46%",
+        "96%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "96% — near-universal. The question now is whether the reports are accurate, not whether they exist.",
+      "whyWrong": [
+        "Vastly too low.",
+        "Far too pessimistic.",
+        null
+      ],
+      "action": "Find a big company's sustainability report online."
+    },
+    {
+      "id": "g12-031",
+      "src": "SDGR25",
+      "prompt": "Sustainability reporting grew how much between 2016 and 2023?",
+      "options": [
+        "Nearly fourfold",
+        "It halved",
+        "No change"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Nearly four times as many reports — driven by investor pressure and new rules, not voluntary goodwill alone.",
+      "whyWrong": [
+        null,
+        "Reporting expanded dramatically.",
+        "There was enormous growth."
+      ],
+      "action": "Ask what makes a company report honestly."
+    },
+    {
+      "id": "g12-032",
+      "src": "SDGR25",
+      "prompt": "What share of Minamata Convention parties (on mercury) nominated national focal points?",
+      "options": [
+        "94%",
+        "44%",
+        "24%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "94% — treaty participation on hazardous chemicals is genuinely strong, with 82% also filing national reports.",
+      "whyWrong": [
+        null,
+        "Far too low.",
+        "Vastly too low."
+      ],
+      "action": "Look up what mercury does to the human body."
+    },
+    {
+      "id": "g12-033",
+      "src": "SDGR25",
+      "prompt": "Reporting compliance under the Montreal Protocol on ozone-damaging chemicals is:",
+      "options": [
+        "100%",
+        "50%",
+        "10%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "100% — every party reports. The Montreal Protocol is the most successful environmental treaty ever signed.",
+      "whyWrong": [
+        null,
+        "Compliance is complete.",
+        "Vastly too low."
+      ],
+      "action": "Look up what happened to the ozone hole."
+    },
+    {
+      "id": "g12-034",
+      "src": "SDGR25",
+      "prompt": "How many countries filed Stockholm Convention reports on persistent pollutants?",
+      "options": [
+        "191",
+        "9",
+        "91"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "91 countries in 2022. 'Persistent' pollutants are chemicals that don't break down — they accumulate in bodies and food chains for decades.",
+      "whyWrong": [
+        "More than actually reported.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Look up one persistent organic pollutant."
+    },
+    {
+      "id": "g12-035",
+      "src": "SDGR25",
+      "prompt": "1.05 billion tons of food wasted, while 1 in 11 go hungry. This shows:",
+      "options": [
+        "The world doesn't grow enough food",
+        "The world grows enough food but distributes and stores it badly",
+        "Hunger is unavoidable"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "There is more than enough food. It is lost in transport, priced out of reach, or thrown away — which makes hunger a solvable logistics and income problem.",
+      "whyWrong": [
+        "Production exceeds need — waste proves it.",
+        null,
+        "Japan and the UK show waste can be cut deliberately."
+      ],
+      "action": "Find out if a food redistribution charity operates near you."
+    },
+    {
+      "id": "g12-036",
+      "src": "SDGR25",
+      "prompt": "Only 22.3% of e-waste is properly recycled. The main risk of the rest is:",
+      "options": [
+        "It takes up space",
+        "Toxic metals like lead and mercury leach into soil and water, often burned by informal workers",
+        "Nothing — electronics are inert"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Informal dismantling often means burning plastic off wires by hand, releasing lead, mercury and dioxins into people and groundwater.",
+      "whyWrong": [
+        "Volume is the least of the problem.",
+        null,
+        "Electronics contain many hazardous substances."
+      ],
+      "action": "Look up what happens at an informal e-waste site."
+    },
+    {
+      "id": "g12-037",
+      "src": "SDGR25",
+      "prompt": "Material consumption per person rose from 12.4 tons to:",
+      "options": [
+        "25 tons",
+        "12.8 tons",
+        "14.2 tons"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "14.2 tons — a 14.8% rise per person, on top of population growth. Both multipliers are pushing in the same direction.",
+      "whyWrong": [
+        "Far above the actual figure.",
+        "The rise was larger than this.",
+        null
+      ],
+      "action": "Ask what happens when both population and per-person use rise."
+    },
+    {
+      "id": "g12-038",
+      "src": "SDGR25",
+      "prompt": "What share of the world's top 100 companies report on sustainability?",
+      "options": [
+        "29%",
+        "99%",
+        "79%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "79% of top-100 national companies, against 96% of the global top 250 — smaller firms report less.",
+      "whyWrong": [
+        "Far too pessimistic.",
+        "Reporting is high but not universal at this level.",
+        null
+      ],
+      "action": "Ask why bigger companies report more than smaller ones."
+    },
+    {
+      "id": "g12-039",
+      "src": "SDGR25",
+      "prompt": "Basel Convention reporting on hazardous waste hit its target of:",
+      "options": [
+        "100%",
+        "30%",
+        "70%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The 70% target was met in 2020, with 107 parties reporting in the 2023 cycle. Tracking hazardous waste is the first step to controlling it.",
+      "whyWrong": [
+        "Full compliance was not the target.",
+        "The target was higher.",
+        null
+      ],
+      "action": "Ask why a country might not report its waste exports."
+    },
+    {
+      "id": "g12-040",
+      "src": "SDGR25",
+      "prompt": "The average person wastes 132 kg of food yearly. Over a decade that's:",
+      "options": [
+        "13.2 kilograms",
+        "1.32 tons",
+        "132 tons"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 1.32 tons per person per decade — the weight of a small car, in food thrown away by one individual.",
+      "whyWrong": [
+        "Ten times too low for a single year.",
+        null,
+        "A hundred times too high."
+      ],
+      "action": "Multiply 132 kg by everyone in your household."
+    },
+    {
+      "id": "g12-041",
+      "src": "SDGR25",
+      "prompt": "Why does food waste matter for climate as well as hunger?",
+      "options": [
+        "Growing, transporting and rotting wasted food produces 8-10% of all greenhouse gases",
+        "It doesn't",
+        "Food waste absorbs carbon"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Every wasted meal carries the emissions of the land, water, fuel and fertiliser used to produce it — plus methane when it rots in landfill.",
+      "whyWrong": [
+        null,
+        "The climate link is one of the largest single levers available.",
+        "Rotting food releases methane, a potent greenhouse gas."
+      ],
+      "action": "Look up how much water it takes to grow one loaf of bread."
+    },
+    {
+      "id": "g12-042",
+      "src": "SDGR25",
+      "prompt": "'Circular economy' means:",
+      "options": [
+        "Designing products so materials get reused rather than dumped after one life",
+        "Building round factories",
+        "Buying more often"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Instead of extract-make-discard, materials circulate: repaired, remanufactured, recycled. With only 22.3% of e-waste recovered, the world is far from circular.",
+      "whyWrong": [
+        null,
+        "The shape of buildings is unrelated.",
+        "A circular economy reduces new consumption."
+      ],
+      "action": "Find something you own that could be repaired instead of replaced."
+    },
+    {
+      "id": "g12-043",
+      "src": "SDGR25",
+      "prompt": "Metal ore consumption grew 7.4% since 2015 while minerals grew 39%. This suggests:",
+      "options": [
+        "Metals are being used less overall",
+        "The numbers are identical",
+        "Construction is driving material demand more than manufacturing"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Sand, gravel and cement are construction materials — the world is building at a scale that dwarfs its growth in metal use.",
+      "whyWrong": [
+        "Metal use still grew, just more slowly.",
+        "The growth rates differ fivefold.",
+        null
+      ],
+      "action": "Count the construction sites you passed this week."
+    },
+    {
+      "id": "g12-044",
+      "src": "SDGR25",
+      "prompt": "Sustainable public procurement grew from 40 countries in 2020 to:",
+      "options": [
+        "140",
+        "45",
+        "67"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "67 countries — a 68% rise in two years. Public purchasing is one of the fastest-moving levers in Goal 12.",
+      "whyWrong": [
+        "More than actually report.",
+        "The growth was much larger.",
+        null
+      ],
+      "action": "Ask what your government's biggest purchases are."
+    },
+    {
+      "id": "g12-045",
+      "src": "SDGR25",
+      "prompt": "E-waste grows from 62 to 82 billion kg by 2030 while recycling stays near 22%. That means:",
+      "options": [
+        "The absolute amount of unrecycled e-waste will grow substantially",
+        "The problem solves itself",
+        "Recycling will automatically catch up"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A constant percentage of a growing total means more waste, not less. Recycling capacity has to grow faster than consumption just to stand still.",
+      "whyWrong": [
+        null,
+        "The gap is projected to widen.",
+        "Recycling rates have not kept pace with sales."
+      ],
+      "action": "Calculate 22% of 62 billion and of 82 billion."
+    },
+    {
+      "id": "g12-046",
+      "src": "SDGR25",
+      "prompt": "Which environmental treaty has 100% reporting compliance?",
+      "options": [
+        "Basel Convention",
+        "Stockholm Convention",
+        "Montreal Protocol"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The Montreal Protocol on ozone-depleting substances — universal participation and full reporting, which is why the ozone layer is healing.",
+      "whyWrong": [
+        "Basel reached its 70% target, not 100%.",
+        "91 countries reported under Stockholm.",
+        null
+      ],
+      "action": "Look up when the ozone layer is expected to fully recover."
+    },
+    {
+      "id": "g12-047",
+      "src": "SDGR25",
+      "prompt": "Japan cut food waste 31% and the UK 18%. The lesson is:",
+      "options": [
+        "Food waste is unfixable",
+        "Only rich countries waste food",
+        "National policy and public campaigns produce measurable reductions"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Both countries changed labelling, redistribution rules and public habits — and the waste figures moved. It is a policy problem with known solutions.",
+      "whyWrong": [
+        "Two countries have already demonstrated large cuts.",
+        "Food loss is severe in lower-income countries too, mostly before retail.",
+        null
+      ],
+      "action": "Suggest one rule that would cut waste in your school canteen."
+    },
+    {
+      "id": "g12-048",
+      "src": "SDGR25",
+      "prompt": "The 'material footprint' differs from 'material consumption' because it:",
+      "options": [
+        "Counts materials extracted anywhere to make what a country consumes",
+        "Measures shoe sizes",
+        "Only counts domestic mining"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A country can look clean while importing goods whose mining happened elsewhere. The footprint follows the material back to the ground.",
+      "whyWrong": [
+        null,
+        "It has nothing to do with shoes.",
+        "That is domestic material consumption."
+      ],
+      "action": "Trace where the metal in your phone was mined."
+    },
+    {
+      "id": "g12-049",
+      "src": "SDGR25",
+      "prompt": "Material consumption rose 23.3% while world population rose far less. This means:",
+      "options": [
+        "Only population growth matters",
+        "Each person is using more, not just that there are more people",
+        "Consumption per person fell"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Per-person consumption rose 14.8%, from 12.4 to 14.2 tons — so rising appetite accounts for most of the increase, not just more people.",
+      "whyWrong": [
+        "Per-capita use rose substantially too.",
+        null,
+        "It rose from 12.4 to 14.2 tons."
+      ],
+      "action": "Compare 23.3% total growth with 14.8% per-person growth."
+    },
+    {
+      "id": "g12-050",
+      "src": "SDGR25",
+      "prompt": "The clearest Goal 12 contradiction is:",
+      "options": [
+        "1.05 billion tons of food wasted while 1 in 11 people go hungry",
+        "Too much recycling",
+        "Not enough shopping"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Enough food is produced for everyone, yet a billion tons is binned while 700+ million go hungry. Goal 12 is about the gap between plenty and access.",
+      "whyWrong": [
+        null,
+        "Only 22.3% of e-waste is recycled.",
+        "Consumption is rising faster than the planet can supply."
+      ],
+      "action": "Plan one meal this week that uses leftovers."
+    }
+  ]
+}

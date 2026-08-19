@@ -1,0 +1,914 @@
+{
+  "goal": 13,
+  "goalName": "Climate Action",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 13",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-13/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g13-001",
+      "src": "SDGR25",
+      "prompt": "2024 was the hottest year on record. How far above pre-industrial temperatures was it?",
+      "options": [
+        "About 0.05°C",
+        "About 15°C",
+        "About 1.55°C"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 1.55°C — the first single year to pass the 1.5°C mark that the Paris Agreement aimed to avoid.",
+      "whyWrong": [
+        "Far too small a change.",
+        "Ten times too high — that would be catastrophic.",
+        null
+      ],
+      "action": "Look up the hottest day ever recorded where you live."
+    },
+    {
+      "id": "g13-002",
+      "src": "SDGR25",
+      "prompt": "2024 was the hottest year in how many years of records?",
+      "options": [
+        "175 years",
+        "17 years",
+        "1,750 years"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "175 years — the entire span of reliable global temperature measurement.",
+      "whyWrong": [
+        null,
+        "Records go back far longer.",
+        "Direct instrument records don't reach that far back."
+      ],
+      "action": "Find out when weather records began in your country."
+    },
+    {
+      "id": "g13-003",
+      "src": "SDGR25",
+      "prompt": "What's the chance that one of the next five years beats 2024's heat record?",
+      "options": [
+        "8%",
+        "80%",
+        "0%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "80% — records are now expected to fall regularly rather than rarely. The baseline itself has shifted.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Warming is ongoing, so new records are likely."
+      ],
+      "action": "Ask what it means when records stop being unusual."
+    },
+    {
+      "id": "g13-004",
+      "src": "SDGR25",
+      "prompt": "Long-term global warming is currently estimated at:",
+      "options": [
+        "1.34-1.41°C above pre-industrial",
+        "0.1°C",
+        "5°C"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.34–1.41°C as a long-term trend — lower than 2024's single-year 1.55°C, because individual years bounce around the trend line.",
+      "whyWrong": [
+        null,
+        "Far too low.",
+        "Far above current warming, though possible by 2100."
+      ],
+      "action": "Ask why one hot year doesn't equal the long-term trend."
+    },
+    {
+      "id": "g13-005",
+      "src": "SDGR25",
+      "prompt": "Global greenhouse gas emissions in 2023 hit a record:",
+      "options": [
+        "5.7 gigatons",
+        "57.1 gigatons of CO2 equivalent",
+        "571 gigatons"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "57.1 gigatons — up 1.3% on 2022. Despite three decades of climate talks, emissions have never yet peaked.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Ask what year global emissions are expected to peak."
+    },
+    {
+      "id": "g13-006",
+      "src": "SDGR25",
+      "prompt": "Which sector emits the most greenhouse gases?",
+      "options": [
+        "Power generation",
+        "Transport",
+        "Agriculture"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Power generation at 26% — well ahead of transport at 15%, and agriculture and industry at 11% each.",
+      "whyWrong": [
+        null,
+        "Transport is 15% — significant but not the largest.",
+        "Agriculture is 11%."
+      ],
+      "action": "Find out what fuels your country's electricity."
+    },
+    {
+      "id": "g13-007",
+      "src": "SDGR25",
+      "prompt": "Transport accounts for what share of global emissions?",
+      "options": [
+        "1.5%",
+        "50%",
+        "15%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "15% — less than power's 26%, but the hardest to cut, since only about 4% of transport energy is renewable.",
+      "whyWrong": [
+        "Ten times too low.",
+        "Far too high.",
+        null
+      ],
+      "action": "Count how you travelled this week and how it was powered."
+    },
+    {
+      "id": "g13-008",
+      "src": "SDGR25",
+      "prompt": "To stay under 1.5°C, emissions must fall by how much each year until 2035?",
+      "options": [
+        "0.75%",
+        "7.5%",
+        "They can rise"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "7.5% every single year — steeper than the drop during the global pandemic shutdowns, sustained for a decade.",
+      "whyWrong": [
+        "Ten times too small.",
+        null,
+        "Emissions must fall steeply."
+      ],
+      "action": "Ask what a 7.5% yearly cut would change in your life."
+    },
+    {
+      "id": "g13-009",
+      "src": "SDGR25",
+      "prompt": "To stay under 2°C instead of 1.5°C, emissions must fall by how much yearly?",
+      "options": [
+        "4%",
+        "7.5%",
+        "20%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "4% a year — still enormous, but roughly half the 7.5% needed for 1.5°C. Every half-degree of ambition changes the required pace.",
+      "whyWrong": [
+        null,
+        "That's the 1.5°C requirement.",
+        "Far steeper than required for 2°C."
+      ],
+      "action": "Compare 7.5% and 4% over ten years."
+    },
+    {
+      "id": "g13-010",
+      "src": "SDGR25",
+      "prompt": "Under current policies, how much warming is the world heading for?",
+      "options": [
+        "0.5°C",
+        "1.5°C",
+        "3.1°C"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "3.1°C — roughly double the Paris target. Current policies are not close to current promises.",
+      "whyWrong": [
+        "Warming has already passed this.",
+        "That's the target, not the projection.",
+        null
+      ],
+      "action": "Ask what 3.1°C would mean for your region."
+    },
+    {
+      "id": "g13-011",
+      "src": "SDGR25",
+      "prompt": "How much did governments spend subsidising fossil fuels in 2023?",
+      "options": [
+        "$110 million",
+        "$1.10 billion",
+        "$1.10 trillion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "$1.10 trillion — down sharply from $1.68 trillion in 2022, but still nearly three times 2020 levels.",
+      "whyWrong": [
+        "Vastly too low.",
+        "A thousand times too low.",
+        null
+      ],
+      "action": "Ask why a government would pay to make fuel cheaper."
+    },
+    {
+      "id": "g13-012",
+      "src": "SDGR25",
+      "prompt": "Fossil fuel subsidies between 2022 and 2023:",
+      "options": [
+        "Rose sharply",
+        "Stayed identical",
+        "Fell 34.5%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Fell 34.5%, from $1.68 trillion to $1.10 trillion — real progress, though still triple 2020 levels.",
+      "whyWrong": [
+        "Subsidies fell substantially.",
+        "There was a large decline.",
+        null
+      ],
+      "action": "Ask what happened to energy prices in 2022."
+    },
+    {
+      "id": "g13-013",
+      "src": "SDGR25",
+      "prompt": "How many countries submitted updated climate plans by the 2025 deadline?",
+      "options": [
+        "22",
+        "122",
+        "195"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Only 22 countries as of May 2025. Almost every government missed the deadline for their own agreed climate commitments.",
+      "whyWrong": [
+        null,
+        "Far more than actually submitted.",
+        "Nowhere near universal submission."
+      ],
+      "action": "Look up whether your country submitted a new climate plan."
+    },
+    {
+      "id": "g13-014",
+      "src": "SDGR25",
+      "prompt": "What do disasters cost the world economy each year on average?",
+      "options": [
+        "$2 billion",
+        "$202 million",
+        "$202 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "$202 billion in direct losses — and $2.3 trillion a year once knock-on effects like lost trade and health costs are counted.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "A thousand times too low.",
+        null
+      ],
+      "action": "Look up the cost of the last major disaster near you."
+    },
+    {
+      "id": "g13-015",
+      "src": "SDGR25",
+      "prompt": "Counting knock-on effects, annual disaster costs reach:",
+      "options": [
+        "$2.3 trillion",
+        "$202 billion",
+        "$23 billion"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$2.3 trillion — more than eleven times the direct $202 billion, because disasters break supply chains, health and livelihoods for years.",
+      "whyWrong": [
+        null,
+        "That's the direct-loss figure only.",
+        "A hundred times too low."
+      ],
+      "action": "Ask what happens to a business after its town floods."
+    },
+    {
+      "id": "g13-016",
+      "src": "SDGR25",
+      "prompt": "How many people are affected by disasters each year, per 100,000?",
+      "options": [
+        "2",
+        "20",
+        "2,028"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "2,028 per 100,000 — about 2% of humanity affected annually, and a 75% increase over the previous decade.",
+      "whyWrong": [
+        "A thousand times too low.",
+        "A hundred times too low.",
+        null
+      ],
+      "action": "Work out how many people that is in a city of a million."
+    },
+    {
+      "id": "g13-017",
+      "src": "SDGR25",
+      "prompt": "The number of people affected by disasters has risen by:",
+      "options": [
+        "7.5%",
+        "75%",
+        "It fell 75%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "75% more people affected than in the previous decade — even as deaths fell 36%. More disruption, fewer deaths.",
+      "whyWrong": [
+        "Ten times too small.",
+        null,
+        "Far more people are affected, not fewer."
+      ],
+      "action": "Ask how deaths can fall while impacts rise."
+    },
+    {
+      "id": "g13-018",
+      "src": "SDGR25",
+      "prompt": "Disaster deaths compared with the previous decade have:",
+      "options": [
+        "Fallen 36%",
+        "Risen 36%",
+        "Doubled"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Fallen 36%, to about 41,647 a year — a genuine success driven by early warnings and better evacuation, even as disasters got worse.",
+      "whyWrong": [
+        null,
+        "Deaths declined substantially.",
+        "The trend is downward."
+      ],
+      "action": "Look up how a cyclone warning saves lives."
+    },
+    {
+      "id": "g13-019",
+      "src": "SDGR25",
+      "prompt": "How many people die in disasters each year?",
+      "options": [
+        "416,470",
+        "41,647",
+        "4,164"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 41,647 a year — a rate of 0.79 per 100,000 people, and 36% lower than the previous decade.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Ask what makes a disaster deadly versus merely damaging."
+    },
+    {
+      "id": "g13-020",
+      "src": "SDGR25",
+      "prompt": "How many countries now have national disaster risk strategies?",
+      "options": [
+        "13",
+        "57",
+        "131"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "131, up from just 57 in 2015 — more than doubled. Preparedness is one of the clearest SDG success stories.",
+      "whyWrong": [
+        "Ten times too low.",
+        "That's the 2015 figure.",
+        null
+      ],
+      "action": "Find out if your country has a disaster strategy."
+    },
+    {
+      "id": "g13-021",
+      "src": "SDGR25",
+      "prompt": "How many countries have multi-hazard early warning systems?",
+      "options": [
+        "13",
+        "113",
+        "193"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "113 countries — the main reason disaster deaths fell 36% even as disasters became more frequent and severe.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Not yet universal."
+      ],
+      "action": "Check how you would be warned of a flood or storm."
+    },
+    {
+      "id": "g13-022",
+      "src": "SDGR25",
+      "prompt": "The world's average school 'green curriculum' score is 40. The benchmark is:",
+      "options": [
+        "40",
+        "50",
+        "100"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "50 — so schools worldwide are teaching climate at only 80% of the agreed standard.",
+      "whyWrong": [
+        "That's the current score, not the target.",
+        null,
+        "The benchmark is 50, not a perfect score."
+      ],
+      "action": "Count how many climate lessons you had this year."
+    },
+    {
+      "id": "g13-023",
+      "src": "SDGR25",
+      "prompt": "What share of countries have NO green content in grade 3 social science?",
+      "options": [
+        "2.7%",
+        "27%",
+        "77%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "27% — over a quarter of countries teach nothing about the environment to nine-year-olds in social studies.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Too high — most countries do include some content."
+      ],
+      "action": "Look at what your school teaches about climate, and when."
+    },
+    {
+      "id": "g13-024",
+      "src": "SDGR25",
+      "prompt": "What share of countries lack green content in grade 9 science?",
+      "options": [
+        "8%",
+        "48%",
+        "88%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "8% — much better than the 27% gap at grade 3. Climate is taught, but often too late.",
+      "whyWrong": [
+        null,
+        "Far too high.",
+        "Vastly too high."
+      ],
+      "action": "Ask when children should first learn about climate."
+    },
+    {
+      "id": "g13-025",
+      "src": "SDGR25",
+      "prompt": "Agriculture and industry each account for what share of global emissions?",
+      "options": [
+        "1%",
+        "31%",
+        "11%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "11% each — together 22%, close to the power sector's 26%. No single sector can solve climate change alone.",
+      "whyWrong": [
+        "Far too low.",
+        "Too high — power leads at 26%.",
+        null
+      ],
+      "action": "Add up the four sector percentages given."
+    },
+    {
+      "id": "g13-026",
+      "src": "SDGR25",
+      "prompt": "'Pre-industrial levels' as a temperature baseline means roughly:",
+      "options": [
+        "Before large-scale fossil fuel burning began, around 1850-1900",
+        "Last year",
+        "The year 2000"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Around 1850–1900, before coal-powered industry reshaped the atmosphere. All warming figures are measured from that baseline.",
+      "whyWrong": [
+        null,
+        "The baseline is over 150 years back.",
+        "The world had already warmed considerably by 2000."
+      ],
+      "action": "Look up what year the industrial revolution took off."
+    },
+    {
+      "id": "g13-027",
+      "src": "SDGR25",
+      "prompt": "Emissions rose 1.3% from 2022 to 2023. To hit 1.5°C they need to:",
+      "options": [
+        "Fall 7.5% a year",
+        "Keep rising",
+        "Stay flat"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The gap between +1.3% and −7.5% is nearly nine percentage points a year — the single starkest number in Goal 13.",
+      "whyWrong": [
+        null,
+        "Rising emissions move away from every target.",
+        "Flat emissions still overshoot 1.5°C badly."
+      ],
+      "action": "Add 1.3 and 7.5 to see the size of the gap."
+    },
+    {
+      "id": "g13-028",
+      "src": "SDGR25",
+      "prompt": "An 'NDC' in climate talks is:",
+      "options": [
+        "A country's own pledge of how much it will cut emissions",
+        "A type of weather station",
+        "A carbon tax"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A Nationally Determined Contribution — each country sets its own target. Only 22 had submitted updates by May 2025.",
+      "whyWrong": [
+        null,
+        "It is a policy commitment, not equipment.",
+        "A carbon tax is one possible tool inside an NDC."
+      ],
+      "action": "Look up your country's emissions pledge."
+    },
+    {
+      "id": "g13-029",
+      "src": "SDGR25",
+      "prompt": "Fossil fuel subsidies of $1.10 trillion compare with 2020 levels as:",
+      "options": [
+        "About a third of 2020",
+        "Nearly three times 2020",
+        "Identical to 2020"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Nearly three times 2020 levels, despite falling 34.5% from the 2022 peak. Governments still spend enormously to keep fossil fuels cheap.",
+      "whyWrong": [
+        "Subsidies are far higher than in 2020.",
+        null,
+        "They have risen dramatically since 2020."
+      ],
+      "action": "Ask what $1.1 trillion could buy in clean energy."
+    },
+    {
+      "id": "g13-030",
+      "src": "SDGR25",
+      "prompt": "Disaster deaths fell 36% while people affected rose 75%. The best explanation is:",
+      "options": [
+        "Disasters got gentler",
+        "The data is wrong",
+        "Warning systems save lives, but disasters hit more people and destroy more"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "113 countries with early warning systems means people get out in time — but their homes, crops and livelihoods still get destroyed.",
+      "whyWrong": [
+        "Disaster frequency and severity both increased.",
+        "Both trends are well documented.",
+        null
+      ],
+      "action": "Ask what an evacuation saves and what it doesn't."
+    },
+    {
+      "id": "g13-031",
+      "src": "SDGR25",
+      "prompt": "The disaster mortality rate is 0.79 per 100,000 people. In a city of one million, that's about:",
+      "options": [
+        "80 deaths",
+        "8 deaths a year",
+        "800 deaths"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 8 a year on the global average — though the real figure clusters heavily in exposed, poorly protected places.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "A hundred times too high."
+      ],
+      "action": "Multiply 0.79 by ten to get the per-million rate."
+    },
+    {
+      "id": "g13-032",
+      "src": "SDGR25",
+      "prompt": "Countries with disaster strategies more than doubled from 57 to:",
+      "options": [
+        "300",
+        "80",
+        "131"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "131 countries since 2015 — one of the strongest improvements across all 17 goals.",
+      "whyWrong": [
+        "More than the number of countries in the world with such plans.",
+        "The rise was larger than this.",
+        null
+      ],
+      "action": "Ask what a national disaster strategy contains."
+    },
+    {
+      "id": "g13-033",
+      "src": "SDGR25",
+      "prompt": "The Paris Agreement's central aim is to hold warming to:",
+      "options": [
+        "3°C",
+        "5°C",
+        "Well below 2°C, pursuing 1.5°C"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Well below 2°C with efforts toward 1.5°C — which is why 2024 hitting 1.55°C in a single year was such a significant marker.",
+      "whyWrong": [
+        "3.1°C is the current-policy projection, not the aim.",
+        "Far beyond any agreed limit.",
+        null
+      ],
+      "action": "Look up what year the Paris Agreement was signed."
+    },
+    {
+      "id": "g13-034",
+      "src": "SDGR25",
+      "prompt": "The gap between current policies (3.1°C) and the Paris goal (1.5°C) is:",
+      "options": [
+        "0.1°C",
+        "1.6°C — roughly double the target",
+        "No gap at all"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "3.1°C is more than twice 1.5°C. Every tenth of a degree in that gap means more heatwaves, floods and lost coastline.",
+      "whyWrong": [
+        "The gap is enormous.",
+        null,
+        "Policies fall far short of the goal."
+      ],
+      "action": "Subtract 1.5 from 3.1."
+    },
+    {
+      "id": "g13-035",
+      "src": "SDGR25",
+      "prompt": "Only 22 countries filed updated climate plans by deadline. This mainly shows:",
+      "options": [
+        "Political commitment lags far behind stated urgency",
+        "Climate change was solved",
+        "The deadline was optional"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The countries that agreed the deadline mostly missed it — the gap between what governments say and what they file is Goal 13's core problem.",
+      "whyWrong": [
+        null,
+        "Emissions hit a record high in 2023.",
+        "It was an agreed obligation under the Paris Agreement."
+      ],
+      "action": "Look up how many countries signed the Paris Agreement."
+    },
+    {
+      "id": "g13-036",
+      "src": "SDGR25",
+      "prompt": "The power sector is 26% of emissions. That makes it:",
+      "options": [
+        "Irrelevant",
+        "The largest single source and the most reduceable, since renewables already work",
+        "Impossible to change"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Electricity is the easiest sector to decarbonise — renewables already supply 30% of it, versus 4% of transport energy.",
+      "whyWrong": [
+        "It is the single biggest sector.",
+        null,
+        "It is the sector changing fastest."
+      ],
+      "action": "Find out your electricity provider's renewable share."
+    },
+    {
+      "id": "g13-037",
+      "src": "SDGR25",
+      "prompt": "A green curriculum score of 40 against a benchmark of 50 means schools are:",
+      "options": [
+        "At 80% of the agreed standard",
+        "Exceeding the standard",
+        "Teaching nothing"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "40 out of 50 is 80% — climate education exists nearly everywhere but is thinner and later than agreed.",
+      "whyWrong": [
+        null,
+        "The score is below the benchmark.",
+        "Most countries teach some green content."
+      ],
+      "action": "Divide 40 by 50."
+    },
+    {
+      "id": "g13-038",
+      "src": "SDGR25",
+      "prompt": "$2.3 trillion in annual disaster costs compares with the world economy as roughly:",
+      "options": [
+        "50% of global GDP",
+        "2% of global GDP",
+        "0.001%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Roughly 2% of everything the world produces, lost to disasters every year — before counting the human cost.",
+      "whyWrong": [
+        "Vastly too high.",
+        null,
+        "Far too low for a $2.3 trillion figure."
+      ],
+      "action": "Look up the size of the world economy."
+    },
+    {
+      "id": "g13-039",
+      "src": "SDGR25",
+      "prompt": "27% of countries teach no green content at grade 3, but only 8% at grade 9. This means:",
+      "options": [
+        "Climate is never taught",
+        "Climate is taught, but mostly to older students",
+        "Young children learn more"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Coverage improves with age — but habits and attitudes form early, so the grade 3 gap matters more than the number suggests.",
+      "whyWrong": [
+        "Most countries do teach it eventually.",
+        null,
+        "Coverage is thinner for younger students."
+      ],
+      "action": "Ask when you first learned what a greenhouse gas is."
+    },
+    {
+      "id": "g13-040",
+      "src": "SDGR25",
+      "prompt": "2024 exceeded 1.5°C in a single year. Does that mean the Paris target is already breached?",
+      "options": [
+        "Yes, permanently",
+        "The target never existed",
+        "Not formally — the target refers to a long-term average, currently 1.34-1.41°C"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Paris measures a multi-decade average, not one year. But a single year at 1.55°C is a serious warning that the average is closing in.",
+      "whyWrong": [
+        "One year above does not breach a long-term average.",
+        "The 1.5°C aim is in the Paris Agreement text.",
+        null
+      ],
+      "action": "Ask why scientists use long-term averages."
+    },
+    {
+      "id": "g13-041",
+      "src": "SDGR25",
+      "prompt": "Which change in Goal 13 has been most successful?",
+      "options": [
+        "Cutting emissions",
+        "Fossil fuel subsidies",
+        "Early warning systems and disaster planning"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Countries with disaster strategies more than doubled to 131, and 113 have early warning systems — cutting deaths 36% despite worse disasters.",
+      "whyWrong": [
+        "Emissions hit a record high in 2023.",
+        "Subsidies remain near three times 2020 levels.",
+        null
+      ],
+      "action": "Find out who issues weather warnings in your country."
+    },
+    {
+      "id": "g13-042",
+      "src": "SDGR25",
+      "prompt": "Emissions of 57.1 gigatons CO2-equivalent means:",
+      "options": [
+        "All greenhouse gases converted into their carbon dioxide equivalent",
+        "Only carbon dioxide is counted",
+        "Just methane"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Methane and nitrous oxide trap far more heat per molecule than CO2, so they are converted to a common CO2-equivalent scale for comparison.",
+      "whyWrong": [
+        null,
+        "CO2 alone is smaller — about 37.6 gigatons.",
+        "Methane is one of several gases included."
+      ],
+      "action": "Look up how much more heat methane traps than CO2."
+    },
+    {
+      "id": "g13-043",
+      "src": "SDGR25",
+      "prompt": "The 75% rise in people affected by disasters is driven mainly by:",
+      "options": [
+        "Random chance",
+        "Better reporting only",
+        "More frequent extreme weather plus more people living in exposed places"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Warming makes extremes more likely, and urban growth pushed more people onto floodplains and coasts — the two multiply.",
+      "whyWrong": [
+        "The trend is consistent across a decade.",
+        "Reporting improved, but the physical increase is real.",
+        null
+      ],
+      "action": "Ask why cities keep building in risky places."
+    },
+    {
+      "id": "g13-044",
+      "src": "SDGR25",
+      "prompt": "Ending fossil fuel subsidies would primarily:",
+      "options": [
+        "Make fossil fuels reflect their true cost, freeing money for clean energy",
+        "Have no effect",
+        "Make renewables more expensive"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$1.10 trillion a year currently makes the dirtiest option artificially cheap — removing it is the fastest lever governments hold.",
+      "whyWrong": [
+        null,
+        "A trillion dollars a year has substantial effect.",
+        "It makes renewables relatively more competitive."
+      ],
+      "action": "Ask why removing subsidies is politically difficult."
+    },
+    {
+      "id": "g13-045",
+      "src": "SDGR25",
+      "prompt": "The needed 7.5% annual emissions cut compares with the pandemic year drop of about 5-6% as:",
+      "options": [
+        "Much smaller",
+        "Larger — and needed every year, not once",
+        "Exactly the same and easy"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "The world's biggest ever single-year emissions fall came from shutting down travel and industry — and it was still smaller than what's needed annually for a decade.",
+      "whyWrong": [
+        "7.5% exceeds the pandemic-year fall.",
+        null,
+        "Sustaining it for a decade is far harder than one year."
+      ],
+      "action": "Ask what could cut emissions 7.5% without a shutdown."
+    },
+    {
+      "id": "g13-046",
+      "src": "SDGR25",
+      "prompt": "Which is true about disaster impacts and wealth?",
+      "options": [
+        "Poorer countries lose a far larger share of their economy to each disaster",
+        "Rich and poor countries suffer identically",
+        "Only rich countries are affected"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The same storm can cost a rich country a fraction of a percent of GDP and a small island state a large share of its entire economy.",
+      "whyWrong": [
+        null,
+        "Relative impacts differ enormously.",
+        "Poorer and small island states are hit hardest proportionally."
+      ],
+      "action": "Look up a hurricane's cost as a share of a small country's GDP."
+    },
+    {
+      "id": "g13-047",
+      "src": "SDGR25",
+      "prompt": "80% probability of a new record in five years mainly tells us:",
+      "options": [
+        "Weather is random",
+        "Warming is ongoing, so record heat is now the expected pattern",
+        "Cooling has begun"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "When a record has an 80% chance of falling within five years, the climate itself has shifted — records are following the trend, not defying it.",
+      "whyWrong": [
+        "Year-to-year variation sits on top of a clear trend.",
+        null,
+        "2024 was the hottest year in 175 years."
+      ],
+      "action": "Ask what 'the new normal' actually means."
+    },
+    {
+      "id": "g13-048",
+      "src": "SDGR25",
+      "prompt": "$202 billion in direct disaster losses versus $2.3 trillion with cascading effects shows:",
+      "options": [
+        "The figures contradict each other",
+        "Direct losses are the whole story",
+        "The visible damage is a small fraction of the real cost"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Broken bridges are counted; the years of lost income, health and schooling that follow are ten times larger and usually invisible.",
+      "whyWrong": [
+        "They measure different things, and both are valid.",
+        "Cascading effects are eleven times larger.",
+        null
+      ],
+      "action": "List what stops working for a year after a major flood."
+    },
+    {
+      "id": "g13-049",
+      "src": "SDGR25",
+      "prompt": "Power (26%), transport (15%), agriculture (11%) and industry (11%) total:",
+      "options": [
+        "100% of emissions",
+        "63% of emissions, with the rest spread across other sources",
+        "26% of emissions"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "63% — buildings, waste and land-use change make up the remainder. No single fix covers even a third of the problem.",
+      "whyWrong": [
+        "These four sectors don't account for everything.",
+        null,
+        "That's the power sector alone."
+      ],
+      "action": "Add the four percentages yourself."
+    },
+    {
+      "id": "g13-050",
+      "src": "SDGR25",
+      "prompt": "The starkest Goal 13 fact is:",
+      "options": [
+        "Emissions hit a record 57.1 gigatons in the hottest year ever recorded",
+        "Disaster strategies doubled",
+        "Subsidies fell 34.5%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "2024 was the hottest year in 175 years, and 2023 emissions were the highest ever measured. The cause is still accelerating alongside the effect.",
+      "whyWrong": [
+        null,
+        "That is genuine good news — 57 countries to 131.",
+        "A real improvement, though subsidies remain near triple 2020."
+      ],
+      "action": "Find one climate action your school could take this term."
+    }
+  ]
+}
