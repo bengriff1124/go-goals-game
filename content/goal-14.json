@@ -1,0 +1,914 @@
+{
+  "goal": 14,
+  "goalName": "Life Below Water",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 14",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-14/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g14-001",
+      "src": "SDGR25",
+      "prompt": "How much of the world's ocean is inside a marine protected area?",
+      "options": [
+        "48%",
+        "8.4%",
+        "84%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Only 8.4% — against a target of 30% by 2030. More than nine tenths of the ocean has no protection at all.",
+      "whyWrong": [
+        "Far too optimistic.",
+        null,
+        "Vastly too high."
+      ],
+      "action": "Find the nearest marine protected area to your coast."
+    },
+    {
+      "id": "g14-002",
+      "src": "SDGR25",
+      "prompt": "The world's target for ocean protection by 2030 is:",
+      "options": [
+        "8.4%",
+        "100%",
+        "30%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "30% — meaning protection must more than triple in under five years, from today's 8.4%.",
+      "whyWrong": [
+        "That's the current level, not the target.",
+        "Total protection is not the goal.",
+        null
+      ],
+      "action": "Ask what activities a marine protected area restricts."
+    },
+    {
+      "id": "g14-003",
+      "src": "SDGR25",
+      "prompt": "What share of the world's fish stocks are overfished?",
+      "options": [
+        "3.5%",
+        "35.5%",
+        "80%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "35.5% — over a third are caught faster than they can reproduce, and that share grows about 1% every year.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Too high — about two thirds remain sustainable."
+      ],
+      "action": "Look up whether the fish you eat is overfished."
+    },
+    {
+      "id": "g14-004",
+      "src": "SDGR25",
+      "prompt": "What share of fish stocks are still fished sustainably?",
+      "options": [
+        "24.5%",
+        "94.5%",
+        "64.5%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "64.5% as of 2021 — down from 62.3% by earlier measures, and shrinking about a percentage point a year.",
+      "whyWrong": [
+        "Too pessimistic — about two thirds are sustainable.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Ask what 'biologically sustainable' means for a fish stock."
+    },
+    {
+      "id": "g14-005",
+      "src": "SDGR25",
+      "prompt": "The overfished share of stocks is changing by roughly:",
+      "options": [
+        "Falling 1% a year",
+        "Growing 1% a year",
+        "Not changing"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Growing about 1% a year. Slow, steady, and cumulative — this is how a resource gets used up without anyone noticing a single dramatic moment.",
+      "whyWrong": [
+        "The trend is toward more overfishing, not less.",
+        null,
+        "There is a consistent yearly deterioration."
+      ],
+      "action": "Project 35.5% forward ten years at 1% a year."
+    },
+    {
+      "id": "g14-006",
+      "src": "SDGR25",
+      "prompt": "How much fish is caught illegally or unreported each year?",
+      "options": [
+        "None",
+        "26,000 metric tons",
+        "Up to 26 million metric tons"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Up to 26 million tons — about 15% of all fish caught worldwide, taken outside any rules or quotas.",
+      "whyWrong": [
+        "Illegal fishing is a massive global industry.",
+        "A thousand times too low.",
+        null
+      ],
+      "action": "Look up how a fishing boat can be tracked by satellite."
+    },
+    {
+      "id": "g14-007",
+      "src": "SDGR25",
+      "prompt": "Illegal and unreported fishing is roughly what share of all catches?",
+      "options": [
+        "1.5%",
+        "15%",
+        "50%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 15% — one fish in seven is caught outside the law. It undercuts legal fishers and makes stocks impossible to manage.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Too high, though the real figure is severe."
+      ],
+      "action": "Ask how you'd know if a fish was caught legally."
+    },
+    {
+      "id": "g14-008",
+      "src": "SDGR25",
+      "prompt": "How much of the excess heat from greenhouse gases does the ocean absorb?",
+      "options": [
+        "90%",
+        "9%",
+        "0.9%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "90%. The ocean has been shielding us from the full force of warming — and that heat does not disappear, it accumulates.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask where the heat would have gone without the ocean."
+    },
+    {
+      "id": "g14-009",
+      "src": "SDGR25",
+      "prompt": "Ocean heat content in 2024 was:",
+      "options": [
+        "The highest in 65 years of records",
+        "The lowest on record",
+        "Average"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The highest ever measured, and the rate of ocean warming has doubled since 2005. The ocean's heat uptake is accelerating.",
+      "whyWrong": [
+        null,
+        "Ocean heat hit a record high.",
+        "It was a record, not a typical year."
+      ],
+      "action": "Look up the sea temperature near you this summer."
+    },
+    {
+      "id": "g14-010",
+      "src": "SDGR25",
+      "prompt": "The rate of ocean warming compared with 2005 is:",
+      "options": [
+        "Half as fast",
+        "Unchanged",
+        "Twice as fast"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It has doubled since 2005 — the ocean is not just warm, it is warming faster each decade.",
+      "whyWrong": [
+        "Warming accelerated, it did not slow.",
+        "The rate has changed substantially.",
+        null
+      ],
+      "action": "Ask what happens to sea level as water warms."
+    },
+    {
+      "id": "g14-011",
+      "src": "SDGR25",
+      "prompt": "Ocean pH has fallen from 8.1 in 1985 to:",
+      "options": [
+        "8.04",
+        "7.0",
+        "9.0"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "8.04 — a small-looking number that means the ocean is measurably more acidic, dissolving the shells of the creatures at the base of the food web.",
+      "whyWrong": [
+        null,
+        "That's neutral — the ocean is still alkaline.",
+        "The ocean is becoming more acidic, not less."
+      ],
+      "action": "Look up how the pH scale works."
+    },
+    {
+      "id": "g14-012",
+      "src": "SDGR25",
+      "prompt": "Ocean acidity is increasing by how much per decade?",
+      "options": [
+        "-1.7 pH units",
+        "-0.017 pH units",
+        "It's decreasing"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "-0.017 units per decade. Because pH is a logarithmic scale, that small number represents a substantial chemical change.",
+      "whyWrong": [
+        "A hundred times too large.",
+        null,
+        "Acidity is rising as the ocean absorbs CO2."
+      ],
+      "action": "Ask why a logarithmic scale makes small numbers big."
+    },
+    {
+      "id": "g14-013",
+      "src": "SDGR25",
+      "prompt": "What share of coral reefs experienced bleaching heat stress between 2023 and 2025?",
+      "options": [
+        "8.4%",
+        "84%",
+        "24%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "84% — the most widespread bleaching event ever recorded, hitting reefs in 83 countries and territories.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Far below the actual extent."
+      ],
+      "action": "Look up what a bleached coral looks like."
+    },
+    {
+      "id": "g14-014",
+      "src": "SDGR25",
+      "prompt": "Coral bleaching between 2023 and 2025 hit reefs in how many countries?",
+      "options": [
+        "183",
+        "8",
+        "83"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "83 countries and territories — essentially every reef nation on Earth, at the same time.",
+      "whyWrong": [
+        "More than have coral reefs.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Find three countries with major coral reefs."
+    },
+    {
+      "id": "g14-015",
+      "src": "SDGR25",
+      "prompt": "What share of coral species face extinction?",
+      "options": [
+        "4%",
+        "44%",
+        "94%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "44% — nearly half. Reefs cover under 1% of the ocean floor but support around a quarter of all marine species.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Too high, though the real figure is grave."
+      ],
+      "action": "Look up how many species depend on coral reefs."
+    },
+    {
+      "id": "g14-016",
+      "src": "SDGR25",
+      "prompt": "How much coral cover did the world lose between 2009 and 2018?",
+      "options": [
+        "14%",
+        "1.4%",
+        "44%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "14% of all coral — roughly the reef area of Australia's entire Great Barrier Reef, gone in under a decade.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "That's the share of species facing extinction."
+      ],
+      "action": "Ask what depends on a reef besides fish."
+    },
+    {
+      "id": "g14-017",
+      "src": "SDGR25",
+      "prompt": "What share of marine key biodiversity areas are protected?",
+      "options": [
+        "96%",
+        "8.4%",
+        "46%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "46% — far better than the 8.4% overall ocean figure. Protection is being targeted where it matters most, but over half these critical areas remain unprotected.",
+      "whyWrong": [
+        "Far too optimistic.",
+        "That's total ocean protection, not key areas.",
+        null
+      ],
+      "action": "Ask what makes an area 'key' for biodiversity."
+    },
+    {
+      "id": "g14-018",
+      "src": "SDGR25",
+      "prompt": "How many countries are working on marine spatial planning?",
+      "options": [
+        "126",
+        "26",
+        "196"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "126 countries as of 2023, a 20% rise in a year — though only 45 have formally approved a plan.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "More countries than are engaged."
+      ],
+      "action": "Ask what competing uses a sea area has."
+    },
+    {
+      "id": "g14-019",
+      "src": "SDGR25",
+      "prompt": "Of 126 countries working on marine spatial plans, how many have formally approved one?",
+      "options": [
+        "126",
+        "5",
+        "45"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 45. Starting a plan is much easier than agreeing one, because it means telling industries where they cannot go.",
+      "whyWrong": [
+        "That's the number engaged, not approved.",
+        "Far more than five have approved plans.",
+        null
+      ],
+      "action": "Ask why an approved plan is harder than a draft."
+    },
+    {
+      "id": "g14-020",
+      "src": "SDGR25",
+      "prompt": "Ocean acidification monitoring stations have grown from 178 in 2021 to:",
+      "options": [
+        "765",
+        "200",
+        "78"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "765 by 2025 — more than quadrupled in four years. The world is finally measuring what it has long been changing.",
+      "whyWrong": [
+        null,
+        "The growth was far larger.",
+        "Stations increased, not decreased."
+      ],
+      "action": "Ask why measuring comes before fixing."
+    },
+    {
+      "id": "g14-021",
+      "src": "SDGR25",
+      "prompt": "What share of fish landed comes from sustainably fished stocks?",
+      "options": [
+        "17.2%",
+        "37.2%",
+        "77.2%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "77.2% of landings — higher than the 64.5% of stocks, because the big, well-managed stocks produce the most fish.",
+      "whyWrong": [
+        "Vastly too low.",
+        "Far too pessimistic.",
+        null
+      ],
+      "action": "Ask why 'share of stocks' differs from 'share of fish'."
+    },
+    {
+      "id": "g14-022",
+      "src": "SDGR25",
+      "prompt": "Countries scoring highest on anti-illegal-fishing measures rose from 48% to:",
+      "options": [
+        "56%",
+        "98%",
+        "38%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "56% between 2018 and 2024, with the overall implementation rating rising from 3 to 4. Enforcement is genuinely improving.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "The share rose, it did not fall."
+      ],
+      "action": "Look up what a port state inspection does."
+    },
+    {
+      "id": "g14-023",
+      "src": "SDGR25",
+      "prompt": "Ocean acidification happens because:",
+      "options": [
+        "Acid rain falls into the sea",
+        "Fish waste is acidic",
+        "The ocean absorbs CO2, which forms carbonic acid in water"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Dissolved CO2 reacts with seawater to form carbonic acid. That's why acidification tracks emissions almost exactly.",
+      "whyWrong": [
+        "Acid rain is a separate, largely solved problem.",
+        "Biological waste is not the driver.",
+        null
+      ],
+      "action": "Try dissolving CO2 in water and testing the pH."
+    },
+    {
+      "id": "g14-024",
+      "src": "SDGR25",
+      "prompt": "Acidification most directly threatens creatures that:",
+      "options": [
+        "Swim fastest",
+        "Build shells or skeletons from calcium carbonate",
+        "Live in freshwater"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "More acidic water dissolves calcium carbonate — so oysters, corals, and the tiny plankton at the base of the whole food web struggle to build.",
+      "whyWrong": [
+        "Speed offers no protection from chemistry.",
+        null,
+        "Acidification is an ocean process."
+      ],
+      "action": "Put a seashell in vinegar and watch what happens."
+    },
+    {
+      "id": "g14-025",
+      "src": "SDGR25",
+      "prompt": "Coral bleaching happens when:",
+      "options": [
+        "Heat stress makes coral expel the algae that feed and colour it",
+        "Coral is painted white",
+        "Coral gets too cold"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Corals live with algae inside them. Under heat stress they eject the algae, turning white and starving — recoverable if the heat passes soon enough.",
+      "whyWrong": [
+        null,
+        "Bleaching is a biological stress response.",
+        "Heat, not cold, is the main trigger."
+      ],
+      "action": "Look up before-and-after photos of a bleached reef."
+    },
+    {
+      "id": "g14-026",
+      "src": "SDGR25",
+      "prompt": "The ocean absorbing 90% of excess heat means:",
+      "options": [
+        "The ocean is unaffected",
+        "The air would be far hotter without it",
+        "Warming has stopped"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Without the ocean's heat uptake, surface warming would be dramatically worse — but the ocean is paying for it in heatwaves, bleaching and rising seas.",
+      "whyWrong": [
+        "Ocean heat content hit a 65-year record in 2024.",
+        null,
+        "Both ocean and air continue to warm."
+      ],
+      "action": "Ask what a 'marine heatwave' does to fish."
+    },
+    {
+      "id": "g14-027",
+      "src": "SDGR25",
+      "prompt": "Going from 8.4% to 30% ocean protection by 2030 requires:",
+      "options": [
+        "More than tripling protected ocean in under five years",
+        "A small adjustment",
+        "Nothing new"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Protection must more than triple, mostly in the high seas beyond any country's control — which is why a new high seas treaty matters so much.",
+      "whyWrong": [
+        null,
+        "The required change is enormous.",
+        "The current trajectory falls far short."
+      ],
+      "action": "Look up who governs the ocean beyond national waters."
+    },
+    {
+      "id": "g14-028",
+      "src": "SDGR25",
+      "prompt": "26 million tons of illegal fishing harms legal fishers because:",
+      "options": [
+        "It doesn't affect them",
+        "It floods markets with untaxed fish and empties the stocks they depend on",
+        "Illegal fish taste worse"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Illegal operators ignore quotas and costs, undercut prices, and deplete the same stocks legal fishers rely on next season.",
+      "whyWrong": [
+        "It directly undercuts legal operations.",
+        null,
+        "The harm is economic and ecological, not culinary."
+      ],
+      "action": "Ask how a supermarket verifies its fish supply."
+    },
+    {
+      "id": "g14-029",
+      "src": "SDGR25",
+      "prompt": "Marine spatial planning means:",
+      "options": [
+        "Mapping the seabed only",
+        "Building in space",
+        "Deciding which parts of the sea are used for fishing, shipping, energy or protection"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It's zoning for the ocean — resolving conflicts between fishing fleets, shipping lanes, wind farms and protected habitat before they collide.",
+      "whyWrong": [
+        "Mapping is one input, not the plan itself.",
+        "It concerns ocean space, not outer space.",
+        null
+      ],
+      "action": "List four different uses of the sea near you."
+    },
+    {
+      "id": "g14-030",
+      "src": "SDGR25",
+      "prompt": "84% of reefs bleached in a single event tells us:",
+      "options": [
+        "Bleaching is now a global synchronised event, not a local one",
+        "Reefs are fine",
+        "Only one reef was affected"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Local reefs used to bleach in bad years. Now ocean heat is high enough to bleach almost every reef on Earth simultaneously.",
+      "whyWrong": [
+        null,
+        "It was the most widespread bleaching ever recorded.",
+        "83 countries were affected."
+      ],
+      "action": "Ask what makes an event 'global' rather than local."
+    },
+    {
+      "id": "g14-031",
+      "src": "SDGR25",
+      "prompt": "The 30x30 ocean target refers to:",
+      "options": [
+        "30 fish per 30 metres",
+        "Protecting 30% of the ocean by 2030",
+        "A 30-metre depth limit"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "30% protected by 2030 — from today's 8.4%. It's the headline commitment of global biodiversity policy for the sea.",
+      "whyWrong": [
+        "Not a measure of fish density.",
+        null,
+        "It concerns area, not depth."
+      ],
+      "action": "Ask what your country has committed to protecting."
+    },
+    {
+      "id": "g14-032",
+      "src": "SDGR25",
+      "prompt": "Ocean pH dropping from 8.1 to 8.04 represents an acidity increase of roughly:",
+      "options": [
+        "About 15%",
+        "No change",
+        "About 0.06%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Because pH is logarithmic, a 0.06-unit drop means roughly 15% more hydrogen ions — a large chemical shift hidden in a small-looking number.",
+      "whyWrong": [
+        null,
+        "The change is chemically substantial.",
+        "That confuses the pH difference with a percentage."
+      ],
+      "action": "Look up why each pH unit is a tenfold change."
+    },
+    {
+      "id": "g14-033",
+      "src": "SDGR25",
+      "prompt": "Marine key biodiversity area protection at 46% versus total ocean protection at 8.4% shows:",
+      "options": [
+        "The numbers are wrong",
+        "Protection is being concentrated where biodiversity is richest",
+        "Key areas are ignored"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Conservation is targeting the highest-value habitat first — a sensible strategy, but 54% of critical areas still have no protection.",
+      "whyWrong": [
+        "Both figures measure different things correctly.",
+        null,
+        "Key areas get far more protection than average."
+      ],
+      "action": "Ask how you'd choose which sea area to protect first."
+    },
+    {
+      "id": "g14-034",
+      "src": "SDGR25",
+      "prompt": "Coral reefs cover under 1% of the seafloor but support roughly:",
+      "options": [
+        "1% of marine species",
+        "A quarter of all marine species",
+        "No species"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About a quarter of all marine life depends on reefs at some point — which is why 44% of coral species facing extinction matters far beyond coral.",
+      "whyWrong": [
+        "Reefs are vastly more biodiverse than their area suggests.",
+        null,
+        "Reefs are among the richest habitats on Earth."
+      ],
+      "action": "Look up how many fish species live on one reef."
+    },
+    {
+      "id": "g14-035",
+      "src": "SDGR25",
+      "prompt": "Ocean acidification monitoring quadrupling to 765 stations matters because:",
+      "options": [
+        "It doesn't",
+        "You can't manage or negotiate about what you can't measure",
+        "Stations stop acidification"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Better data makes acidification visible in policy debates — and reveals where shellfish industries and reefs are most at risk.",
+      "whyWrong": [
+        "Measurement is the foundation of any response.",
+        null,
+        "Monitoring records change; it doesn't prevent it."
+      ],
+      "action": "Find out if there's an ocean monitoring station near you."
+    },
+    {
+      "id": "g14-036",
+      "src": "SDGR25",
+      "prompt": "Sustainable stocks fell from 62.3% by earlier measures to 64.5% by newer ones. This mainly reflects:",
+      "options": [
+        "Improved assessment methods, not a real reversal of the downward trend",
+        "Fisheries recovering rapidly",
+        "A data error"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Better methods revised the estimate slightly upward, but the underlying trend — about 1% more overfished each year — continues.",
+      "whyWrong": [
+        null,
+        "The overall trend remains negative.",
+        "Both estimates are valid under their own methods."
+      ],
+      "action": "Ask why revised statistics aren't the same as real change."
+    },
+    {
+      "id": "g14-037",
+      "src": "SDGR25",
+      "prompt": "The anti-illegal-fishing implementation rating rose from 3 to 4 between 2018 and 2024. That means:",
+      "options": [
+        "Enforcement worsened",
+        "Countries are measurably better at implementing international fishing rules",
+        "Nothing changed"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A full point improvement on the scale, with the top-scoring group growing from 48% to 56% of countries — real, if partial, progress.",
+      "whyWrong": [
+        "The score improved.",
+        null,
+        "There was a measurable rise."
+      ],
+      "action": "Ask what makes a country good at enforcing fishing rules."
+    },
+    {
+      "id": "g14-038",
+      "src": "SDGR25",
+      "prompt": "The ocean has absorbed 90% of excess heat AND large amounts of CO2. Together this means:",
+      "options": [
+        "The ocean is both hotter and more acidic",
+        "The ocean is unaffected",
+        "Only temperature changed"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Two separate consequences of the same emissions — heat that bleaches reefs, and acid that dissolves shells. Marine life faces both at once.",
+      "whyWrong": [
+        null,
+        "Both heat content and pH have changed measurably.",
+        "pH fell from 8.1 to 8.04 as well."
+      ],
+      "action": "Name one species harmed by heat and one by acidity."
+    },
+    {
+      "id": "g14-039",
+      "src": "SDGR25",
+      "prompt": "Only 45 countries have approved marine spatial plans. The main obstacle is:",
+      "options": [
+        "Lack of maps",
+        "Agreeing a plan means restricting where powerful industries can operate",
+        "Nobody has tried"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Planning is technical; approving is political. Every zone drawn tells fishing fleets, shipping firms or energy companies where they cannot go.",
+      "whyWrong": [
+        "Mapping technology is widely available.",
+        null,
+        "126 countries have started the process."
+      ],
+      "action": "Ask who would object to a new protected area near you."
+    },
+    {
+      "id": "g14-040",
+      "src": "SDGR25",
+      "prompt": "77.2% of landings are sustainable but only 64.5% of stocks are. This means:",
+      "options": [
+        "Most fish are illegal",
+        "The figures contradict each other",
+        "Large, well-managed stocks produce most of the catch"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "A few big, carefully managed stocks supply most of the world's fish, while many smaller stocks — harder to monitor — are the overfished ones.",
+      "whyWrong": [
+        "Illegal catch is about 15%.",
+        "They measure different things and are both consistent.",
+        null
+      ],
+      "action": "Ask why big fisheries are easier to manage than small ones."
+    },
+    {
+      "id": "g14-041",
+      "src": "SDGR25",
+      "prompt": "The ocean's warming rate doubling since 2005 means:",
+      "options": [
+        "The ocean is cooling",
+        "Warming has stopped",
+        "The ocean absorbs heat faster each decade, with less buffering capacity ahead"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Faster ocean warming means faster sea level rise, more marine heatwaves, and less of a buffer protecting the atmosphere.",
+      "whyWrong": [
+        "Ocean heat content is rising.",
+        "2024 set a 65-year record for ocean heat.",
+        null
+      ],
+      "action": "Look up what a marine heatwave did to one fishery."
+    },
+    {
+      "id": "g14-042",
+      "src": "SDGR25",
+      "prompt": "26 million tons of illegal fishing compares with total global catch as roughly:",
+      "options": [
+        "1 in 700 fish",
+        "1 in 7 fish",
+        "Every fish"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 15%, or one fish in seven, caught outside any legal framework — invisible to the science that sets sustainable quotas.",
+      "whyWrong": [
+        "A hundred times too low.",
+        null,
+        "Most fishing is legal and reported."
+      ],
+      "action": "Ask how quotas can work when 15% goes uncounted."
+    },
+    {
+      "id": "g14-043",
+      "src": "SDGR25",
+      "prompt": "Marine spatial planning participation rose 20% in a single year to 126 countries. This suggests:",
+      "options": [
+        "Ocean planning is gaining momentum, even if approvals lag",
+        "Interest is falling",
+        "Planning has finished"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A 20% jump in engagement in one year is fast for international policy — the bottleneck is approval, not interest.",
+      "whyWrong": [
+        null,
+        "Participation grew substantially.",
+        "Only 45 plans have been approved."
+      ],
+      "action": "Ask what turns a plan into a law."
+    },
+    {
+      "id": "g14-044",
+      "src": "SDGR25",
+      "prompt": "44% of coral species facing extinction matters to people because reefs:",
+      "options": [
+        "Feed hundreds of millions and shield coasts from storm waves",
+        "Are only decorative",
+        "Have no human use"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Reefs supply food and income to hundreds of millions and act as natural breakwaters. Losing them means losing both protein and coastal defence.",
+      "whyWrong": [
+        null,
+        "Reefs provide food, income and physical protection.",
+        "Reef fisheries and tourism are economically enormous."
+      ],
+      "action": "Look up what a reef does during a storm surge."
+    },
+    {
+      "id": "g14-045",
+      "src": "SDGR25",
+      "prompt": "Which Goal 14 indicator is furthest from its target?",
+      "options": [
+        "Ocean protection at 8.4% against a 30% target",
+        "Monitoring stations",
+        "Anti-illegal-fishing scores"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Protection must more than triple in five years. Monitoring quadrupled and enforcement scores rose — protection is the laggard.",
+      "whyWrong": [
+        null,
+        "Stations quadrupled from 178 to 765.",
+        "Ratings improved from 3 to 4."
+      ],
+      "action": "Ask what makes protecting ocean harder than protecting land."
+    },
+    {
+      "id": "g14-046",
+      "src": "SDGR25",
+      "prompt": "Overfishing grows about 1% a year. From 35.5% today, by 2035 it would reach roughly:",
+      "options": [
+        "Zero",
+        "About 36%",
+        "About 45%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Around 45% — nearly half of all stocks overfished within a decade if nothing changes. Slow trends compound.",
+      "whyWrong": [
+        "The trend is upward without intervention.",
+        "That's a single year's change.",
+        null
+      ],
+      "action": "Add 1% per year to 35.5% for ten years."
+    },
+    {
+      "id": "g14-047",
+      "src": "SDGR25",
+      "prompt": "Coral cover fell 14% between 2009 and 2018, before the 2023-25 bleaching. That suggests:",
+      "options": [
+        "Coral is recovering",
+        "Reefs were healthy before 2023",
+        "The recent bleaching hit reefs already weakened by a decade of loss"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Repeated stress leaves less time to recover between events — which is why the 2023–25 event, hitting 84% of reefs, is so serious.",
+      "whyWrong": [
+        "Both trends point to decline.",
+        "A seventh of coral cover was already lost.",
+        null
+      ],
+      "action": "Ask how long a bleached reef needs to recover."
+    },
+    {
+      "id": "g14-048",
+      "src": "SDGR25",
+      "prompt": "A marine protected area works best when it:",
+      "options": [
+        "Is actually enforced, so fish populations recover and spill over into fishing grounds",
+        "Exists only on paper",
+        "Bans all human access forever"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Well-enforced reserves let fish grow bigger and breed more, and the surplus spills into surrounding waters — which is why fishers often end up supporting them.",
+      "whyWrong": [
+        null,
+        "Unenforced 'paper parks' deliver little.",
+        "Most protected areas allow some regulated uses."
+      ],
+      "action": "Look up a fishery that recovered after a reserve was created."
+    },
+    {
+      "id": "g14-049",
+      "src": "SDGR25",
+      "prompt": "The ocean's role in the climate system is best described as:",
+      "options": [
+        "Irrelevant to climate",
+        "A source of warming",
+        "The planet's main heat and carbon sink, absorbing 90% of excess heat"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The ocean has quietly absorbed most of the heat and much of the carbon from emissions — which is why its chemistry and temperature are changing so fast.",
+      "whyWrong": [
+        "It is the single largest component of the climate system.",
+        "It absorbs heat rather than generating it.",
+        null
+      ],
+      "action": "Ask what would happen if the ocean stopped absorbing heat."
+    },
+    {
+      "id": "g14-050",
+      "src": "SDGR25",
+      "prompt": "The starkest Goal 14 fact is:",
+      "options": [
+        "126 countries planning",
+        "765 monitoring stations",
+        "84% of coral reefs bleached while only 8.4% of the ocean is protected"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Reefs are bleaching almost everywhere while protection covers under a tenth of the sea — the scale of damage far outruns the scale of response.",
+      "whyWrong": [
+        "Growing engagement is positive news.",
+        "That's a genuine improvement from 178.",
+        null
+      ],
+      "action": "Find one thing your household could change about seafood."
+    }
+  ]
+}

@@ -1,0 +1,914 @@
+{
+  "goal": 15,
+  "goalName": "Life on Land",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 15",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-15/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g15-001",
+      "src": "SDGR25",
+      "prompt": "What share of the world's land is covered by forest?",
+      "options": [
+        "31%",
+        "61%",
+        "11%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "31% — about 4.1 billion hectares. Roughly a third of all land, and shrinking by 10 million hectares a year.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Too pessimistic — forests still cover about a third of land."
+      ],
+      "action": "Find out what share of your country is forested."
+    },
+    {
+      "id": "g15-002",
+      "src": "SDGR25",
+      "prompt": "How much forest did the world lose between 2000 and 2020?",
+      "options": [
+        "100 million hectares",
+        "1 million hectares",
+        "10,000 hectares"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "100 million hectares — an area roughly the size of Egypt, cleared in twenty years.",
+      "whyWrong": [
+        null,
+        "A hundred times too low.",
+        "Vastly too low."
+      ],
+      "action": "Find a country about 100 million hectares in size."
+    },
+    {
+      "id": "g15-003",
+      "src": "SDGR25",
+      "prompt": "How much forest is lost every year now?",
+      "options": [
+        "100 hectares",
+        "1 million hectares",
+        "10 million hectares"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 10 million hectares a year, down from 12 million in 2010–2015. Slowing, but still an area the size of Iceland annually.",
+      "whyWrong": [
+        "Vastly too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what replaces a cleared forest."
+    },
+    {
+      "id": "g15-004",
+      "src": "SDGR25",
+      "prompt": "The rate of deforestation between 2010-2015 and 2015-2020:",
+      "options": [
+        "Rose from 10 to 12 million hectares",
+        "Did not change",
+        "Fell from 12 to 10 million hectares"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Fell from 12 to 10 million hectares a year — genuine progress, though at that rate it would take 25 years just to reach zero.",
+      "whyWrong": [
+        "Deforestation slowed rather than accelerated.",
+        "There was a measurable improvement.",
+        null
+      ],
+      "action": "Ask what would need to happen to reach zero deforestation."
+    },
+    {
+      "id": "g15-005",
+      "src": "SDGR25",
+      "prompt": "At current rates, how long would it take to halt deforestation entirely?",
+      "options": [
+        "It's already halted",
+        "2 years",
+        "25 years"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 25 years at the current rate of improvement — far beyond the 2030 deadline the world set itself.",
+      "whyWrong": [
+        "10 million hectares are still lost yearly.",
+        "Progress is far slower than this.",
+        null
+      ],
+      "action": "Count forward 25 years from today."
+    },
+    {
+      "id": "g15-006",
+      "src": "SDGR25",
+      "prompt": "Brazil cut deforestation in the Legal Amazon in 2023 by:",
+      "options": [
+        "It rose 50%",
+        "5%",
+        "50%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "50% in a single year, compared with 2022 — proof that deforestation responds fast to political decisions and enforcement.",
+      "whyWrong": [
+        "Deforestation fell sharply.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what Brazil changed to halve deforestation."
+    },
+    {
+      "id": "g15-007",
+      "src": "SDGR25",
+      "prompt": "Indonesia reduced deforestation by how much?",
+      "options": [
+        "1.4%",
+        "14%",
+        "It doubled"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "14% between 2021–22 and 2020–21 — smaller than Brazil's 50%, but part of the same encouraging pattern.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Deforestation declined."
+      ],
+      "action": "Look up why Indonesian forests are cleared."
+    },
+    {
+      "id": "g15-008",
+      "src": "SDGR25",
+      "prompt": "How much CO2 did wildfires release in 2023?",
+      "options": [
+        "668 megatons",
+        "6,687 megatons",
+        "66 megatons"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "6,687 megatons — comparable to the annual emissions of the world's largest economies, from fires alone.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Compare wildfire emissions with your country's total."
+    },
+    {
+      "id": "g15-009",
+      "src": "SDGR25",
+      "prompt": "How much land degrades every year, at minimum?",
+      "options": [
+        "100 million hectares",
+        "10 million hectares",
+        "1 million hectares"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "At least 100 million hectares a year — ten times the rate of deforestation, and it affects 3.2 billion people.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask what turns good farmland into degraded land."
+    },
+    {
+      "id": "g15-010",
+      "src": "SDGR25",
+      "prompt": "How many people are affected by land degradation?",
+      "options": [
+        "3.2 million",
+        "3.2 billion",
+        "320,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "3.2 billion — around 40% of humanity live on or depend on degrading land, mostly farmers and herders.",
+      "whyWrong": [
+        "A thousand times too low.",
+        null,
+        "Vastly too low."
+      ],
+      "action": "Ask what a farmer does when soil stops producing."
+    },
+    {
+      "id": "g15-011",
+      "src": "SDGR25",
+      "prompt": "The share of land that is degraded rose from 11.3% in 2015 to:",
+      "options": [
+        "12%",
+        "15.5%",
+        "It fell to 8%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "15.5% by 2019 — a rise of over four percentage points in four years, one of the fastest-worsening SDG indicators.",
+      "whyWrong": [
+        "The rise was far larger.",
+        null,
+        "Degradation increased substantially."
+      ],
+      "action": "Ask what 15.5% of the world's land area amounts to."
+    },
+    {
+      "id": "g15-012",
+      "src": "SDGR25",
+      "prompt": "How much land needs restoring by 2030?",
+      "options": [
+        "About 15 million hectares",
+        "About 1.5 billion hectares",
+        "None"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 1.5 billion hectares — roughly the size of Russia. It's the largest restoration commitment humanity has ever made.",
+      "whyWrong": [
+        "A hundred times too low.",
+        null,
+        "Degraded land covers 15.5% of the planet's surface."
+      ],
+      "action": "Find a country about 1.5 billion hectares in size."
+    },
+    {
+      "id": "g15-013",
+      "src": "SDGR25",
+      "prompt": "Land restoration needs how much money per day between 2025 and 2030?",
+      "options": [
+        "$1 billion",
+        "$1 million",
+        "$1,000"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$1 billion a day. Current funding is $66 billion a year — about 18% of what's needed.",
+      "whyWrong": [
+        null,
+        "A thousand times too low.",
+        "A million times too low."
+      ],
+      "action": "Multiply $1 billion by 365 days."
+    },
+    {
+      "id": "g15-014",
+      "src": "SDGR25",
+      "prompt": "Land restoration funding currently covers what share of the need?",
+      "options": [
+        "100%",
+        "80%",
+        "18%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "18% — $66 billion a year against a need of roughly $365 billion. The gap, not the ambition, is the obstacle.",
+      "whyWrong": [
+        "Funding falls far short.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Ask why restoring land is hard to fund."
+    },
+    {
+      "id": "g15-015",
+      "src": "SDGR25",
+      "prompt": "How many species are threatened with extinction?",
+      "options": [
+        "Over 47,000",
+        "Over 470",
+        "Over 47"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Over 47,000 assessed species — and most species on Earth have never been assessed at all.",
+      "whyWrong": [
+        null,
+        "A hundred times too low.",
+        "A thousand times too low."
+      ],
+      "action": "Look up one threatened species in your country."
+    },
+    {
+      "id": "g15-016",
+      "src": "SDGR25",
+      "prompt": "The Red List Index of species survival has declined how much since 1993?",
+      "options": [
+        "12%",
+        "1.2%",
+        "It improved"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "12% — a steady, unbroken decline over three decades. The index measures how close assessed species are to extinction overall.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "The index has fallen consistently."
+      ],
+      "action": "Look up what the IUCN Red List categories mean."
+    },
+    {
+      "id": "g15-017",
+      "src": "SDGR25",
+      "prompt": "What share of assessed tree species face extinction?",
+      "options": [
+        "38%",
+        "3.8%",
+        "8%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "38% of 47,282 assessed tree species — more than a third of the world's tree types are at risk, not just forest area.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Far below the actual figure."
+      ],
+      "action": "Ask how many tree species grow near you."
+    },
+    {
+      "id": "g15-018",
+      "src": "SDGR25",
+      "prompt": "What share of freshwater species are threatened?",
+      "options": [
+        "25%",
+        "2.5%",
+        "75%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "25% — a quarter of all freshwater species. Rivers and lakes hold a huge share of biodiversity in a tiny share of the world's water.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Too high, though the real figure is severe."
+      ],
+      "action": "Ask what lives in the nearest river to you."
+    },
+    {
+      "id": "g15-019",
+      "src": "SDGR25",
+      "prompt": "What share of land and inland water is protected?",
+      "options": [
+        "47.6%",
+        "7.6%",
+        "17.6%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "17.6% — the 2020 target was met on land, unlike the ocean's 8.4%. Land conservation is well ahead of marine.",
+      "whyWrong": [
+        "Far too optimistic.",
+        "Too pessimistic — the land target was met.",
+        null
+      ],
+      "action": "Find the nearest national park to your home."
+    },
+    {
+      "id": "g15-020",
+      "src": "SDGR25",
+      "prompt": "What share of key biodiversity areas fall within protected areas?",
+      "options": [
+        "68%",
+        "18%",
+        "98%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "68% — protection is well targeted at the places that matter most, though a third of critical sites still lack it.",
+      "whyWrong": [
+        null,
+        "Far too pessimistic.",
+        "Not yet near universal."
+      ],
+      "action": "Ask how scientists identify a key biodiversity area."
+    },
+    {
+      "id": "g15-021",
+      "src": "SDGR25",
+      "prompt": "Mean protection of key biodiversity areas rose from 25% in 2000 to:",
+      "options": [
+        "30%",
+        "44%",
+        "It fell"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "44% by 2024 — nearly doubled in a quarter century. One of the clearest conservation successes on record.",
+      "whyWrong": [
+        "The rise was much larger.",
+        null,
+        "Protection expanded substantially."
+      ],
+      "action": "Ask what makes protection expand over decades."
+    },
+    {
+      "id": "g15-022",
+      "src": "SDGR25",
+      "prompt": "How much biodiversity development finance flowed in 2023?",
+      "options": [
+        "$1.19 billion",
+        "$11.9 billion",
+        "$119 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$11.9 billion, up from $9.5 billion in 2015 — but only 7% of all development finance goes to biodiversity.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Compare $11.9 billion with the $1 billion needed daily for land restoration."
+    },
+    {
+      "id": "g15-023",
+      "src": "SDGR25",
+      "prompt": "Funding where biodiversity is the PRINCIPAL objective went from $4.6 billion in 2015 to:",
+      "options": [
+        "$46 billion",
+        "$8.6 billion",
+        "$3.8 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It FELL to $3.8 billion. Total biodiversity finance rose, but money dedicated primarily to nature actually declined.",
+      "whyWrong": [
+        "Ten times too high.",
+        "Principal-objective funding fell rather than rose.",
+        null
+      ],
+      "action": "Ask the difference between a principal and a secondary objective."
+    },
+    {
+      "id": "g15-024",
+      "src": "SDGR25",
+      "prompt": "Biodiversity is what share of all development finance?",
+      "options": [
+        "70%",
+        "27%",
+        "7%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "7% — nature gets a small slice, even though land degradation affects 3.2 billion people directly.",
+      "whyWrong": [
+        "Vastly too high.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Ask what the other 93% of development finance funds."
+    },
+    {
+      "id": "g15-025",
+      "src": "SDGR25",
+      "prompt": "Private biodiversity finance grew from $748 million in 2021 to about:",
+      "options": [
+        "It fell to zero",
+        "$800 million",
+        "$4 billion in 2023"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Roughly $4 billion by 2023 — more than five times in two years. Private money is the fastest-growing part of nature finance.",
+      "whyWrong": [
+        "Private finance expanded rapidly.",
+        "The growth was far larger.",
+        null
+      ],
+      "action": "Ask why a company would fund conservation."
+    },
+    {
+      "id": "g15-026",
+      "src": "SDGR25",
+      "prompt": "How much roundwood does the world harvest each year?",
+      "options": [
+        "4 million cubic metres",
+        "4 billion cubic metres",
+        "4,000 cubic metres"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "4 billion cubic metres — for construction, paper, and firewood, which is still the main cooking fuel for billions.",
+      "whyWrong": [
+        "A thousand times too low.",
+        null,
+        "Vastly too low."
+      ],
+      "action": "List five wooden or paper items around you."
+    },
+    {
+      "id": "g15-027",
+      "src": "SDGR25",
+      "prompt": "Land degradation rising from 11.3% to 15.5% in four years means:",
+      "options": [
+        "A trivial change",
+        "An area larger than many continents was degraded in that short window",
+        "Land improved"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A 4.2-point rise across the world's land surface is an enormous absolute area — degrading faster than restoration can keep up.",
+      "whyWrong": [
+        "It is one of the fastest-moving negative indicators.",
+        null,
+        "Degradation increased substantially."
+      ],
+      "action": "Ask how much land 4.2% of the Earth's surface is."
+    },
+    {
+      "id": "g15-028",
+      "src": "SDGR25",
+      "prompt": "Land degradation means:",
+      "options": [
+        "Land becoming legally protected",
+        "Land getting cheaper",
+        "Soil, vegetation and water systems losing their ability to support life and crops"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Erosion, salt build-up, nutrient loss and drying all reduce what land can produce — which is why it affects 3.2 billion people's livelihoods.",
+      "whyWrong": [
+        "Protection is the opposite of degradation.",
+        "It's an ecological process, not a market one.",
+        null
+      ],
+      "action": "Look at bare soil after heavy rain and see where it goes."
+    },
+    {
+      "id": "g15-029",
+      "src": "SDGR25",
+      "prompt": "38% of tree species facing extinction matters because:",
+      "options": [
+        "Only rare trees are affected",
+        "Losing tree diversity weakens forests' resilience to pests, drought and fire",
+        "Trees are easily replaced"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A forest of one species falls to one disease. Diversity is what lets forests survive shocks — which is why species loss matters beyond area loss.",
+      "whyWrong": [
+        "47,282 species were assessed, common ones included.",
+        null,
+        "A mature forest takes decades to centuries to replace."
+      ],
+      "action": "Look up a tree species wiped out by a single disease."
+    },
+    {
+      "id": "g15-030",
+      "src": "SDGR25",
+      "prompt": "Brazil halved Amazon deforestation in one year. The clearest lesson is:",
+      "options": [
+        "Enforcement and political will can change the rate very quickly",
+        "Deforestation is unstoppable",
+        "Nothing can be measured"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Forests aren't lost by natural forces — they're cleared by decisions. Change the decisions and the satellite data changes within months.",
+      "whyWrong": [
+        null,
+        "Brazil cut it 50% in a single year.",
+        "Satellite monitoring makes deforestation highly measurable."
+      ],
+      "action": "Look up how satellites detect deforestation."
+    },
+    {
+      "id": "g15-031",
+      "src": "SDGR25",
+      "prompt": "Land protection is 17.6% while ocean protection is 8.4%. This shows:",
+      "options": [
+        "The ocean is better protected",
+        "Land conservation is roughly twice as far along as marine",
+        "They're identical"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Land is easier to fence, patrol and legislate. The ocean's vastness and shared ownership make protection far harder.",
+      "whyWrong": [
+        "Ocean protection is less than half the land figure.",
+        null,
+        "The gap is over nine percentage points."
+      ],
+      "action": "Ask who owns the middle of the ocean."
+    },
+    {
+      "id": "g15-032",
+      "src": "SDGR25",
+      "prompt": "Key biodiversity area protection nearly doubled from 25% to 44%. That happened over:",
+      "options": [
+        "200 years",
+        "2 years",
+        "About 24 years"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "From 2000 to 2024 — showing that sustained conservation policy compounds into large gains over decades.",
+      "whyWrong": [
+        "Modern protected area systems are much younger.",
+        "Far too short a period for such change.",
+        null
+      ],
+      "action": "Ask what your country protected in the last twenty years."
+    },
+    {
+      "id": "g15-033",
+      "src": "SDGR25",
+      "prompt": "Wildfires emitting 6,687 megatons of CO2 creates a feedback loop because:",
+      "options": [
+        "Fires cool the planet",
+        "Warming causes more fires, and fires release carbon that causes more warming",
+        "There is no connection"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Hotter, drier conditions make fires more likely; each fire adds carbon that makes conditions hotter still. Feedback loops are what make climate change accelerate.",
+      "whyWrong": [
+        "Fires release large amounts of stored carbon.",
+        null,
+        "Fire and climate are tightly linked."
+      ],
+      "action": "Look up how fire seasons have changed where you live."
+    },
+    {
+      "id": "g15-034",
+      "src": "SDGR25",
+      "prompt": "Total biodiversity finance rose but principal-objective finance fell. This suggests:",
+      "options": [
+        "Nothing changed",
+        "Nature funding doubled",
+        "More money mentions nature, while less is dedicated primarily to it"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "$9.5bn to $11.9bn total, but $4.6bn to $3.8bn for projects where nature is the main aim — headline growth hides a decline in dedicated funding.",
+      "whyWrong": [
+        "Both figures moved, in opposite directions.",
+        "Dedicated funding fell.",
+        null
+      ],
+      "action": "Ask why headline totals can hide a decline."
+    },
+    {
+      "id": "g15-035",
+      "src": "SDGR25",
+      "prompt": "1.5 billion hectares of restoration by 2030 requires restoring roughly:",
+      "options": [
+        "It's already done",
+        "1.5 million hectares a year",
+        "300 million hectares a year"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Around 300 million hectares a year over five years — thirty times the rate at which forests are currently being lost.",
+      "whyWrong": [
+        "Degraded land rose to 15.5% by 2019.",
+        "A hundred times too low.",
+        null
+      ],
+      "action": "Divide 1.5 billion by five years."
+    },
+    {
+      "id": "g15-036",
+      "src": "SDGR25",
+      "prompt": "25% of freshwater species being threatened is notable because freshwater covers:",
+      "options": [
+        "Most of Earth's surface",
+        "Under 1% of Earth's surface, yet holds a huge share of biodiversity",
+        "None of Earth's surface"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Rivers and lakes are a tiny fraction of the planet but home to an outsized share of species — which makes them extraordinarily vulnerable.",
+      "whyWrong": [
+        "Oceans cover most of the surface; freshwater is a sliver.",
+        null,
+        "Freshwater ecosystems are extensive despite small area."
+      ],
+      "action": "Ask what happens to a river species when the river is dammed."
+    },
+    {
+      "id": "g15-037",
+      "src": "SDGR25",
+      "prompt": "The Red List Index falling 12% since 1993 means:",
+      "options": [
+        "12% of species went extinct",
+        "Assessed species are moving steadily closer to extinction overall",
+        "Species are recovering"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "The index tracks aggregate extinction risk across assessed species. A steady 12% decline means the overall trend is toward loss, not recovery.",
+      "whyWrong": [
+        "It measures risk, not completed extinctions.",
+        null,
+        "The index has declined without interruption."
+      ],
+      "action": "Look up a species that moved to a lower risk category."
+    },
+    {
+      "id": "g15-038",
+      "src": "SDGR25",
+      "prompt": "Forests covering 4.1 billion hectares means the average person has about:",
+      "options": [
+        "No forest",
+        "50 hectares",
+        "Half a hectare of forest"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Roughly half a hectare each — 4.1 billion hectares divided among 8 billion people, and falling every year.",
+      "whyWrong": [
+        "Forests still cover 31% of land.",
+        "A hundred times too high.",
+        null
+      ],
+      "action": "Divide 4.1 billion by 8 billion."
+    },
+    {
+      "id": "g15-039",
+      "src": "SDGR25",
+      "prompt": "Land degrades at 100 million hectares a year while forest is lost at 10 million. This means:",
+      "options": [
+        "Degradation is ten times faster than deforestation",
+        "Deforestation is the bigger problem",
+        "They are the same"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Degradation is the larger and less visible crisis — land doesn't have to be cleared to stop producing food.",
+      "whyWrong": [
+        null,
+        "Degradation is ten times the rate.",
+        "The rates differ by a factor of ten."
+      ],
+      "action": "Ask why degradation gets less attention than deforestation."
+    },
+    {
+      "id": "g15-040",
+      "src": "SDGR25",
+      "prompt": "68% of key biodiversity areas are protected, but that leaves:",
+      "options": [
+        "All of them protected",
+        "Nothing",
+        "Nearly a third of the world's most critical habitats unprotected"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "32% of the sites scientists identify as most important for species survival still have no formal protection at all.",
+      "whyWrong": [
+        "Coverage is strong but incomplete.",
+        "A significant share remains unprotected.",
+        null
+      ],
+      "action": "Ask what stops a critical site being protected."
+    },
+    {
+      "id": "g15-041",
+      "src": "SDGR25",
+      "prompt": "Deforestation slowing from 12 to 10 million hectares a year is:",
+      "options": [
+        "Complete success",
+        "Real progress, but nowhere near the pace needed for 2030",
+        "No progress at all"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A 17% improvement is genuine — but at that rate it takes 25 years to reach zero, long past the 2030 deadline.",
+      "whyWrong": [
+        "10 million hectares are still lost yearly.",
+        null,
+        "The rate did measurably improve."
+      ],
+      "action": "Ask what 'progress but not enough' means for a deadline."
+    },
+    {
+      "id": "g15-042",
+      "src": "SDGR25",
+      "prompt": "Why does forest loss matter for climate as well as wildlife?",
+      "options": [
+        "Forests store carbon; clearing them releases it and removes future absorption",
+        "It doesn't",
+        "Forests emit carbon when standing"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A cleared forest gives up its stored carbon and stops absorbing more — a double loss. Wildfires alone released 6,687 megatons in 2023.",
+      "whyWrong": [
+        null,
+        "Forests are among the largest carbon stores on land.",
+        "Standing forests absorb carbon on balance."
+      ],
+      "action": "Look up how much carbon one mature tree stores."
+    },
+    {
+      "id": "g15-043",
+      "src": "SDGR25",
+      "prompt": "$66 billion a year against a $365 billion need means restoration is funded at:",
+      "options": [
+        "About 80%",
+        "About 18%",
+        "Fully"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 18% — the plans exist and the science exists; the money is roughly a fifth of what the plans require.",
+      "whyWrong": [
+        "Far above the actual coverage.",
+        null,
+        "There is a major shortfall."
+      ],
+      "action": "Divide 66 by 365."
+    },
+    {
+      "id": "g15-044",
+      "src": "SDGR25",
+      "prompt": "Which Goal 15 indicator is clearly improving?",
+      "options": [
+        "Protection of key biodiversity areas, from 25% to 44%",
+        "Land degradation",
+        "The Red List Index"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Protection nearly doubled since 2000. Degradation rose from 11.3% to 15.5% and the Red List Index fell 12% — both worsening.",
+      "whyWrong": [
+        null,
+        "Degradation rose sharply.",
+        "The Red List Index has declined 12%."
+      ],
+      "action": "Find one protected area created near you in your lifetime."
+    },
+    {
+      "id": "g15-045",
+      "src": "SDGR25",
+      "prompt": "47,000 threatened species is likely an undercount because:",
+      "options": [
+        "Scientists exaggerate",
+        "Most species on Earth have never been formally assessed",
+        "There are only 47,000 species"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Assessment requires years of fieldwork per species. Insects, fungi and deep-sea life are barely covered, so the real figure is far higher.",
+      "whyWrong": [
+        "Red List assessments are conservative by design.",
+        null,
+        "Millions of species exist; most are unassessed."
+      ],
+      "action": "Look up how many species scientists estimate exist."
+    },
+    {
+      "id": "g15-046",
+      "src": "SDGR25",
+      "prompt": "Private biodiversity finance rising from $748 million to $4 billion suggests:",
+      "options": [
+        "Companies increasingly see nature loss as a business risk",
+        "Governments stopped funding",
+        "Nature became cheaper"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Supply chains depend on soil, water and pollinators. As those degrade, companies start paying to protect what their business rests on.",
+      "whyWrong": [
+        null,
+        "Public finance rose from $9.5bn to $11.9bn.",
+        "Restoration costs are rising, not falling."
+      ],
+      "action": "Name a product that depends on pollinating insects."
+    },
+    {
+      "id": "g15-047",
+      "src": "SDGR25",
+      "prompt": "3.2 billion people affected by land degradation are mostly:",
+      "options": [
+        "Farmers, herders and rural communities who depend directly on the land",
+        "City office workers",
+        "Nobody in particular"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "When soil fails, the people who eat from it lose food and income first — which is why land degradation drives migration and conflict.",
+      "whyWrong": [
+        null,
+        "Urban workers feel it through food prices, not directly.",
+        "It affects roughly 40% of humanity."
+      ],
+      "action": "Ask where a farming family goes when the land fails."
+    },
+    {
+      "id": "g15-048",
+      "src": "SDGR25",
+      "prompt": "Forests cover 31% of land while 17.6% of land is protected. This means:",
+      "options": [
+        "Most forest lies outside protected areas",
+        "All forest is protected",
+        "No forest is protected"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Protected areas include deserts, grasslands and mountains as well as forest — so most of the world's forest has no formal protection.",
+      "whyWrong": [
+        null,
+        "Protected area is well below forest area.",
+        "Substantial forest area is protected."
+      ],
+      "action": "Check whether the nearest woodland to you is protected."
+    },
+    {
+      "id": "g15-049",
+      "src": "SDGR25",
+      "prompt": "Restoring 1.5 billion hectares would mainly deliver:",
+      "options": [
+        "Nothing measurable",
+        "Only scenery",
+        "Food security, carbon storage and habitat, all at once"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Restored land feeds people, stores carbon and shelters species simultaneously — which is why it appears in the climate, hunger and biodiversity goals alike.",
+      "whyWrong": [
+        "Restoration produces measurable gains across several goals.",
+        "The benefits are economic and ecological, not aesthetic.",
+        null
+      ],
+      "action": "Find a restoration project near you and see what it produced."
+    },
+    {
+      "id": "g15-050",
+      "src": "SDGR25",
+      "prompt": "The most under-recognised Goal 15 fact is:",
+      "options": [
+        "Land degrades ten times faster than forests are cleared, affecting 3.2 billion people",
+        "Forests cover 31% of land",
+        "Protected areas exist"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Deforestation gets the headlines; degradation is ten times larger, quieter, and hits the livelihoods of nearly half of humanity.",
+      "whyWrong": [
+        null,
+        "True, but widely known.",
+        "Protection is the success story, not the hidden crisis."
+      ],
+      "action": "Look for signs of soil erosion near where you live."
+    }
+  ]
+}
