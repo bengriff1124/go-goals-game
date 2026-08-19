@@ -69,6 +69,9 @@
   }
   .mode-tab .mt-title{ font-weight:800; font-size:14px; color:var(--ink); display:flex; align-items:center; gap:6px; }
   .mode-tab .mt-sub{ font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .mode-tab.primary{ flex:1 1 100%; padding:16px 18px; }
+  .mode-tab.primary .mt-title{ font-size:16px; }
+  .mode-tab.primary .mt-sub{ font-size:12.5px; }
   .mode-tab.active{ border-color:var(--accent); background:#f2faf9; }
   .mode-tab.active .mt-title{ color:var(--accent-dark); }
 
@@ -546,22 +549,22 @@
   </div>
 
   <div class="mode-tabs" id="modeTabs">
-    <div class="mode-tab active" data-mode="local">
-      <div class="mt-title">📍 One Device</div>
-      <div class="mt-sub">Everyone plays together, passing this device around the table.</div>
-    </div>
-    <div class="mode-tab" data-mode="host">
-      <div class="mt-title">🖥️ Host for Teams</div>
-      <div class="mt-sub">You run the game on a shared screen; each team joins from their own Chromebook.</div>
+    <div class="mode-tab primary active" data-mode="host">
+      <div class="mt-title">🖥️ Teacher Host</div>
+      <div class="mt-sub">Run the game on the classroom screen. Each team joins from their own Chromebook with a code.</div>
     </div>
     <div class="mode-tab" data-mode="join">
       <div class="mt-title">📱 Join a Game</div>
-      <div class="mt-sub">A teacher already started a hosted game &mdash; enter its code to join as a team.</div>
+      <div class="mt-sub">Your teacher already started a game &mdash; enter its code to join as a team.</div>
+    </div>
+    <div class="mode-tab" data-mode="local">
+      <div class="mt-title">📍 One Device</div>
+      <div class="mt-sub">Everyone plays together, passing this device around the table.</div>
     </div>
   </div>
 
   <!-- ---- Local (single-device) setup ---- -->
-  <div class="card" id="localSetupPanel">
+  <div class="card hidden" id="localSetupPanel">
     <div><strong>How many teams?</strong></div>
     <div class="count-row" id="countRow"></div>
     <div class="hint">Each team shares one token and draws a nation at random. Set how many players sit on each team below.</div>
@@ -572,7 +575,7 @@
   </div>
 
   <!-- ---- Host setup + lobby ---- -->
-  <div class="card hidden" id="hostSetupPanel">
+  <div class="card" id="hostSetupPanel">
     <div id="hostPickWrap">
       <div class="hint">You'll get a short game code to share with the room. Teams add themselves from their own Chromebooks &mdash; you start the game when everyone's in.</div>
       <button class="start-btn" id="hostCreateBtn">Create Game</button>
