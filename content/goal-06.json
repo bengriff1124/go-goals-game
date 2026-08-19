@@ -1,0 +1,914 @@
+{
+  "goal": 6,
+  "goalName": "Clean Water and Sanitation",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 6",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-06/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g06-001",
+      "src": "SDGR25",
+      "prompt": "How many people still lack safely managed drinking water?",
+      "options": [
+        "2.2 billion",
+        "220 million",
+        "22 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "2.2 billion people — more than one in four of us — can't rely on safe water at home.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Count how many times you used clean water today."
+    },
+    {
+      "id": "g06-002",
+      "src": "SDGR25",
+      "prompt": "How many people lack safely managed sanitation — a safe toilet?",
+      "options": [
+        "34 million",
+        "340 million",
+        "3.4 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "3.4 billion people — over 40% of the world. Sanitation lags even further behind water.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what happens to waste where there's no sewer or safe toilet."
+    },
+    {
+      "id": "g06-003",
+      "src": "SDGR25",
+      "prompt": "How many people can't wash their hands with soap and water at home?",
+      "options": [
+        "1.7 billion",
+        "170 million",
+        "17 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.7 billion people. Handwashing is the cheapest disease prevention there is, and a fifth of the world can't do it at home.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Count the handwashing spots in your home."
+    },
+    {
+      "id": "g06-004",
+      "src": "SDGR25",
+      "prompt": "What share of the world has safely managed drinking water?",
+      "options": [
+        "74%",
+        "95%",
+        "45%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "74%, up from 68% in 2015. Real progress — and still 2.2 billion people short.",
+      "whyWrong": [
+        null,
+        "Too optimistic — over a quarter lack safe water.",
+        "Too pessimistic — nearly three-quarters have it."
+      ],
+      "action": "Compare 68% in 2015 with 74% today."
+    },
+    {
+      "id": "g06-005",
+      "src": "SDGR25",
+      "prompt": "What share of the world has safely managed sanitation?",
+      "options": [
+        "28%",
+        "88%",
+        "58%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "58%, up from 48% in 2015. Sanitation improved faster than water in percentage terms, but from a much lower base.",
+      "whyWrong": [
+        "Too pessimistic — most people have it.",
+        "Too optimistic — over 40% lack it.",
+        null
+      ],
+      "action": "Ask why sanitation lags behind drinking water."
+    },
+    {
+      "id": "g06-006",
+      "src": "SDGR25",
+      "prompt": "Since 1970, freshwater species populations have declined by:",
+      "options": [
+        "8%",
+        "83%",
+        "They increased"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "83% — the steepest decline of any group of species on Earth. Rivers and lakes have been hit harder than oceans or forests.",
+      "whyWrong": [
+        "Ten times too small.",
+        null,
+        "They collapsed rather than grew."
+      ],
+      "action": "Look up one freshwater species that's disappearing near you."
+    },
+    {
+      "id": "g06-007",
+      "src": "SDGR25",
+      "prompt": "What share of freshwater fish species are at risk of extinction?",
+      "options": [
+        "75%",
+        "2%",
+        "25%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "A quarter of all freshwater fish species are threatened with extinction.",
+      "whyWrong": [
+        "Too high, though the real figure is alarming.",
+        "Ten times too optimistic.",
+        null
+      ],
+      "action": "Name a fish that lives in fresh water near you."
+    },
+    {
+      "id": "g06-008",
+      "src": "SDGR25",
+      "prompt": "How much of the world's domestic wastewater is safely treated before being released?",
+      "options": [
+        "95%",
+        "56%",
+        "10%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Only 56% of the 332 billion cubic metres we produce. Nearly half of household wastewater goes back into the environment untreated.",
+      "whyWrong": [
+        "Far too optimistic.",
+        null,
+        "Too pessimistic — just over half is treated."
+      ],
+      "action": "Find out where your household's wastewater goes."
+    },
+    {
+      "id": "g06-009",
+      "src": "SDGR25",
+      "prompt": "How many children go to a school with no basic drinking water?",
+      "options": [
+        "447 million",
+        "44 million",
+        "4 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "447 million children have no basic drinking water at school — 77% of schools have it, meaning nearly a quarter don't.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask how you'd concentrate all day without water."
+    },
+    {
+      "id": "g06-010",
+      "src": "SDGR25",
+      "prompt": "How many children are at schools with no basic hygiene facilities?",
+      "options": [
+        "64 million",
+        "646 million",
+        "6 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "646 million children — only 67% of schools provide basic hygiene like handwashing.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Check whether there's soap in your school's bathrooms."
+    },
+    {
+      "id": "g06-011",
+      "src": "SDGR25",
+      "prompt": "Global water stress has changed how much since 2015?",
+      "options": [
+        "It tripled",
+        "It halved",
+        "Not at all — stuck at 18%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Water stress has been flat at 18% since 2015 — no progress at all on one of Goal 6's central measures.",
+      "whyWrong": [
+        "It has been stable, not soaring.",
+        "There has been no improvement.",
+        null
+      ],
+      "action": "Ask what 'water stress' actually measures."
+    },
+    {
+      "id": "g06-012",
+      "src": "SDGR25",
+      "prompt": "What share of people live with high or critical water stress?",
+      "options": [
+        "1%",
+        "50%",
+        "10%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "10% of the world's population — around 800 million people living where water demand seriously outstrips supply.",
+      "whyWrong": [
+        "Too low by a factor of ten.",
+        "Too high — though water stress affects many regions.",
+        null
+      ],
+      "action": "Look up whether your region is water-stressed."
+    },
+    {
+      "id": "g06-013",
+      "src": "SDGR25",
+      "prompt": "Which region's water stress got significantly worse since 2015?",
+      "options": [
+        "Northern Africa and Western Asia",
+        "Northern Europe",
+        "Central America"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Northern Africa and Western Asia saw a 12% increase in water stress — already among the driest regions on Earth.",
+      "whyWrong": [
+        null,
+        "Northern Europe is comparatively water-rich.",
+        "Not identified as a major worsening region in this data."
+      ],
+      "action": "Find that region on a map and note its climate."
+    },
+    {
+      "id": "g06-014",
+      "src": "SDGR25",
+      "prompt": "How efficiently the world uses water improved since 2015 by:",
+      "options": [
+        "2%",
+        "23%",
+        "It got worse"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Water-use efficiency rose 23%, from $17.5 to $21.5 of economic value per cubic metre — we're getting more from every drop.",
+      "whyWrong": [
+        "Ten times too small.",
+        null,
+        "Efficiency improved substantially."
+      ],
+      "action": "Think of one way to get more use from the same water."
+    },
+    {
+      "id": "g06-015",
+      "src": "SDGR25",
+      "prompt": "What share of schools have basic sanitation?",
+      "options": [
+        "38%",
+        "98%",
+        "78%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "78% — leaving 427 million children at schools with no proper toilet.",
+      "whyWrong": [
+        "Too pessimistic — most schools have sanitation.",
+        "Too optimistic — over a fifth of schools lack it.",
+        null
+      ],
+      "action": "Ask why school toilets matter especially for girls."
+    },
+    {
+      "id": "g06-016",
+      "src": "SDGR25",
+      "prompt": "Basic hygiene at home reaches what share of people?",
+      "options": [
+        "80%",
+        "99%",
+        "40%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "80%, up sharply from 66% in 2015 — one of the fastest improvements in Goal 6, partly driven by COVID-era handwashing campaigns.",
+      "whyWrong": [
+        null,
+        "Too optimistic — 1.7 billion people still lack it.",
+        "Too pessimistic — four in five have it."
+      ],
+      "action": "Ask what changed about handwashing after 2020."
+    },
+    {
+      "id": "g06-017",
+      "src": "SDGR25",
+      "prompt": "How much domestic wastewater does the world produce each year?",
+      "options": [
+        "332 billion cubic metres",
+        "332 million",
+        "332 thousand"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "332 billion cubic metres — and only 56% of it is safely treated before returning to rivers, lakes and seas.",
+      "whyWrong": [
+        null,
+        "A thousand times too low.",
+        "Vastly too low."
+      ],
+      "action": "Ask what untreated wastewater does to a river."
+    },
+    {
+      "id": "g06-018",
+      "src": "SDGR25",
+      "prompt": "Between water and sanitation, which is further behind?",
+      "options": [
+        "Sanitation, 58% versus 74%",
+        "Water, 58% versus 74%",
+        "They're identical"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Sanitation at 58% trails water at 74%. Toilets and sewers cost more and are politically less popular than taps.",
+      "whyWrong": [
+        null,
+        "It's the other way round.",
+        "There's a 16-point gap."
+      ],
+      "action": "Ask why a government might build taps before toilets."
+    },
+    {
+      "id": "g06-019",
+      "src": "SDGR25",
+      "prompt": "Freshwater species have fallen 83% since 1970. How does that compare to other habitats?",
+      "options": [
+        "It's about average",
+        "It's the mildest",
+        "It's the steepest decline of any habitat"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Freshwater has been hit harder than land or ocean habitats — rivers and lakes are small, easily polluted, and heavily dammed.",
+      "whyWrong": [
+        "It's substantially worse than average.",
+        "It's the most severe decline recorded.",
+        null
+      ],
+      "action": "Ask what a dam does to fish that migrate."
+    },
+    {
+      "id": "g06-020",
+      "src": "SDGR25",
+      "prompt": "Safe drinking water coverage rose from 68% to 74% in nine years. At that pace, will everyone have it by 2030?",
+      "options": [
+        "Yes, easily",
+        "No — nowhere close",
+        "Yes, exactly on time"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 0.7 points a year with 26 points to go means roughly 37 more years. Goal 6 will be missed by decades at this pace.",
+      "whyWrong": [
+        "The required pace is several times faster.",
+        null,
+        "The gap is far too large."
+      ],
+      "action": "Do the arithmetic: 26 points at 0.7 a year."
+    },
+    {
+      "id": "g06-021",
+      "src": "SDGR25",
+      "prompt": "Roughly what share of the world lacks a safe toilet?",
+      "options": [
+        "Over 40%",
+        "About 5%",
+        "About 80%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "With 58% covered, over 40% — some 3.4 billion people — lack safely managed sanitation.",
+      "whyWrong": [
+        null,
+        "Vastly too optimistic.",
+        "Too high — most people do have safe sanitation."
+      ],
+      "action": "Ask what 'safely managed' adds to just 'having a toilet'."
+    },
+    {
+      "id": "g06-022",
+      "src": "SDGR25",
+      "prompt": "Why does handwashing matter so much for health?",
+      "options": [
+        "It only matters in hospitals",
+        "It's the cheapest way to stop disease spreading",
+        "It has little effect"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Handwashing with soap prevents diarrhoeal and respiratory infections cheaply and effectively — and 1.7 billion people can't do it at home.",
+      "whyWrong": [
+        "Household handwashing prevents a large share of childhood illness.",
+        null,
+        "It's among the most effective public health measures known."
+      ],
+      "action": "Time yourself washing hands properly — 20 seconds."
+    },
+    {
+      "id": "g06-023",
+      "src": "SDGR25",
+      "prompt": "Water-use efficiency is measured as:",
+      "options": [
+        "Litres used per person",
+        "Economic value produced per cubic metre",
+        "Number of taps"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "It's the economic value generated per cubic metre of water — currently $21.5, up from $17.5 in 2015.",
+      "whyWrong": [
+        "That's consumption, not efficiency.",
+        null,
+        "Infrastructure count isn't the efficiency measure."
+      ],
+      "action": "Ask which uses more water: a T-shirt or a burger?"
+    },
+    {
+      "id": "g06-024",
+      "src": "SDGR25",
+      "prompt": "How many children have no basic sanitation at school?",
+      "options": [
+        "42 million",
+        "427 million",
+        "4 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "427 million children — and 447 million lack drinking water at school.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask what a student does all day with no school toilet."
+    },
+    {
+      "id": "g06-025",
+      "src": "SDGR25",
+      "prompt": "Global water stress sits at 18%. Is that improving?",
+      "options": [
+        "No — unchanged since 2015",
+        "Yes — halved",
+        "Yes — down a third"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Completely flat since 2015. Rising demand has cancelled out every efficiency gain.",
+      "whyWrong": [
+        null,
+        "There has been no reduction.",
+        "The figure hasn't moved."
+      ],
+      "action": "Ask how efficiency can rise while stress stays flat."
+    },
+    {
+      "id": "g06-026",
+      "src": "SDGR25",
+      "prompt": "Which improved fastest since 2015?",
+      "options": [
+        "Sanitation, 48% to 58%",
+        "Drinking water, 68% to 74%",
+        "Basic hygiene, 66% to 80%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Hygiene jumped 14 percentage points — faster than sanitation's 10 or water's 6, helped by the pandemic's focus on handwashing.",
+      "whyWrong": [
+        "Sanitation rose 10 points, still less than hygiene.",
+        "Water rose 6 points, the slowest of the three.",
+        null
+      ],
+      "action": "Ask whether a crisis can accelerate good change."
+    },
+    {
+      "id": "g06-027",
+      "src": "SDGR25",
+      "prompt": "A quarter of freshwater fish species face extinction. What's driving it?",
+      "options": [
+        "Pollution, dams and habitat loss",
+        "Too many fish being born",
+        "Rivers getting cleaner"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Freshwater habitats are polluted by untreated wastewater — 44% of it globally — dammed, drained and overfished, all at once.",
+      "whyWrong": [
+        null,
+        "Populations have declined 83%, not grown.",
+        "Nearly half of wastewater is released untreated."
+      ],
+      "action": "Look up what lives in your nearest river."
+    },
+    {
+      "id": "g06-028",
+      "src": "SDGR25",
+      "prompt": "Which is true about school water and sanitation?",
+      "options": [
+        "Roughly a quarter of schools lack water or toilets",
+        "Nearly all schools have both",
+        "Almost no schools have either"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "77% have drinking water and 78% have sanitation — so roughly a quarter of the world's schools lack one or both.",
+      "whyWrong": [
+        null,
+        "Hundreds of millions of children attend schools without them.",
+        "Most schools do have both."
+      ],
+      "action": "Ask how many schools in your area would fail that test."
+    },
+    {
+      "id": "g06-029",
+      "src": "SDGR25",
+      "prompt": "Sanitation coverage rose 10 points since 2015. How many still lack it?",
+      "options": [
+        "34 million",
+        "340 million",
+        "3.4 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "3.4 billion people. Even after a decade of the fastest sanitation progress on record, over 40% of humanity is uncovered.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Compare 3.4 billion with the world population."
+    },
+    {
+      "id": "g06-030",
+      "src": "SDGR25",
+      "prompt": "What does 'safely managed' drinking water mean?",
+      "options": [
+        "Any water at all",
+        "Available at home, when needed, and free from contamination",
+        "Bottled water only"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "It must be accessible at home, available when needed, and free from contamination — a much higher bar than simply having a water source somewhere.",
+      "whyWrong": [
+        "Untreated or distant sources don't count.",
+        null,
+        "Piped and protected sources both count; bottled isn't required."
+      ],
+      "action": "Check your water against all three tests."
+    },
+    {
+      "id": "g06-031",
+      "src": "SDGR25",
+      "prompt": "Freshwater species declined 83% since 1970. Roughly how many decades is that?",
+      "options": [
+        "About five",
+        "About one",
+        "About twenty"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Around five decades — a collapse within a single human lifetime.",
+      "whyWrong": [
+        null,
+        "1970 is over 50 years ago.",
+        "That would reach back before 1830."
+      ],
+      "action": "Ask someone born before 1970 what local rivers were like."
+    },
+    {
+      "id": "g06-032",
+      "src": "SDGR25",
+      "prompt": "How much water-related economic value does each cubic metre now generate?",
+      "options": [
+        "$215",
+        "$2.15",
+        "$21.5"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "$21.5 per cubic metre, up from $17.5 in 2015 — a 23% efficiency improvement.",
+      "whyWrong": [
+        "Ten times too high.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask which industries use the most water per dollar earned."
+    },
+    {
+      "id": "g06-033",
+      "src": "SDGR25",
+      "prompt": "Which group of people is most affected by a lack of school toilets?",
+      "options": [
+        "Nobody in particular",
+        "Only teachers",
+        "Girls, especially during their period"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "With 427 million children at schools without sanitation, girls are disproportionately affected — many miss school entirely during menstruation.",
+      "whyWrong": [
+        "The impact falls unevenly, especially on girls.",
+        "It affects all students, but girls face the sharpest barrier.",
+        null
+      ],
+      "action": "Ask what a school needs so nobody misses days."
+    },
+    {
+      "id": "g06-034",
+      "src": "SDGR25",
+      "prompt": "Nearly half of wastewater goes untreated. Where does it end up?",
+      "options": [
+        "In rivers, lakes and seas",
+        "In sealed underground vaults",
+        "It evaporates harmlessly"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Untreated wastewater flows into freshwater systems and oceans — a major driver of the 83% collapse in freshwater species.",
+      "whyWrong": [
+        null,
+        "There's no such containment at scale.",
+        "It carries pollutants that don't simply vanish."
+      ],
+      "action": "Trace where your nearest river flows to."
+    },
+    {
+      "id": "g06-035",
+      "src": "SDGR25",
+      "prompt": "Water stress affects 10% of people at high or critical levels. What does that mean day to day?",
+      "options": [
+        "Rain falls too often",
+        "Water tastes unusual",
+        "Demand seriously outstrips available supply"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It means a region is withdrawing far more water than is being replenished — leading to rationing, falling groundwater and dry rivers.",
+      "whyWrong": [
+        "Water stress is about scarcity, not excess.",
+        "Stress measures quantity, not taste.",
+        null
+      ],
+      "action": "Ask what your area does during a drought."
+    },
+    {
+      "id": "g06-036",
+      "src": "SDGR25",
+      "prompt": "Basic hygiene coverage went from 66% to 80%. How many still lack it?",
+      "options": [
+        "1.7 billion",
+        "170 million",
+        "17 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.7 billion people still can't wash their hands with soap and water at home, despite the fastest improvement of any Goal 6 measure.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask what soap costs where you live."
+    },
+    {
+      "id": "g06-037",
+      "src": "SDGR25",
+      "prompt": "Which Goal 6 measure has made NO progress since 2015?",
+      "options": [
+        "Drinking water",
+        "Water stress",
+        "Sanitation"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Water stress has been stuck at 18% for a decade, while water, sanitation and hygiene coverage all improved.",
+      "whyWrong": [
+        "It rose from 68% to 74%.",
+        null,
+        "It rose from 48% to 58%."
+      ],
+      "action": "Ask why scarcity is harder to fix than access."
+    },
+    {
+      "id": "g06-038",
+      "src": "SDGR25",
+      "prompt": "Roughly how many people is 10% of the world facing critical water stress?",
+      "options": [
+        "About 8 million",
+        "About 80 million",
+        "About 800 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Roughly 800 million people — comparable to the number living in extreme poverty.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Convert percentages into people whenever you read them."
+    },
+    {
+      "id": "g06-039",
+      "src": "SDGR25",
+      "prompt": "What share of schools provide basic hygiene facilities?",
+      "options": [
+        "97%",
+        "67%",
+        "27%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Only 67% — the weakest of the three school measures, behind water (77%) and sanitation (78%).",
+      "whyWrong": [
+        "Too optimistic — a third of schools lack them.",
+        null,
+        "Too pessimistic — two-thirds do have them."
+      ],
+      "action": "Compare 67%, 77% and 78% for schools."
+    },
+    {
+      "id": "g06-040",
+      "src": "SDGR25",
+      "prompt": "How much did safe drinking water coverage improve between 2015 and 2024?",
+      "options": [
+        "26 points",
+        "6 percentage points",
+        "It declined"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "From 68% to 74% — six points in nine years, far too slow for universal coverage by 2030.",
+      "whyWrong": [
+        "The improvement was much smaller.",
+        null,
+        "Coverage rose rather than fell."
+      ],
+      "action": "Ask what would speed this up."
+    },
+    {
+      "id": "g06-041",
+      "src": "SDGR25",
+      "prompt": "Which is bigger: people without safe water, or people without safe sanitation?",
+      "options": [
+        "Water, 3.4bn versus 2.2bn",
+        "Sanitation, 3.4bn versus 2.2bn",
+        "They're equal"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1.2 billion more people lack safe sanitation than lack safe water. Toilets are the bigger unfinished job.",
+      "whyWrong": [
+        "It's the other way round.",
+        null,
+        "There's a 1.2 billion difference."
+      ],
+      "action": "Ask why sanitation is harder to deliver than water."
+    },
+    {
+      "id": "g06-042",
+      "src": "SDGR25",
+      "prompt": "Freshwater covers a tiny share of Earth's surface but holds:",
+      "options": [
+        "No species at risk",
+        "A quarter of species now at risk of extinction",
+        "Only fish"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "25% of freshwater fish species are threatened, and freshwater populations overall have fallen 83% since 1970 — disproportionate loss in a small habitat.",
+      "whyWrong": [
+        "A quarter of freshwater fish species are threatened.",
+        null,
+        "Freshwater holds insects, amphibians, plants and mammals too."
+      ],
+      "action": "Name three non-fish animals that live in fresh water."
+    },
+    {
+      "id": "g06-043",
+      "src": "SDGR25",
+      "prompt": "Sanitation rose from 48% to 58%. What does that leave for 2030?",
+      "options": [
+        "Almost nothing to do",
+        "42 points in six years — far off track",
+        "The target is already met"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Ten points in nine years, with 42 to go. Universal sanitation by 2030 would need roughly seven times the current pace.",
+      "whyWrong": [
+        "3.4 billion people still lack it.",
+        null,
+        "The target is a long way from being met."
+      ],
+      "action": "Work out the yearly rate needed to close 42 points by 2030."
+    },
+    {
+      "id": "g06-044",
+      "src": "SDGR25",
+      "prompt": "Northern Africa and Western Asia's water stress rose 12% since 2015. What does that suggest?",
+      "options": [
+        "Already-dry regions are getting drier",
+        "Wet regions are drying",
+        "Water stress is falling everywhere"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The regions with the least water are seeing demand grow fastest — climate change and population growth compounding existing scarcity.",
+      "whyWrong": [
+        null,
+        "The worsening is concentrated in already-arid regions.",
+        "Global stress is flat and this region's is rising."
+      ],
+      "action": "Look up the driest inhabited region on Earth."
+    },
+    {
+      "id": "g06-045",
+      "src": "SDGR25",
+      "prompt": "Which best describes Goal 6's overall progress?",
+      "options": [
+        "Access improving slowly, ecosystems collapsing",
+        "Everything on track",
+        "Everything getting worse"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Water, sanitation and hygiene access all rose — while freshwater species fell 83% and water stress didn't budge. Human access and nature are moving in opposite directions.",
+      "whyWrong": [
+        null,
+        "All three access measures are far off the 2030 targets.",
+        "Access to water, sanitation and hygiene all improved."
+      ],
+      "action": "Ask whether you can supply people and protect rivers at once."
+    },
+    {
+      "id": "g06-046",
+      "src": "SDGR25",
+      "prompt": "How many cubic metres of wastewater are safely treated each year?",
+      "options": [
+        "About 332 billion",
+        "About 186 billion",
+        "About 18 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "56% of 332 billion is roughly 186 billion cubic metres treated — leaving about 146 billion released untreated.",
+      "whyWrong": [
+        "That's the total produced, not the amount treated.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Work out 56% of 332 billion yourself."
+    },
+    {
+      "id": "g06-047",
+      "src": "SDGR25",
+      "prompt": "Only 67% of schools have hygiene facilities. What's the direct consequence?",
+      "options": [
+        "Nothing measurable",
+        "646 million children can't wash their hands at school",
+        "Schools close"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "646 million children attend schools with no basic hygiene — a major driver of illness and missed school days.",
+      "whyWrong": [
+        "Handwashing access directly affects illness rates.",
+        null,
+        "Schools operate without these facilities, which is the problem."
+      ],
+      "action": "Ask how often illness keeps students home at your school."
+    },
+    {
+      "id": "g06-048",
+      "src": "SDGR25",
+      "prompt": "Water-use efficiency improved 23% but stress stayed flat. Why?",
+      "options": [
+        "Stress isn't measured",
+        "Efficiency doesn't affect stress",
+        "Demand grew as fast as efficiency improved"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Population and economic growth increased total demand, cancelling out the efficiency gains — a pattern seen across many environmental measures.",
+      "whyWrong": [
+        "Water stress is tracked annually at 18%.",
+        "Efficiency reduces stress, all else equal.",
+        null
+      ],
+      "action": "Ask where else efficiency gains get eaten by growth."
+    },
+    {
+      "id": "g06-049",
+      "src": "SDGR25",
+      "prompt": "Which of these numbers is largest?",
+      "options": [
+        "People without basic hygiene, 1.7bn",
+        "People without safe water, 2.2bn",
+        "People without safe sanitation, 3.4bn"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Sanitation is the biggest gap at 3.4 billion, then water at 2.2 billion, then hygiene at 1.7 billion.",
+      "whyWrong": [
+        "The smallest of the three, though still enormous.",
+        "Large, but 1.2 billion smaller than sanitation.",
+        null
+      ],
+      "action": "Rank the three gaps and say which you'd fix first."
+    },
+    {
+      "id": "g06-050",
+      "src": "SDGR25",
+      "prompt": "What's the most surprising thing about Goal 6?",
+      "options": [
+        "Every target is on track",
+        "Nothing has changed at all",
+        "Freshwater life fell 83% while human access improved"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Human access to water, sanitation and hygiene all rose since 2015 — while freshwater species collapsed by 83% and water stress stayed flat. Helping people and protecting nature aren't the same job.",
+      "whyWrong": [
+        "All Goal 6 targets are badly off track for 2030.",
+        "Water, sanitation and hygiene coverage all improved measurably.",
+        null
+      ],
+      "action": "Ask how a country could do both at once."
+    }
+  ]
+}

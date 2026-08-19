@@ -1,0 +1,914 @@
+{
+  "goal": 5,
+  "goalName": "Gender Equality",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 5",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-05/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g05-001",
+      "src": "SDGR25",
+      "prompt": "What share of seats in national parliaments are held by women?",
+      "options": [
+        "5%",
+        "50%",
+        "27.2%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "27.2% — just over a quarter, up from 22.3% in 2015. Women are half the world and hold roughly a quarter of the seats where laws are made.",
+      "whyWrong": [
+        "Too pessimistic — representation has improved substantially.",
+        "Nowhere near parity.",
+        null
+      ],
+      "action": "Look up how many women are in your country's parliament."
+    },
+    {
+      "id": "g05-002",
+      "src": "SDGR25",
+      "prompt": "At the current pace, how long until women hold half of management jobs?",
+      "options": [
+        "Nearly 100 years",
+        "About 10 years",
+        "It's already equal"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Nearly a century. Women's share of managerial roles rose only 2.4 percentage points in eight years, reaching about 30%.",
+      "whyWrong": [
+        null,
+        "Progress is roughly ten times slower than that.",
+        "Women hold under a third of management roles."
+      ],
+      "action": "Work out what year that would be. How old would you be?"
+    },
+    {
+      "id": "g05-003",
+      "src": "SDGR25",
+      "prompt": "How much more unpaid work — cooking, cleaning, caring — do women do than men?",
+      "options": [
+        "Less",
+        "Slightly more",
+        "Two and a half times as much"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Women spend two and a half times as many hours on unpaid domestic and care work. It's real work that no one pays for and no economy counts.",
+      "whyWrong": [
+        "Women do substantially more, not less.",
+        "The gap is far larger than 'slightly'.",
+        null
+      ],
+      "action": "Track who does what chores in your home for one week."
+    },
+    {
+      "id": "g05-004",
+      "src": "SDGR25",
+      "prompt": "How many young women were married before they turned 18?",
+      "options": [
+        "1 in 1,000",
+        "Nearly 1 in 5",
+        "Almost none"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "19% of women aged 20–24 were married as children. In sub-Saharan Africa it's 31% — nearly one in three.",
+      "whyWrong": [
+        "Vastly too low.",
+        null,
+        "Child marriage affects tens of millions of girls."
+      ],
+      "action": "Look up the legal marriage age where you live."
+    },
+    {
+      "id": "g05-005",
+      "src": "SDGR25",
+      "prompt": "How many girls and women alive today have undergone female genital mutilation?",
+      "options": [
+        "About 50,000",
+        "Over 2 million",
+        "Over 230 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Over 230 million, with about 4 million girls at risk each year — more than 2 million of them before age 5.",
+      "whyWrong": [
+        "Vastly too low.",
+        "A hundred times too low.",
+        null
+      ],
+      "action": "Find out which countries have banned the practice."
+    },
+    {
+      "id": "g05-006",
+      "src": "SDGR25",
+      "prompt": "Ending FGM by 2030 would need progress to speed up by how much?",
+      "options": [
+        "27 times faster",
+        "Twice as fast",
+        "It's already on track"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "27 times faster than the current rate. On today's trajectory the practice will still be widespread well beyond 2030.",
+      "whyWrong": [
+        null,
+        "The gap between current and required pace is far larger.",
+        "It's one of the most badly off-track targets."
+      ],
+      "action": "Ask what makes a deeply rooted practice change."
+    },
+    {
+      "id": "g05-007",
+      "src": "SDGR25",
+      "prompt": "What share of married women can fully decide about their own reproductive health?",
+      "options": [
+        "15%",
+        "95%",
+        "56.3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 56.3% — meaning nearly half of married women cannot freely make decisions about their own bodies and healthcare.",
+      "whyWrong": [
+        "Too pessimistic, though the real figure is troubling.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Ask what 'full decision-making power' should include."
+    },
+    {
+      "id": "g05-008",
+      "src": "SDGR25",
+      "prompt": "In how many countries do fewer than half of women own or control farmland?",
+      "options": [
+        "About 10%",
+        "Nearly 80% of countries",
+        "None"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "In nearly 80% of countries with data, fewer than half of women own or control agricultural land — even where women do most of the farming.",
+      "whyWrong": [
+        "Far too optimistic.",
+        null,
+        "Land ownership is heavily skewed against women almost everywhere."
+      ],
+      "action": "Ask why land ownership matters for independence."
+    },
+    {
+      "id": "g05-009",
+      "src": "SDGR25",
+      "prompt": "How many countries lack proper legal protection for women's land rights?",
+      "options": [
+        "58% of them",
+        "5%",
+        "None"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "58% of the 84 countries assessed lack adequate legal protections. Without law behind them, women's claims collapse in a dispute.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "The majority still lack adequate protections."
+      ],
+      "action": "Ask what a law needs to say to protect someone's property."
+    },
+    {
+      "id": "g05-010",
+      "src": "SDGR25",
+      "prompt": "Between 2019 and 2024, how many laws were changed to remove discrimination against women?",
+      "options": [
+        "9 reforms",
+        "99 reforms",
+        "None"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "99 positive legal reforms, mostly on employment rights and domestic violence protection. Genuine progress that rarely makes the news.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "There has been substantial legal reform."
+      ],
+      "action": "Look up one law in your country that changed for women's rights."
+    },
+    {
+      "id": "g05-011",
+      "src": "SDGR25",
+      "prompt": "Do women or men own more mobile phones?",
+      "options": [
+        "Men, 82% to 77%",
+        "Women, 82% to 77%",
+        "Exactly equal"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "82% of men against 77% of women. A five-point gap sounds small, but across billions of people it's hundreds of millions of women without a phone — and phones mean banking, work and safety.",
+      "whyWrong": [
+        null,
+        "It runs the other way.",
+        "There's a measurable gap."
+      ],
+      "action": "Ask what you couldn't do without a phone."
+    },
+    {
+      "id": "g05-012",
+      "src": "SDGR25",
+      "prompt": "Which region has the highest share of women in management?",
+      "options": [
+        "Nowhere exceeds 20%",
+        "Central and Southern Asia",
+        "Australia/New Zealand and sub-Saharan Africa, over 40%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Over 40% in both Australia/New Zealand and sub-Saharan Africa — ahead of Europe and North America at about 39%. It surprises people that sub-Saharan Africa leads.",
+      "whyWrong": [
+        "Several regions are above 39%.",
+        "This region fell to 11.6%, the lowest measured.",
+        null
+      ],
+      "action": "Ask why sub-Saharan Africa might have high female management rates."
+    },
+    {
+      "id": "g05-013",
+      "src": "SDGR25",
+      "prompt": "In Central and Southern Asia, women's share of management roles recently:",
+      "options": [
+        "Fell, from 15.1% to 11.6%",
+        "Rose to 40%",
+        "Stayed at 30%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "It fell from 15.1% to 11.6% — one of the clearest examples of gender progress going backwards rather than forwards.",
+      "whyWrong": [
+        null,
+        "It declined rather than rose.",
+        "It's well below the global average of 30%."
+      ],
+      "action": "Ask what makes women's workplace gains reversible."
+    },
+    {
+      "id": "g05-014",
+      "src": "SDGR25",
+      "prompt": "Women's representation in LOCAL government is about:",
+      "options": [
+        "50% and rising",
+        "35.5% and stagnating",
+        "10% and falling"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "35.5% — higher than national parliaments at 27.2%, but it has stopped improving.",
+      "whyWrong": [
+        "Local government has not reached parity.",
+        null,
+        "It's substantially higher than 10%."
+      ],
+      "action": "Look up how many women are on your local council."
+    },
+    {
+      "id": "g05-015",
+      "src": "SDGR25",
+      "prompt": "Which region has the highest rate of child marriage?",
+      "options": [
+        "Europe",
+        "Sub-Saharan Africa at 31%",
+        "North America"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Sub-Saharan Africa at 31% — nearly one in three young women married before 18, against a global figure of 19%.",
+      "whyWrong": [
+        "Child marriage is rare in Europe.",
+        null,
+        "Rates are very low in North America."
+      ],
+      "action": "Ask what makes families marry daughters young."
+    },
+    {
+      "id": "g05-016",
+      "src": "SDGR25",
+      "prompt": "Women's share of parliament seats rose how much since 2015?",
+      "options": [
+        "4.9 percentage points",
+        "25 points",
+        "It fell"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Up 4.9 points, from 22.3% to 27.2%. Steady progress — but at this pace parity is generations away.",
+      "whyWrong": [
+        null,
+        "The gain was far smaller.",
+        "Representation rose rather than fell."
+      ],
+      "action": "Work out how long 23 more points takes at 0.5 a year."
+    },
+    {
+      "id": "g05-017",
+      "src": "SDGR25",
+      "prompt": "How many girls undergo FGM each year?",
+      "options": [
+        "About 40,000",
+        "About 4 million",
+        "About 400"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 4 million girls a year — over 2 million of them before their fifth birthday.",
+      "whyWrong": [
+        "A hundred times too low.",
+        null,
+        "Vastly too low."
+      ],
+      "action": "Work out how many that is per day."
+    },
+    {
+      "id": "g05-018",
+      "src": "SDGR25",
+      "prompt": "Women hold what share of management positions worldwide?",
+      "options": [
+        "Exactly half",
+        "Under a third",
+        "Over two-thirds"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 30% — under a third, after rising just 2.4 percentage points in eight years.",
+      "whyWrong": [
+        "Nowhere near parity.",
+        null,
+        "Women are underrepresented, not overrepresented."
+      ],
+      "action": "Count the managers you know and their gender split."
+    },
+    {
+      "id": "g05-019",
+      "src": "SDGR25",
+      "prompt": "Legal reforms for women since 2019 focused mostly on:",
+      "options": [
+        "Sports rules",
+        "Employment rights and domestic violence",
+        "Voting age"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "The 99 reforms mostly targeted employment rights and protection from domestic violence — the two areas where discrimination in law was most common.",
+      "whyWrong": [
+        "Not a focus of gender legal reform.",
+        null,
+        "Voting ages generally apply equally already."
+      ],
+      "action": "Ask which of those two would change more lives."
+    },
+    {
+      "id": "g05-020",
+      "src": "SDGR25",
+      "prompt": "How does women's decision-making power over reproductive health vary between countries?",
+      "options": [
+        "It's the same everywhere",
+        "From 36.8% to 87.2%",
+        "It's above 90% everywhere"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "From 36.8% in some countries to 87.2% in others. Where a woman lives largely determines whether she controls her own healthcare.",
+      "whyWrong": [
+        "The variation between countries is enormous.",
+        null,
+        "Many countries are far below 90%."
+      ],
+      "action": "Ask what explains a 50-point gap between countries."
+    },
+    {
+      "id": "g05-021",
+      "src": "SDGR25",
+      "prompt": "If women do 2.5 times the unpaid work of men, what's the economic effect?",
+      "options": [
+        "Women earn more",
+        "No effect at all",
+        "Less time available for paid work and study"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Hours spent on unpaid care are hours not available for paid work, education or rest — which is a major reason women hold fewer senior roles.",
+      "whyWrong": [
+        "It contributes to women earning less, not more.",
+        "Time is finite; unpaid work directly displaces paid work.",
+        null
+      ],
+      "action": "Add up the hours of unpaid work done in your home weekly."
+    },
+    {
+      "id": "g05-022",
+      "src": "SDGR25",
+      "prompt": "The mobile phone gender parity score is 0.93. What does that mean?",
+      "options": [
+        "Ownership is equal",
+        "Women own more phones",
+        "Women own 93 phones for every 100 men own"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "A score of 0.93 means women's ownership is 93% of men's — 77% against 82%. A parity score of 1.0 would mean equality.",
+      "whyWrong": [
+        "Equality would be a score of 1.0.",
+        "The score is below 1.0, meaning women own fewer.",
+        null
+      ],
+      "action": "Ask what a phone gives access to that matters most."
+    },
+    {
+      "id": "g05-023",
+      "src": "SDGR25",
+      "prompt": "Which is closer to gender parity — national parliaments or local government?",
+      "options": [
+        "Local government, 35.5% to 27.2%",
+        "National parliaments",
+        "They're identical"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Local government at 35.5% against national parliaments at 27.2%. Women are better represented closer to home — but local progress has stalled.",
+      "whyWrong": [
+        null,
+        "National parliaments lag behind local government.",
+        "There's an eight-point gap."
+      ],
+      "action": "Ask why it might be easier to be elected locally."
+    },
+    {
+      "id": "g05-024",
+      "src": "SDGR25",
+      "prompt": "In how many of 84 countries assessed are women's land rights adequately protected in law?",
+      "options": [
+        "All of them",
+        "About 95%",
+        "About 42%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only about 42% — since 58% lack adequate protections. Most countries still don't fully protect women's rights to land in law.",
+      "whyWrong": [
+        "The majority lack adequate protections.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Ask what happens to a widow with no legal claim to her home."
+    },
+    {
+      "id": "g05-025",
+      "src": "SDGR25",
+      "prompt": "Roughly what fraction of young women married as children is that, globally?",
+      "options": [
+        "About 1 in 5",
+        "About 1 in 50",
+        "About 1 in 500"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "19% — nearly one in five women aged 20–24 was married before turning 18.",
+      "whyWrong": [
+        null,
+        "Ten times too optimistic.",
+        "A hundred times too optimistic."
+      ],
+      "action": "Picture 20 young women. Roughly four were married as children."
+    },
+    {
+      "id": "g05-026",
+      "src": "SDGR25",
+      "prompt": "Europe and North America's share of women in management is about:",
+      "options": [
+        "39%",
+        "60%",
+        "15%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About 39% — slightly BELOW Australia/New Zealand and sub-Saharan Africa, both over 40%.",
+      "whyWrong": [
+        null,
+        "No region has reached this level.",
+        "That's closer to Central and Southern Asia's 11.6%."
+      ],
+      "action": "Ask whether you'd have guessed Europe led on this. It doesn't."
+    },
+    {
+      "id": "g05-027",
+      "src": "SDGR25",
+      "prompt": "How many girls undergo FGM before their fifth birthday each year?",
+      "options": [
+        "Almost none",
+        "Over 2,000",
+        "Over 2 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Over 2 million of the 4 million girls affected annually are under five — too young to have any say at all.",
+      "whyWrong": [
+        "It affects millions of very young girls.",
+        "A thousand times too low.",
+        null
+      ],
+      "action": "Ask what protection a five-year-old can have in law."
+    },
+    {
+      "id": "g05-028",
+      "src": "SDGR25",
+      "prompt": "Women's management share rose 2.4 points in eight years. Is that fast?",
+      "options": [
+        "Yes — parity is already reached",
+        "Yes — parity by 2030",
+        "No — it implies about a century to parity"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "At 0.3 points a year, closing a 20-point gap takes nearly 100 years. Slow progress and no progress feel very different but end up close.",
+      "whyWrong": [
+        "Women hold about 30% of management roles.",
+        "The projection is roughly 70 years beyond 2030.",
+        null
+      ],
+      "action": "Do the arithmetic yourself: 20 points at 0.3 a year."
+    },
+    {
+      "id": "g05-029",
+      "src": "SDGR25",
+      "prompt": "Which of these has gone BACKWARDS for women recently?",
+      "options": [
+        "Legal reforms worldwide",
+        "Management roles in Central and Southern Asia",
+        "Parliamentary representation"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Central and Southern Asia's female management share fell from 15.1% to 11.6%. Legal reforms and parliament seats both improved.",
+      "whyWrong": [
+        "99 discriminatory laws were removed between 2019 and 2024.",
+        null,
+        "It rose 4.9 points since 2015."
+      ],
+      "action": "Ask what causes progress to reverse in one region but not others."
+    },
+    {
+      "id": "g05-030",
+      "src": "SDGR25",
+      "prompt": "Why does women's land ownership matter so much?",
+      "options": [
+        "It doesn't affect anything",
+        "Land is collateral, security and inheritance",
+        "Only businesses need land"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Land can be borrowed against, farmed with confidence and passed on. In nearly 80% of countries, fewer than half of women own or control farmland.",
+      "whyWrong": [
+        "Land is often a family's single largest asset.",
+        null,
+        "Households and farmers depend on land rights too."
+      ],
+      "action": "Ask who in your family's history owned land."
+    },
+    {
+      "id": "g05-031",
+      "src": "SDGR25",
+      "prompt": "Women hold 27.2% of parliament seats. What would parity look like?",
+      "options": [
+        "About 50%",
+        "About 30%",
+        "About 27%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Around 50%, since women are about half the population. At 27.2%, the world is roughly halfway there.",
+      "whyWrong": [
+        null,
+        "That's barely above the current figure.",
+        "That's the current figure, not the target."
+      ],
+      "action": "Work out how many more seats parity would mean in your parliament."
+    },
+    {
+      "id": "g05-032",
+      "src": "SDGR25",
+      "prompt": "Which everyday technology still shows a gender gap?",
+      "options": [
+        "Umbrellas",
+        "Bicycles",
+        "Mobile phones"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Mobile phone ownership: 82% of men against 77% of women. Phones now carry banking, work and emergency contact, so the gap has real consequences.",
+      "whyWrong": [
+        "Not tracked as an SDG gender indicator.",
+        "Not tracked as an SDG gender indicator.",
+        null
+      ],
+      "action": "List three things you do on a phone that matter for money or safety."
+    },
+    {
+      "id": "g05-033",
+      "src": "SDGR25",
+      "prompt": "Nearly 1 in 5 young women married before 18. What does early marriage usually mean for school?",
+      "options": [
+        "It has no effect",
+        "It usually continues",
+        "It usually ends"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Child marriage almost always ends a girl's education — which is why it is tracked alongside education and health outcomes rather than in isolation.",
+      "whyWrong": [
+        "The effect on schooling is severe and well documented.",
+        "Married girls very rarely stay in school.",
+        null
+      ],
+      "action": "Ask how ending school early changes someone's whole life."
+    },
+    {
+      "id": "g05-034",
+      "src": "SDGR25",
+      "prompt": "How many countries were assessed for women's land rights protections?",
+      "options": [
+        "8",
+        "84",
+        "195"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "84 countries, of which 58% lack adequate legal protection. Many countries have no data at all — itself part of the problem.",
+      "whyWrong": [
+        "Ten times too few.",
+        null,
+        "Not every country has data on this."
+      ],
+      "action": "Ask why missing data is its own kind of problem."
+    },
+    {
+      "id": "g05-035",
+      "src": "SDGR25",
+      "prompt": "Women's unpaid care work is described as 2.5 times men's. Is that work counted in the economy?",
+      "options": [
+        "Yes — it's fully counted",
+        "No — it's largely invisible in economic statistics",
+        "It's counted at double value"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Unpaid care work is mostly absent from GDP and economic statistics, even though economies could not function without it.",
+      "whyWrong": [
+        "Standard economic measures exclude most unpaid household work.",
+        null,
+        "It's under-counted, not over-counted."
+      ],
+      "action": "Estimate what your household's unpaid work would cost to hire."
+    },
+    {
+      "id": "g05-036",
+      "src": "SDGR25",
+      "prompt": "Which is true about gender progress overall?",
+      "options": [
+        "Everything has improved rapidly",
+        "Real gains in law, very slow gains in power and money",
+        "Nothing has changed"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "99 discriminatory laws were removed, but management parity is a century away and unpaid work is still 2.5 times higher for women. Legal change is outpacing lived change.",
+      "whyWrong": [
+        "Management parity is projected to take about 100 years.",
+        null,
+        "Parliament seats rose 4.9 points and 99 laws changed."
+      ],
+      "action": "Ask why changing a law is easier than changing a household."
+    },
+    {
+      "id": "g05-037",
+      "src": "SDGR25",
+      "prompt": "Sub-Saharan Africa leads on women in management but also leads on:",
+      "options": [
+        "Child marriage, at 31%",
+        "Mobile phone parity",
+        "Parliamentary parity"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "31% of young women married before 18 — the highest rate of any region, even while it leads on women in management. Progress is rarely uniform.",
+      "whyWrong": [
+        null,
+        "Not the region's leading indicator.",
+        "Not the region's leading indicator."
+      ],
+      "action": "Ask how one region can lead on one measure and lag on another."
+    },
+    {
+      "id": "g05-038",
+      "src": "SDGR25",
+      "prompt": "Women's local government representation is stuck at 35.5%. What does 'stagnating' mean here?",
+      "options": [
+        "It's rising fast",
+        "It's falling fast",
+        "It has stopped improving"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It has plateaued — neither rising nor falling. Stalled progress is easy to miss because nothing dramatic happens.",
+      "whyWrong": [
+        "Growth has stopped.",
+        "It's flat rather than declining.",
+        null
+      ],
+      "action": "Ask what breaks a plateau."
+    },
+    {
+      "id": "g05-039",
+      "src": "SDGR25",
+      "prompt": "Roughly how many women and girls alive today have experienced FGM?",
+      "options": [
+        "A few thousand",
+        "About the size of a small town",
+        "More than the population of most countries"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Over 230 million — larger than the population of all but a handful of countries on Earth.",
+      "whyWrong": [
+        "Vastly too low.",
+        "Vastly too low.",
+        null
+      ],
+      "action": "Look up which countries have populations near 230 million."
+    },
+    {
+      "id": "g05-040",
+      "src": "SDGR25",
+      "prompt": "What share of women aged 15–49 in the surveyed countries lack full say over their own healthcare?",
+      "options": [
+        "None",
+        "About 5%",
+        "Nearly half"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "With 56.3% having full decision-making power, nearly 44% do not — close to half of married women in 78 countries surveyed.",
+      "whyWrong": [
+        "Nearly half lack full decision-making power.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Ask who else might be making those decisions."
+    },
+    {
+      "id": "g05-041",
+      "src": "SDGR25",
+      "prompt": "Women are 50% of the world but hold what share of parliamentary seats?",
+      "options": [
+        "About a half",
+        "About a quarter",
+        "About three-quarters"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "27.2% — roughly a quarter. Half the population, a quarter of the lawmaking power.",
+      "whyWrong": [
+        "That would be parity, which hasn't been reached.",
+        null,
+        "Women are underrepresented, not overrepresented."
+      ],
+      "action": "Compare 50% of people with 27% of seats."
+    },
+    {
+      "id": "g05-042",
+      "src": "SDGR25",
+      "prompt": "Which gender gap is smallest of these?",
+      "options": [
+        "Management representation, 20 points",
+        "Mobile phone ownership, 5 points",
+        "Parliament seats, 23 points"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Phone ownership at 82% versus 77% is a 5-point gap — much narrower than management or parliament, though still hundreds of millions of women.",
+      "whyWrong": [
+        "Women hold about 30% against parity of 50%.",
+        null,
+        "Women hold 27.2% against parity of 50%."
+      ],
+      "action": "Rank those three gaps by how much you think they matter."
+    },
+    {
+      "id": "g05-043",
+      "src": "SDGR25",
+      "prompt": "The 99 legal reforms since 2019 show what?",
+      "options": [
+        "Laws can change quickly when there's will",
+        "Laws never change",
+        "Only rich countries reform"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "99 discriminatory laws removed in five years shows legal change is achievable at pace — the harder part is changing what happens in homes and workplaces.",
+      "whyWrong": [
+        null,
+        "99 reforms happened in five years.",
+        "Reforms occurred across many income levels."
+      ],
+      "action": "Ask what has to happen before a law actually changes lives."
+    },
+    {
+      "id": "g05-044",
+      "src": "SDGR25",
+      "prompt": "Child marriage globally affects 19% of young women. Ten years ago it was:",
+      "options": [
+        "Higher — the rate is slowly falling",
+        "Lower — the rate is rising",
+        "Exactly the same"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The rate has been declining slowly. Progress is real, but at this pace millions more girls will still be married as children before 2030.",
+      "whyWrong": [
+        null,
+        "The global rate has been falling, not rising.",
+        "There has been measurable decline."
+      ],
+      "action": "Ask what interventions reduce child marriage most."
+    },
+    {
+      "id": "g05-045",
+      "src": "SDGR25",
+      "prompt": "Why is women's representation in management tracked separately from parliament?",
+      "options": [
+        "Management doesn't matter",
+        "They're the same thing",
+        "Economic power and political power are different things"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "A country can elect women to parliament while businesses stay male-led, or the reverse. Both matter, and they move at different speeds.",
+      "whyWrong": [
+        "Management controls hiring, pay and promotion for millions.",
+        "Sub-Saharan Africa leads on management but not parliament, showing they diverge.",
+        null
+      ],
+      "action": "Ask which kind of power changes daily life faster."
+    },
+    {
+      "id": "g05-046",
+      "src": "SDGR25",
+      "prompt": "What share of women own mobile phones?",
+      "options": [
+        "77%",
+        "97%",
+        "37%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "77%, against 82% of men. High overall, but the remaining gap represents hundreds of millions of women.",
+      "whyWrong": [
+        null,
+        "Too optimistic — nearly a quarter of women don't own one.",
+        "Too pessimistic — most women do own phones."
+      ],
+      "action": "Ask what someone without a phone can't access."
+    },
+    {
+      "id": "g05-047",
+      "src": "SDGR25",
+      "prompt": "Ending FGM needs 27x faster progress. What does that number tell you?",
+      "options": [
+        "Current efforts are nowhere near sufficient",
+        "It's nearly solved",
+        "Progress is impossible"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A 27-fold gap between current and required pace means the target will be missed by an enormous margin without a fundamental change in approach.",
+      "whyWrong": [
+        null,
+        "4 million girls are still affected annually.",
+        "Rates have fallen in several countries, so change is possible."
+      ],
+      "action": "Ask what a 27x acceleration would actually require."
+    },
+    {
+      "id": "g05-048",
+      "src": "SDGR25",
+      "prompt": "Which statement about women's work is accurate?",
+      "options": [
+        "They do most unpaid work and hold under a third of management jobs",
+        "They do less unpaid work and lead most companies",
+        "Work is split evenly"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "2.5 times the unpaid work, and about 30% of management roles. The two facts are connected — unpaid hours crowd out career hours.",
+      "whyWrong": [
+        null,
+        "Both halves of this are the reverse of the data.",
+        "Neither paid nor unpaid work is split evenly."
+      ],
+      "action": "Ask how unpaid work at home shapes who gets promoted."
+    },
+    {
+      "id": "g05-049",
+      "src": "SDGR25",
+      "prompt": "Roughly what share of young women in sub-Saharan Africa were married before 18?",
+      "options": [
+        "31%",
+        "3%",
+        "70%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "31% — nearly one in three, well above the global rate of 19%.",
+      "whyWrong": [
+        null,
+        "Ten times too optimistic.",
+        "Too high, though the real figure is very high."
+      ],
+      "action": "Compare 31% regionally with 19% globally."
+    },
+    {
+      "id": "g05-050",
+      "src": "SDGR25",
+      "prompt": "What's the clearest sign gender equality is still far off?",
+      "options": [
+        "99 laws were reformed",
+        "Management parity is projected to take about 100 years",
+        "Parliament seats rose since 2015"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A century to reach equal management representation — that's students alive today spending their whole working lives before parity arrives.",
+      "whyWrong": [
+        "This is genuine progress, not evidence of distance.",
+        null,
+        "This is progress too, though slow."
+      ],
+      "action": "Work out what year parity arrives, and who'll be alive for it."
+    }
+  ]
+}
