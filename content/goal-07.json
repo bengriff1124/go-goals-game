@@ -1,0 +1,914 @@
+{
+  "goal": 7,
+  "goalName": "Affordable and Clean Energy",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 7",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-07/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g07-001",
+      "src": "SDGR25",
+      "prompt": "How many people still have no electricity at all?",
+      "options": [
+        "66 million",
+        "666 million",
+        "6 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "666.4 million people live without electricity — no light after sunset, no fridge, no way to charge anything.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Count everything in your home that needs electricity."
+    },
+    {
+      "id": "g07-002",
+      "src": "SDGR25",
+      "prompt": "How many people cook using polluting fuels like wood, charcoal or dung?",
+      "options": [
+        "21 million",
+        "210 million",
+        "2.1 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "2.1 billion people — over a quarter of the world. The smoke causes serious lung disease, mostly among women and children.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Find out what fuel cooked your last meal."
+    },
+    {
+      "id": "g07-003",
+      "src": "SDGR25",
+      "prompt": "What share of the world's electricity deficit is in sub-Saharan Africa?",
+      "options": [
+        "85%",
+        "25%",
+        "5%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "85% — some 565 million of the 666 million unconnected people live there. Electricity access is overwhelmingly one region's problem.",
+      "whyWrong": [
+        null,
+        "Far too low — the concentration is extreme.",
+        "Vastly too low."
+      ],
+      "action": "Find sub-Saharan Africa on a map."
+    },
+    {
+      "id": "g07-004",
+      "src": "SDGR25",
+      "prompt": "Where do most people without electricity live?",
+      "options": [
+        "City centres",
+        "Rural areas",
+        "Coastal towns"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "84% live in rural communities. Running power lines to scattered villages costs far more per household than wiring a city.",
+      "whyWrong": [
+        "Cities are far easier and cheaper to connect.",
+        null,
+        "Not a defining pattern for energy access."
+      ],
+      "action": "Ask why it's expensive to connect a remote village."
+    },
+    {
+      "id": "g07-005",
+      "src": "SDGR25",
+      "prompt": "What share of the world now has electricity?",
+      "options": [
+        "72%",
+        "92%",
+        "99%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "92%, up from 84% in 2010. Huge progress — and still 666 million people short.",
+      "whyWrong": [
+        "Too pessimistic — access has improved substantially.",
+        null,
+        "Too optimistic — hundreds of millions remain unconnected."
+      ],
+      "action": "Compare 84% in 2010 with 92% today."
+    },
+    {
+      "id": "g07-006",
+      "src": "SDGR25",
+      "prompt": "In sub-Saharan Africa, what share of people can cook with clean fuels?",
+      "options": [
+        "91%",
+        "71%",
+        "21%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 21% — against a global average of 74%. Nearly four in five people there still cook over smoke.",
+      "whyWrong": [
+        "Far too optimistic for the region.",
+        "That's closer to the global average.",
+        null
+      ],
+      "action": "Compare 21% regionally with 74% globally."
+    },
+    {
+      "id": "g07-007",
+      "src": "SDGR25",
+      "prompt": "What share of the world's total energy comes from renewables?",
+      "options": [
+        "50%",
+        "17.9%",
+        "3%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "17.9% of all final energy — much lower than people expect, because heating and transport still run mostly on fossil fuels.",
+      "whyWrong": [
+        "Far too optimistic across all energy uses.",
+        null,
+        "Too pessimistic — renewables are approaching a fifth."
+      ],
+      "action": "Ask why the renewable share of ALL energy is lower than for electricity."
+    },
+    {
+      "id": "g07-008",
+      "src": "SDGR25",
+      "prompt": "What share of the world's ELECTRICITY comes from renewables?",
+      "options": [
+        "30%",
+        "10%",
+        "60%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "30% — much higher than the 17.9% share of total energy, because electricity is the easiest sector to decarbonise.",
+      "whyWrong": [
+        null,
+        "Too pessimistic — renewables generate nearly a third of electricity.",
+        "Too optimistic globally."
+      ],
+      "action": "Find out where your electricity comes from."
+    },
+    {
+      "id": "g07-009",
+      "src": "SDGR25",
+      "prompt": "What share of TRANSPORT energy is renewable?",
+      "options": [
+        "4%",
+        "40%",
+        "25%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Just 4%. Cars, trucks, ships and planes remain almost entirely fossil-fuelled — the hardest sector to change.",
+      "whyWrong": [
+        null,
+        "Ten times too optimistic.",
+        "Far too optimistic for transport."
+      ],
+      "action": "Count how many electric vehicles you saw today."
+    },
+    {
+      "id": "g07-010",
+      "src": "SDGR25",
+      "prompt": "How many people will still lack electricity in 2030 on current trends?",
+      "options": [
+        "645 million",
+        "Zero",
+        "50 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "645 million — barely better than today's 666 million. Population growth is nearly cancelling out new connections.",
+      "whyWrong": [
+        null,
+        "That's the target, not the projection.",
+        "The projection is more than ten times higher."
+      ],
+      "action": "Ask why connecting people gets harder as you go."
+    },
+    {
+      "id": "g07-011",
+      "src": "SDGR25",
+      "prompt": "How many people will still cook with polluting fuels in 2030?",
+      "options": [
+        "180 million",
+        "1.8 billion",
+        "Zero"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1.8 billion — only slightly better than today's 2.1 billion. Clean cooking is one of the most badly off-track targets.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "That's the target, not the projection."
+      ],
+      "action": "Ask what a family needs to switch cooking fuel."
+    },
+    {
+      "id": "g07-012",
+      "src": "SDGR25",
+      "prompt": "How much clean energy finance did developing countries receive in 2023?",
+      "options": [
+        "$216 billion",
+        "$21.6 billion",
+        "$2.1 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$21.6 billion — a large sum, but small against the scale of connecting 666 million people and switching 2.1 billion to clean cooking.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Compare that with what your country spends on roads."
+    },
+    {
+      "id": "g07-013",
+      "src": "SDGR25",
+      "prompt": "Which technology got the biggest share of clean energy finance?",
+      "options": [
+        "Solar, at 44%",
+        "Nuclear",
+        "Coal with filters"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Solar took $9.4 billion of the $21.6 billion — 44% of all clean energy flows to developing countries.",
+      "whyWrong": [
+        null,
+        "Not a significant share of these flows.",
+        "Coal isn't clean energy finance."
+      ],
+      "action": "Ask why solar suits places without existing power grids."
+    },
+    {
+      "id": "g07-014",
+      "src": "SDGR25",
+      "prompt": "Energy efficiency improved 2.1% in 2022. What rate is needed?",
+      "options": [
+        "1% a year",
+        "2% a year",
+        "4% a year"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "4% annually through 2030 — nearly double the current pace. Efficiency is the cheapest form of clean energy, and it's lagging.",
+      "whyWrong": [
+        "Below the current rate.",
+        "That's roughly the current rate, not the target.",
+        null
+      ],
+      "action": "Name three ways to use less energy for the same result."
+    },
+    {
+      "id": "g07-015",
+      "src": "SDGR25",
+      "prompt": "Clean cooking access rose from 64% in 2015 to what today?",
+      "options": [
+        "74%",
+        "94%",
+        "66%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "74% — ten percentage points in eight years. Real progress, still leaving 2.1 billion people cooking over smoke.",
+      "whyWrong": [
+        null,
+        "Too optimistic — over a quarter of the world lacks it.",
+        "The improvement was larger than this."
+      ],
+      "action": "Ask what health problems wood smoke causes indoors."
+    },
+    {
+      "id": "g07-016",
+      "src": "SDGR25",
+      "prompt": "How many people in sub-Saharan Africa have no electricity?",
+      "options": [
+        "565 million",
+        "56 million",
+        "5 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "565 million — 85% of the global total, in one region.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Compare 565 million with your country's population."
+    },
+    {
+      "id": "g07-017",
+      "src": "SDGR25",
+      "prompt": "Excluding traditional wood burning, modern renewables grew from 10% to what?",
+      "options": [
+        "30%",
+        "13%",
+        "50%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "13% — a three-point gain. Distinguishing modern renewables from traditional biomass matters, because burning wood isn't clean energy.",
+      "whyWrong": [
+        "That's the renewable share of electricity, not total energy.",
+        null,
+        "Far too optimistic."
+      ],
+      "action": "Ask why burning wood counts as renewable but isn't clean."
+    },
+    {
+      "id": "g07-018",
+      "src": "SDGR25",
+      "prompt": "Why is clean cooking a health issue, not just an energy one?",
+      "options": [
+        "It has no health effect",
+        "It makes food taste bad",
+        "Smoke from cooking fires causes serious lung disease"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Indoor smoke from wood, charcoal and dung causes respiratory illness and premature death, hitting women and young children hardest since they're near the fire.",
+      "whyWrong": [
+        "Household air pollution is a major cause of death.",
+        "The issue is health, not flavour.",
+        null
+      ],
+      "action": "Ask who in a household spends most time near the stove."
+    },
+    {
+      "id": "g07-019",
+      "src": "SDGR25",
+      "prompt": "Electricity access rose 8 points since 2010. Is that enough for universal access by 2030?",
+      "options": [
+        "Yes — easily",
+        "No — 645 million will still lack it",
+        "Yes — exactly on time"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Projections show 645 million still unconnected in 2030, barely down from 666 million today. Progress is being eaten by population growth.",
+      "whyWrong": [
+        "The projection misses the target by hundreds of millions.",
+        null,
+        "The gap barely closes."
+      ],
+      "action": "Ask what makes the last 8% hardest to reach."
+    },
+    {
+      "id": "g07-020",
+      "src": "SDGR25",
+      "prompt": "Which sector is furthest from renewable energy?",
+      "options": [
+        "They're equal",
+        "Electricity at 30%",
+        "Transport at 4%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Transport at 4%, against 30% for electricity. Batteries and fuels for planes, ships and trucks are far harder problems than power stations.",
+      "whyWrong": [
+        "There's a 26-point gap.",
+        "Electricity is the most advanced sector.",
+        null
+      ],
+      "action": "Ask what would have to change for planes to run clean."
+    },
+    {
+      "id": "g07-021",
+      "src": "SDGR25",
+      "prompt": "Roughly what share of the world cooks with polluting fuels?",
+      "options": [
+        "About a quarter",
+        "About 2%",
+        "About 80%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "With 74% having clean cooking access, about 26% — over a quarter of humanity — still cook over polluting fuels.",
+      "whyWrong": [
+        null,
+        "Vastly too optimistic.",
+        "Too high — most people do have clean cooking."
+      ],
+      "action": "Ask what 'clean cooking' actually requires."
+    },
+    {
+      "id": "g07-022",
+      "src": "SDGR25",
+      "prompt": "Solar received $9.4 billion of clean energy finance. Why does solar suit developing countries?",
+      "options": [
+        "It needs huge infrastructure first",
+        "It only works in cold places",
+        "It works without an existing grid"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Solar panels can power a home or village without waiting for national grid lines — which matters when 84% of unconnected people live rurally.",
+      "whyWrong": [
+        "That's the advantage of solar — it doesn't need one.",
+        "Solar performs best in sunny regions.",
+        null
+      ],
+      "action": "Ask what a single solar panel can run."
+    },
+    {
+      "id": "g07-023",
+      "src": "SDGR25",
+      "prompt": "Global electricity access in 2010 was:",
+      "options": [
+        "84%",
+        "94%",
+        "64%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "84%, rising to 92% by 2023 — eight percentage points in thirteen years.",
+      "whyWrong": [
+        null,
+        "Too optimistic for 2010.",
+        "Too pessimistic — access was already high."
+      ],
+      "action": "Work out the annual rate of improvement."
+    },
+    {
+      "id": "g07-024",
+      "src": "SDGR25",
+      "prompt": "Energy intensity improved 2.1% in 2022. What does 'energy intensity' mean?",
+      "options": [
+        "Energy used per unit of economic output",
+        "Total energy used",
+        "How bright lights are"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "It measures how much energy an economy needs to produce a given amount of value — falling intensity means more output from less energy.",
+      "whyWrong": [
+        null,
+        "That's total consumption, not intensity.",
+        "Not related to the measure."
+      ],
+      "action": "Ask how a factory could make the same goods with less power."
+    },
+    {
+      "id": "g07-025",
+      "src": "SDGR25",
+      "prompt": "Which is closest to the truth about renewable energy?",
+      "options": [
+        "Nearly a third of electricity, but under a fifth of all energy",
+        "Over half of all energy",
+        "Under 1% of everything"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "30% of electricity but only 17.9% of total energy — because heating, industry and transport still burn fossil fuels directly.",
+      "whyWrong": [
+        null,
+        "Far too optimistic across all energy uses.",
+        "Far too pessimistic — renewables are substantial."
+      ],
+      "action": "List three energy uses in your home that aren't electricity."
+    },
+    {
+      "id": "g07-026",
+      "src": "SDGR25",
+      "prompt": "If 92% have electricity, how many don't?",
+      "options": [
+        "8 million",
+        "66 million",
+        "666 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "666.4 million people. Eight percent of eight billion is a very large number of human beings.",
+      "whyWrong": [
+        "Vastly too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Always convert a percentage into people."
+    },
+    {
+      "id": "g07-027",
+      "src": "SDGR25",
+      "prompt": "Clean cooking is projected to reach what share by 2030?",
+      "options": [
+        "50%",
+        "100%",
+        "78%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 78%, up from 74% today — a four-point gain in six years, leaving 1.8 billion people behind.",
+      "whyWrong": [
+        "Coverage is already above this.",
+        "That's the target, not the projection.",
+        null
+      ],
+      "action": "Ask why clean cooking progress is so slow."
+    },
+    {
+      "id": "g07-028",
+      "src": "SDGR25",
+      "prompt": "What makes rural electrification expensive?",
+      "options": [
+        "Rural areas have no sunlight",
+        "Rural people use more power",
+        "Long power lines serving few households"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Grid extension costs the same per kilometre whether it serves 500 households or 5. With 84% of unconnected people rural, that economics is the core barrier.",
+      "whyWrong": [
+        "Many rural regions have excellent solar potential.",
+        "Rural households typically use far less power.",
+        null
+      ],
+      "action": "Ask whether a mini-grid could beat a long power line."
+    },
+    {
+      "id": "g07-029",
+      "src": "SDGR25",
+      "prompt": "How much of clean energy finance did solar NOT receive?",
+      "options": [
+        "About 5%",
+        "About 56%",
+        "About 95%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Solar took 44%, so about 56% — roughly $12.2 billion — went to wind, hydro, geothermal and other technologies.",
+      "whyWrong": [
+        "Solar took 44%, leaving far more than 5%.",
+        null,
+        "Solar's share was substantial at 44%."
+      ],
+      "action": "Name three renewable technologies other than solar."
+    },
+    {
+      "id": "g07-030",
+      "src": "SDGR25",
+      "prompt": "Which Goal 7 measure is furthest off track?",
+      "options": [
+        "Electricity access",
+        "Clean cooking — 1.8 billion still without by 2030",
+        "Renewable electricity"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Clean cooking. Electricity will reach 92%+ and renewables generate 30% of power, but 1.8 billion people are projected to still cook over smoke in 2030.",
+      "whyWrong": [
+        "Access is at 92% and rising.",
+        null,
+        "Renewables reached 30% of electricity."
+      ],
+      "action": "Ask why cooking is harder to change than lighting."
+    },
+    {
+      "id": "g07-031",
+      "src": "SDGR25",
+      "prompt": "Energy efficiency needs to improve 4% a year. Current rate is:",
+      "options": [
+        "About double that",
+        "About half that",
+        "Exactly that"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "2.1% against a needed 4% — roughly half the required pace.",
+      "whyWrong": [
+        "The current rate is below target, not above.",
+        null,
+        "There's a substantial shortfall."
+      ],
+      "action": "Ask what would double the world's efficiency gains."
+    },
+    {
+      "id": "g07-032",
+      "src": "SDGR25",
+      "prompt": "Traditional biomass is counted as renewable. Why is that misleading?",
+      "options": [
+        "It isn't actually renewable",
+        "Burning wood indoors still causes disease and deforestation",
+        "It produces no smoke"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Wood regrows, so it counts as renewable — but burning it indoors is exactly the polluting cooking that affects 2.1 billion people. Modern renewables are tracked separately at 13% for this reason.",
+      "whyWrong": [
+        "Biomass does regrow, which is why it's classed as renewable.",
+        null,
+        "Wood smoke is the main source of household air pollution."
+      ],
+      "action": "Ask what makes an energy source clean as well as renewable."
+    },
+    {
+      "id": "g07-033",
+      "src": "SDGR25",
+      "prompt": "How many people gained electricity access between 2010 and 2023?",
+      "options": [
+        "Nobody",
+        "A few thousand",
+        "Hundreds of millions"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Access rose from 84% to 92% while the population grew — meaning well over a billion people gained electricity in that period.",
+      "whyWrong": [
+        "Access improved by 8 percentage points.",
+        "Vastly too low.",
+        null
+      ],
+      "action": "Ask what changes in a household the year it gets power."
+    },
+    {
+      "id": "g07-034",
+      "src": "SDGR25",
+      "prompt": "Which region has the lowest clean cooking access?",
+      "options": [
+        "East Asia",
+        "Europe",
+        "Sub-Saharan Africa at 21%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Sub-Saharan Africa at 21% — the same region holding 85% of the world's electricity deficit.",
+      "whyWrong": [
+        "East Asia has made major progress on clean cooking.",
+        "Europe has near-universal clean cooking.",
+        null
+      ],
+      "action": "Ask why one region lags on both energy measures."
+    },
+    {
+      "id": "g07-035",
+      "src": "SDGR25",
+      "prompt": "Renewables are 30% of electricity. What's the other 70%?",
+      "options": [
+        "Mostly nothing",
+        "Mostly fossil fuels and nuclear",
+        "Mostly imported"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Coal, gas, oil and nuclear make up the rest. Renewables have grown fast but still generate under a third of the world's power.",
+      "whyWrong": [
+        "Electricity must be generated by something.",
+        null,
+        "Electricity is mostly generated domestically."
+      ],
+      "action": "Look up your country's electricity mix."
+    },
+    {
+      "id": "g07-036",
+      "src": "SDGR25",
+      "prompt": "The world will likely miss Goal 7. What's the clearest evidence?",
+      "options": [
+        "Access is declining",
+        "Renewables are falling",
+        "645 million without power and 1.8 billion without clean cooking in 2030"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Both projections leave enormous numbers behind at the deadline — despite genuine progress in access and renewables.",
+      "whyWrong": [
+        "Electricity access rose from 84% to 92%.",
+        "Renewables reached 30% of electricity and are growing.",
+        null
+      ],
+      "action": "Ask what would have to change to hit the target."
+    },
+    {
+      "id": "g07-037",
+      "src": "SDGR25",
+      "prompt": "What share of people without electricity live in cities?",
+      "options": [
+        "About 84%",
+        "About 16%",
+        "About 50%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Since 84% live rurally, about 16% of the unconnected are urban — a minority, but still over 100 million people.",
+      "whyWrong": [
+        "That's the rural figure.",
+        null,
+        "The split is heavily rural."
+      ],
+      "action": "Ask why some city dwellers still lack power."
+    },
+    {
+      "id": "g07-038",
+      "src": "SDGR25",
+      "prompt": "Modern renewables rose from 10% to 13%. Over roughly how long?",
+      "options": [
+        "Several centuries",
+        "Several months",
+        "Several years"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "A three-point gain over several years — steady but far slower than the headlines about a renewable revolution suggest.",
+      "whyWrong": [
+        "Modern renewables barely existed a century ago.",
+        "Energy systems change over years and decades.",
+        null
+      ],
+      "action": "Ask why energy systems change slowly."
+    },
+    {
+      "id": "g07-039",
+      "src": "SDGR25",
+      "prompt": "$21.6 billion of clean energy finance sounds large. Compared to the need it is:",
+      "options": [
+        "Small — hundreds of millions still need connecting",
+        "More than enough",
+        "Exactly right"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "It has to serve 666 million people needing electricity and 2.1 billion needing clean cooking — a few dollars per person per year.",
+      "whyWrong": [
+        null,
+        "Projections show both targets being badly missed.",
+        "The financing gap is substantial."
+      ],
+      "action": "Divide $21.6bn by 2.1 billion people."
+    },
+    {
+      "id": "g07-040",
+      "src": "SDGR25",
+      "prompt": "Electricity access is 92% but clean cooking only 74%. Why the gap?",
+      "options": [
+        "Cooking needs fuel supply chains, not just wires",
+        "Cooking uses no energy",
+        "Nobody wants clean cooking"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A power line delivers electricity once built. Clean cooking needs affordable stoves plus a reliable, ongoing supply of gas or electricity a family can pay for every week.",
+      "whyWrong": [
+        null,
+        "Cooking is one of the largest household energy uses.",
+        "The barriers are cost and supply, not desire."
+      ],
+      "action": "Ask what your household pays to cook each month."
+    },
+    {
+      "id": "g07-041",
+      "src": "SDGR25",
+      "prompt": "Which is true about renewables in transport?",
+      "options": [
+        "Only 4% — the least advanced sector",
+        "Over half",
+        "Transport is fully electric"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "4%. Despite electric cars getting attention, transport as a whole — including trucks, ships and planes — remains almost entirely fossil-fuelled.",
+      "whyWrong": [
+        null,
+        "Vastly too optimistic.",
+        "The overwhelming majority of transport burns fossil fuels."
+      ],
+      "action": "Count the vehicles you saw today and guess how many were electric."
+    },
+    {
+      "id": "g07-042",
+      "src": "SDGR25",
+      "prompt": "If sub-Saharan Africa is 85% of the electricity deficit, what does that mean for solutions?",
+      "options": [
+        "The region doesn't matter",
+        "Progress there decides the global result",
+        "Other regions matter more"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "With 565 of 666 million unconnected people there, global energy access is essentially a sub-Saharan Africa question.",
+      "whyWrong": [
+        "It holds the overwhelming majority of the problem.",
+        null,
+        "No other region comes close."
+      ],
+      "action": "Ask what would connect 565 million people fastest."
+    },
+    {
+      "id": "g07-043",
+      "src": "SDGR25",
+      "prompt": "Global electricity access target for 2030 is universal. Projection says:",
+      "options": [
+        "645 million still without",
+        "Universal access achieved",
+        "Access will decline"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "645 million people still unconnected — the target will be missed by a wide margin without a major acceleration.",
+      "whyWrong": [
+        null,
+        "The projection falls well short.",
+        "Access is projected to keep improving, just too slowly."
+      ],
+      "action": "Compare 666 million today with 645 million projected."
+    },
+    {
+      "id": "g07-044",
+      "src": "SDGR25",
+      "prompt": "Why is energy efficiency called the cheapest clean energy?",
+      "options": [
+        "It isn't cheap",
+        "Because efficiency equipment is free",
+        "Energy you don't use costs nothing and emits nothing"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The cleanest kilowatt is the one never generated. That's why the 4% annual efficiency target matters as much as building renewables.",
+      "whyWrong": [
+        "Efficiency is consistently the lowest-cost option per unit of carbon saved.",
+        "Efficiency measures do cost money upfront.",
+        null
+      ],
+      "action": "Find one thing at home wasting energy right now."
+    },
+    {
+      "id": "g07-045",
+      "src": "SDGR25",
+      "prompt": "Clean cooking access in sub-Saharan Africa versus the world:",
+      "options": [
+        "21% versus 74%",
+        "74% versus 21%",
+        "Both about 50%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "21% regionally against 74% globally — a 53-point gap, the widest of any Goal 7 measure.",
+      "whyWrong": [
+        null,
+        "It's the other way round.",
+        "The gap is enormous, not equal."
+      ],
+      "action": "Ask what would change cooking fuel for 500 million people."
+    },
+    {
+      "id": "g07-046",
+      "src": "SDGR25",
+      "prompt": "Renewable energy is 17.9% of total energy. Ten years ago it was:",
+      "options": [
+        "Exactly the same",
+        "Higher",
+        "Lower, and rising slowly"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Modern renewables rose from 10% to 13% over recent years, so the total share has been climbing — steadily but not dramatically.",
+      "whyWrong": [
+        "There has been measurable growth.",
+        "Renewables have grown, not shrunk.",
+        null
+      ],
+      "action": "Ask what would make renewables grow faster."
+    },
+    {
+      "id": "g07-047",
+      "src": "SDGR25",
+      "prompt": "Who suffers most from cooking smoke?",
+      "options": [
+        "Adult men only",
+        "Women and young children",
+        "Nobody"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Women do most cooking in most households, often with young children nearby — so household air pollution falls hardest on them.",
+      "whyWrong": [
+        "Men are affected too, but spend less time at the stove.",
+        null,
+        "Household air pollution causes millions of premature deaths."
+      ],
+      "action": "Ask who cooks in your home and for how long."
+    },
+    {
+      "id": "g07-048",
+      "src": "SDGR25",
+      "prompt": "Global electricity access is 92%. What does the remaining 8% represent?",
+      "options": [
+        "Mostly European cities",
+        "Mostly rural sub-Saharan Africa",
+        "Mostly wealthy suburbs"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "85% of the deficit is sub-Saharan Africa and 84% of unconnected people are rural — the two facts overlap almost completely.",
+      "whyWrong": [
+        "Europe has near-universal access.",
+        null,
+        "Wealthy areas are connected."
+      ],
+      "action": "Ask what 'last mile' means in infrastructure."
+    },
+    {
+      "id": "g07-049",
+      "src": "SDGR25",
+      "prompt": "Which had the bigger improvement since 2015: electricity or clean cooking?",
+      "options": [
+        "Clean cooking, 10 points versus 8",
+        "Electricity, by far",
+        "Neither improved"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Clean cooking rose 10 points from 64% to 74%; electricity rose 8 points from 84% to 92% (measured from 2010). Cooking improved faster but from much further behind.",
+      "whyWrong": [
+        null,
+        "Clean cooking gained more percentage points.",
+        "Both improved substantially."
+      ],
+      "action": "Ask whether starting further behind makes gains easier or harder."
+    },
+    {
+      "id": "g07-050",
+      "src": "SDGR25",
+      "prompt": "What's the most surprising thing about Goal 7?",
+      "options": [
+        "Everything is on track",
+        "Nothing has improved",
+        "Renewables are 30% of electricity but only 4% of transport"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The clean energy transition is real in power stations and barely started in transport — a 26-point gap between the two sectors.",
+      "whyWrong": [
+        "Both access targets are projected to be badly missed.",
+        "Electricity access rose to 92% and renewables to 30% of power.",
+        null
+      ],
+      "action": "Ask which sector you'd focus on next, and why."
+    }
+  ]
+}

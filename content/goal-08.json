@@ -1,0 +1,914 @@
+{
+  "goal": 8,
+  "goalName": "Decent Work and Economic Growth",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 8",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-08/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g08-001",
+      "src": "SDGR25",
+      "prompt": "How many children worldwide are in child labour?",
+      "options": [
+        "13 million",
+        "138 million",
+        "1.3 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "138 million children — and 54 million of them do hazardous work that endangers their health or safety.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Look up what counts as hazardous work for a child."
+    },
+    {
+      "id": "g08-002",
+      "src": "SDGR25",
+      "prompt": "How many children have been removed from child labour since 2000?",
+      "options": [
+        "None",
+        "About 1 million",
+        "Over 100 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Over 100 million fewer children are working than in 2000 — one of the great untold successes, even though 138 million remain.",
+      "whyWrong": [
+        "There has been enormous progress.",
+        "A hundred times too low.",
+        null
+      ],
+      "action": "Ask what got 100 million children out of work and into school."
+    },
+    {
+      "id": "g08-003",
+      "src": "SDGR25",
+      "prompt": "What share of the world's workers have informal jobs — no contract, no protection?",
+      "options": [
+        "57.8%",
+        "17.8%",
+        "7.8%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "57.8% — well over half the world's workers. No sick pay, no pension, no protection if they're dismissed.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Vastly too optimistic."
+      ],
+      "action": "Ask what a work contract actually guarantees you."
+    },
+    {
+      "id": "g08-004",
+      "src": "SDGR25",
+      "prompt": "In sub-Saharan Africa and the least developed countries, informal work is about:",
+      "options": [
+        "About 30%",
+        "Nearly 90%",
+        "About 10%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Nearly 90% of all workers. For women in least developed countries it's 93.8%, against 86.4% for men.",
+      "whyWrong": [
+        "Far too optimistic for these regions.",
+        null,
+        "Vastly too optimistic."
+      ],
+      "action": "Compare 90% regionally with 57.8% globally."
+    },
+    {
+      "id": "g08-005",
+      "src": "SDGR25",
+      "prompt": "Global unemployment in 2024 hit what level?",
+      "options": [
+        "A record low of 5.0%",
+        "A record high of 15%",
+        "Exactly 10%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A record low of 5.0%, down from 6.0% in 2015. Surprising to most people — but 57.8% of those jobs are informal.",
+      "whyWrong": [
+        null,
+        "Unemployment fell to a record low.",
+        "It's half that level."
+      ],
+      "action": "Ask whether low unemployment means good jobs."
+    },
+    {
+      "id": "g08-006",
+      "src": "SDGR25",
+      "prompt": "How many young people are not in education, employment or training?",
+      "options": [
+        "25 million",
+        "259 million",
+        "2.5 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "259 million — about one in five young people worldwide are doing none of the three.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask what happens to a young person's future in that situation."
+    },
+    {
+      "id": "g08-007",
+      "src": "SDGR25",
+      "prompt": "In Central and Southern Asia, young women not in work or education is 41.9%. For young men it's:",
+      "options": [
+        "11.5%",
+        "40%",
+        "60%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "11.5% — young women are nearly four times as likely to be excluded from both work and education in that region.",
+      "whyWrong": [
+        null,
+        "The gender gap is enormous, not small.",
+        "Young men fare far better than this."
+      ],
+      "action": "Ask what explains a 30-point gender gap."
+    },
+    {
+      "id": "g08-008",
+      "src": "SDGR25",
+      "prompt": "Youth unemployment is 12.9%. Adult unemployment is:",
+      "options": [
+        "3.7%",
+        "12.9%",
+        "20%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "3.7% — young people are about three and a half times more likely to be unemployed than adults.",
+      "whyWrong": [
+        null,
+        "That's the youth rate.",
+        "Adult unemployment is far lower."
+      ],
+      "action": "Ask why a first job is the hardest to get."
+    },
+    {
+      "id": "g08-009",
+      "src": "SDGR25",
+      "prompt": "Ending child labour by 2025 would need progress to speed up by how much?",
+      "options": [
+        "11 times faster",
+        "Twice as fast",
+        "It's already achieved"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "An 11-fold acceleration. Between 2020 and 2024 the world moved 22 million children out of labour — impressive, and nowhere near enough.",
+      "whyWrong": [
+        null,
+        "The required acceleration is far larger.",
+        "138 million children are still working."
+      ],
+      "action": "Ask what an 11x acceleration would actually require."
+    },
+    {
+      "id": "g08-010",
+      "src": "SDGR25",
+      "prompt": "Workers' rights protections between 2015 and 2023 got:",
+      "options": [
+        "No change",
+        "Better by 7%",
+        "Worse — a 7% global decline"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Compliance with labour rights deteriorated 7% globally — and 45.5% in the least developed countries. Rights are going backwards.",
+      "whyWrong": [
+        "There was measurable deterioration.",
+        "The trend is negative, not positive.",
+        null
+      ],
+      "action": "Ask what labour rights protect a worker from."
+    },
+    {
+      "id": "g08-011",
+      "src": "SDGR25",
+      "prompt": "In the least developed countries, labour rights compliance fell by:",
+      "options": [
+        "45.5%",
+        "4.5%",
+        "It improved"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "45.5% — a collapse, and far worse than the 16.5% decline in developed economies. Rights eroded most where they were weakest already.",
+      "whyWrong": [
+        null,
+        "Ten times too small.",
+        "It deteriorated sharply."
+      ],
+      "action": "Compare 45.5% with the developed-economy figure of 16.5%."
+    },
+    {
+      "id": "g08-012",
+      "src": "SDGR25",
+      "prompt": "How many children do hazardous work — jobs that can injure or kill them?",
+      "options": [
+        "5.4 million",
+        "54 million",
+        "540,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "54 million of the 138 million children in child labour — mining, heavy machinery, chemicals, long hours.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask what makes work 'hazardous' rather than just hard."
+    },
+    {
+      "id": "g08-013",
+      "src": "SDGR25",
+      "prompt": "Least developed countries are meant to grow at 7% a year. Actual 2024 growth was:",
+      "options": [
+        "10%",
+        "7.5%",
+        "3.1%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "3.1% — under half the target, and falling from 4.7% in 2022 and 3.5% in 2023. Growth is slowing where it's needed most.",
+      "whyWrong": [
+        "Far above actual growth.",
+        "Above the target, which wasn't achieved.",
+        null
+      ],
+      "action": "Ask why growth targets exist for poorer countries."
+    },
+    {
+      "id": "g08-014",
+      "src": "SDGR25",
+      "prompt": "Global income per person grew about how fast in 2024?",
+      "options": [
+        "It shrank",
+        "About 10%",
+        "About 2%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Around 2% a year between 2022 and 2024, slowing to a projected 1.5% in 2025 amid trade tensions and uncertainty.",
+      "whyWrong": [
+        "It grew, though slowly.",
+        "Far above actual global growth rates.",
+        null
+      ],
+      "action": "Ask what 2% growth means for a family's income."
+    },
+    {
+      "id": "g08-015",
+      "src": "SDGR25",
+      "prompt": "In least developed countries, what share of working women are in informal jobs?",
+      "options": [
+        "63.8%",
+        "93.8%",
+        "43.8%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "93.8% — against 86.4% of men. Almost every working woman in the poorest countries works without protection.",
+      "whyWrong": [
+        "Far too optimistic.",
+        null,
+        "Vastly too optimistic."
+      ],
+      "action": "Ask what happens to an informal worker who gets sick."
+    },
+    {
+      "id": "g08-016",
+      "src": "SDGR25",
+      "prompt": "Tourism contributes what share of global GDP?",
+      "options": [
+        "34%",
+        "3.4%",
+        "0.3%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "3.4% of world GDP and 5.6% of global employment — bigger as a job creator than as an economic share.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Ask how many people you know work in tourism."
+    },
+    {
+      "id": "g08-017",
+      "src": "SDGR25",
+      "prompt": "For Small Island Developing States, tourism is what share of GDP?",
+      "options": [
+        "3%",
+        "13%",
+        "50%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "13% of GDP and 12.9% of employment — nearly four times the global average. Island economies depend on visitors.",
+      "whyWrong": [
+        "That's closer to the global average.",
+        null,
+        "Too high, though dependence is real."
+      ],
+      "action": "Ask what happens to an island economy when tourism stops."
+    },
+    {
+      "id": "g08-018",
+      "src": "SDGR25",
+      "prompt": "Global unemployment fell from 6.0% in 2015 to 5.0%. Is that the whole story?",
+      "options": [
+        "Yes — work is now secure",
+        "No — 57.8% of jobs are informal",
+        "No — unemployment actually rose"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Record-low unemployment sits alongside 57.8% informal employment. Having a job and having a secure, protected job are different things.",
+      "whyWrong": [
+        "Most of the world's work is informal and unprotected.",
+        null,
+        "Unemployment genuinely fell to a record low."
+      ],
+      "action": "Ask what your ideal job would guarantee you."
+    },
+    {
+      "id": "g08-019",
+      "src": "SDGR25",
+      "prompt": "How much did child labour fall between 2020 and 2024?",
+      "options": [
+        "It didn't change",
+        "From 138m to 160m",
+        "From 160m to 138m"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "22 million children left child labour in four years — real progress, though 11 times faster is needed to hit the target.",
+      "whyWrong": [
+        "22 million children were removed.",
+        "It fell rather than rose.",
+        null
+      ],
+      "action": "Ask what happens to a child who stops working."
+    },
+    {
+      "id": "g08-020",
+      "src": "SDGR25",
+      "prompt": "Labour productivity growth in 2024 was:",
+      "options": [
+        "1.5%",
+        "15%",
+        "Negative"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.5%, down from a 1.8% average in 2015–2019. Workers producing more per hour is what makes wages rise, so slowing productivity matters.",
+      "whyWrong": [
+        null,
+        "Ten times too high.",
+        "It grew, though more slowly than before."
+      ],
+      "action": "Ask what makes a worker more productive."
+    },
+    {
+      "id": "g08-021",
+      "src": "SDGR25",
+      "prompt": "Which region had NEGATIVE productivity growth between 2015 and 2019?",
+      "options": [
+        "Eastern Asia",
+        "Latin America and the Caribbean at -1.1%",
+        "Central Asia"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Latin America and the Caribbean at -1.1% — workers producing less per hour than before, which makes rising wages nearly impossible.",
+      "whyWrong": [
+        "Eastern and South-Eastern Asia averaged 3.2%.",
+        null,
+        "Central and Southern Asia exceeded 3% in 2024."
+      ],
+      "action": "Ask what causes productivity to fall."
+    },
+    {
+      "id": "g08-022",
+      "src": "SDGR25",
+      "prompt": "Which region had the fastest productivity growth recently?",
+      "options": [
+        "Europe",
+        "Latin America",
+        "Eastern and South-Eastern Asia at 3.2%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Eastern and South-Eastern Asia averaged 3.2% between 2020 and 2024 — roughly double the global rate.",
+      "whyWrong": [
+        "Not identified as the fastest-growing region here.",
+        "Latin America saw negative growth in 2015–2019.",
+        null
+      ],
+      "action": "Ask what that region did differently."
+    },
+    {
+      "id": "g08-023",
+      "src": "SDGR25",
+      "prompt": "One in five young people is not in education, work or training. Is that improving?",
+      "options": [
+        "It's worsening fast",
+        "Rapidly",
+        "Barely — down 0.9 points since 2015"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "A 0.9 percentage-point fall in nine years. Essentially stagnant, leaving 259 million young people disconnected.",
+      "whyWrong": [
+        "It improved slightly rather than worsening.",
+        "Progress has been minimal.",
+        null
+      ],
+      "action": "Ask what would reconnect a young person to work or study."
+    },
+    {
+      "id": "g08-024",
+      "src": "SDGR25",
+      "prompt": "Tourism provides what share of global employment?",
+      "options": [
+        "5.6%",
+        "0.6%",
+        "25%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "5.6% of all jobs worldwide — more than its 3.4% share of GDP, because tourism is labour-intensive.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Far too high globally."
+      ],
+      "action": "Ask why tourism creates more jobs per dollar than some industries."
+    },
+    {
+      "id": "g08-025",
+      "src": "SDGR25",
+      "prompt": "Least developed countries' growth has moved which way since 2022?",
+      "options": [
+        "Down, from 4.7% to 3.1%",
+        "Up, from 3.1% to 4.7%",
+        "Flat"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Falling — 4.7% in 2022, 3.5% in 2023, 3.1% in 2024. The gap to the 7% target is widening rather than closing.",
+      "whyWrong": [
+        null,
+        "The trend is downward.",
+        "There has been a clear decline."
+      ],
+      "action": "Ask what slows growth in the poorest countries."
+    },
+    {
+      "id": "g08-026",
+      "src": "SDGR25",
+      "prompt": "What does 'informal employment' actually mean?",
+      "options": [
+        "Work with no contract, protection or benefits",
+        "Work with a casual dress code",
+        "Part-time work"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "No contract, no sick pay, no pension, no legal protection — 57.8% of the world's workers, and nearly 90% in the poorest countries.",
+      "whyWrong": [
+        null,
+        "Nothing to do with clothing.",
+        "Informal work can be full-time; the issue is protection."
+      ],
+      "action": "List what you'd lose without a contract."
+    },
+    {
+      "id": "g08-027",
+      "src": "SDGR25",
+      "prompt": "Global GDP per person growth is projected to slow in 2025 to:",
+      "options": [
+        "10%",
+        "5%",
+        "1.5%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "1.5%, down from around 2% — slowed by trade tensions and policy uncertainty.",
+      "whyWrong": [
+        "Far above any recent global rate.",
+        "Far above the projection.",
+        null
+      ],
+      "action": "Ask how trade disputes reach ordinary households."
+    },
+    {
+      "id": "g08-028",
+      "src": "SDGR25",
+      "prompt": "Which is bigger: youth unemployment or adult unemployment?",
+      "options": [
+        "They're equal",
+        "Adult, 12.9% versus 3.7%",
+        "Youth, 12.9% versus 3.7%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Youth unemployment is about 3.5 times the adult rate — a consistent pattern almost everywhere in the world.",
+      "whyWrong": [
+        "There's a 9-point gap.",
+        "It's the other way round.",
+        null
+      ],
+      "action": "Ask what makes employers hesitant to hire first-timers."
+    },
+    {
+      "id": "g08-029",
+      "src": "SDGR25",
+      "prompt": "Informal employment is projected to change by 2026 to:",
+      "options": [
+        "57.7% — essentially unchanged",
+        "30%",
+        "80%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "57.7%, down a tenth of a percentage point from 57.8%. Informality is one of the most stubborn features of the global economy.",
+      "whyWrong": [
+        null,
+        "No such improvement is projected.",
+        "No such deterioration is projected."
+      ],
+      "action": "Ask why informality is so hard to shift."
+    },
+    {
+      "id": "g08-030",
+      "src": "SDGR25",
+      "prompt": "Which group is most likely to be in informal work?",
+      "options": [
+        "Young people in Europe",
+        "Men in developed economies",
+        "Women in least developed countries at 93.8%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "93.8% of working women in least developed countries — the highest informality rate of any group measured.",
+      "whyWrong": [
+        "European youth face unemployment, but not this informality rate.",
+        "Developed economies have far lower informality.",
+        null
+      ],
+      "action": "Ask why women are more often in informal work."
+    },
+    {
+      "id": "g08-031",
+      "src": "SDGR25",
+      "prompt": "Child labour fell over 100 million since 2000. What does that prove?",
+      "options": [
+        "It's solvable — the number responds to policy",
+        "Nothing can be done",
+        "Child labour is increasing"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A drop of over 100 million shows child labour responds to schooling, family income and enforcement. The remaining 138 million is a choice, not a fate.",
+      "whyWrong": [
+        null,
+        "Over 100 million children were removed from labour.",
+        "The trend has been downward for two decades."
+      ],
+      "action": "Ask which policies got children out of work."
+    },
+    {
+      "id": "g08-032",
+      "src": "SDGR25",
+      "prompt": "Labour rights declined 16.5% in developed economies. What does that show?",
+      "options": [
+        "Only poor countries have problems",
+        "Rights are eroding even in rich countries",
+        "Rights improved everywhere"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Even wealthy economies saw a 16.5% deterioration — though far less than the 45.5% collapse in least developed countries.",
+      "whyWrong": [
+        "Developed economies saw measurable decline too.",
+        null,
+        "Compliance fell 7% globally."
+      ],
+      "action": "Ask what workplace rights exist where you live."
+    },
+    {
+      "id": "g08-033",
+      "src": "SDGR25",
+      "prompt": "For Small Island Developing States, tourism employment is:",
+      "options": [
+        "1.29%",
+        "12.9% of all jobs",
+        "50%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "12.9% of all employment — more than one job in eight, against 5.6% globally.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Too high, though dependence is substantial."
+      ],
+      "action": "Ask what a hurricane does to an island's job market."
+    },
+    {
+      "id": "g08-034",
+      "src": "SDGR25",
+      "prompt": "Global unemployment at 5.0% is a record low. What's the catch?",
+      "options": [
+        "There is no catch",
+        "Most jobs are informal and unprotected",
+        "Unemployment is actually rising"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Being employed says nothing about job quality. With 57.8% informality and labour rights declining 7%, the world has more jobs and worse protection.",
+      "whyWrong": [
+        "Informality and rights erosion are serious caveats.",
+        null,
+        "It genuinely fell to a record low."
+      ],
+      "action": "Ask what makes a job 'decent' rather than just a job."
+    },
+    {
+      "id": "g08-035",
+      "src": "SDGR25",
+      "prompt": "Latin America's tourism contribution to GDP is about:",
+      "options": [
+        "0.4%",
+        "14.3%",
+        "4.3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "4.3% — above the global 3.4%, but far below Small Island Developing States at 13%.",
+      "whyWrong": [
+        "Ten times too low.",
+        "Too high for the region.",
+        null
+      ],
+      "action": "Rank three regions by tourism dependence."
+    },
+    {
+      "id": "g08-036",
+      "src": "SDGR25",
+      "prompt": "Central and Southern Asia's tourism GDP share is:",
+      "options": [
+        "2.2%",
+        "22%",
+        "12%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "2.2% — below the global average of 3.4%, and far below island economies.",
+      "whyWrong": [
+        null,
+        "Ten times too high.",
+        "Too high for this region."
+      ],
+      "action": "Ask what else drives this region's economy."
+    },
+    {
+      "id": "g08-037",
+      "src": "SDGR25",
+      "prompt": "Productivity growth slowed from 1.8% to 1.5%. Why does that matter for workers?",
+      "options": [
+        "Wages rise when workers produce more per hour",
+        "It has no effect on pay",
+        "Slower productivity raises wages"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Productivity growth is what makes rising wages sustainable. When it slows, pay rises get harder to fund without inflation.",
+      "whyWrong": [
+        null,
+        "Productivity and wages are closely linked over time.",
+        "The relationship runs the other way."
+      ],
+      "action": "Ask what tools make your work faster."
+    },
+    {
+      "id": "g08-038",
+      "src": "SDGR25",
+      "prompt": "138 million children work. Where does most child labour happen?",
+      "options": [
+        "Only in cities",
+        "Only in factories",
+        "Often in agriculture and family enterprises"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Most child labour is in agriculture and family-run work rather than the factories people picture — which makes it harder to see and regulate.",
+      "whyWrong": [
+        "Much child labour is rural.",
+        "Factory child labour is a minority of cases.",
+        null
+      ],
+      "action": "Ask why hidden work is harder to stop."
+    },
+    {
+      "id": "g08-039",
+      "src": "SDGR25",
+      "prompt": "Which target is Goal 8 furthest from?",
+      "options": [
+        "Reducing unemployment",
+        "Ending child labour — needs 11x acceleration",
+        "Growing the economy"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Child labour needs an 11-fold acceleration to hit its target. Unemployment hit a record low and economies are growing, if slowly.",
+      "whyWrong": [
+        "Unemployment fell to a record low of 5.0%.",
+        null,
+        "Global GDP per capita is growing about 2%."
+      ],
+      "action": "Ask what an 11x acceleration means in practice."
+    },
+    {
+      "id": "g08-040",
+      "src": "SDGR25",
+      "prompt": "259 million young people are disconnected from work and study. As a share that's:",
+      "options": [
+        "About one in five",
+        "About one in fifty",
+        "About one in 500"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About 20% — one young person in five worldwide is in neither education, employment nor training.",
+      "whyWrong": [
+        null,
+        "Ten times too optimistic.",
+        "A hundred times too optimistic."
+      ],
+      "action": "Picture 20 young people. Four are in this position."
+    },
+    {
+      "id": "g08-041",
+      "src": "SDGR25",
+      "prompt": "Least developed countries need 7% growth. They're achieving:",
+      "options": [
+        "Under half that",
+        "Double that",
+        "Exactly that"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "3.1% against a 7% target — under half, and falling year on year.",
+      "whyWrong": [
+        null,
+        "Growth is well below the target.",
+        "There's a substantial shortfall."
+      ],
+      "action": "Ask what 7% growth would change over a decade."
+    },
+    {
+      "id": "g08-042",
+      "src": "SDGR25",
+      "prompt": "In least developed countries, informal work for men is:",
+      "options": [
+        "46.4%",
+        "86.4%",
+        "26.4%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "86.4% — high, though still below women's 93.8%. Informality dominates work for both sexes in the poorest countries.",
+      "whyWrong": [
+        "Far too optimistic.",
+        null,
+        "Vastly too optimistic."
+      ],
+      "action": "Compare 86.4% and 93.8%. Why the gap?"
+    },
+    {
+      "id": "g08-043",
+      "src": "SDGR25",
+      "prompt": "What makes youth unemployment different from adult unemployment?",
+      "options": [
+        "Young people lack experience employers ask for",
+        "Young people don't want jobs",
+        "There are no youth jobs anywhere"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "At 12.9% against 3.7%, the youth rate reflects the experience paradox — you need a job to get experience and experience to get a job.",
+      "whyWrong": [
+        null,
+        "259 million are disconnected, but unemployment measures active jobseekers.",
+        "Youth employment exists but is harder to access."
+      ],
+      "action": "Ask how someone gets their very first job."
+    },
+    {
+      "id": "g08-044",
+      "src": "SDGR25",
+      "prompt": "Global labour rights compliance declined 7%. Over what period?",
+      "options": [
+        "A century",
+        "One year",
+        "2015 to 2023"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Eight years, from 2015 to 2023 — the same period the SDGs have been running.",
+      "whyWrong": [
+        "The SDG period began in 2015.",
+        "The decline was measured over eight years.",
+        null
+      ],
+      "action": "Ask what changed for workers since 2015."
+    },
+    {
+      "id": "g08-045",
+      "src": "SDGR25",
+      "prompt": "Which of these improved most clearly since 2015?",
+      "options": [
+        "Labour rights",
+        "Unemployment, 6.0% to 5.0%",
+        "Informality"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Unemployment fell a full percentage point to a record low. Labour rights declined 7% and informality barely moved.",
+      "whyWrong": [
+        "Compliance deteriorated 7% globally.",
+        null,
+        "It's projected to stay at about 57.7%."
+      ],
+      "action": "Ask why job quantity improved while quality didn't."
+    },
+    {
+      "id": "g08-046",
+      "src": "SDGR25",
+      "prompt": "Tourism is 3.4% of GDP but 5.6% of jobs. What does that tell you?",
+      "options": [
+        "It's highly automated",
+        "It employs a lot of people per dollar earned",
+        "It creates few jobs"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Tourism is labour-intensive — hotels, guides, restaurants and transport need people. That's why it matters so much for employment in island economies.",
+      "whyWrong": [
+        "It's one of the least automated major sectors.",
+        null,
+        "Its job share exceeds its GDP share."
+      ],
+      "action": "List five jobs that exist because of tourists."
+    },
+    {
+      "id": "g08-047",
+      "src": "SDGR25",
+      "prompt": "How many children are in child labour but NOT hazardous work?",
+      "options": [
+        "None",
+        "About 8 million",
+        "About 84 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "138 million total minus 54 million in hazardous work leaves about 84 million — still work that keeps them out of school.",
+      "whyWrong": [
+        "The majority are in non-hazardous child labour.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Do the subtraction yourself: 138 minus 54."
+    },
+    {
+      "id": "g08-048",
+      "src": "SDGR25",
+      "prompt": "Which best describes the global jobs picture?",
+      "options": [
+        "Everything improving together",
+        "Fewer jobs, better protected",
+        "More jobs, but most without protection"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Record-low unemployment at 5.0% alongside 57.8% informality and a 7% decline in labour rights. Quantity up, quality down.",
+      "whyWrong": [
+        "Labour rights and informality both worsened.",
+        "Unemployment fell to a record low.",
+        null
+      ],
+      "action": "Ask which matters more: having work, or having good work."
+    },
+    {
+      "id": "g08-049",
+      "src": "SDGR25",
+      "prompt": "In Central and Southern Asia, what share of young women are not in work or education?",
+      "options": [
+        "4.9%",
+        "11.5%",
+        "41.9%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "41.9% — more than two in five young women, against 11.5% of young men in the same region.",
+      "whyWrong": [
+        "Ten times too optimistic.",
+        "That's the young men's figure.",
+        null
+      ],
+      "action": "Ask what would change that 30-point gap."
+    },
+    {
+      "id": "g08-050",
+      "src": "SDGR25",
+      "prompt": "What's the most surprising fact in Goal 8?",
+      "options": [
+        "Unemployment is at a record high",
+        "Unemployment is at a record low while most work is informal",
+        "Child labour is rising"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "5.0% unemployment — the best on record — alongside 57.8% of workers having no contract or protection. The headline number hides the real story.",
+      "whyWrong": [
+        "It fell to a record low of 5.0%.",
+        null,
+        "It fell from 160 million to 138 million since 2020."
+      ],
+      "action": "Ask what statistic you'd want instead of unemployment."
+    }
+  ]
+}
