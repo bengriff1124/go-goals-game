@@ -3,8 +3,10 @@
     "public": ".",
     "ignore": [
       "firebase.json",
+      ".firebaserc",
       "firestore.rules",
       "README.md",
+      ".git/**",
       "**/.*",
       "**/node_modules/**"
     ],
@@ -12,6 +14,17 @@
       {
         "source": "**",
         "destination": "/go-goals-game.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, max-age=0, must-revalidate"
+          }
+        ]
       }
     ]
   },

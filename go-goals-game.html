@@ -502,6 +502,13 @@
     <p class="lead">A digital adaptation of the UN board game about the 17 Sustainable Development Goals &mdash; now played as competing nations racing the same deadline from very different starting lines. Each team draws a random <strong>nation</strong> that quietly sets how fast they move and which goals come easy. Every correct answer secretly builds toward the real behaviors the world needs to achieve each goal &mdash; hidden until <strong>2030</strong>, when a final round plays out and the results are revealed all at once.</p>
   </div>
 
+  <div class="card hidden" id="resumeCard" style="border:2px solid var(--accent); background:#f2faf9;">
+    <div style="font-weight:800; font-size:16px; color:var(--accent-dark);">Rejoin your game</div>
+    <div class="hint" id="resumeDetail" style="margin-bottom:12px;"></div>
+    <button class="start-btn" id="resumeBtn" style="margin-top:0;">Rejoin</button>
+    <button class="btn-cancel" id="resumeDismissBtn" style="width:100%; margin-top:8px;">Start something else instead</button>
+  </div>
+
   <div class="mode-tabs" id="modeTabs">
     <div class="mode-tab active" data-mode="local">
       <div class="mt-title">📍 One Device</div>
@@ -1255,18 +1262,23 @@
      Local pass-the-device play never touches any of this — syncMode stays 'local'
      and every function below becomes a no-op. It only activates for hosted games. */
 
-  // TODO(task #12): replace with the real project's config once it exists.
+  /* Public web config — safe to ship in client source. Firebase web API keys identify
+     the project, they don't authorize access; firestore.rules is what actually gates
+     reads and writes. */
   const FIREBASE_CONFIG = {
-    apiKey: "TODO",
-    authDomain: "TODO.firebaseapp.com",
-    projectId: "TODO"
+    apiKey: "AIzaSyBz8K_JEvbQv1PDt-iap4m8Zy8S5Pmjr8A",
+    authDomain: "go-goals-game-live.firebaseapp.com",
+    projectId: "go-goals-game-live",
+    storageBucket: "go-goals-game-live.firebasestorage.app",
+    messagingSenderId: "878429983987",
+    appId: "1:878429983987:web:18aebd79b18898d0135386"
   };
 
   let fbReady = false, db = null;
   function ensureFirebase(){
     if(fbReady) return true;
-    if(FIREBASE_CONFIG.apiKey === "TODO"){
-      console.warn('Firebase project not configured yet — hosted/join modes are unavailable until then.');
+    if(typeof firebase === 'undefined'){
+      console.warn('Firebase SDK unavailable (offline or blocked) — hosted play needs an internet connection.');
       return false;
     }
     try{
@@ -1287,6 +1299,22 @@
   let applyingRemote = false;  // true while applyState() runs, so its own renderStandings() call doesn't re-push what we just received
 
   function gameDocRef(gameId){ return db.collection('games').doc(gameId); }
+
+  /* Remembering the session locally is what makes a closed tab / dead battery / crashed
+     Chromebook recoverable: the game itself lives in Firestore, this just records which
+     game this device belonged to and as whom. */
+  const SESSION_KEY = 'goGoalsSession';
+  function saveSession(){
+    try{
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ gameId: currentGameId, role: syncMode, teamId: myTeamId }));
+    } catch(e){ /* private browsing — resume just won't be offered */ }
+  }
+  function clearSession(){
+    try{ localStorage.removeItem(SESSION_KEY); } catch(e){}
+  }
+  function loadSession(){
+    try{ return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch(e){ return null; }
+  }
 
   function randomCode(len){
     const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no 0/O/1/I/L — easy to read aloud
@@ -1379,22 +1407,20 @@
   }
 
   let pushTimer = null;
-  function schedulePushState(){
+  function pushStateNow(){
+    const phase = gameOver ? 'revealed' : 'playing';
+    gameDocRef(currentGameId).set(serializeState(phase), { merge:false }).catch(e=>{
+      console.error('Sync write failed', e);
+    });
+  }
+  /* immediate=true for turn hand-offs: the debounced write fires mid-move while the
+     turn still belongs to the previous team, so the hand-off has to be written right
+     away (and after it) or the earlier snapshot echoes back and undoes it. */
+  function schedulePushState(immediate){
     if(syncMode === 'local' || !fbReady || !currentGameId || applyingRemote) return;
     clearTimeout(pushTimer);
-    pushTimer = setTimeout(()=>{
-      const phase = gameOver ? (revealShownFromSync ? 'revealed' : 'playing') : 'playing';
-      gameDocRef(currentGameId).set(serializeState(phase), { merge:false }).catch(e=>{
-        console.error('Sync write failed', e);
-      });
-      if(gameOver){
-        // Give the reveal a moment to render locally, then flip phase so every
-        // other connected device also gets the reveal on its next snapshot.
-        setTimeout(()=>{
-          gameDocRef(currentGameId).set(serializeState('revealed'), { merge:false }).catch(()=>{});
-        }, 600);
-      }
-    }, 300);
+    if(immediate){ pushStateNow(); return; }
+    pushTimer = setTimeout(pushStateNow, 300);
   }
 
   function attachSnapshotListener(gameId){
@@ -1550,7 +1576,7 @@
     const errEl = document.getElementById('hostCreateError');
     errEl.textContent = '';
     if(!ensureFirebase()){
-      errEl.textContent = 'Online play isn\'t available yet — the Firebase project hasn\'t been configured. Use One Device mode for now.';
+      errEl.textContent = 'Couldn\'t reach the online service — check your internet connection, or use One Device mode.';
       return;
     }
     const code = randomCode(5);
@@ -1563,6 +1589,7 @@
       document.getElementById('hostPickWrap').classList.add('hidden');
       document.getElementById('hostLobbyWrap').classList.remove('hidden');
       document.getElementById('hostCodeDisplay').textContent = code;
+      saveSession();
       attachSnapshotListener(code);
     }).catch(e=>{
       syncMode = 'local'; currentGameId = null;
@@ -1653,7 +1680,7 @@
     const errEl = document.getElementById('joinFindError');
     errEl.textContent = '';
     if(!ensureFirebase()){
-      errEl.textContent = 'Online play isn\'t available yet — the Firebase project hasn\'t been configured.';
+      errEl.textContent = 'Couldn\'t reach the online service — check your internet connection.';
       return;
     }
     const code = document.getElementById('joinCodeInput').value.trim().toUpperCase();
@@ -1728,6 +1755,7 @@
       })
     ).then(()=>{
       myTeamId = joinDraft.slot;
+      saveSession();
       document.getElementById('joinFormWrap').classList.add('hidden');
       document.getElementById('joinWaitWrap').classList.remove('hidden');
     }).catch(e=>{
@@ -1738,6 +1766,47 @@
       }
     });
   });
+
+  /* ---------------- Resume an interrupted hosted game ---------------- */
+  function offerResume(){
+    const s = loadSession();
+    if(!s || !s.gameId || !ensureFirebase()) return;
+    gameDocRef(s.gameId).get().then(snap=>{
+      if(!snap.exists){ clearSession(); return; }
+      const data = snap.data();
+      if(data.phase === 'revealed'){ clearSession(); return; }
+      const who = s.role === 'host'
+        ? 'as the host'
+        : 'as ' + ((data.teams || data.joined || []).find(t=> (t.id ?? t.slot) === s.teamId)?.name || 'your team');
+      document.getElementById('resumeDetail').textContent =
+        'Game ' + s.gameId + ' is still in progress — rejoin ' + who + ' right where you left off.';
+      document.getElementById('resumeCard').classList.remove('hidden');
+      document.getElementById('resumeBtn').onclick = ()=>{
+        syncMode = s.role;
+        currentGameId = s.gameId;
+        myTeamId = s.teamId;
+        document.getElementById('resumeCard').classList.add('hidden');
+        if(data.phase === 'lobby'){
+          /* Back into the lobby view we were in before the interruption. */
+          document.querySelector('[data-mode=' + (s.role === 'host' ? 'host' : 'join') + ']').click();
+          if(s.role === 'host'){
+            document.getElementById('hostPickWrap').classList.add('hidden');
+            document.getElementById('hostLobbyWrap').classList.remove('hidden');
+            document.getElementById('hostCodeDisplay').textContent = s.gameId;
+          } else {
+            document.getElementById('joinCodeWrap').classList.add('hidden');
+            document.getElementById('joinWaitWrap').classList.remove('hidden');
+          }
+        }
+        attachSnapshotListener(s.gameId); // applyState rebuilds the board for 'playing'
+      };
+    }).catch(()=>{ /* offline: just don't offer resume */ });
+  }
+  document.getElementById('resumeDismissBtn').addEventListener('click', ()=>{
+    clearSession();
+    document.getElementById('resumeCard').classList.add('hidden');
+  });
+  offerResume();
 
   document.getElementById('startBtn').addEventListener('click', ()=>{
     const nationDeck = shuffleIndices(NATIONS.length);
@@ -1823,6 +1892,8 @@
 
     /* Tear down any hosted-game connection and put the setup panels back to defaults. */
     if(unsubscribeSnapshot){ unsubscribeSnapshot(); unsubscribeSnapshot = null; }
+    clearSession();
+    document.getElementById('resumeCard').classList.add('hidden');
     syncMode = 'local';
     currentGameId = null;
     myTeamId = null;
@@ -2242,6 +2313,10 @@
       }
     } while(teams[currentIdx].finished && currentIdx !== startIdx);
     updateTurnUI();
+    /* Must broadcast AFTER currentIdx moves. renderStandings() pushes mid-move, while
+       the turn still belongs to the previous team, so without this the stale snapshot
+       echoes back and reverts the hand-off — the turn would never actually pass. */
+    schedulePushState(true);
   }
 
   rollBtn.addEventListener('click', ()=>{
@@ -2397,6 +2472,7 @@
     renderStandings();
     log('⏳ 2030 has arrived. The results are in.');
     showReveal();
+    schedulePushState(true); // phase:'revealed' — sends every other device to the reveal too
   }
 
   /* The reveal is where every hidden behavior finally surfaces — it has to carry the
