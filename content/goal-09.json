@@ -1,0 +1,919 @@
+{
+  "goal": 9,
+  "goalName": "Industry, Innovation and Infrastructure",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 9",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-09/"
+    },
+    "UN9": {
+      "title": "Goal 9: Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation",
+      "publisher": "United Nations Department of Global Communications",
+      "url": "https://www.un.org/sustainabledevelopment/infrastructure-industrialization/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g09-001",
+      "src": "SDGR25",
+      "prompt": "What share of the world's population has NO access to a mobile broadband network at all?",
+      "options": [
+        "40%",
+        "4%",
+        "Nobody"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "4% — around 300 million people live outside the reach of any mobile network. Not too poor for a phone: there is simply no signal where they live.",
+      "whyWrong": [
+        "Ten times too high — coverage is now almost universal.",
+        null,
+        "A small share still lives beyond any signal."
+      ],
+      "action": "Find the last place you visited with no bars of signal."
+    },
+    {
+      "id": "g09-002",
+      "src": "SDGR25",
+      "prompt": "What share of the world's population is covered by a 4G network?",
+      "options": [
+        "92%",
+        "52%",
+        "22%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "92%. 4G went from a luxury to near-universal coverage in about fifteen years — one of the fastest technology rollouts in history.",
+      "whyWrong": [
+        null,
+        "That's the 4G figure for low-income countries.",
+        "Far too low — 4G is nearly everywhere."
+      ],
+      "action": "Ask an adult what phones could do before 4G."
+    },
+    {
+      "id": "g09-003",
+      "src": "SDGR25",
+      "prompt": "5G now covers what share of the world's population?",
+      "options": [
+        "51%",
+        "5%",
+        "90%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "51% — just over half the world, only a few years after launch. But covered is not the same as connected or affordable.",
+      "whyWrong": [
+        null,
+        "Far too low — 5G passed half the world.",
+        "That's closer to 4G coverage."
+      ],
+      "action": "Check whether your area has 5G."
+    },
+    {
+      "id": "g09-004",
+      "src": "SDGR25",
+      "prompt": "In low-income countries, 5G covers what share of people?",
+      "options": [
+        "51%",
+        "25%",
+        "4%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Just 4%, against 51% globally. The newest technology arrives in rich places first and poor places last — sometimes decades later.",
+      "whyWrong": [
+        "That's the global figure, not the low-income one.",
+        "Far too optimistic for low-income countries.",
+        null
+      ],
+      "action": "Compare 4% with the global 51%."
+    },
+    {
+      "id": "g09-005",
+      "src": "SDGR25",
+      "prompt": "In low-income countries, 4G covers what share of people?",
+      "options": [
+        "52%",
+        "92%",
+        "12%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "52% — barely half, against 92% worldwide. Almost one in two people there cannot get the network the rest of the world takes for granted.",
+      "whyWrong": [
+        null,
+        "That's the global figure.",
+        "Too pessimistic — about half are covered."
+      ],
+      "action": "Ask what you could not do today with no mobile data."
+    },
+    {
+      "id": "g09-006",
+      "src": "SDGR25",
+      "prompt": "How many researchers does the world have per million people?",
+      "options": [
+        "142",
+        "1,420",
+        "14,200"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1,420 per million — about one researcher for every 700 people, up from 1,137 in 2015.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Work out how many researchers your town would have."
+    },
+    {
+      "id": "g09-007",
+      "src": "SDGR25",
+      "prompt": "Sub-Saharan Africa has how many researchers per million people?",
+      "options": [
+        "91",
+        "910",
+        "1,420"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "91 per million — against 4,254 in Europe and North America. That is a 47-fold gap in who gets to do science.",
+      "whyWrong": [
+        null,
+        "Ten times too high.",
+        "That's the world average."
+      ],
+      "action": "Ask what a country loses when it cannot train scientists."
+    },
+    {
+      "id": "g09-008",
+      "src": "SDGR25",
+      "prompt": "Europe and Northern America have how many researchers per million?",
+      "options": [
+        "42,540",
+        "425",
+        "4,254"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "4,254 — three times the world average and 47 times sub-Saharan Africa's 91. Discovery is concentrated in a few countries.",
+      "whyWrong": [
+        "Ten times too high.",
+        "Ten times too low — below even the world average.",
+        null
+      ],
+      "action": "Name three inventions and find out where they were made."
+    },
+    {
+      "id": "g09-009",
+      "src": "SDGR25",
+      "prompt": "How much of the world's income goes into research and development?",
+      "options": [
+        "19.5%",
+        "1.95%",
+        "0.02%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1.95% of global GDP — under one dollar in fifty. It's risen from 1.72% in 2015, but nearly all the growth is in already-rich economies.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "Far too low — R&D is a real slice of the economy."
+      ],
+      "action": "Ask why companies hesitate to spend on research."
+    },
+    {
+      "id": "g09-010",
+      "src": "SDGR25",
+      "prompt": "What share of small manufacturing businesses worldwide can get a loan or credit line?",
+      "options": [
+        "31%",
+        "81%",
+        "3%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Only 31%. More than two in three small factories cannot borrow to buy a machine, hire staff or take an order — the single biggest brake on small industry.",
+      "whyWrong": [
+        null,
+        "Far too optimistic — most small firms are locked out.",
+        "Too pessimistic — about a third do have credit."
+      ],
+      "action": "Ask what a small business needs money for before it earns any."
+    },
+    {
+      "id": "g09-011",
+      "src": "SDGR25",
+      "prompt": "In sub-Saharan Africa, what share of small manufacturers can get credit?",
+      "options": [
+        "46%",
+        "18%",
+        "31%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "18% — the lowest of any region, against 46% in Latin America and the Caribbean. Where capital is scarcest, it is also hardest to borrow.",
+      "whyWrong": [
+        "That's the Latin American figure.",
+        null,
+        "That's the global average."
+      ],
+      "action": "Ask why banks judge some borrowers riskier than others."
+    },
+    {
+      "id": "g09-012",
+      "src": "SDGR25",
+      "prompt": "Latin America and the Caribbean lead the world on small-business credit, at:",
+      "options": [
+        "16%",
+        "96%",
+        "46%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "46% — the highest regional figure, and still under half. Even the best-performing region leaves most small manufacturers unbanked.",
+      "whyWrong": [
+        "That's closer to sub-Saharan Africa's 18%.",
+        "Far too optimistic — no region is near this.",
+        null
+      ],
+      "action": "Ask what would change if every small firm could borrow."
+    },
+    {
+      "id": "g09-013",
+      "src": "SDGR25",
+      "prompt": "Global CO2 emissions in 2024 reached:",
+      "options": [
+        "Exactly zero",
+        "A record low",
+        "An all-time high of 37.6 gigatons"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "37.6 gigatons — the highest ever recorded, 8.3% above 2015. Despite every climate pledge, industrial emissions are still going up.",
+      "whyWrong": [
+        "Emissions are enormous and still rising.",
+        "Emissions hit a record high, not a low.",
+        null
+      ],
+      "action": "Ask what has to change for emissions to fall, not just slow."
+    },
+    {
+      "id": "g09-014",
+      "src": "SDGR25",
+      "prompt": "How much did CO2 emissions rise between 2015 and 2024?",
+      "options": [
+        "They fell 8.3%",
+        "8.3%",
+        "83%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Up 8.3% — the years since the SDGs were agreed have seen emissions grow, not shrink.",
+      "whyWrong": [
+        "Emissions rose over this period.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Find out what year your country's emissions peaked."
+    },
+    {
+      "id": "g09-015",
+      "src": "SDGR25",
+      "prompt": "How much CO2 did clean energy prevent between 2019 and 2024?",
+      "options": [
+        "2.6 gigatons",
+        "26 gigatons",
+        "None"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "2.6 gigatons avoided — real and large, yet emissions still hit a record. Clean energy is growing fast but demand is growing faster.",
+      "whyWrong": [
+        null,
+        "Ten times too high.",
+        "Clean energy has measurably reduced emissions."
+      ],
+      "action": "Ask why cleaner energy hasn't yet meant lower emissions."
+    },
+    {
+      "id": "g09-016",
+      "src": "SDGR25",
+      "prompt": "Manufacturing value added per person grew how much between 2015 and 2024?",
+      "options": [
+        "17.3%",
+        "1.7%",
+        "173%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "17.3% — from $1,649 to $1,934 per person. The world genuinely makes more per head than it did a decade ago.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Ten times too high."
+      ],
+      "action": "List five things near you that were manufactured."
+    },
+    {
+      "id": "g09-017",
+      "src": "SDGR25",
+      "prompt": "Which region grew its manufacturing per person fastest since 2015?",
+      "options": [
+        "Sub-Saharan Africa",
+        "Central and Southern Asia",
+        "Australia and New Zealand"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Central and Southern Asia, up 42.1% — far ahead of the 17.3% world average. India and its neighbours are the engine room of new manufacturing.",
+      "whyWrong": [
+        "Sub-Saharan Africa's manufacturing per person actually fell.",
+        null,
+        "Australia and New Zealand's fell 10.5%."
+      ],
+      "action": "Check the country of origin labels on your clothes."
+    },
+    {
+      "id": "g09-018",
+      "src": "SDGR25",
+      "prompt": "Sub-Saharan Africa's manufacturing per person since 2015 has:",
+      "options": [
+        "Grown 42%",
+        "Stayed flat",
+        "Fallen 5.9%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Fallen 5.9%. The region with the fastest-growing population is producing less per head than a decade ago — the opposite of industrialisation.",
+      "whyWrong": [
+        "That's Central and Southern Asia.",
+        "There was a measurable decline.",
+        null
+      ],
+      "action": "Ask what a country needs before factories will open there."
+    },
+    {
+      "id": "g09-019",
+      "src": "SDGR25",
+      "prompt": "Which of these regions saw manufacturing per person FALL since 2015?",
+      "options": [
+        "Latin America and the Caribbean",
+        "Central and Southern Asia",
+        "None of them"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Latin America and the Caribbean, down 8.0% — along with sub-Saharan Africa (−5.9%) and Australia and New Zealand (−10.5%). Growth is not universal.",
+      "whyWrong": [
+        null,
+        "It grew 42.1% — the fastest anywhere.",
+        "Three regions went backwards."
+      ],
+      "action": "Ask what happens to a town when its factory closes."
+    },
+    {
+      "id": "g09-020",
+      "src": "SDGR25",
+      "prompt": "In the least developed countries, manufacturing per person since 2015 has:",
+      "options": [
+        "Grown 40.6%",
+        "Fallen by half",
+        "Not changed"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Grown 40.6% — better than the world average of 17.3%. The poorest countries are industrialising fast, from a very low base.",
+      "whyWrong": [
+        null,
+        "The trend in LDCs is strongly positive.",
+        "There has been substantial growth."
+      ],
+      "action": "Ask why growth looks big when the starting point is small."
+    },
+    {
+      "id": "g09-021",
+      "src": "SDGR25",
+      "prompt": "Manufacturing makes up what share of the world's total economy?",
+      "options": [
+        "56%",
+        "16.5%",
+        "1.6%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "16.5% — steady across 2023 and 2024. Most of the world economy is services, not making things.",
+      "whyWrong": [
+        "Far too high — services dominate the world economy.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Sort ten jobs you know into making things and providing services."
+    },
+    {
+      "id": "g09-022",
+      "src": "SDGR25",
+      "prompt": "How much cargo moved by sea in 2023?",
+      "options": [
+        "11.6 billion metric tons",
+        "11.6 million metric tons",
+        "116 billion metric tons"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "11.6 billion tons — up from 6.2 billion in 2000. Roughly 80% of everything traded travels by ship.",
+      "whyWrong": [
+        null,
+        "A thousand times too low.",
+        "Ten times too high."
+      ],
+      "action": "Find out how your favourite snack reached your shop."
+    },
+    {
+      "id": "g09-023",
+      "src": "SDGR25",
+      "prompt": "Sea cargo in 2000 was 6.2 billion tons. By 2023 it was:",
+      "options": [
+        "About the same",
+        "Half as much",
+        "11.6 billion tons"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "11.6 billion tons — nearly doubled in a generation. Global trade grew faster than the global economy.",
+      "whyWrong": [
+        "Sea trade nearly doubled.",
+        "It grew sharply, it did not shrink.",
+        null
+      ],
+      "action": "Look up how many containers the biggest ship carries."
+    },
+    {
+      "id": "g09-024",
+      "src": "SDGR25",
+      "prompt": "Developing countries handled what share of the world's sea freight in 2023?",
+      "options": [
+        "94%",
+        "14%",
+        "54%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "54% — a majority, up from 38% in 2000. The centre of gravity of world trade has genuinely shifted.",
+      "whyWrong": [
+        "Too high — it is just over half.",
+        "Far too low — developing countries now handle most of it.",
+        null
+      ],
+      "action": "Find the world's busiest port and see which country it's in."
+    },
+    {
+      "id": "g09-025",
+      "src": "SDGR25",
+      "prompt": "Developing countries' share of sea freight in 2000 was 38%. In 2023 it was:",
+      "options": [
+        "30%",
+        "38%",
+        "54%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "54% — a 16-point rise in 23 years. Developing economies went from a third of world shipping to more than half.",
+      "whyWrong": [
+        "The share rose, it did not fall.",
+        "It changed substantially.",
+        null
+      ],
+      "action": "Ask what a country gains from a big port."
+    },
+    {
+      "id": "g09-026",
+      "src": "UN9",
+      "prompt": "What share of the world's workers have manufacturing jobs?",
+      "options": [
+        "3.7%",
+        "43.7%",
+        "13.7%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "13.7% — and falling, from 14.3% in 2015. Factories make more than ever with fewer workers, because machines do more of the work.",
+      "whyWrong": [
+        "Too low — factory work is still a substantial share.",
+        "Far too high — most jobs are in services.",
+        null
+      ],
+      "action": "Ask what jobs a modern factory still needs people for."
+    },
+    {
+      "id": "g09-027",
+      "src": "UN9",
+      "prompt": "Manufacturing employment's share of world jobs since 2015 has:",
+      "options": [
+        "Fallen slightly",
+        "Risen sharply",
+        "Doubled"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Fallen from 14.3% to 13.7%. Output is up and jobs are down — the definition of automation.",
+      "whyWrong": [
+        null,
+        "The share has been drifting down.",
+        "Nothing close to doubling."
+      ],
+      "action": "Ask which jobs near you a machine could not do."
+    },
+    {
+      "id": "g09-028",
+      "src": "UN9",
+      "prompt": "What share of the world lives within reach of a mobile broadband network?",
+      "options": [
+        "96%",
+        "66%",
+        "100%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "96%. Reaching the final 4% is the hard part — remote, sparse and unprofitable to serve.",
+      "whyWrong": [
+        null,
+        "Too pessimistic — coverage is near-universal.",
+        "About 4% still have no coverage."
+      ],
+      "action": "Ask why the last 4% costs the most to reach."
+    },
+    {
+      "id": "g09-029",
+      "src": "SDGR25",
+      "prompt": "The world has 1,420 researchers per million people. In 2015 it had:",
+      "options": [
+        "137",
+        "2,137",
+        "1,137"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "1,137 — so research capacity has been growing about 4.3% a year. More people are doing science than at any point in history.",
+      "whyWrong": [
+        "Ten times too low.",
+        "Researcher numbers rose, so 2015 was lower.",
+        null
+      ],
+      "action": "Ask what a researcher actually does all day."
+    },
+    {
+      "id": "g09-030",
+      "src": "SDGR25",
+      "prompt": "R&D spending was 1.72% of world GDP in 2015. By 2022 it was:",
+      "options": [
+        "0.95%",
+        "1.95%",
+        "5.95%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1.95% — a real rise, but still under one dollar in fifty, and heavily concentrated in a handful of countries.",
+      "whyWrong": [
+        "R&D spending rose, it did not fall.",
+        null,
+        "Far too high — no region spends this much."
+      ],
+      "action": "Ask what problem you'd fund research into first."
+    },
+    {
+      "id": "g09-031",
+      "src": "SDGR25",
+      "prompt": "The gap in researchers per million between Europe/North America and sub-Saharan Africa is about:",
+      "options": [
+        "47 times",
+        "2 times",
+        "The same"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About 47 times — 4,254 against 91 per million. This is one of the widest gaps in any SDG indicator.",
+      "whyWrong": [
+        null,
+        "Vastly understates the gap.",
+        "The gap is enormous."
+      ],
+      "action": "Ask what it takes to become a researcher where you live."
+    },
+    {
+      "id": "g09-032",
+      "src": "SDGR25",
+      "prompt": "Global CO2 emissions rose how much from 2023 to 2024?",
+      "options": [
+        "They fell",
+        "8%",
+        "0.8%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "0.8% — the slowest growth in years, but still growth. Emissions must fall steeply, not merely rise slowly.",
+      "whyWrong": [
+        "Emissions rose to a record high.",
+        "Ten times too high for a single year.",
+        null
+      ],
+      "action": "Ask what the difference is between slowing and reversing."
+    },
+    {
+      "id": "g09-033",
+      "src": "SDGR25",
+      "prompt": "Manufacturing value added per person worldwide is now about:",
+      "options": [
+        "$193",
+        "$1,934",
+        "$19,340"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$1,934 a year for every person on Earth, up from $1,649 in 2015. That is the value of everything manufactured, divided by everyone.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Estimate the value of the manufactured goods in your bag."
+    },
+    {
+      "id": "g09-034",
+      "src": "SDGR25",
+      "prompt": "Which region's manufacturing per person fell the MOST since 2015?",
+      "options": [
+        "Australia and New Zealand",
+        "Sub-Saharan Africa",
+        "Latin America"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Australia and New Zealand, down 10.5% — a bigger fall than sub-Saharan Africa's 5.9% or Latin America's 8.0%. Rich countries can de-industrialise too.",
+      "whyWrong": [
+        null,
+        "It fell 5.9% — a smaller decline.",
+        "It fell 8.0% — still less than Australia and New Zealand."
+      ],
+      "action": "Ask why a wealthy country might make fewer things over time."
+    },
+    {
+      "id": "g09-035",
+      "src": "UN9",
+      "prompt": "Global manufacturing growth in 2021 was 7.4%. In 2022 it was:",
+      "options": [
+        "10%",
+        "7.4%",
+        "2.7%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "2.7% — growth fell to about a third of the previous year as the post-pandemic rebound faded.",
+      "whyWrong": [
+        "Growth slowed sharply, it did not accelerate.",
+        "That's the 2021 figure.",
+        null
+      ],
+      "action": "Ask what makes factory output swing year to year."
+    },
+    {
+      "id": "g09-036",
+      "src": "SDGR25",
+      "prompt": "Two in three small manufacturers cannot get credit. The main consequence is:",
+      "options": [
+        "They pay more tax",
+        "They export more",
+        "They cannot grow or buy equipment"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Without credit a small firm cannot buy a machine, hire ahead of an order, or survive a slow month — so it stays small forever.",
+      "whyWrong": [
+        "Credit access is unrelated to tax bills.",
+        "Lack of credit makes exporting harder, not easier.",
+        null
+      ],
+      "action": "Ask a local shop owner what they'd buy with a loan."
+    },
+    {
+      "id": "g09-037",
+      "src": "SDGR25",
+      "prompt": "Being covered by a 5G network means you:",
+      "options": [
+        "Definitely use it",
+        "Could use it if you had a phone and could afford data",
+        "Get it free"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Coverage only means the signal reaches you. A device and affordable data are separate barriers — which is why usage lags far behind coverage.",
+      "whyWrong": [
+        "Coverage and actual use are very different numbers.",
+        null,
+        "Networks are not free to use."
+      ],
+      "action": "Work out the monthly cost of data where you live."
+    },
+    {
+      "id": "g09-038",
+      "src": "SDGR25",
+      "prompt": "Which is closest to the number of people with no mobile network at all?",
+      "options": [
+        "About 3 million",
+        "About 300 million",
+        "About 3 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 300 million — 4% of humanity, mostly in remote rural areas where building a mast costs more than it earns.",
+      "whyWrong": [
+        "A hundred times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Find the most remote inhabited place you can on a map."
+    },
+    {
+      "id": "g09-039",
+      "src": "SDGR25",
+      "prompt": "Infrastructure means:",
+      "options": [
+        "The shared systems everything else runs on — roads, power, water, networks, ports",
+        "Only roads",
+        "Tall buildings"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Infrastructure is the shared foundation: without power, roads, water and networks, no factory, hospital or school can function.",
+      "whyWrong": [
+        null,
+        "Roads are one part of a much bigger system.",
+        "Buildings sit on infrastructure; they aren't it."
+      ],
+      "action": "List the infrastructure your school depends on."
+    },
+    {
+      "id": "g09-040",
+      "src": "SDGR25",
+      "prompt": "Why does Goal 9 combine industry, innovation and infrastructure?",
+      "options": [
+        "They're unrelated but were left over",
+        "They all start with I",
+        "Each depends on the others — you can't run a factory without power or invent without labs"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "They're one system. Infrastructure lets industry exist, industry funds innovation, and innovation makes both cleaner and cheaper.",
+      "whyWrong": [
+        "The three are tightly connected.",
+        "The grouping is about dependency, not spelling.",
+        null
+      ],
+      "action": "Trace how electricity reaches one thing you used today."
+    },
+    {
+      "id": "g09-041",
+      "src": "SDGR25",
+      "prompt": "The world makes 17.3% more per person than in 2015, but emissions are up 8.3%. This means:",
+      "options": [
+        "Emissions are falling",
+        "Production is growing faster than emissions, but emissions are still rising",
+        "Nothing has changed"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Manufacturing is getting cleaner per unit made — but total output grew enough that emissions still hit a record. Efficiency alone isn't enough.",
+      "whyWrong": [
+        "Emissions reached an all-time high in 2024.",
+        null,
+        "Both figures moved substantially."
+      ],
+      "action": "Ask what 'cleaner per item' misses when you make more items."
+    },
+    {
+      "id": "g09-042",
+      "src": "SDGR25",
+      "prompt": "LDC manufacturing per person grew 40.6% while sub-Saharan Africa's fell 5.9%. This shows:",
+      "options": [
+        "The figures must be wrong",
+        "Different groupings can move in opposite directions — 'developing' is not one story",
+        "Nothing useful"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "The LDC and sub-Saharan Africa groupings overlap but aren't identical — averages hide enormous variation between countries.",
+      "whyWrong": [
+        "Both figures are correct for their groupings.",
+        null,
+        "It's a crucial lesson about how averages mislead."
+      ],
+      "action": "Find two countries in the same region with very different economies."
+    },
+    {
+      "id": "g09-043",
+      "src": "SDGR25",
+      "prompt": "About what share of internationally traded goods travels by sea?",
+      "options": [
+        "About 5%",
+        "About 20%",
+        "About 80%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Roughly 80% by volume — 11.6 billion tons in 2023. Air freight is fast but tiny by weight; the world economy floats.",
+      "whyWrong": [
+        "Vastly too low.",
+        "Far too low — shipping dominates trade by volume.",
+        null
+      ],
+      "action": "Track a container ship live on a marine traffic site."
+    },
+    {
+      "id": "g09-044",
+      "src": "SDGR25",
+      "prompt": "A country with 91 researchers per million mostly has to:",
+      "options": [
+        "Do without technology",
+        "Invent everything itself",
+        "Buy technology invented elsewhere"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "With almost no research capacity, countries import technology and pay for it — so the profits and the know-how stay abroad.",
+      "whyWrong": [
+        "Technology gets imported, not skipped.",
+        "That requires research capacity it doesn't have.",
+        null
+      ],
+      "action": "Ask why a country would want to invent things itself."
+    },
+    {
+      "id": "g09-045",
+      "src": "SDGR25",
+      "prompt": "The world's clean energy prevented 2.6 gigatons of CO2, yet 2024 set an emissions record. Why?",
+      "options": [
+        "The clean energy figure is fake",
+        "Total energy demand grew faster than clean energy replaced it",
+        "Clean energy makes emissions worse"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Clean energy is being added on top of fossil fuels rather than replacing them, because total demand keeps climbing.",
+      "whyWrong": [
+        "The avoided emissions are real and measured.",
+        null,
+        "Clean energy reduces emissions; the problem is scale."
+      ],
+      "action": "Ask what 'adding' versus 'replacing' energy means."
+    },
+    {
+      "id": "g09-046",
+      "src": "SDGR25",
+      "prompt": "Small manufacturers matter to development because:",
+      "options": [
+        "They employ most industrial workers in developing countries",
+        "They pay the most tax",
+        "They export the most"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Small firms are where most industrial jobs are — which is why 31% credit access is such a serious constraint on employment.",
+      "whyWrong": [
+        null,
+        "Large firms and informal trade dominate tax receipts.",
+        "Exports are dominated by large firms."
+      ],
+      "action": "Count the small businesses on one street near you."
+    },
+    {
+      "id": "g09-047",
+      "src": "SDGR25",
+      "prompt": "The 4G gap between low-income countries (52%) and the world (92%) is about:",
+      "options": [
+        "4 percentage points",
+        "40 percentage points",
+        "There is no gap"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A 40-point gap. Nearly half of low-income populations are stuck on older, slower networks — or none at all.",
+      "whyWrong": [
+        "Ten times too small.",
+        null,
+        "The gap is very large."
+      ],
+      "action": "Ask what you can do on 4G that you can't on 2G."
+    },
+    {
+      "id": "g09-048",
+      "src": "SDGR25",
+      "prompt": "R&D spending sits at 1.95% of GDP. The SDG aim is to:",
+      "options": [
+        "Cut it",
+        "Substantially increase it, especially in developing countries",
+        "Freeze it"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Target 9.5 calls for more research spending and more researchers — particularly where capacity is lowest, like sub-Saharan Africa's 91 per million.",
+      "whyWrong": [
+        "The goal is more research, not less.",
+        null,
+        "Standing still leaves the research gap in place."
+      ],
+      "action": "Find out whether your country's research spending is rising."
+    },
+    {
+      "id": "g09-049",
+      "src": "SDGR25",
+      "prompt": "Developing countries went from 38% to 54% of sea freight since 2000. This mostly reflects:",
+      "options": [
+        "More manufacturing and trade happening in developing economies",
+        "Fewer ships",
+        "Better weather"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Factories moved. As Asia in particular industrialised, the goods — and the shipping — moved with them.",
+      "whyWrong": [
+        null,
+        "Total sea freight nearly doubled over this period.",
+        "Weather does not shift trade shares."
+      ],
+      "action": "Check where three items in your home were made."
+    },
+    {
+      "id": "g09-050",
+      "src": "SDGR25",
+      "prompt": "The single clearest sign that Goal 9 progress is uneven is:",
+      "options": [
+        "Ships getting bigger",
+        "4% 5G coverage in low-income countries versus 51% globally",
+        "Manufacturing being 16.5% of GDP"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A 47-fold researcher gap and a 4%-versus-51% 5G gap say the same thing: new capability arrives where money already is.",
+      "whyWrong": [
+        "Ship size says little about fairness.",
+        null,
+        "That's a global structure figure, not an equity gap."
+      ],
+      "action": "Name one technology that reached everyone quickly and ask why."
+    }
+  ]
+}
