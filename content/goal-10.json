@@ -1,0 +1,914 @@
+{
+  "goal": 10,
+  "goalName": "Reduced Inequalities",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 10",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-10/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g10-001",
+      "src": "SDGR25",
+      "prompt": "How many people report having been discriminated against?",
+      "options": [
+        "One in five",
+        "One in a hundred",
+        "One in a thousand"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About one in five people worldwide say they have personally faced discrimination — and the rate is rising, from 14.8% to 17.1%.",
+      "whyWrong": [
+        null,
+        "Far too low — discrimination is reported by a fifth of people.",
+        "Vastly too low."
+      ],
+      "action": "Ask what counts as discrimination under the law where you live."
+    },
+    {
+      "id": "g10-002",
+      "src": "SDGR25",
+      "prompt": "Discrimination rates worldwide have recently:",
+      "options": [
+        "Fallen sharply",
+        "Risen from 14.8% to 17.1%",
+        "Stayed exactly the same"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Up from 14.8% to 17.1%. This is one of the SDG indicators moving in the wrong direction.",
+      "whyWrong": [
+        "The trend is upward, not downward.",
+        null,
+        "There was a measurable increase."
+      ],
+      "action": "Ask why discrimination might be rising, not falling."
+    },
+    {
+      "id": "g10-003",
+      "src": "SDGR25",
+      "prompt": "People with disabilities report discrimination at 28%. People without report:",
+      "options": [
+        "28%",
+        "17%",
+        "40%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "17% — so having a disability makes you roughly 1.6 times more likely to face discrimination.",
+      "whyWrong": [
+        "That's the figure for people with disabilities.",
+        null,
+        "Non-disabled people report substantially less."
+      ],
+      "action": "Look for one thing near you that a wheelchair user couldn't use."
+    },
+    {
+      "id": "g10-004",
+      "src": "SDGR25",
+      "prompt": "In the least developed countries, the discrimination rate is:",
+      "options": [
+        "4.3%",
+        "24.3%",
+        "Lower than the world average"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "24.3% — nearly one in four people, well above the 17.1% world average. Poverty and discrimination reinforce each other.",
+      "whyWrong": [
+        "Far too low.",
+        null,
+        "LDC rates are well above average."
+      ],
+      "action": "Ask how discrimination could keep someone poor."
+    },
+    {
+      "id": "g10-005",
+      "src": "SDGR25",
+      "prompt": "The poorest fifth of people report discrimination at 17.3%. The richest fifth report:",
+      "options": [
+        "17.3%",
+        "10.3%",
+        "25%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "10.3% — being poor makes you notably more likely to be treated unfairly, on top of having less.",
+      "whyWrong": [
+        "That's the figure for the poorest.",
+        null,
+        "The wealthiest report the lowest rates."
+      ],
+      "action": "Ask whether people are treated differently by how they dress."
+    },
+    {
+      "id": "g10-006",
+      "src": "SDGR25",
+      "prompt": "People with no formal education report discrimination at 21.4%. People with higher education report:",
+      "options": [
+        "12.7%",
+        "21.4%",
+        "30%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "12.7% — education is protective, which is part of why leaving school early has effects that last a lifetime.",
+      "whyWrong": [
+        null,
+        "That's the no-education figure.",
+        "More education correlates with less reported discrimination."
+      ],
+      "action": "Ask how education changes how strangers treat you."
+    },
+    {
+      "id": "g10-007",
+      "src": "SDGR25",
+      "prompt": "How many people worldwide are refugees or forcibly displaced?",
+      "options": [
+        "3.7 million",
+        "37.8 million",
+        "378,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "37.8 million as of mid-2024 — more than the population of Canada, all forced from home.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Find a country whose population is about 37 million."
+    },
+    {
+      "id": "g10-008",
+      "src": "SDGR25",
+      "prompt": "The world's refugee rate is 460 per 100,000 people. In 2005 it was:",
+      "options": [
+        "460",
+        "900",
+        "153"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "153 per 100,000 — the rate has tripled in under twenty years. Displacement is at levels not seen in generations.",
+      "whyWrong": [
+        "That's today's rate.",
+        "The rate has risen, so 2005 was lower.",
+        null
+      ],
+      "action": "Ask what makes people leave home permanently."
+    },
+    {
+      "id": "g10-009",
+      "src": "SDGR25",
+      "prompt": "The refugee rate in 2015 was about 230 per 100,000. Today it is:",
+      "options": [
+        "230",
+        "115",
+        "460"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "460 — it has doubled since the SDGs were agreed. Every year of the goals so far has seen more displacement, not less.",
+      "whyWrong": [
+        "The rate has risen since 2015.",
+        "It doubled rather than halved.",
+        null
+      ],
+      "action": "Ask which conflicts started after 2015."
+    },
+    {
+      "id": "g10-010",
+      "src": "SDGR25",
+      "prompt": "Which four countries do the most refugees come from?",
+      "options": [
+        "Afghanistan, Syria, Ukraine, Venezuela",
+        "Canada, Japan, Norway, Chile",
+        "China, India, Brazil, Nigeria"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Afghanistan, Syria, Ukraine and Venezuela — three from war, one from economic and political collapse.",
+      "whyWrong": [
+        null,
+        "These are stable, high-income countries.",
+        "These are large countries but not top refugee origins."
+      ],
+      "action": "Find those four countries on a map."
+    },
+    {
+      "id": "g10-011",
+      "src": "SDGR25",
+      "prompt": "Sending $200 home to family costs, on average:",
+      "options": [
+        "20%",
+        "0.7%",
+        "6.7%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "6.7% — about $13 of every $200 vanishes in fees. The SDG target is 3%, so the world is more than double where it should be.",
+      "whyWrong": [
+        "Too high for the average, though banks charge more.",
+        "Far too low — fees are substantial.",
+        null
+      ],
+      "action": "Work out the fee on $500 at 6.7%."
+    },
+    {
+      "id": "g10-012",
+      "src": "SDGR25",
+      "prompt": "The SDG target for money transfer costs is 3%. The actual figure is:",
+      "options": [
+        "6.7% and rising",
+        "Below 3%",
+        "Exactly 3%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "6.7%, up from 6.2% a year earlier. Costs are moving away from the target, not toward it.",
+      "whyWrong": [
+        null,
+        "Costs are well above target.",
+        "The target has not been met."
+      ],
+      "action": "Ask why fees rise when they're supposed to fall."
+    },
+    {
+      "id": "g10-013",
+      "src": "SDGR25",
+      "prompt": "Which is the most expensive way to send money home?",
+      "options": [
+        "Mobile operators",
+        "Money transfer shops",
+        "Banks"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Banks charge 13.4% — more than three times the 3.9% mobile operators charge. The most established institutions are the priciest.",
+      "whyWrong": [
+        "Mobile operators are the cheapest at 3.9%.",
+        "Money transfer operators charge 5.6%.",
+        null
+      ],
+      "action": "Compare 13.4% at a bank with 3.9% on a phone."
+    },
+    {
+      "id": "g10-014",
+      "src": "SDGR25",
+      "prompt": "Which is the CHEAPEST way to send money home?",
+      "options": [
+        "Banks at 13.4%",
+        "Mobile operators at 3.9%",
+        "Post offices at 7.5%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Mobile operators, at 3.9% — the only channel close to the 3% target, and the newest one.",
+      "whyWrong": [
+        "Banks are the most expensive by far.",
+        null,
+        "Post offices sit in the middle."
+      ],
+      "action": "Ask why a newer technology can charge less."
+    },
+    {
+      "id": "g10-015",
+      "src": "SDGR25",
+      "prompt": "Sending money digitally costs 5.3%. Sending it non-digitally costs:",
+      "options": [
+        "7.2%",
+        "3%",
+        "5.3%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "7.2% — cash-based transfers cost nearly two points more. People without smartphones or bank accounts pay the premium.",
+      "whyWrong": [
+        null,
+        "Neither channel has reached the 3% target.",
+        "That's the digital figure."
+      ],
+      "action": "Ask who cannot use a digital transfer."
+    },
+    {
+      "id": "g10-016",
+      "src": "SDGR25",
+      "prompt": "What share of the world's income goes to workers as wages?",
+      "options": [
+        "52.3%",
+        "82.3%",
+        "22.3%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "52.3% — just over half. The rest goes to owners of capital: land, buildings, machines, shares.",
+      "whyWrong": [
+        null,
+        "Far too high — nearly half goes to capital.",
+        "Too low — workers get just over half."
+      ],
+      "action": "Ask what 'income from capital' means."
+    },
+    {
+      "id": "g10-017",
+      "src": "SDGR25",
+      "prompt": "Labour's share of world income since 2015 has:",
+      "options": [
+        "Risen",
+        "Fallen from 52.9% to 52.3%",
+        "Stayed exactly flat"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Fallen 0.6 points — sounds tiny, but it works out at about $255 less per worker per year, worldwide.",
+      "whyWrong": [
+        "The share has been slipping.",
+        null,
+        "There was a measurable decline."
+      ],
+      "action": "Ask what a 0.6% shift means across billions of workers."
+    },
+    {
+      "id": "g10-018",
+      "src": "SDGR25",
+      "prompt": "The falling labour income share costs the average worker roughly:",
+      "options": [
+        "$25 a year",
+        "$255 a year",
+        "$2,550 a year"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About $255 a year — a small percentage shift that becomes real money in a household budget.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Ask what $255 buys where you live."
+    },
+    {
+      "id": "g10-019",
+      "src": "SDGR25",
+      "prompt": "Of 108 countries measured, how many grew the incomes of their poorest 40% faster than average?",
+      "options": [
+        "1 in 10",
+        "6 in 10",
+        "All of them"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 6 in 10 — genuinely encouraging. In most countries with data, the bottom is catching up rather than falling behind.",
+      "whyWrong": [
+        "The majority did achieve pro-poor growth.",
+        null,
+        "Around four in ten did not."
+      ],
+      "action": "Ask what would make the poorest gain faster than the rich."
+    },
+    {
+      "id": "g10-020",
+      "src": "SDGR25",
+      "prompt": "Among low and lower-middle-income countries, how many achieved faster growth for their poorest 40%?",
+      "options": [
+        "Nearly all",
+        "Fewer than half",
+        "None"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Fewer than half — against 7 in 10 among richer countries. Where inequality is most damaging, it is hardest to reduce.",
+      "whyWrong": [
+        "Poorer countries did notably worse than rich ones.",
+        null,
+        "Some did succeed."
+      ],
+      "action": "Ask why reducing inequality is harder in a poor country."
+    },
+    {
+      "id": "g10-021",
+      "src": "SDGR25",
+      "prompt": "Among upper-middle and high-income countries, how many grew poorest incomes fastest?",
+      "options": [
+        "7 in 10",
+        "2 in 10",
+        "None"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "7 in 10 — richer countries have the tax systems and benefits to close gaps, and mostly did.",
+      "whyWrong": [
+        null,
+        "Most richer countries did succeed.",
+        "The majority achieved pro-poor growth."
+      ],
+      "action": "Name a policy that helps the poorest gain fastest."
+    },
+    {
+      "id": "g10-022",
+      "src": "SDGR25",
+      "prompt": "How much money flowed from richer to developing countries in 2023?",
+      "options": [
+        "$4.29 trillion",
+        "$42.9 billion",
+        "$429 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "$429 billion, up from $290 billion in 2015 — a large rise, though still modest next to global military or fossil fuel spending.",
+      "whyWrong": [
+        "Ten times too high.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Compare $429 billion with your country's annual budget."
+    },
+    {
+      "id": "g10-023",
+      "src": "SDGR25",
+      "prompt": "Of $429 billion in resource flows, how much was official development aid?",
+      "options": [
+        "$25.9 billion",
+        "$259 billion",
+        "All of it"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$259 billion — 60% of the total, up from 55% in 2015. Aid is a growing share of what reaches developing countries.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Aid is 60%, not all, of resource flows."
+      ],
+      "action": "Ask what counts as development aid."
+    },
+    {
+      "id": "g10-024",
+      "src": "SDGR25",
+      "prompt": "Which region received the most resource flows in 2023?",
+      "options": [
+        "Asia",
+        "Africa",
+        "Europe"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Asia, at $141 billion (32%) — ahead of Africa's $91 billion (21%), largely because Asia is far more populous.",
+      "whyWrong": [
+        null,
+        "Africa received $91 billion — substantial, but less than Asia.",
+        "Europe is not a major recipient."
+      ],
+      "action": "Compare Asia's and Africa's populations."
+    },
+    {
+      "id": "g10-025",
+      "src": "SDGR25",
+      "prompt": "How much reached the least developed countries in 2023?",
+      "options": [
+        "$800 billion",
+        "$8 billion",
+        "$80 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "$80 billion of the $429 billion total — under a fifth, for the countries with the greatest need.",
+      "whyWrong": [
+        "Ten times too high.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Work out $80 billion as a share of $429 billion."
+    },
+    {
+      "id": "g10-026",
+      "src": "SDGR25",
+      "prompt": "Women report gender-based discrimination at roughly what rate compared to men?",
+      "options": [
+        "Twice as often",
+        "The same",
+        "Half as often"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Twice as often. Gender remains one of the strongest predictors of who gets treated unfairly.",
+      "whyWrong": [
+        null,
+        "The gap is large, not absent.",
+        "Women report it far more, not less."
+      ],
+      "action": "Ask where gender rules are still written into law."
+    },
+    {
+      "id": "g10-027",
+      "src": "SDGR25",
+      "prompt": "Discrimination is reported nearly twice as often in:",
+      "options": [
+        "Urban areas",
+        "Rural areas",
+        "Neither — it's identical"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Urban areas — nearly double the rural rate. Cities mix people from different backgrounds, which creates both opportunity and friction.",
+      "whyWrong": [
+        null,
+        "Rural rates are notably lower.",
+        "The urban-rural gap is substantial."
+      ],
+      "action": "Ask why cities might report more discrimination."
+    },
+    {
+      "id": "g10-028",
+      "src": "SDGR25",
+      "prompt": "Small island states saw labour's income share fall by:",
+      "options": [
+        "It rose",
+        "0.2 points",
+        "2.6 percentage points"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "2.6 points — more than four times the 0.6-point global fall. Small island economies were hit hardest.",
+      "whyWrong": [
+        "The share fell sharply there.",
+        "Far smaller than the actual decline.",
+        null
+      ],
+      "action": "Ask why small island economies are so exposed."
+    },
+    {
+      "id": "g10-029",
+      "src": "SDGR25",
+      "prompt": "Reducing inequality between countries means:",
+      "options": [
+        "Narrowing the gap in income and opportunity between rich and poor nations",
+        "Making every country identical",
+        "Closing borders"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Goal 10 targets gaps both within and between countries — a child's life chances shouldn't be set by where they were born.",
+      "whyWrong": [
+        null,
+        "Countries stay different; the goal is fairer outcomes.",
+        "Goal 10 explicitly calls for safe, orderly migration."
+      ],
+      "action": "Compare life expectancy in two countries you know."
+    },
+    {
+      "id": "g10-030",
+      "src": "SDGR25",
+      "prompt": "Discrimination against people with disabilities is 28% versus 17% for others. That means people with disabilities are:",
+      "options": [
+        "About 1.6 times more likely to face it",
+        "Slightly less affected",
+        "Ten times more likely"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About 1.6 times more likely — a persistent gap on top of the physical barriers they already navigate.",
+      "whyWrong": [
+        null,
+        "They are considerably more affected.",
+        "The ratio is about 1.6, not 10."
+      ],
+      "action": "Check whether your school building is fully accessible."
+    },
+    {
+      "id": "g10-031",
+      "src": "SDGR25",
+      "prompt": "In Central and Southern Asia, how many of 7 countries grew poorest incomes fastest?",
+      "options": [
+        "3",
+        "7",
+        "0"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Only 3 of 7 — below the global pattern. The region with a huge share of the world's poor is not closing gaps fastest.",
+      "whyWrong": [
+        null,
+        "Most countries in the region did not achieve this.",
+        "Some countries did succeed."
+      ],
+      "action": "Name three countries in Central or Southern Asia."
+    },
+    {
+      "id": "g10-032",
+      "src": "SDGR25",
+      "prompt": "Aid's share of resource flows rose from 55% in 2015 to:",
+      "options": [
+        "45%",
+        "60%",
+        "90%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "60% in 2023 — aid grew faster than loans and investment, meaning developing countries depend more on grants than before.",
+      "whyWrong": [
+        "The share rose rather than fell.",
+        null,
+        "Aid is a majority but not nearly all."
+      ],
+      "action": "Ask whether depending more on aid is good or risky."
+    },
+    {
+      "id": "g10-033",
+      "src": "SDGR25",
+      "prompt": "The refugee rate has tripled since 2005. This is mostly because of:",
+      "options": [
+        "More tourism",
+        "Better record-keeping",
+        "War, persecution and state collapse"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Conflicts in Afghanistan, Syria, Ukraine and Venezuela drove most of the increase. Refugees flee danger, not opportunity.",
+      "whyWrong": [
+        "Tourists are not refugees.",
+        "The rise reflects real displacement, not just counting.",
+        null
+      ],
+      "action": "Ask what makes someone a refugee rather than a migrant."
+    },
+    {
+      "id": "g10-034",
+      "src": "SDGR25",
+      "prompt": "Landlocked developing countries saw labour income share fall by:",
+      "options": [
+        "0.1 points",
+        "1.4 percentage points",
+        "It rose 5 points"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1.4 points — more than double the global decline. Landlocked countries pay more to trade and have less bargaining power.",
+      "whyWrong": [
+        "Far smaller than the actual fall.",
+        null,
+        "The share declined."
+      ],
+      "action": "Find a landlocked country and trace its route to a port."
+    },
+    {
+      "id": "g10-035",
+      "src": "SDGR25",
+      "prompt": "If remittance fees dropped from 6.7% to the 3% target, families would:",
+      "options": [
+        "Keep roughly $7 more of every $200 sent",
+        "Lose money",
+        "Notice nothing"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About $7 more per $200 — billions of dollars a year staying with the families who earned it rather than with intermediaries.",
+      "whyWrong": [
+        null,
+        "Lower fees mean more money arrives.",
+        "For families living close to the edge, it is significant."
+      ],
+      "action": "Multiply $7 by twelve months of transfers."
+    },
+    {
+      "id": "g10-036",
+      "src": "SDGR25",
+      "prompt": "Discrimination rose from 14.8% to 17.1%. In percentage terms, that increase is roughly:",
+      "options": [
+        "16%",
+        "2%",
+        "50%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About a 16% relative rise — a 2.3-point jump on a 14.8 base. Small-looking point changes can be large proportional moves.",
+      "whyWrong": [
+        null,
+        "That's the point difference, not the relative rise.",
+        "Far too high for this change."
+      ],
+      "action": "Practise turning point changes into percentage changes."
+    },
+    {
+      "id": "g10-037",
+      "src": "SDGR25",
+      "prompt": "Which regions most consistently grew the incomes of their poorest 40%?",
+      "options": [
+        "Nowhere",
+        "Sub-Saharan Africa only",
+        "Eastern/South-Eastern Asia and Europe/Northern America"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Eastern and South-Eastern Asia and Europe/Northern America — the regions with the strongest growth and the strongest social systems.",
+      "whyWrong": [
+        "Six in ten countries did achieve it.",
+        "This region showed weaker pro-poor growth.",
+        null
+      ],
+      "action": "Ask what those two very different regions have in common."
+    },
+    {
+      "id": "g10-038",
+      "src": "SDGR25",
+      "prompt": "The world's refugee rate of 460 per 100,000 means roughly:",
+      "options": [
+        "1 person in 20,000",
+        "1 person in 20",
+        "1 person in 217"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 1 in every 217 people on Earth has been forced from home — a fill-a-stadium-every-hour scale of displacement.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too high.",
+        null
+      ],
+      "action": "Work out how many refugees a city of 200,000 would represent."
+    },
+    {
+      "id": "g10-039",
+      "src": "SDGR25",
+      "prompt": "Goal 10's target on migration calls for:",
+      "options": [
+        "Stopping all migration",
+        "Safe, orderly and regular migration with well-managed policies",
+        "Migration only for the rich"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "The goal is well-managed migration, not zero migration — dangerous irregular routes are what cost lives.",
+      "whyWrong": [
+        "Goal 10 does not seek to end migration.",
+        null,
+        "The aim is fair access, not access by wealth."
+      ],
+      "action": "Ask what makes a migration route dangerous."
+    },
+    {
+      "id": "g10-040",
+      "src": "SDGR25",
+      "prompt": "Bank remittance fees rose from 12.1% to 13.4%. This means:",
+      "options": [
+        "Banks got cheaper",
+        "The most expensive channel got more expensive",
+        "Nothing changed"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Already the priciest option, banks got worse — widening the gap with 3.9% mobile transfers.",
+      "whyWrong": [
+        "Bank fees increased.",
+        null,
+        "There was a clear 1.3-point rise."
+      ],
+      "action": "Ask why banks can keep charging more than competitors."
+    },
+    {
+      "id": "g10-041",
+      "src": "SDGR25",
+      "prompt": "Which statement about inequality does the data support?",
+      "options": [
+        "Inequality within countries is falling in most measured countries, while displacement and discrimination rise",
+        "Everything is improving",
+        "Everything is worsening"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Goal 10 is genuinely mixed: 6 in 10 countries closing income gaps, alongside record refugees and rising discrimination.",
+      "whyWrong": [
+        null,
+        "Refugees and discrimination are both up sharply.",
+        "Income growth for the poorest is a real success."
+      ],
+      "action": "Find one Goal 10 number improving and one worsening."
+    },
+    {
+      "id": "g10-042",
+      "src": "SDGR25",
+      "prompt": "Aid to the least developed countries was $80 billion of $429 billion total — about:",
+      "options": [
+        "80%",
+        "50%",
+        "19%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 19% — less than a fifth reaches the countries furthest behind, even though they need it most.",
+      "whyWrong": [
+        "That confuses the dollar figure with a percentage.",
+        "Far too high a share.",
+        null
+      ],
+      "action": "Ask where the other 81% goes."
+    },
+    {
+      "id": "g10-043",
+      "src": "SDGR25",
+      "prompt": "Latin America and the Caribbean saw labour income share fall by:",
+      "options": [
+        "0.1 points",
+        "1.3 percentage points",
+        "It doubled"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1.3 points — twice the global fall, in a region already among the world's most unequal.",
+      "whyWrong": [
+        "Far smaller than the actual decline.",
+        null,
+        "The share fell, not rose."
+      ],
+      "action": "Ask why the same trend hurts unequal countries more."
+    },
+    {
+      "id": "g10-044",
+      "src": "SDGR25",
+      "prompt": "Mobile operators charge 3.9% for remittances, banks 13.4%. The gap suggests:",
+      "options": [
+        "Mobiles are unsafe",
+        "Prices are fixed by law",
+        "Competition and technology can cut costs dramatically"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The same service costs less than a third via mobile — evidence that the target of 3% is achievable, not fantasy.",
+      "whyWrong": [
+        "Mobile money is regulated and widely used.",
+        "Prices vary by provider, which is why the gap exists.",
+        null
+      ],
+      "action": "Ask what stops everyone using the cheapest option."
+    },
+    {
+      "id": "g10-045",
+      "src": "SDGR25",
+      "prompt": "Post offices charge what to send money home?",
+      "options": [
+        "13.4%",
+        "3.9%",
+        "7.5%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "7.5% — between money transfer shops (5.6%) and banks (13.4%). Every channel except mobile is above the 3% target.",
+      "whyWrong": [
+        "That's the bank rate.",
+        "That's the mobile operator rate.",
+        null
+      ],
+      "action": "Rank the four channels by cost."
+    },
+    {
+      "id": "g10-046",
+      "src": "SDGR25",
+      "prompt": "37.8 million forcibly displaced people is roughly equivalent to:",
+      "options": [
+        "A small town",
+        "The population of a large city",
+        "The population of Canada"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Roughly Canada's entire population — displaced, and mostly hosted by countries that are themselves poor.",
+      "whyWrong": [
+        "Vastly larger than a town.",
+        "It is far larger than any single city.",
+        null
+      ],
+      "action": "Look up which countries host the most refugees."
+    },
+    {
+      "id": "g10-047",
+      "src": "SDGR25",
+      "prompt": "Total resource flows to developing countries rose from $290 billion in 2015 to:",
+      "options": [
+        "$429 billion",
+        "$300 billion",
+        "$200 billion"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$429 billion — a 48% increase in eight years, though needs grew too.",
+      "whyWrong": [
+        null,
+        "The rise was far larger than this.",
+        "Flows rose, they did not fall."
+      ],
+      "action": "Calculate the percentage rise from $290bn to $429bn."
+    },
+    {
+      "id": "g10-048",
+      "src": "SDGR25",
+      "prompt": "Why does the falling labour income share matter for inequality?",
+      "options": [
+        "It doesn't",
+        "It only affects rich countries",
+        "Wages are spread across billions of workers; capital income is concentrated among few owners"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "When income shifts from wages to capital, it shifts toward whoever already owns assets — so inequality widens even as the economy grows.",
+      "whyWrong": [
+        "It shifts income between very different groups.",
+        "SIDS, LLDCs and Latin America saw the largest falls.",
+        null
+      ],
+      "action": "Ask who owns the shares in the companies you buy from."
+    },
+    {
+      "id": "g10-049",
+      "src": "SDGR25",
+      "prompt": "Someone poor, uneducated, disabled and female faces discrimination risk that is:",
+      "options": [
+        "The same as anyone else",
+        "Lower, because of protections",
+        "Compounded — each factor adds to the others"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Disadvantages stack. Each measured factor — poverty, no education, disability, gender — raises the rate on its own, and they combine.",
+      "whyWrong": [
+        "Each factor independently raises the reported rate.",
+        "Protections exist but do not reverse the pattern.",
+        null
+      ],
+      "action": "Look up what 'intersectionality' means."
+    },
+    {
+      "id": "g10-050",
+      "src": "SDGR25",
+      "prompt": "The most encouraging Goal 10 finding is:",
+      "options": [
+        "Refugee numbers",
+        "6 in 10 countries growing poorest incomes fastest",
+        "Remittance costs"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "In most measured countries the bottom 40% are gaining faster than average — proof that inequality can be narrowed deliberately.",
+      "whyWrong": [
+        "Displacement is at record highs.",
+        null,
+        "Remittance costs are rising away from target."
+      ],
+      "action": "Find out what your country did for its poorest households last year."
+    }
+  ]
+}

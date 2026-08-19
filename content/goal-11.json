@@ -1,0 +1,914 @@
+{
+  "goal": 11,
+  "goalName": "Sustainable Cities and Communities",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 11",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-11/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g11-001",
+      "src": "SDGR25",
+      "prompt": "How many people live in slums or informal settlements without basic services?",
+      "options": [
+        "1.12 billion",
+        "112 million",
+        "11 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.12 billion — roughly one in seven people alive. No secure water, sanitation, or legal right to stay where they live.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Look up what services define an 'informal settlement'."
+    },
+    {
+      "id": "g11-002",
+      "src": "SDGR25",
+      "prompt": "What share of the world's population lives in cities?",
+      "options": [
+        "Under a quarter",
+        "Over half",
+        "Almost everyone"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Over half already — and heading for 70% by 2050. Humanity became an urban species in about 2007.",
+      "whyWrong": [
+        "Cities passed the halfway mark years ago.",
+        null,
+        "Nearly half still live rurally."
+      ],
+      "action": "Find out what year your country became majority urban."
+    },
+    {
+      "id": "g11-003",
+      "src": "SDGR25",
+      "prompt": "By 2050, what share of people will live in cities?",
+      "options": [
+        "40%",
+        "70%",
+        "100%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "70% — meaning nearly all future population growth happens in cities, most of it in Africa and Asia.",
+      "whyWrong": [
+        "Urban share is rising, not falling.",
+        null,
+        "Rural populations will still exist."
+      ],
+      "action": "Ask where the next billion city-dwellers will live."
+    },
+    {
+      "id": "g11-004",
+      "src": "SDGR25",
+      "prompt": "How much of their income does the average household spend on housing?",
+      "options": [
+        "61%",
+        "3.1%",
+        "31.0%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "31.0% globally — nearly a third of everything earned, before food, transport or anything else.",
+      "whyWrong": [
+        "Too high for the global average.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Work out 31% of a $2,000 monthly income."
+    },
+    {
+      "id": "g11-005",
+      "src": "SDGR25",
+      "prompt": "In sub-Saharan Africa, housing costs take what share of income?",
+      "options": [
+        "43.5%",
+        "21.4%",
+        "31.0%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "43.5% — the highest in the world. Nearly half of income goes on shelter, in the region with the lowest incomes.",
+      "whyWrong": [
+        null,
+        "That's the Europe/North America figure.",
+        "That's the global average."
+      ],
+      "action": "Ask what a family cuts when rent takes 43% of income."
+    },
+    {
+      "id": "g11-006",
+      "src": "SDGR25",
+      "prompt": "Housing costs in Europe and Northern America take what share of income?",
+      "options": [
+        "50%",
+        "43.5%",
+        "21.4%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "21.4% — the lowest measured share, and roughly half sub-Saharan Africa's 43.5%. Richer places spend proportionally less on shelter.",
+      "whyWrong": [
+        "Far above the regional average.",
+        "That's sub-Saharan Africa's figure.",
+        null
+      ],
+      "action": "Compare 21.4% with 43.5% and ask why the gap exists."
+    },
+    {
+      "id": "g11-007",
+      "src": "SDGR25",
+      "prompt": "How many people worldwide struggle to afford housing?",
+      "options": [
+        "About 16 million",
+        "Between 1.6 and 3 billion",
+        "About 160 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Between 1.6 and 3 billion — up to a third of humanity cannot afford adequate housing. It is a global crisis, not a local one.",
+      "whyWrong": [
+        "A hundred times too low.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Ask what makes housing unaffordable where you live."
+    },
+    {
+      "id": "g11-008",
+      "src": "SDGR25",
+      "prompt": "How much green space did the average city have in 1990 versus 2020?",
+      "options": [
+        "It grew from 13.9% to 19.5%",
+        "It fell from 19.5% to 13.9%",
+        "No change"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Fell from 19.5% to 13.9% — cities lost more than a quarter of their green space in thirty years, exactly when they needed it most for cooling.",
+      "whyWrong": [
+        "The trend is the opposite — green space shrank.",
+        null,
+        "There was a substantial decline."
+      ],
+      "action": "Find the nearest park and time how long it takes to walk there."
+    },
+    {
+      "id": "g11-009",
+      "src": "SDGR25",
+      "prompt": "How many urban residents could face at least 0.5°C extra warming by 2040?",
+      "options": [
+        "2 million",
+        "2 billion",
+        "20,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "2 billion. Cities heat up faster than the countryside because concrete and asphalt store heat — the 'urban heat island' effect.",
+      "whyWrong": [
+        "A thousand times too low.",
+        null,
+        "Vastly too low."
+      ],
+      "action": "Compare a shaded street with a bare one on a hot day."
+    },
+    {
+      "id": "g11-010",
+      "src": "SDGR25",
+      "prompt": "What share of city-dwellers may face annual average temperatures of 29°C or higher?",
+      "options": [
+        "6%",
+        "3.6%",
+        "36%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "36% — over a third of urban humanity living in year-round heat that makes outdoor work dangerous.",
+      "whyWrong": [
+        "Far too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Look up the average annual temperature where you live."
+    },
+    {
+      "id": "g11-011",
+      "src": "SDGR25",
+      "prompt": "How many people live in areas at risk of severe river flooding?",
+      "options": [
+        "1 billion",
+        "100 million",
+        "10 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1 billion people, as of 2025. Cities grew along rivers for water and trade — and that is exactly where floods arrive.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Find the nearest river to your home and its flood history."
+    },
+    {
+      "id": "g11-012",
+      "src": "SDGR25",
+      "prompt": "Since 1975, urban flood exposure compared with rural has grown to:",
+      "options": [
+        "3.5 times as much",
+        "Half as much",
+        "The same"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "3.5 times rural exposure. Cities expanded into floodplains faster than anywhere else, putting more people in harm's way.",
+      "whyWrong": [
+        null,
+        "Urban exposure grew far faster than rural.",
+        "The gap widened dramatically."
+      ],
+      "action": "Ask why building on a floodplain is tempting."
+    },
+    {
+      "id": "g11-013",
+      "src": "SDGR25",
+      "prompt": "How much do cities need each year for climate action through 2030?",
+      "options": [
+        "$45 billion",
+        "$4.5 to $5.4 trillion",
+        "$450 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$4.5–5.4 trillion a year. Cities currently receive $831 billion — roughly a sixth of what's needed.",
+      "whyWrong": [
+        "A hundred times too low.",
+        null,
+        "Vastly too low."
+      ],
+      "action": "Compare $831 billion with $5 trillion."
+    },
+    {
+      "id": "g11-014",
+      "src": "SDGR25",
+      "prompt": "Cities received $831 billion a year in climate finance. What share went to adaptation — preparing for impacts?",
+      "options": [
+        "80%",
+        "50%",
+        "Just over 1%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Just over 1%. Almost all climate money goes to cutting emissions; almost none goes to protecting people from heat and floods already arriving.",
+      "whyWrong": [
+        "The opposite is true.",
+        "Adaptation gets a tiny fraction.",
+        null
+      ],
+      "action": "Ask what the difference is between mitigation and adaptation."
+    },
+    {
+      "id": "g11-015",
+      "src": "SDGR25",
+      "prompt": "How many pieces of infrastructure are damaged or destroyed by disasters each year?",
+      "options": [
+        "922",
+        "9,219",
+        "92,199"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 92,199 units a year — schools, clinics, roads, power lines — causing over 1.6 million service disruptions annually.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what happens to a town when its clinic floods."
+    },
+    {
+      "id": "g11-016",
+      "src": "SDGR25",
+      "prompt": "How many service disruptions do disasters cause annually?",
+      "options": [
+        "About 16,000",
+        "Over 1.6 million",
+        "About 160"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Over 1.6 million every year — each one a hospital without power, a school closed, or a water supply cut.",
+      "whyWrong": [
+        "A hundred times too low.",
+        null,
+        "Vastly too low."
+      ],
+      "action": "Ask what your school does when the power fails."
+    },
+    {
+      "id": "g11-017",
+      "src": "SDGR25",
+      "prompt": "What share of cities have strong civil society participation in urban planning?",
+      "options": [
+        "19%",
+        "79%",
+        "99%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Only 19%. In most cities, decisions about where people live and travel are made without meaningfully consulting the people affected.",
+      "whyWrong": [
+        null,
+        "Far too optimistic — most cities score low.",
+        "Almost no cities achieve this."
+      ],
+      "action": "Find out how your town consults residents on planning."
+    },
+    {
+      "id": "g11-018",
+      "src": "SDGR25",
+      "prompt": "What share of cities have very limited or NO public participation in planning?",
+      "options": [
+        "29%",
+        "2.9%",
+        "None"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "29% — nearly a third of cities plan with essentially no public input, and another 35% have only low participation.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Most cities have weak participation."
+      ],
+      "action": "Ask who decides where a new road goes in your area."
+    },
+    {
+      "id": "g11-019",
+      "src": "SDGR25",
+      "prompt": "Which region collects the least municipal waste?",
+      "options": [
+        "Europe and Northern America",
+        "Australia and New Zealand",
+        "Sub-Saharan Africa"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Sub-Saharan Africa at 62.6% — over a third of waste is never collected, so it burns, blocks drains or pollutes water.",
+      "whyWrong": [
+        "Europe and North America reach 99.4%.",
+        "Australia and New Zealand reach 98.9%.",
+        null
+      ],
+      "action": "Ask where uncollected rubbish actually ends up."
+    },
+    {
+      "id": "g11-020",
+      "src": "SDGR25",
+      "prompt": "Waste collection in Europe and Northern America reaches:",
+      "options": [
+        "99.4%",
+        "62.6%",
+        "79%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "99.4% — essentially universal, and so routine that most residents never think about it. In sub-Saharan Africa it is 62.6%.",
+      "whyWrong": [
+        null,
+        "That's sub-Saharan Africa's figure.",
+        "Coverage is far higher than this."
+      ],
+      "action": "Find out where your household waste goes after collection."
+    },
+    {
+      "id": "g11-021",
+      "src": "SDGR25",
+      "prompt": "Eastern and South-Eastern Asia collect what share of municipal waste?",
+      "options": [
+        "94.7%",
+        "64.7%",
+        "24.7%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "64.7% — surprisingly low for a region with many wealthy cities, because coverage varies enormously between and within countries.",
+      "whyWrong": [
+        "That's closer to Northern Africa and Western Asia.",
+        null,
+        "Too pessimistic — about two-thirds is collected."
+      ],
+      "action": "Ask why waste collection lags behind economic growth."
+    },
+    {
+      "id": "g11-022",
+      "src": "SDGR25",
+      "prompt": "How many countries have a national urban policy?",
+      "options": [
+        "68",
+        "168",
+        "8"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "68 countries as of 2023 — barely a third of the world, even though 70% of people will live in cities by 2050.",
+      "whyWrong": [
+        null,
+        "Far too high — most countries have none.",
+        "More countries than this have one."
+      ],
+      "action": "Find out whether your country has an urban policy."
+    },
+    {
+      "id": "g11-023",
+      "src": "SDGR25",
+      "prompt": "Of countries with national urban policies, what share strengthen local government finances?",
+      "options": [
+        "9%",
+        "89%",
+        "49%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 49% — fewer than half. Cities are handed responsibilities without being handed the money to meet them.",
+      "whyWrong": [
+        "Too pessimistic — about half do.",
+        "Far too optimistic — under half address local funding.",
+        null
+      ],
+      "action": "Ask where your local council's money comes from."
+    },
+    {
+      "id": "g11-024",
+      "src": "SDGR25",
+      "prompt": "How much does the world spend per person on protecting cultural heritage?",
+      "options": [
+        "$212",
+        "$21.22",
+        "$2,122"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A global median of $21.22 a year — but $83.30 in developed countries against just $3.86 in developing ones.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "A hundred times too high."
+      ],
+      "action": "Name a heritage site near you and ask who maintains it."
+    },
+    {
+      "id": "g11-025",
+      "src": "SDGR25",
+      "prompt": "Developed countries spend $83.30 per person on heritage. Developing countries spend:",
+      "options": [
+        "$3.86",
+        "$83.30",
+        "$40"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$3.86 — a 22-fold gap. The countries with the oldest heritage often have the least money to protect it.",
+      "whyWrong": [
+        null,
+        "That's the developed-country figure.",
+        "Far above the actual developing-country spend."
+      ],
+      "action": "Look up a heritage site that has been lost or damaged."
+    },
+    {
+      "id": "g11-026",
+      "src": "SDGR25",
+      "prompt": "How many countries report local disaster risk reduction strategies?",
+      "options": [
+        "11",
+        "110",
+        "210"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "110 countries, with an average of 73% of their municipalities actually implementing them — real progress on preparedness.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "More than there are UN member states with such plans."
+      ],
+      "action": "Find out if your town has a disaster plan."
+    },
+    {
+      "id": "g11-027",
+      "src": "SDGR25",
+      "prompt": "In countries with disaster strategies, what share of municipalities implement them?",
+      "options": [
+        "23%",
+        "73%",
+        "100%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "73% on average — a national plan on paper only helps if local councils act on it, and roughly a quarter still don't.",
+      "whyWrong": [
+        "Implementation is far higher than this.",
+        null,
+        "Implementation is strong but not universal."
+      ],
+      "action": "Ask what a school's fire drill has in common with a city's flood plan."
+    },
+    {
+      "id": "g11-028",
+      "src": "SDGR25",
+      "prompt": "1.12 billion people in slums is roughly what share of humanity?",
+      "options": [
+        "1 in 7",
+        "1 in 70",
+        "1 in 700"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Roughly 1 in 7 people. Slums are not an edge case — they are how a seventh of the human race lives.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Divide 8 billion by 1.12 billion."
+    },
+    {
+      "id": "g11-029",
+      "src": "SDGR25",
+      "prompt": "The 'urban heat island' effect means cities are:",
+      "options": [
+        "Cooler than surrounding countryside",
+        "Exactly the same temperature",
+        "Hotter, because concrete and asphalt absorb and hold heat"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Hard dark surfaces absorb sunlight and release it slowly, so cities can be several degrees hotter — which is why losing green space matters so much.",
+      "whyWrong": [
+        "The effect works the other way.",
+        "The temperature difference can be several degrees.",
+        null
+      ],
+      "action": "Touch pavement and grass on the same sunny day."
+    },
+    {
+      "id": "g11-030",
+      "src": "SDGR25",
+      "prompt": "Green space in cities fell by roughly what proportion between 1990 and 2020?",
+      "options": [
+        "About 1%",
+        "Over a quarter",
+        "It doubled"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "From 19.5% down to 13.9% — a loss of more than a quarter of city greenery, mostly built over.",
+      "whyWrong": [
+        "The loss was far larger.",
+        null,
+        "Green space shrank, it did not grow."
+      ],
+      "action": "Look at an old photo of your neighbourhood."
+    },
+    {
+      "id": "g11-031",
+      "src": "SDGR25",
+      "prompt": "Northern Africa and Western Asia collect what share of municipal waste?",
+      "options": [
+        "94.8%",
+        "64.8%",
+        "44.8%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "94.8% — close to European levels and far above sub-Saharan Africa's 62.6%. Waste systems don't track income perfectly.",
+      "whyWrong": [
+        null,
+        "That's closer to Eastern and South-Eastern Asia.",
+        "Far below the actual figure."
+      ],
+      "action": "Ask what makes a waste collection system work well."
+    },
+    {
+      "id": "g11-032",
+      "src": "SDGR25",
+      "prompt": "Latin America and the Caribbean collect what share of municipal waste?",
+      "options": [
+        "30.6%",
+        "60.6%",
+        "90.6%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "90.6% — strong coverage, well ahead of Eastern and South-Eastern Asia's 64.7% despite comparable income levels.",
+      "whyWrong": [
+        "Far too pessimistic.",
+        "Substantially below the actual figure.",
+        null
+      ],
+      "action": "Compare 90.6% with sub-Saharan Africa's 62.6%."
+    },
+    {
+      "id": "g11-033",
+      "src": "SDGR25",
+      "prompt": "What share of national urban policies address population change?",
+      "options": [
+        "87%",
+        "27%",
+        "7%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "87% — most urban policies do think about who is arriving and how many. The weak point is funding, at only 49%.",
+      "whyWrong": [
+        null,
+        "Far too low.",
+        "Vastly too low."
+      ],
+      "action": "Ask how your town's population changed in ten years."
+    },
+    {
+      "id": "g11-034",
+      "src": "SDGR25",
+      "prompt": "Cities get roughly what fraction of the climate finance they need?",
+      "options": [
+        "All of it",
+        "About a sixth",
+        "Twice as much"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$831 billion against a $4.5–5.4 trillion need — roughly one sixth. The gap is the single biggest obstacle to climate-ready cities.",
+      "whyWrong": [
+        "There is an enormous shortfall.",
+        null,
+        "Cities are massively underfunded."
+      ],
+      "action": "Divide $831 billion by $5 trillion."
+    },
+    {
+      "id": "g11-035",
+      "src": "SDGR25",
+      "prompt": "Why does living in a slum matter beyond the housing itself?",
+      "options": [
+        "It doesn't",
+        "Slum residents pay no rent",
+        "No secure tenure means no address, which blocks school, banking, healthcare and voting"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Without a legal address, formal systems can't see you — so informal housing locks people out of services long after the roof is fixed.",
+      "whyWrong": [
+        "Housing status shapes access to nearly everything.",
+        "Informal residents often pay high rents for poor housing.",
+        null
+      ],
+      "action": "List five things you need an address for."
+    },
+    {
+      "id": "g11-036",
+      "src": "SDGR25",
+      "prompt": "Only 19% of cities have strong public participation in planning. Why does that matter?",
+      "options": [
+        "It doesn't affect outcomes",
+        "Participation slows everything down",
+        "Plans made without residents tend to serve investors over the people who live there"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Who is in the room shapes what gets built — which is why participation is a measured SDG indicator, not just good manners.",
+      "whyWrong": [
+        "Participation demonstrably changes what gets built.",
+        "Consultation can slow decisions but improves their durability.",
+        null
+      ],
+      "action": "Find one planning decision near you and ask who was consulted."
+    },
+    {
+      "id": "g11-037",
+      "src": "SDGR25",
+      "prompt": "The number of countries tracking heritage spending tripled to:",
+      "options": [
+        "82",
+        "8",
+        "182"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "82 countries — tripled from previous reporting. Better measurement is itself progress: you can't protect what you don't count.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "More than the number reporting."
+      ],
+      "action": "Ask why counting something is the first step to funding it."
+    },
+    {
+      "id": "g11-038",
+      "src": "SDGR25",
+      "prompt": "36% of city-dwellers may face 29°C annual average temperatures. That temperature is:",
+      "options": [
+        "A comfortable average",
+        "Below freezing",
+        "Dangerously hot as a year-round average"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "29°C as an annual average means most days are far hotter — outdoor work becomes dangerous and cooling becomes a survival need, not a comfort.",
+      "whyWrong": [
+        "That's a hot day, not a comfortable yearly average.",
+        "29°C is well above freezing.",
+        null
+      ],
+      "action": "Compare 29°C with your city's annual average."
+    },
+    {
+      "id": "g11-039",
+      "src": "SDGR25",
+      "prompt": "Sub-Saharan Africans spend 43.5% of income on housing and collect 62.6% of waste. Together this shows:",
+      "options": [
+        "Cities there are growing faster than services and incomes can keep up",
+        "Everything is fine",
+        "People there prefer informal housing"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The region urbanising fastest has the least developed urban services — growth is outrunning the systems meant to support it.",
+      "whyWrong": [
+        null,
+        "Both figures indicate serious strain.",
+        "Informal housing reflects lack of options, not preference."
+      ],
+      "action": "Look up the fastest-growing city in Africa."
+    },
+    {
+      "id": "g11-040",
+      "src": "SDGR25",
+      "prompt": "Adaptation gets just over 1% of urban climate finance. Adaptation means:",
+      "options": [
+        "Cutting emissions",
+        "Ignoring climate change",
+        "Preparing for impacts that are already coming — cooling, drainage, sea walls"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Adaptation protects people from warming that is already locked in. Underfunding it means cities will face heat and floods unprepared.",
+      "whyWrong": [
+        "That's mitigation, which gets nearly all the money.",
+        "Adaptation is active preparation.",
+        null
+      ],
+      "action": "Name one adaptation your city could build this year."
+    },
+    {
+      "id": "g11-041",
+      "src": "SDGR25",
+      "prompt": "1 billion people live in flood-prone areas. Most flood risk is worst for:",
+      "options": [
+        "The wealthiest districts",
+        "Informal settlements, often built on the land nobody else wanted",
+        "Only rural farms"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Informal settlements occupy the cheapest, most exposed land — riverbanks, steep slopes, floodplains — so disasters hit the poorest hardest.",
+      "whyWrong": [
+        "Wealthier areas are typically on safer ground.",
+        null,
+        "Urban flood exposure is 3.5 times rural."
+      ],
+      "action": "Find out which parts of your area flood first."
+    },
+    {
+      "id": "g11-042",
+      "src": "SDGR25",
+      "prompt": "Australia and New Zealand collect what share of municipal waste?",
+      "options": [
+        "98.9%",
+        "88.9%",
+        "68.9%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "98.9% — near-universal, second only to Europe and North America's 99.4%.",
+      "whyWrong": [
+        null,
+        "Coverage is higher than this.",
+        "That's closer to sub-Saharan Africa."
+      ],
+      "action": "Rank the six regions by waste collection rate."
+    },
+    {
+      "id": "g11-043",
+      "src": "SDGR25",
+      "prompt": "What share of national urban policies aim for balanced development across a country's territory?",
+      "options": [
+        "81%",
+        "31%",
+        "11%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "81% — most countries recognise that one giant capital city and neglected regions is a problem worth planning against.",
+      "whyWrong": [
+        null,
+        "Far too low.",
+        "Vastly too low."
+      ],
+      "action": "Ask what share of your country lives in its biggest city."
+    },
+    {
+      "id": "g11-044",
+      "src": "SDGR25",
+      "prompt": "Housing costs of 31% of income are considered:",
+      "options": [
+        "Very cheap",
+        "Impossible",
+        "Right at the edge of what's usually called affordable"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "30% is the common affordability threshold — so the world's average household is already at the limit, and sub-Saharan Africa is far past it at 43.5%.",
+      "whyWrong": [
+        "Nearly a third of income is a heavy burden.",
+        "It is manageable, though tight — 43.5% is the crisis level.",
+        null
+      ],
+      "action": "Look up the 30% affordability rule."
+    },
+    {
+      "id": "g11-045",
+      "src": "SDGR25",
+      "prompt": "35% of cities show 'low' participation and 29% show almost none. Combined, that means:",
+      "options": [
+        "Most cities consult residents well",
+        "Most cities plan with weak or no public input",
+        "Participation is universal"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "64% of cities — nearly two-thirds — plan with little or no meaningful public involvement, against just 19% with strong participation.",
+      "whyWrong": [
+        "Only 19% score strongly.",
+        null,
+        "Far from it."
+      ],
+      "action": "Add 35% and 29% and compare with 19%."
+    },
+    {
+      "id": "g11-046",
+      "src": "SDGR25",
+      "prompt": "Why is losing city green space especially dangerous now?",
+      "options": [
+        "It looks worse",
+        "Trees and parks cool cities and absorb floodwater — exactly what warming cities need most",
+        "It has no practical effect"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Green space fell from 19.5% to 13.9% just as 2 billion urban residents face extra heat. Cities removed their own cooling system.",
+      "whyWrong": [
+        "Appearance is the least of it.",
+        null,
+        "Green space measurably reduces temperature and flooding."
+      ],
+      "action": "Measure the temperature under a tree and in the open."
+    },
+    {
+      "id": "g11-047",
+      "src": "SDGR25",
+      "prompt": "Nearly 92,199 infrastructure units are damaged yearly. The biggest consequence is:",
+      "options": [
+        "1.6 million service disruptions — hospitals, schools and water supplies going dark",
+        "Higher repair bills only",
+        "Nothing measurable"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The damage cascades: one substation or bridge failing cuts services for thousands of people who were never in the disaster zone.",
+      "whyWrong": [
+        null,
+        "Repair cost is only part of the harm.",
+        "The disruptions are counted in the millions."
+      ],
+      "action": "Trace what stops working if your local power station fails."
+    },
+    {
+      "id": "g11-048",
+      "src": "SDGR25",
+      "prompt": "By 2050, 70% urban means most new city growth will happen in:",
+      "options": [
+        "Europe and North America",
+        "Africa and Asia",
+        "Antarctica"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Africa and Asia hold nearly all future urban growth — which is why weak urban services in those regions matter so much for 2050.",
+      "whyWrong": [
+        "These regions are already highly urbanised with slow growth.",
+        null,
+        "Antarctica has no permanent cities."
+      ],
+      "action": "Look up the fastest-growing cities in the world today."
+    },
+    {
+      "id": "g11-049",
+      "src": "SDGR25",
+      "prompt": "The heritage spending gap of $83.30 versus $3.86 per person suggests:",
+      "options": [
+        "Developing countries don't value heritage",
+        "Heritage costs the same everywhere",
+        "Protecting culture competes with basic needs when budgets are tight"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "When a government must choose between a clinic and a monument, the monument waits — which is why international heritage funding exists.",
+      "whyWrong": [
+        "The gap reflects budgets, not values.",
+        "Costs vary, but the 22-fold gap is about spending capacity.",
+        null
+      ],
+      "action": "Find a World Heritage site that is listed as in danger."
+    },
+    {
+      "id": "g11-050",
+      "src": "SDGR25",
+      "prompt": "The single biggest Goal 11 challenge is:",
+      "options": [
+        "Cities getting too small",
+        "Too many parks",
+        "1.12 billion people in slums while cities grow toward 70% of humanity"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Housing is where Goal 11 lives or dies: a seventh of humanity already lacks adequate shelter, and the urban population is still rising fast.",
+      "whyWrong": [
+        "Cities are growing, not shrinking.",
+        "Green space has fallen by over a quarter.",
+        null
+      ],
+      "action": "Find out how many homes your area built last year."
+    }
+  ]
+}
