@@ -1,0 +1,919 @@
+{
+  "goal": 2,
+  "goalName": "Zero Hunger",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 2",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-02/"
+    },
+    "UN2": {
+      "title": "SDG 2: Zero Hunger",
+      "publisher": "United Nations",
+      "url": "https://www.un.org/sustainabledevelopment/hunger/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g02-001",
+      "src": "UN2",
+      "prompt": "About how many people in the world face hunger?",
+      "options": [
+        "1 in 100",
+        "1 in 12",
+        "1 in 500"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 1 in 12 people — 8.2% of everyone alive — faced hunger in 2024. In a school of 600, that's 50 people.",
+      "whyWrong": [
+        "Far too optimistic — the real rate is roughly eight times higher.",
+        null,
+        "Nowhere near. Hunger affects hundreds of millions of people."
+      ],
+      "action": "Work out 1 in 12 of your school's population."
+    },
+    {
+      "id": "g02-002",
+      "src": "SDGR25",
+      "prompt": "How many people can't reliably get enough safe, nutritious food?",
+      "options": [
+        "2.3 billion",
+        "230 million",
+        "23 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "2.3 billion people — 28% of the world — were moderately or severely food insecure in 2024. That's more than one in four of us.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Notice the difference between 'hungry today' and 'never sure there'll be enough'."
+    },
+    {
+      "id": "g02-003",
+      "src": "UN2",
+      "prompt": "Compared with 2015, how many MORE people are food insecure today?",
+      "options": [
+        "About the same",
+        "683 million more",
+        "500 million fewer"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "683 million more than in 2015. Unlike extreme poverty, which fell for decades, food insecurity has been getting worse.",
+      "whyWrong": [
+        "It rose sharply — from 1.6 billion in 2015 to 2.3 billion.",
+        null,
+        "This is one of the SDGs moving backwards, not forwards."
+      ],
+      "action": "Ask what changed after 2015 — think conflict, COVID, climate and prices."
+    },
+    {
+      "id": "g02-004",
+      "src": "SDGR25",
+      "prompt": "What share of children under 5 are stunted — permanently shorter and often slower to develop because of poor nutrition?",
+      "options": [
+        "About 2%",
+        "About 60%",
+        "About 23%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "23.2% — nearly one in four children worldwide. Stunting happens in the first 1,000 days of life and can never be fully reversed.",
+      "whyWrong": [
+        "Ten times too low.",
+        "Too high — though the real number is bad enough.",
+        null
+      ],
+      "action": "Look up what the 'first 1,000 days' means for a child's growth."
+    },
+    {
+      "id": "g02-005",
+      "src": "SDGR25",
+      "prompt": "Child stunting is falling. But which form of child malnutrition is RISING?",
+      "options": [
+        "Stunting",
+        "Being overweight",
+        "Wasting"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Child overweight rose from 5.3% to 5.5%. Many countries now face hunger and obesity at the same time — often in the same neighbourhoods.",
+      "whyWrong": [
+        "Stunting fell from 26.4% to 23.2%.",
+        null,
+        "Wasting fell from 7.4% to 6.6%."
+      ],
+      "action": "Ask how a country can have hungry and overweight children at once."
+    },
+    {
+      "id": "g02-006",
+      "src": "SDGR25",
+      "prompt": "Anaemia — dangerous iron deficiency — affects what share of women aged 15 to 49?",
+      "options": [
+        "About 31%",
+        "About 3%",
+        "About 70%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "30.7% of women — nearly one in three. And it's getting worse, up from 27.6% in 2012.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Too high, though the real figure is alarming enough."
+      ],
+      "action": "Look up which foods are richest in iron."
+    },
+    {
+      "id": "g02-007",
+      "src": "SDGR25",
+      "prompt": "Among children aged 6 to 23 months, what share eat a varied enough diet to grow properly?",
+      "options": [
+        "Only 34%",
+        "About 75%",
+        "About 95%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Only 34% — about one in three. Two-thirds of the world's babies aren't getting the variety of food their brains and bodies need.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Nowhere near — most young children don't meet this standard."
+      ],
+      "action": "Count how many different foods you ate yesterday."
+    },
+    {
+      "id": "g02-008",
+      "src": "SDGR25",
+      "prompt": "Which region has the highest share of undernourished people?",
+      "options": [
+        "Europe",
+        "Northern Africa and Western Asia",
+        "Sub-Saharan Africa"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Sub-Saharan Africa, at 22.3% — more than one in five people. Northern Africa and Western Asia is next at 11.8%.",
+      "whyWrong": [
+        "Europe has food insecurity, but nothing on this scale.",
+        "High at 11.8%, but roughly half the Sub-Saharan rate.",
+        null
+      ],
+      "action": "Find Sub-Saharan Africa on a map."
+    },
+    {
+      "id": "g02-009",
+      "src": "SDGR25",
+      "prompt": "In 2022, what share of countries were hit by unusually high food prices?",
+      "options": [
+        "About 6%",
+        "About 60%",
+        "About 100%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "60% of all countries — up from just 16% in 2015. When food prices spike, the poorest families feel it first because food is most of what they buy.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Not every country, though the majority were affected."
+      ],
+      "action": "Ask an adult whether food got more expensive recently."
+    },
+    {
+      "id": "g02-010",
+      "src": "UN2",
+      "prompt": "Food prices fell sharply for most countries in 2024. Who was left behind?",
+      "options": [
+        "The richest countries",
+        "Nobody — everyone benefited",
+        "The least developed countries"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Globally the share of countries with high food prices dropped to 15.3%, but 31.6% of least developed countries were still paying elevated prices — double the global rate.",
+      "whyWrong": [
+        "Wealthy countries absorb price shocks most easily.",
+        "The recovery was very uneven.",
+        null
+      ],
+      "action": "Ask why a global price drop might not reach everyone."
+    },
+    {
+      "id": "g02-011",
+      "src": "UN2",
+      "prompt": "How many people are projected to still face hunger in 2030 — the year hunger was meant to end?",
+      "options": [
+        "Zero",
+        "More than 600 million",
+        "About 5 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Over 600 million people. The goal is called Zero Hunger, and on the current path the world will miss it by hundreds of millions.",
+      "whyWrong": [
+        "That's the target, but not the projection.",
+        null,
+        "The projection is more than a hundred times higher."
+      ],
+      "action": "Name one thing that would change that projection."
+    },
+    {
+      "id": "g02-012",
+      "src": "SDGR25",
+      "prompt": "How much do governments worldwide spend on agriculture each year?",
+      "options": [
+        "$701 million",
+        "$7 billion",
+        "$701 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About $701 billion a year. Enormous — the question is whether it reaches small farmers and nutritious crops, or mostly large producers.",
+      "whyWrong": [
+        "A thousand times too low.",
+        "A hundred times too low.",
+        null
+      ],
+      "action": "Ask who benefits most from farm spending in your country."
+    },
+    {
+      "id": "g02-013",
+      "src": "SDGR25",
+      "prompt": "Aid for agriculture in developing countries has changed since 2015. Which way?",
+      "options": [
+        "Unchanged",
+        "Down, from $18.5bn to $12.9bn",
+        "Up, from $12.9bn to $18.5bn"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It rose from $12.9 billion to $18.5 billion. Genuine progress — even while hunger itself got worse.",
+      "whyWrong": [
+        "It grew by more than 40%.",
+        "It moved upwards, not down.",
+        null
+      ],
+      "action": "Ask why more money can go in while outcomes still worsen."
+    },
+    {
+      "id": "g02-014",
+      "src": "SDGR25",
+      "prompt": "Global hunger has been slowly improving. From 8.7% in 2022, where is it now?",
+      "options": [
+        "3%",
+        "12%",
+        "8.2%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "8.2% in 2024, down from 8.7% in 2022 and 8.5% in 2023. Slow improvement — but still far above where the world was before 2020.",
+      "whyWrong": [
+        "Far too optimistic — that would be near the goal.",
+        "Hunger has been easing slightly, not rising to this level.",
+        null
+      ],
+      "action": "Notice that 0.5 percentage points is still tens of millions of people."
+    },
+    {
+      "id": "g02-015",
+      "src": "SDGR25",
+      "prompt": "What share of women worldwide eat a diverse enough diet to be healthy?",
+      "options": [
+        "25%",
+        "95%",
+        "65%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "65% — meaning about a third of women don't get the variety of nutrients they need, even when they get enough calories.",
+      "whyWrong": [
+        "Too pessimistic, though the real gap is serious.",
+        "Too optimistic — a third of women fall short.",
+        null
+      ],
+      "action": "Notice the difference between 'enough food' and 'the right food'."
+    },
+    {
+      "id": "g02-016",
+      "src": "SDGR25",
+      "prompt": "Anaemia is worst among which group of women?",
+      "options": [
+        "Pregnant women",
+        "Women over 60",
+        "Teenage girls only"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "35.5% of pregnant women are anaemic — higher than the 30.5% rate for non-pregnant women. Pregnancy raises iron needs sharply.",
+      "whyWrong": [
+        null,
+        "The measured group is women aged 15 to 49.",
+        "It affects women across that whole age range, not just teenagers."
+      ],
+      "action": "Ask why pregnancy increases the body's need for iron."
+    },
+    {
+      "id": "g02-017",
+      "src": "SDGR25",
+      "prompt": "Child wasting means a child is dangerously thin for their height. What share of under-5s does it affect?",
+      "options": [
+        "26%",
+        "6.6%",
+        "0.6%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "6.6% — about 1 in 15 young children. Wasting is the most immediately life-threatening form of malnutrition.",
+      "whyWrong": [
+        "That's closer to the stunting figure of 23.2%.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Look up the difference between stunting and wasting."
+    },
+    {
+      "id": "g02-018",
+      "src": "UN2",
+      "prompt": "Roughly how many people faced hunger in 2024?",
+      "options": [
+        "Around 700 million",
+        "Around 70 million",
+        "Around 7 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Between 638 and 720 million people. Estimates give a range because measuring hunger in war zones and remote areas is genuinely hard.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask why hunger figures are given as a range."
+    },
+    {
+      "id": "g02-019",
+      "src": "SDGR25",
+      "prompt": "In 2015, how many people were food insecure?",
+      "options": [
+        "160 million",
+        "1.6 billion",
+        "3 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "1.6 billion, or 21.4% of the world. By 2024 that had grown to 2.3 billion and 28%.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Too high for 2015 — though the trend is heading that way."
+      ],
+      "action": "Compare 21.4% in 2015 with 28% today."
+    },
+    {
+      "id": "g02-020",
+      "src": "SDGR25",
+      "prompt": "Since 2012, child stunting has moved which way?",
+      "options": [
+        "Down, from 26.4% to 23.2%",
+        "Up, from 23.2% to 26.4%",
+        "It hasn't moved"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Down from 26.4% to 23.2%. Millions of children are growing up healthier than they would have a decade ago.",
+      "whyWrong": [
+        null,
+        "It improved rather than worsened.",
+        "It fell by over 3 percentage points."
+      ],
+      "action": "Notice which hunger numbers improved and which got worse."
+    },
+    {
+      "id": "g02-021",
+      "src": "UN2",
+      "prompt": "Which statement is true about the world's food?",
+      "options": [
+        "There isn't enough food for everyone",
+        "Food shortages are only caused by drought",
+        "There's enough food, but not everyone can get or afford it"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The world produces enough food. Hunger is driven by poverty, conflict, prices and distribution — 2.3 billion people can't reliably access what already exists.",
+      "whyWrong": [
+        "Global production is sufficient; access is the problem.",
+        "Drought matters, but conflict, prices and poverty drive most hunger.",
+        null
+      ],
+      "action": "Ask what stops food reaching people who need it."
+    },
+    {
+      "id": "g02-022",
+      "src": "SDGR25",
+      "prompt": "One in four children worldwide is stunted. What causes it?",
+      "options": [
+        "Poor nutrition in the first years of life",
+        "Not enough exercise",
+        "Watching too much television"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Chronic poor nutrition, especially in the first 1,000 days. The damage to height and brain development is largely permanent.",
+      "whyWrong": [
+        null,
+        "Stunting is about nutrition, not activity levels.",
+        "Screen time has nothing to do with stunted growth."
+      ],
+      "action": "Look up what nutrients a growing child needs most."
+    },
+    {
+      "id": "g02-023",
+      "src": "SDGR25",
+      "prompt": "Since 2012, anaemia in women has gone which way?",
+      "options": [
+        "Better, from 30.7% to 27.6%",
+        "Worse, from 27.6% to 30.7%",
+        "Stayed flat"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Worse — up from 27.6% to 30.7%. It's one of the clearest signs that diet quality, not just quantity, is slipping.",
+      "whyWrong": [
+        "It moved in the wrong direction.",
+        null,
+        "It rose by about 3 percentage points."
+      ],
+      "action": "Ask why a health measure might worsen while hunger falls."
+    },
+    {
+      "id": "g02-024",
+      "src": "SDGR25",
+      "prompt": "In 2015 only 16% of countries had high food prices. What happened by 2022?",
+      "options": [
+        "It fell to 5%",
+        "It rose to 60%",
+        "It stayed at 16%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "It jumped to 60% of all countries — nearly a fourfold increase driven by the pandemic, conflict and supply disruption.",
+      "whyWrong": [
+        "Prices rose sharply rather than falling.",
+        null,
+        "It nearly quadrupled."
+      ],
+      "action": "Ask what happened between 2015 and 2022 to push food prices up."
+    },
+    {
+      "id": "g02-025",
+      "src": "UN2",
+      "prompt": "Zero Hunger is Goal 2. What year was it meant to be achieved by?",
+      "options": [
+        "2050",
+        "2030",
+        "2100"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "2030 — the deadline for all 17 Goals. With 600 million people projected to still be hungry, this one will be missed.",
+      "whyWrong": [
+        "That's a common target year for climate goals, not the SDGs.",
+        null,
+        "The SDGs run to 2030, not the end of the century."
+      ],
+      "action": "Work out how old you'll be in 2030."
+    },
+    {
+      "id": "g02-026",
+      "src": "SDGR25",
+      "prompt": "Which is more common worldwide: children who are stunted, or children who are overweight?",
+      "options": [
+        "They're about equal",
+        "Overweight, by far",
+        "Stunted, by far"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "23.2% stunted against 5.5% overweight — roughly four times as many. Both are forms of malnutrition, and both are rising in some countries.",
+      "whyWrong": [
+        "There's a large gap between them.",
+        "Stunting is about four times more common.",
+        null
+      ],
+      "action": "Ask how one country can have both problems at once."
+    },
+    {
+      "id": "g02-027",
+      "src": "SDGR25",
+      "prompt": "Food insecurity means what, exactly?",
+      "options": [
+        "Only eating one meal a day",
+        "Not liking the food available",
+        "Not being able to reliably get enough safe, nutritious food"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It means not being able to count on getting enough safe, nutritious food. It runs from worrying about running out, all the way to going days without eating.",
+      "whyWrong": [
+        "That's one severe form, but food insecurity covers a wider range.",
+        "Preference isn't the measure — reliable access is.",
+        null
+      ],
+      "action": "Notice that food insecurity is a spectrum, not one thing."
+    },
+    {
+      "id": "g02-028",
+      "src": "SDGR25",
+      "prompt": "About what share of the world is moderately or severely food insecure?",
+      "options": [
+        "About 28%",
+        "About 8%",
+        "About 50%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "28% — well over a quarter of everyone alive. That's a much bigger group than the 8.2% who face outright hunger.",
+      "whyWrong": [
+        null,
+        "That's the hunger figure. Food insecurity is a wider measure.",
+        "Too high, though the real number is more than one in four."
+      ],
+      "action": "Compare 8.2% hungry with 28% food insecure. What's the difference?"
+    },
+    {
+      "id": "g02-029",
+      "src": "SDGR25",
+      "prompt": "Least developed countries face high food prices at what rate compared to their own historical average?",
+      "options": [
+        "Well below it",
+        "Well above it, at 31.6% versus 18%",
+        "Exactly at it"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "31.6% against a historical average of 18% — nearly double. The countries least able to absorb price shocks are getting hit hardest and longest.",
+      "whyWrong": [
+        "They're above their historical average, not below.",
+        null,
+        "There's a substantial gap."
+      ],
+      "action": "Ask what a family does when food prices double."
+    },
+    {
+      "id": "g02-030",
+      "src": "SDGR25",
+      "prompt": "How many children under 5 are affected by stunting or wasting or being overweight?",
+      "options": [
+        "Roughly 1 in 3",
+        "Roughly 1 in 50",
+        "Roughly 1 in 500"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Adding 23.2% stunted, 6.6% wasted and 5.5% overweight gets you to around a third of all young children affected by some form of malnutrition.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Nowhere near — malnutrition affects hundreds of millions of children."
+      ],
+      "action": "Add the three percentages yourself and see."
+    },
+    {
+      "id": "g02-031",
+      "src": "UN2",
+      "prompt": "Hunger fell for decades and then reversed. Roughly when did it turn?",
+      "options": [
+        "It never reversed",
+        "Around 1990",
+        "Around 2015"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Around 2015, food insecurity started climbing — from 1.6 billion people then to 2.3 billion now. Conflict, COVID and price shocks all stacked up.",
+      "whyWrong": [
+        "683 million more people are food insecure than in 2015.",
+        "The 1990s and 2000s saw steady improvement.",
+        null
+      ],
+      "action": "Ask what makes progress reverse after decades of gains."
+    },
+    {
+      "id": "g02-032",
+      "src": "SDGR25",
+      "prompt": "In low-income countries, is child malnutrition mainly a problem of too little food or poor-quality food?",
+      "options": [
+        "Only quality",
+        "Only quantity",
+        "Both — quantity and quality together"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Both. Only 34% of young children get a varied enough diet, and 23.2% are stunted — you need enough food and the right nutrients in it.",
+      "whyWrong": [
+        "Sheer quantity matters too, especially in famine and conflict.",
+        "Diet variety matters enormously — a child fed only rice still becomes malnourished.",
+        null
+      ],
+      "action": "Plan a day of meals that has both enough food and enough variety."
+    },
+    {
+      "id": "g02-033",
+      "src": "SDGR25",
+      "prompt": "Northern Africa and Western Asia has an undernourishment rate of about:",
+      "options": [
+        "11.8%",
+        "1.8%",
+        "41.8%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "11.8% — roughly one in eight people, and above the global average of 8.2%.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Too high — that's beyond even Sub-Saharan Africa's 22.3%."
+      ],
+      "action": "Compare that with the global 8.2% and Sub-Saharan Africa's 22.3%."
+    },
+    {
+      "id": "g02-034",
+      "src": "SDGR25",
+      "prompt": "Which of these is a real measure of child hunger used worldwide?",
+      "options": [
+        "Height for age",
+        "Shoe size",
+        "How fast a child runs"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Height for age is exactly how stunting is measured — a child too short for their age has been chronically undernourished.",
+      "whyWrong": [
+        null,
+        "Not a nutrition measure.",
+        "Not used to measure malnutrition."
+      ],
+      "action": "Look up a child growth chart and see how it works."
+    },
+    {
+      "id": "g02-035",
+      "src": "SDGR25",
+      "prompt": "Global spending on agriculture is $701 billion a year. Aid for agriculture is:",
+      "options": [
+        "About $500 billion",
+        "About $18.5 billion",
+        "About $700 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$18.5 billion — under 3% of what governments spend on their own agriculture. Most farm money is domestic, not aid.",
+      "whyWrong": [
+        "Aid is a small fraction of total agricultural spending.",
+        null,
+        "That would be nearly all of it."
+      ],
+      "action": "Work out what share $18.5bn is of $701bn."
+    },
+    {
+      "id": "g02-036",
+      "src": "UN2",
+      "prompt": "'Hunger' and 'food insecurity' — which affects more people?",
+      "options": [
+        "Hunger, by about three times",
+        "Food insecurity, by about three times",
+        "They're identical"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "2.3 billion food insecure against roughly 700 million hungry. Food insecurity catches everyone who can't count on their next meal, not just those going without today.",
+      "whyWrong": [
+        "It's the other way round — food insecurity is the wider category.",
+        null,
+        "They measure different things and differ by over a billion people."
+      ],
+      "action": "Explain the difference to someone in one sentence."
+    },
+    {
+      "id": "g02-037",
+      "src": "SDGR25",
+      "prompt": "Child overweight rates are rising. What does that suggest about the world's food system?",
+      "options": [
+        "Children are eating too many vegetables",
+        "Cheap, low-nutrition food is often the most available",
+        "Food has become too expensive everywhere"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "When the cheapest, easiest food is high in sugar and fat and low in nutrients, families can be overweight and undernourished at the same time.",
+      "whyWrong": [
+        "Only 34% of young children get enough dietary variety.",
+        null,
+        "Prices fell in most countries in 2024, yet overweight rates kept rising."
+      ],
+      "action": "Compare the price of fresh vegetables and crisps where you shop."
+    },
+    {
+      "id": "g02-038",
+      "src": "SDGR25",
+      "prompt": "Since 2012, child wasting has moved which way?",
+      "options": [
+        "Unchanged",
+        "Up, from 6.6% to 7.4%",
+        "Down, from 7.4% to 6.6%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Down from 7.4% to 6.6%. Slow but real progress on the most immediately dangerous form of child malnutrition.",
+      "whyWrong": [
+        "It fell by nearly one percentage point.",
+        "It improved rather than worsened.",
+        null
+      ],
+      "action": "Notice that small percentage falls mean millions of children."
+    },
+    {
+      "id": "g02-039",
+      "src": "SDGR25",
+      "prompt": "If 28% of the world is food insecure, roughly how many people is that?",
+      "options": [
+        "2.3 billion",
+        "230 million",
+        "23 billion"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "2.3 billion people. Percentages hide scale — always convert them back into human beings.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "More than the world's population."
+      ],
+      "action": "Next percentage you read, turn it into a number of people."
+    },
+    {
+      "id": "g02-040",
+      "src": "UN2",
+      "prompt": "The world set targets on child stunting and wasting for which year?",
+      "options": [
+        "2075",
+        "2040",
+        "2025"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "2025 — and the UN says a fundamental shift is needed even to meet the wider 2030 nutrition goals.",
+      "whyWrong": [
+        "Far beyond any SDG deadline.",
+        "The nutrition targets came far earlier than this.",
+        null
+      ],
+      "action": "Ask what happens when a target year passes unmet."
+    },
+    {
+      "id": "g02-041",
+      "src": "SDGR25",
+      "prompt": "Which is the better description of hunger's main cause?",
+      "options": [
+        "Mostly poverty, conflict and prices",
+        "Mostly bad weather alone",
+        "Mostly people choosing not to farm"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Hunger tracks poverty, war and food prices far more closely than weather alone. Food insecurity rose 683 million since 2015 largely from conflict, COVID and price shocks.",
+      "whyWrong": [
+        null,
+        "Weather matters, but it isn't the main driver.",
+        "Hundreds of millions of people farm and are still hungry."
+      ],
+      "action": "Name the three biggest drivers of hunger in your own words."
+    },
+    {
+      "id": "g02-042",
+      "src": "SDGR25",
+      "prompt": "Roughly one in three young children misses out on a varied diet. What's the risk?",
+      "options": [
+        "Their brains and bodies don't develop fully",
+        "They grow taller than average",
+        "Nothing — variety doesn't matter"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Without variety a child can get enough calories and still lack the iron, vitamins and protein their brain and body need — which is how stunting happens.",
+      "whyWrong": [
+        null,
+        "Poor nutrition stunts growth rather than boosting it.",
+        "Variety is exactly what the dietary diversity measure tracks."
+      ],
+      "action": "List five different food groups you ate this week."
+    },
+    {
+      "id": "g02-043",
+      "src": "SDGR25",
+      "prompt": "Which country group is most exposed when global food prices spike?",
+      "options": [
+        "Least developed countries",
+        "The wealthiest countries",
+        "All countries equally"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Least developed countries — 31.6% still faced high prices in 2024 while the global figure fell to 15.3%. Poorer households spend most of their income on food.",
+      "whyWrong": [
+        null,
+        "Wealthy countries absorb shocks most easily.",
+        "The impact is deeply unequal."
+      ],
+      "action": "Work out what share of your household budget goes on food."
+    },
+    {
+      "id": "g02-044",
+      "src": "SDGR25",
+      "prompt": "Global undernourishment in 2023 was:",
+      "options": [
+        "8.5%",
+        "18.5%",
+        "0.85%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "8.5% — between 8.7% in 2022 and 8.2% in 2024, showing slow year-on-year improvement.",
+      "whyWrong": [
+        null,
+        "Too high — that's more than double the real figure.",
+        "Ten times too low."
+      ],
+      "action": "Chart 8.7, 8.5, 8.2 and see the direction."
+    },
+    {
+      "id": "g02-045",
+      "src": "UN2",
+      "prompt": "Why is hunger described as a solvable problem?",
+      "options": [
+        "Because hunger is not really measured",
+        "Because it's already been solved",
+        "The world grows enough food already"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Enough food exists; the failures are in poverty, conflict, prices and distribution. That makes hunger a political and economic problem, not a physical impossibility.",
+      "whyWrong": [
+        "It's measured extensively through household surveys worldwide.",
+        "2.3 billion people are food insecure.",
+        null
+      ],
+      "action": "Ask what would have to change for food to reach everyone."
+    },
+    {
+      "id": "g02-046",
+      "src": "SDGR25",
+      "prompt": "About how many children under 5 are stunted, wasted or overweight — put another way?",
+      "options": [
+        "A few thousand",
+        "Hundreds of millions",
+        "Around a million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Hundreds of millions. With roughly a third of all under-5s affected, malnutrition is one of the largest health problems on Earth.",
+      "whyWrong": [
+        "Vastly too low.",
+        null,
+        "Still hundreds of times too low."
+      ],
+      "action": "Look up how many children under 5 there are in the world."
+    },
+    {
+      "id": "g02-047",
+      "src": "SDGR25",
+      "prompt": "Which has improved since 2012 — stunting, or anaemia in women?",
+      "options": [
+        "Anaemia improved; stunting got worse",
+        "Stunting improved; anaemia got worse",
+        "Both improved"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Stunting fell from 26.4% to 23.2%, while anaemia rose from 27.6% to 30.7%. Progress on nutrition is genuinely mixed.",
+      "whyWrong": [
+        "It's the reverse of this.",
+        null,
+        "Anaemia moved in the wrong direction."
+      ],
+      "action": "Ask why one nutrition measure can improve while another worsens."
+    },
+    {
+      "id": "g02-048",
+      "src": "UN2",
+      "prompt": "If 1 in 12 people face hunger, how many is that in a city of 120,000?",
+      "options": [
+        "About 10,000",
+        "About 1,000",
+        "About 100"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About 10,000 people — one in twelve. Scaling global percentages to somewhere you know makes them real.",
+      "whyWrong": [
+        null,
+        "That would be 1 in 120.",
+        "That would be 1 in 1,200."
+      ],
+      "action": "Work out the figure for your own town."
+    },
+    {
+      "id": "g02-049",
+      "src": "SDGR25",
+      "prompt": "The share of countries with high food prices went from 60% in 2022 to what in 2024?",
+      "options": [
+        "45%",
+        "80%",
+        "15.3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "15.3% — a dramatic improvement in two years. But least developed countries stayed stuck at 31.6%.",
+      "whyWrong": [
+        "The fall was much steeper than this.",
+        "Prices eased substantially rather than worsening.",
+        null
+      ],
+      "action": "Ask who benefits first when prices fall, and who benefits last."
+    },
+    {
+      "id": "g02-050",
+      "src": "UN2",
+      "prompt": "What would 'Zero Hunger' actually require?",
+      "options": [
+        "Simply growing more food",
+        "Fixing poverty, conflict, prices and distribution together",
+        "Waiting for the problem to fade"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "The world already grows enough. Ending hunger means tackling why 2.3 billion people can't reliably reach it — poverty, war, price shocks and broken distribution at once.",
+      "whyWrong": [
+        "Production isn't the binding constraint; access is.",
+        null,
+        "Food insecurity has grown by 683 million people since 2015."
+      ],
+      "action": "Pick the one you'd tackle first and say why."
+    }
+  ]
+}

@@ -33,121 +33,114 @@
   "questions": [
     {
       "id": "g01-001",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "Over the last 30 years, has the number of people in extreme poverty gone up or down?",
       "options": [
-        "Down — by about 1.5 billion people",
+        "It has barely changed",
         "Up — by about 1.5 billion people",
-        "It has barely changed"
+        "Down — by about 1.5 billion people"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "whyCorrect": "About 1.5 billion people escaped extreme poverty since 1990 — one of the biggest improvements in human history. Most adults guess the opposite.",
       "whyWrong": [
-        null,
+        "It fell from about 2.3 billion people to about 800 million — an enormous change.",
         "This is the most common wrong guess in the world. Poverty fell dramatically.",
-        "It fell from about 2.3 billion people to about 800 million — an enormous change."
+        null
       ],
       "action": "Ask three adults to guess. Most will get it wrong."
     },
     {
       "id": "g01-002",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "Roughly how many people leave extreme poverty every single day?",
       "options": [
         "About 118 people",
-        "About 118,000 people",
-        "About 1,000 people"
+        "About 1,000 people",
+        "About 118,000 people"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "whyCorrect": "About 118,000 people a day, averaged over 35 years. It never makes the news because 'things got slightly better again today' isn't a headline.",
       "whyWrong": [
         "A thousand times too small to add up to 1.5 billion people.",
-        null,
-        "Still far too small — that would take 4,000 years."
+        "Still far too small — that would take 4,000 years.",
+        null
       ],
       "action": "Notice which kinds of news get reported, and which don't."
     },
     {
       "id": "g01-003",
-      "tier": "foundational",
       "src": "WB",
       "prompt": "How much money a day marks the line for extreme poverty?",
       "options": [
         "$300 a day",
-        "$30 a day",
-        "$3.00 a day"
+        "$3.00 a day",
+        "$30 a day"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "whyCorrect": "Just $3.00 a day — and that has to cover everything. Food, shelter, clothes, heat. Not spending money left over; the whole lot.",
       "whyWrong": [
         "A hundred times too high — almost nobody on Earth is above that.",
-        "Ten times too high. About 81% of the world lives below $30 a day.",
-        null
+        null,
+        "Ten times too high. About 81% of the world lives below $30 a day."
       ],
       "action": "Add up what you spent yesterday and compare."
     },
     {
       "id": "g01-004",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "In 1820, roughly what share of the world lived in extreme poverty?",
       "options": [
-        "About three-quarters",
+        "About one in ten",
         "About half",
-        "About one in ten"
+        "About three-quarters"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "whyCorrect": "Three-quarters of everyone alive. For most of human history, being poor was normal — a comfortable life for most people is a very recent invention.",
       "whyWrong": [
-        null,
+        "That's today's figure, two centuries later.",
         "The world didn't get down to half until 1956.",
-        "That's today's figure, two centuries later."
+        null
       ],
       "action": "Ask what your town was like 200 years ago."
     },
     {
       "id": "g01-005",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "When did less than half the world live in extreme poverty for the first time?",
       "options": [
         "The 1500s",
-        "The 1800s",
-        "The 1950s"
+        "The 1950s",
+        "The 1800s"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "whyCorrect": "1956 — within living memory for some people's grandparents. For all of history before that, most humans alive were extremely poor.",
       "whyWrong": [
         "Poverty was near-universal then.",
-        "Still around three-quarters in 1820.",
-        null
+        null,
+        "Still around three-quarters in 1820."
       ],
       "action": "Work out how old someone born in 1956 is now."
     },
     {
       "id": "g01-006",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "Where do most of the world's poor people live?",
       "options": [
         "In the poorest countries",
-        "In middle-income countries",
-        "In the richest countries"
+        "In the richest countries",
+        "In middle-income countries"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "whyCorrect": "About 65% of the world's poor — 740 million people — live in middle-income countries. A country's average can rise while millions inside it are left behind.",
       "whyWrong": [
         "A very common assumption. The poorest countries have the highest *rates*, but smaller populations.",
-        null,
-        "Rich countries have poverty, but not most of the world's."
+        "Rich countries have poverty, but not most of the world's.",
+        null
       ],
       "action": "Look up your country's average income, then who lives below it."
     },
     {
       "id": "g01-007",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "If you have a job, are you safe from extreme poverty?",
       "options": [
@@ -166,45 +159,42 @@
     },
     {
       "id": "g01-008",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "How many people have no social safety net at all — no benefits if they lose work or fall ill?",
       "options": [
         "38 million",
-        "3.8 billion",
-        "380 million"
+        "380 million",
+        "3.8 billion"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "whyCorrect": "3.8 billion people — close to half the planet. If their income stops, nothing catches them.",
       "whyWrong": [
         "A hundred times too low.",
-        null,
-        "Ten times too low."
+        "Ten times too low.",
+        null
       ],
       "action": "Find out what would catch your family if income stopped."
     },
     {
       "id": "g01-009",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "In what year did more than half the world finally have some kind of social safety net?",
       "options": [
         "1950",
-        "1990",
-        "2023"
+        "2023",
+        "1990"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "whyCorrect": "2023 — the first time in history coverage passed 50%, at 52.4%. It was 42.8% as recently as 2015.",
       "whyWrong": [
         "Coverage was a small fraction of the world then.",
-        "Still well under half.",
-        null
+        null,
+        "Still well under half."
       ],
       "action": "That happened in your lifetime. Ask what changed."
     },
     {
       "id": "g01-010",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "About how many people live on less than $30 a day?",
       "options": [
@@ -223,26 +213,24 @@
     },
     {
       "id": "g01-011",
-      "tier": "foundational",
       "src": "WB",
       "prompt": "Which group is most likely to be living in extreme poverty?",
       "options": [
-        "Adults aged 30–50",
         "Children",
+        "Adults aged 30–50",
         "People over 65"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "whyCorrect": "About 1 in 5 children are below the line, against 1 in 10 people overall — roughly double the risk. Around 412 million children live in extreme poverty.",
       "whyWrong": [
-        "Adults of working age have a lower poverty rate than children.",
         null,
+        "Adults of working age have a lower poverty rate than children.",
         "Older people face real risks, but children are the most affected group."
       ],
       "action": "Picture your class. One in five is the scale."
     },
     {
       "id": "g01-012",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "Poverty isn't only about money. Which of these does the Multidimensional Poverty Index actually count?",
       "options": [
@@ -261,64 +249,60 @@
     },
     {
       "id": "g01-013",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "When you measure poverty by more than income, does the number of poor people go up or down?",
       "options": [
-        "Up — to 1.1 billion",
         "Down — to about 400 million",
+        "Up — to 1.1 billion",
         "It stays exactly the same"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "whyCorrect": "It rises to 1.1 billion. Plenty of people scrape past $3 a day but still have no toilet, no electricity and children out of school — real poverty that a wage figure misses.",
       "whyWrong": [
-        null,
         "Counting more kinds of hardship finds more people, not fewer.",
+        null,
         "It's roughly 300 million higher than the income count."
       ],
       "action": "Name something you need for a good life that money alone doesn't show."
     },
     {
       "id": "g01-014",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "Of the 1.1 billion people in multidimensional poverty, how many are children?",
       "options": [
-        "More than half",
         "About one in ten",
+        "More than half",
         "Almost none"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "whyCorrect": "More than half. Poverty falls hardest on the people with the least power to do anything about it.",
       "whyWrong": [
-        null,
         "Far too low — it's over 50%.",
+        null,
         "Children are the single biggest group among the poor."
       ],
       "action": "Ask why poverty hits children hardest."
     },
     {
       "id": "g01-015",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "In the world's poorest countries, roughly what share of people have any social safety net?",
       "options": [
         "About 90%",
-        "About 50%",
-        "About 10%"
+        "About 10%",
+        "About 50%"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "whyCorrect": "Just 9.7% — against 85.9% in rich countries. The places that need safety nets most are the ones least likely to have them.",
       "whyWrong": [
         "That's the figure for high-income countries.",
-        "That's the global average, not the poorest countries.",
-        null
+        null,
+        "That's the global average, not the poorest countries."
       ],
       "action": "Compare 10% and 86%. Ask what causes that gap."
     },
     {
       "id": "g01-016",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "Ending world hunger and poverty needs about $1.4 trillion a year. What share of poorer countries' economies is that?",
       "options": [
@@ -337,7 +321,6 @@
     },
     {
       "id": "g01-017",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "Worldwide, what share of women hold official documents proving they own their land?",
       "options": [
@@ -356,26 +339,24 @@
     },
     {
       "id": "g01-018",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "How many people are poor AND live somewhere facing climate hazards like floods or drought?",
       "options": [
-        "887 million",
+        "87,000",
         "87 million",
-        "87,000"
+        "887 million"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "whyCorrect": "887 million — and 309 million of them face three or four hazards at once. Poverty and climate danger pile up in the same places.",
       "whyWrong": [
-        null,
+        "This is the size of a small city.",
         "Ten times too low.",
-        "This is the size of a small city."
+        null
       ],
       "action": "Look up which climate hazards affect your area."
     },
     {
       "id": "g01-019",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "If a family grows its own food, does that count when measuring whether they're poor?",
       "options": [
@@ -394,45 +375,42 @@
     },
     {
       "id": "g01-020",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "The poverty line is $3 a day in every country. How can that be fair when prices differ?",
       "options": [
-        "It isn't fair — it's the same cash amount",
         "It's adjusted so $3 buys the same amount everywhere",
+        "It isn't fair — it's the same cash amount",
         "It only applies to people paid in dollars"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "whyCorrect": "The line is adjusted for local prices, so $3 buys roughly the same food and shelter in Malawi as in Mexico. Economists call it purchasing power parity.",
       "whyWrong": [
-        "That would make the line meaningless — $3 buys wildly different things in different countries.",
         null,
+        "That would make the line meaningless — $3 buys wildly different things in different countries.",
         "It applies to everyone, whatever they're paid in."
       ],
       "action": "Compare the price of bread in two countries online."
     },
     {
       "id": "g01-021",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "What does living below the extreme poverty line actually mean?",
       "options": [
-        "Not affording a tiny room, heating, and enough food to avoid malnutrition",
         "Not owning a car",
+        "Not affording a tiny room, heating, and enough food to avoid malnutrition",
         "Not affording a holiday"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "whyCorrect": "The line is set exactly where a person can't afford a tiny space to live, minimum heating, and food that keeps them from becoming malnourished. It measures survival, not comfort.",
       "whyWrong": [
-        null,
         "Lots of people who aren't poor don't own cars.",
+        null,
         "Missing a holiday isn't poverty — this line is about staying alive and fed."
       ],
       "action": "Notice how often 'poor' gets used for things that aren't poverty."
     },
     {
       "id": "g01-022",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "Which region has the largest share of its people living in extreme poverty?",
       "options": [
@@ -451,178 +429,168 @@
     },
     {
       "id": "g01-023",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "COVID-19 pushed roughly how many extra people into extreme poverty?",
       "options": [
-        "About 50 million",
+        "About 50 thousand",
         "About 5 million",
-        "About 50 thousand"
+        "About 50 million"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "whyCorrect": "About 50 million — the first big rise in a generation. Decades of steady progress can be knocked back by a single event.",
       "whyWrong": [
-        null,
+        "A thousand times too low.",
         "Ten times too low.",
-        "A thousand times too low."
+        null
       ],
       "action": "Ask what helped some families survive the pandemic and not others."
     },
     {
       "id": "g01-024",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "The world's goal is to end extreme poverty by 2030. Are we on track?",
       "options": [
-        "Yes — it will hit zero",
+        "No — about 9% will still be in extreme poverty",
         "Yes, and it will be done early",
-        "No — about 9% will still be in extreme poverty"
+        "Yes — it will hit zero"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "At the current pace about 9% of the world — hundreds of millions of people — will still be in extreme poverty in 2030. The target will be missed.",
       "whyWrong": [
-        "Progress has slowed sharply since 2020.",
+        null,
         "Poverty reduction has stalled, not accelerated.",
-        null
+        "Progress has slowed sharply since 2020."
       ],
       "action": "Name one thing that would speed this up."
     },
     {
       "id": "g01-025",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "How many children have no social protection — no safety net at all?",
       "options": [
-        "1.4 billion",
+        "1.4 million",
         "140 million",
-        "1.4 million"
+        "1.4 billion"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "whyCorrect": "1.4 billion children. More than one in every two children alive has nothing to catch them if their family's income disappears.",
       "whyWrong": [
-        null,
+        "A thousand times too low.",
         "Ten times too low.",
-        "A thousand times too low."
+        null
       ],
       "action": "Find out if your country pays any kind of child benefit."
     },
     {
       "id": "g01-026",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "About what share of the world lives on less than $10 a day?",
       "options": [
-        "About 50%",
         "About 10%",
+        "About 50%",
         "About 90%"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "whyCorrect": "About 52% — more than half the world. Clearing the extreme poverty line is a long way from being comfortable.",
       "whyWrong": [
-        null,
         "That's roughly the share below $3 a day.",
+        null,
         "Too high — 81% live below $30 a day, but $10 is about half."
       ],
       "action": "Work out what $10 a day would cover where you live."
     },
     {
       "id": "g01-027",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "Are men or women more likely to have social protection?",
       "options": [
         "Women",
-        "Men",
-        "They are exactly equal"
+        "They are exactly equal",
+        "Men"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "whyCorrect": "Men, at 54.6% against 50.1% for women. Many benefits are linked to formal paid jobs — and women do far more unpaid and informal work.",
       "whyWrong": [
         "It runs the other way: women are the less-covered group.",
-        null,
-        "There's a gap of about 4.5 percentage points."
+        "There's a gap of about 4.5 percentage points.",
+        null
       ],
       "action": "List the unpaid work done in your home this week, and by whom."
     },
     {
       "id": "g01-028",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "In the world's least developed countries, about what share of working people are still in extreme poverty?",
       "options": [
-        "About 3%",
+        "About 30%",
         "About 70%",
-        "About 30%"
+        "About 3%"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "About 30% — nearly one in three workers. Globally it's 6.9%, so where you're born makes an enormous difference to whether work pays enough to live on.",
       "whyWrong": [
-        "That's below even the global average.",
+        null,
         "Too high — though it shows how severe the problem is that this seems believable.",
-        null
+        "That's below even the global average."
       ],
       "action": "Compare the minimum wage in two countries on different continents."
     },
     {
       "id": "g01-029",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "The Multidimensional Poverty Index measures three things. Which set is it?",
       "options": [
-        "Jobs, taxes and prices",
+        "Health, education and living standards",
         "Income, savings and debt",
-        "Health, education and living standards"
+        "Jobs, taxes and prices"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "Health, education and living standards — measured through 10 indicators like nutrition, school attendance, clean water and electricity.",
       "whyWrong": [
-        "These are economic measures, not the three dimensions of poverty.",
+        null,
         "These are all money measures, and the whole point of the MPI is to look past money.",
-        null
+        "These are economic measures, not the three dimensions of poverty."
       ],
       "action": "Pick which of the three you'd fix first, and say why."
     },
     {
       "id": "g01-030",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "Many people feel their land is theirs. But what share actually hold official documents proving it?",
       "options": [
-        "95%",
+        "43%",
         "66%",
-        "43%"
+        "95%"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "Only 43% hold documents, though 66% feel secure. That gap matters — without paperwork, families can be moved off land they've farmed for generations.",
       "whyWrong": [
-        "Far too high — most people worldwide have no formal land documents.",
+        null,
         "That's the share who *feel* secure, not who can prove it.",
-        null
+        "Far too high — most people worldwide have no formal land documents."
       ],
       "action": "Ask what proves who owns a home where you live."
     },
     {
       "id": "g01-031",
-      "tier": "foundational",
       "src": "WB",
       "prompt": "Extreme poverty is becoming concentrated in which kinds of places?",
       "options": [
         "Big cities",
-        "Coastal tourist areas",
-        "Countries affected by war and conflict"
+        "Countries affected by war and conflict",
+        "Coastal tourist areas"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "whyCorrect": "Conflict-affected and fragile places. War destroys the schools, clinics, markets and records that people need to escape poverty — so it's hardest to shift there.",
       "whyWrong": [
         "Cities have poverty, but conflict is the defining pattern.",
-        "Tourist regions aren't where extreme poverty concentrates.",
-        null
+        null,
+        "Tourist regions aren't where extreme poverty concentrates."
       ],
       "action": "Look up one country where conflict reversed progress on poverty."
     },
     {
       "id": "g01-032",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "Rich countries spend about 60% of their budgets on essential services like health and schools. What do developing countries spend?",
       "options": [
@@ -641,26 +609,24 @@
     },
     {
       "id": "g01-033",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "How many poor people face three or four different climate hazards at the same time?",
       "options": [
-        "3 million",
+        "309 million",
         "30 million",
-        "309 million"
+        "3 million"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "309 million people face drought and flood and heat, stacked on top of each other. Recovering from one disaster is hard; recovering from several at once is close to impossible.",
       "whyWrong": [
-        "A hundred times too low.",
+        null,
         "Ten times too low.",
-        null
+        "A hundred times too low."
       ],
       "action": "Name three hazards that could hit one place in a single year."
     },
     {
       "id": "g01-034",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "What has been happening recently to international aid for fighting poverty?",
       "options": [
@@ -679,140 +645,132 @@
     },
     {
       "id": "g01-035",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "In Sub-Saharan Africa, what share of people hold formal documents for their land?",
       "options": [
-        "15%",
+        "75%",
         "45%",
-        "75%"
+        "15%"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "whyCorrect": "Just 15%. Land is often a family's single biggest asset, and most people there have no paper proof that it's theirs.",
       "whyWrong": [
-        null,
+        "Far too high for any world region.",
         "That's closer to the global average of 43%.",
-        "Far too high for any world region."
+        null
       ],
       "action": "Ask what happens in a land dispute when nobody has documents."
     },
     {
       "id": "g01-036",
-      "tier": "foundational",
       "src": "WB",
       "prompt": "About how many children live in households below the extreme poverty line?",
       "options": [
-        "4 million",
         "412 million",
+        "4 million",
         "41 million"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "whyCorrect": "About 412 million children — roughly 1 in 5 children on Earth.",
       "whyWrong": [
-        "A hundred times too low.",
         null,
+        "A hundred times too low.",
         "Ten times too low."
       ],
       "action": "Count to five. That ratio is the scale of child poverty."
     },
     {
       "id": "g01-037",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "Has working poverty — people who work but stay poor — got better or worse since 2015?",
       "options": [
-        "Exactly the same",
+        "Better, from 8.4% down to 6.9%",
         "Worse, from 6.9% up to 8.4%",
-        "Better, from 8.4% down to 6.9%"
+        "Exactly the same"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "It improved, from 8.4% to 6.9%. Real progress — and it still leaves over 240 million workers in extreme poverty.",
       "whyWrong": [
-        "There was a clear improvement of about 1.5 percentage points.",
+        null,
         "It moved the other way — this is good news.",
-        null
+        "There was a clear improvement of about 1.5 percentage points."
       ],
       "action": "Practise saying a fact that's good news and bad news at once."
     },
     {
       "id": "g01-038",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "In 1990, about how many people lived in extreme poverty?",
       "options": [
-        "2.3 billion",
         "230 million",
+        "2.3 billion",
         "5 billion"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "whyCorrect": "About 2.3 billion — roughly 44% of everyone alive at the time. Nearly three times today's number.",
       "whyWrong": [
-        null,
         "Ten times too low.",
+        null,
         "Too high — it was under half the world, not most of it."
       ],
       "action": "Ask an adult what they remember about the world in 1990."
     },
     {
       "id": "g01-039",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "Roughly how many people worldwide live in extreme poverty right now?",
       "options": [
         "About 8 million",
-        "About 800 million",
-        "About 80 million"
+        "About 80 million",
+        "About 800 million"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "whyCorrect": "About 800 million — roughly 1 in 10 people. Different agencies publish 808, 826 or 831 million depending on when they measured.",
       "whyWrong": [
         "A hundred times too low.",
-        null,
-        "Ten times too low."
+        "Ten times too low.",
+        null
       ],
       "action": "In a crowd of 30 people, that's 3 of them."
     },
     {
       "id": "g01-040",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "The MPI counts a family as poor if they lack basics. Which of these counts as a deprivation?",
       "options": [
-        "No electricity in the home",
+        "No garden",
         "No second television",
-        "No garden"
+        "No electricity in the home"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "whyCorrect": "No electricity is a real deprivation — it means no light to study by, no way to refrigerate food or medicine, no charging a phone to find work.",
       "whyWrong": [
-        null,
+        "A garden isn't one of the ten indicators.",
         "Televisions aren't a measure of poverty.",
-        "A garden isn't one of the ten indicators."
+        null
       ],
       "action": "List everything you did today that needed electricity."
     },
     {
       "id": "g01-041",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "Why does Goal 1 include a target about surviving disasters and economic shocks?",
       "options": [
         "Because disasters only happen in rich countries",
-        "Because one flood or lost job can push a family straight back into poverty",
-        "Because disasters have nothing to do with poverty"
+        "Because disasters have nothing to do with poverty",
+        "Because one flood or lost job can push a family straight back into poverty"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "whyCorrect": "A family can climb out of poverty over years and be knocked back by a single flood, drought or lost job. Staying out is as hard as getting out.",
       "whyWrong": [
         "Poorer places are hit hardest and take longest to recover.",
-        null,
-        "887 million poor people live in areas facing climate hazards."
+        "887 million poor people live in areas facing climate hazards.",
+        null
       ],
       "action": "Ask what would happen if your household's income stopped for three months."
     },
     {
       "id": "g01-042",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "Poverty halved in 136 years, then halved again in 45, then again in 13. What does that show?",
       "options": [
@@ -831,26 +789,24 @@
     },
     {
       "id": "g01-043",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "How many people are multidimensionally poor — lacking things like clean water, schooling or electricity?",
       "options": [
         "11 million",
-        "1.1 billion",
-        "110 million"
+        "110 million",
+        "1.1 billion"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "whyCorrect": "1.1 billion people across 109 countries — about 17% of everyone surveyed, and more than the number counted by income alone.",
       "whyWrong": [
         "A hundred times too low.",
-        null,
-        "Ten times too low."
+        "Ten times too low.",
+        null
       ],
       "action": "Notice this is bigger than the income count. Ask why."
     },
     {
       "id": "g01-044",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "Why is gathering cooking fuel treated as a poverty problem?",
       "options": [
@@ -869,115 +825,109 @@
     },
     {
       "id": "g01-045",
-      "tier": "foundational",
       "src": "WB",
       "prompt": "The poverty line used to be $1.90 a day and is now $3.00. Why did it change?",
       "options": [
-        "Prices rose, so the line was updated to mean the same hardship",
         "Poverty got worse so they raised it",
+        "Prices rose, so the line was updated to mean the same hardship",
         "It was chosen at random"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "whyCorrect": "$1.90 in 2011 prices and $3.00 in 2021 prices buy about the same amount. The number moved because money changed value, not because the standard did.",
       "whyWrong": [
-        null,
         "The line tracks prices, not the poverty rate.",
+        null,
         "It's set from detailed price surveys across many countries."
       ],
       "action": "Ask an adult what a chocolate bar cost when they were your age."
     },
     {
       "id": "g01-046",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "One of Goal 1's targets is social protection for everyone. How far off is that?",
       "options": [
-        "Almost done — 95% covered",
         "About half the world covered",
+        "Almost done — 95% covered",
         "Fully achieved already"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "whyCorrect": "Just over half — 52.4%. It's the first time in history coverage passed 50%, and it still leaves 3.8 billion people with nothing.",
       "whyWrong": [
-        "Nearly half the world has no coverage at all.",
         null,
+        "Nearly half the world has no coverage at all.",
         "Far from it — this is one of the least-completed targets."
       ],
       "action": "Find out what benefits exist where you live, and who misses out."
     },
     {
       "id": "g01-047",
-      "tier": "foundational",
       "src": "SDGR25",
       "prompt": "About how many workers worldwide earn too little to escape extreme poverty?",
       "options": [
         "24 million",
-        "2.4 billion",
-        "240 million"
+        "240 million",
+        "2.4 billion"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "whyCorrect": "Over 240 million workers. They have jobs, they work full days, and it still isn't enough to clear the line.",
       "whyWrong": [
         "Ten times too low.",
-        "Too high — that would be most of the world's workers.",
-        null
+        null,
+        "Too high — that would be most of the world's workers."
       ],
       "action": "Ask what makes the difference between a job and a living."
     },
     {
       "id": "g01-048",
-      "tier": "foundational",
       "src": "MPI25",
       "prompt": "About 740 million poor people live in middle-income countries. What does that tell you?",
       "options": [
-        "Averages always tell the full story",
+        "A country can be doing well on average while millions inside it are poor",
         "Middle-income countries are the poorest on Earth",
-        "A country can be doing well on average while millions inside it are poor"
+        "Averages always tell the full story"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "National averages hide who's being left behind. A country's economy can grow while huge numbers of its people see none of it — which is why inequality matters as much as growth.",
       "whyWrong": [
-        "This is exactly the case where an average misleads you.",
+        null,
         "They're not the poorest — they're simply where most poor people live.",
-        null
+        "This is exactly the case where an average misleads you."
       ],
       "action": "Find one statistic about your country and ask who it hides."
     },
     {
       "id": "g01-049",
-      "tier": "foundational",
       "src": "OWID",
       "prompt": "What fraction of the world lives in extreme poverty today?",
       "options": [
-        "About 1 in 2",
+        "About 1 in 10",
         "About 1 in 100",
-        "About 1 in 10"
+        "About 1 in 2"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "About 1 in 10 — roughly 9 to 10% of everyone alive. Two hundred years ago it was 3 in 4.",
       "whyWrong": [
-        "That was roughly true in the 1950s.",
+        null,
         "Ten times too optimistic.",
-        null
+        "That was roughly true in the 1950s."
       ],
       "action": "Compare 1 in 10 today with 3 in 4 in 1820."
     },
     {
       "id": "g01-050",
-      "tier": "foundational",
       "src": "UN1",
       "prompt": "What is the single biggest thing that would help end extreme poverty?",
       "options": [
-        "Only sending food",
+        "A mix of decent pay, safety nets and basic services",
         "Waiting for it to fix itself",
-        "A mix of decent pay, safety nets and basic services"
+        "Only sending food"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "whyCorrect": "No single fix works. 284 million people work and stay poor, 3.8 billion have no safety net, and 1.1 billion lack basics like water and electricity — so it takes pay, protection and services together.",
       "whyWrong": [
-        "Food matters in an emergency, but it doesn't fix why a family had none.",
+        null,
         "Progress has stalled since 2020 — it doesn't happen on its own.",
-        null
+        "Food matters in an emergency, but it doesn't fix why a family had none."
       ],
       "action": "Pick the one you'd fund first and defend your choice."
     }
