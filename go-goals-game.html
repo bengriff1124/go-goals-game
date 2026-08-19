@@ -437,6 +437,15 @@
   .persona-front .emoji{font-size:52px; line-height:1;}
   .persona-front .pname{font-weight:800; font-size:16px; margin-top:8px; color:#4b2278; line-height:1.25;}
   .persona-blurb{ font-size:14px; color:var(--ink); line-height:1.55; text-align:left; margin-top:4px; }
+  .persona-where{ font-size:12.5px; color:var(--muted); font-weight:600; margin-top:-4px; margin-bottom:8px; }
+  .stance-box{
+    margin:2px 0 12px; background:#f4ecfb; border:1px solid #ddc6f2; border-radius:10px;
+    padding:10px 14px; text-align:left;
+  }
+  .stance-line{ font-size:13px; line-height:1.5; color:#4a3a5c; margin:3px 0; }
+  .stance-line b{ color:#6a3fb5; }
+  .stance-play{ margin-top:8px; font-size:12px; font-style:italic; color:#7b5aa6; }
+  .ad-task{ margin-top:12px; font-weight:700; color:var(--ink); line-height:1.5; }
   .persona-hint{
     margin-top:14px; background:#f4ecfb; border:1px solid #ddc6f2; border-radius:10px; padding:10px 14px;
     font-size:13px; color:#6a3fb5; text-align:left; line-height:1.5;
@@ -660,7 +669,8 @@
 
     <!-- Persona-adaptive subjective challenge mode -->
     <div id="personaQSection" class="hidden">
-      <textarea id="pqAnswer" class="pq-textarea" rows="3" placeholder="Type your idea here..."></textarea>
+      <div class="stance-box hidden" id="pqStance"></div>
+      <textarea id="pqAnswer" class="pq-textarea" rows="3" placeholder="Make your argument here — what's your position, and why?"></textarea>
       <button class="primary-btn pq-share-btn" id="pqShareBtn" disabled>Share with the Team</button>
 
       <div class="hidden" id="pqHuddleWrap">
@@ -701,6 +711,7 @@
       </div>
     </div>
 
+    <div class="persona-where" id="pmWhere"></div>
     <div class="persona-blurb" id="pmBlurb"></div>
     <div class="persona-hint" id="pmHint"></div>
 
@@ -1046,47 +1057,88 @@
 
   /* ---------------- Advocate prompts: argue on behalf of someone else's persona ---------------- */
   const ADVOCATE_PROMPTS = [
-    "What is one thing about their world that outsiders always get wrong?",
-    "What do they need most right now — and why is it not what people assume?",
-    "What would they ask the world for, if everyone was finally listening?",
-    "What are they most proud of about their world?",
-    "What is something they'd never give up, even if it made life easier?",
-    "What does a good day look like in their world?"
+    "Someone just said their situation is their own fault. Make the case for why that's wrong.",
+    "Argue for what they need \u2014 even though giving it to them would cost your own team something.",
+    "They're being asked to give up the one thing keeping them afloat, for the greater good. Argue their side.",
+    "Convince the room that what they need most is not what people assume it is.",
+    "There is money for one thing only. Argue why it should go to them and not to someone else.",
+    "Someone with power is about to decide their future without asking them. Say what they most need to hear.",
+    "Name the trade-off they live with \u2014 and argue for how you'd resolve it if it were your call."
   ];
 
   /* ---------------- Persona cards (inspired by imaginative character-design games) ---------------- */
   const PERSONAS = [
-    { name:"The Off-Grid Islander", emoji:"🏝️", blurb:"You live on a tiny volcanic island with no power lines for a thousand miles. Every lightbulb, fridge and phone charger in your world runs on sun, wind or waves.", hint:"Answer your next question like someone who's never plugged anything into a wall socket." },
-    { name:"The Vertical Farmer", emoji:"🌆", blurb:"Your farm is stacked forty storeys high in the middle of a mega-city, growing food under LED sunshine with zero soil in sight.", hint:"Talk about your next move like you're squeezing a whole harvest onto one windowsill." },
-    { name:"The Deep-Sea Guardian", emoji:"🤿", blurb:"Half scientist, half submarine pilot, you spend weeks at a time patrolling coral reefs, chasing off illegal trawlers and rescuing tangled turtles.", hint:"Speak slowly and calmly for your next turn — sound travels strangely underwater." },
-    { name:"The Storm-Chasing Engineer", emoji:"🌪️", blurb:"You build flood-proof villages in the hours before a hurricane makes landfall, racing the wind with a toolbox in one hand and a weather radio in the other.", hint:"Announce your next move like a countdown — the storm is coming!" },
-    { name:"The Nomad Schoolteacher", emoji:"🐫", blurb:"Your classroom is strapped to the back of a camel. Wherever the herd stops for the night, that's where today's lesson happens.", hint:"Turn your next answer into a mini lesson for imaginary students." },
-    { name:"The Recycled-City Architect", emoji:"🏙️", blurb:"You've never bought a single brick — every tower you design is built entirely from yesterday's bottles, tyres and shipping pallets.", hint:"Describe your next move as if you're building it out of trash." },
-    { name:"The Canopy Ranger", emoji:"🌳", blurb:"Home is a rope bridge forty metres above the rainforest floor. You zipline between treehouses, guarding the last wild jaguars from poachers.", hint:"Whisper your next answer — you don't want to startle the wildlife." },
-    { name:"The Water Wizard", emoji:"💧", blurb:"A giant pump strapped to your back turns muddy puddles into crystal-clear drinking water for every village you wander into.", hint:"Make a big 'whoosh' sound before your next answer, like you're pumping water." },
-    { name:"The Pocket Peacekeeper", emoji:"🤖", blurb:"A palm-sized robot diplomat, you parachute into playground disputes and refugee camps alike, brokering peace one toy-swap treaty at a time.", hint:"Answer your next question in your most formal, diplomatic robot voice." },
-    { name:"The Micro-Business Mogul", emoji:"🛵", blurb:"Just eleven years old, you run a hundred pop-up market stalls from a solar-powered scooter, and half your neighbourhood works for you.", hint:"Negotiate your next answer like you're closing a business deal." }
+    { name:"Amara, Cocoa Farmer", emoji:"🌾", where:"C\u00f4te d'Ivoire",
+      blurb:"You grow the cocoa in chocolate bars sold on the other side of the world. Of what a bar sells for, roughly six cents reaches your farm. At harvest, your children work beside you because you cannot afford to hire help.",
+      position:"I need a fair price for my beans \u2014 not charity, and not a lecture about my kids.",
+      tension:"If chocolate costs more, shoppers overseas buy less, and I sell nothing at all." },
+
+    { name:"Rafael, Delivery Rider", emoji:"🛵", where:"S\u00e3o Paulo, Brazil",
+      blurb:"You ride ten hours a day for an app. No contract, no sick pay, no insurance if a car clips you at an intersection \u2014 but you choose your own hours, and no boss stands over you.",
+      position:"Give me sick pay and safety gear without taking away the flexible hours.",
+      tension:"The companies say if they have to provide that, they will hire far fewer riders \u2014 and I might be one of the ones cut." },
+
+    { name:"Priya, Garment Worker", emoji:"🧵",
+      where:"Dhaka, Bangladesh",
+      blurb:"You stitch clothing for brands you have never heard of. The hours are long and the building worries you. It is also the most money anyone in your family has ever earned, and it is yours.",
+      position:"Don't shut this factory down to save me \u2014 fix it.",
+      tension:"Safety upgrades cost money, and the buyer can move production to another country tomorrow." },
+
+    { name:"Joseph, Power Plant Engineer", emoji:"\u26A1", where:"Silesia, Poland",
+      blurb:"Your grandfather worked this coal plant, your father worked it, and you keep it running now. The whole town \u2014 shops, school, clinic \u2014 exists because of it. You have read the climate science. You believe it.",
+      position:"Close the plant, but not one day before there are other jobs here.",
+      tension:"Every year we wait, the air my own children breathe gets worse." },
+
+    { name:"Nadia, Rural Nurse", emoji:"🩺", where:"Turkana County, Kenya",
+      blurb:"You are the only trained health worker for thousands of people across a hundred kilometres of scrubland. You deliver babies, set bones, and ration medicine. Every colleague you trained with has taken a better-paid job in a city or abroad.",
+      position:"Pay rural health workers properly, or we will all keep leaving.",
+      tension:"That money would come out of the same budget that buys the medicine I hand out." },
+
+    { name:"Tom\u00e1s, Small-Boat Fisher", emoji:"🎣", where:"Northern Peru",
+      blurb:"Four generations of your family have fished this stretch of coast from open boats. The catch has been shrinking for a decade. Industrial trawlers work the water just beyond the horizon.",
+      position:"Limit the big trawlers before you put limits on us.",
+      tension:"Those trawlers employ people from my own town, and they pay better than fishing does." },
+
+    { name:"Mei, City Planner", emoji:"🏙\uFE0F", where:"Jakarta, Indonesia",
+      blurb:"Your city is sinking several centimetres a year while the sea rises to meet it. There is money to protect some districts with sea walls and drainage. There is not money to protect all of them. The decision is on your desk.",
+      position:"I cannot save every neighbourhood. Someone has to choose, and it is me.",
+      tension:"The districts that are cheapest to protect are not the ones where the most vulnerable people live." },
+
+    { name:"Yusuf, Refugee Student", emoji:"📚", where:"Zaatari Camp, Jordan",
+      blurb:"You have lived in this camp for nine years \u2014 more than half your life. You study hard in a language that is not your first. You will graduate near the top of your class, and then you will not be legally allowed to work.",
+      position:"Let me work legally when I finish school. I did not choose to be here.",
+      tension:"Local families are worried there aren't enough jobs for their own children as it is." },
+
+    { name:"Elena, Grocery Shop Owner", emoji:"🛒", where:"Valpara\u00edso, Chile",
+      blurb:"You run a small corner shop on a steep street. You would genuinely like to sell food without plastic. Your suppliers deliver everything shrink-wrapped, and your customers count every peso at the till.",
+      position:"I'll go plastic-free the day my suppliers and my customers make it possible.",
+      tension:"Unwrapped food spoils faster, and spoiled food is money I do not have." },
+
+    { name:"Kwame, Mining Community Leader", emoji:"\u26CF\uFE0F", where:"Kolwezi, DR Congo",
+      blurb:"The cobalt under your town ends up in the battery of nearly every phone and electric car on Earth. Your community has the jobs. It does not have clean water, a secondary school, or safe conditions underground.",
+      position:"The world wants our cobalt. We want schools and clean water in return.",
+      tension:"If we ask for too much, the buyers simply go to a mine that asks for nothing." }
   ];
 
   /* ---------------- Persona-adaptive challenge prompts, one per SDG ---------------- */
   const GOAL_CHALLENGES = {
-    1:"As {name}, someone in your world has lost everything they own. What's the very first thing you do to help — and why does it matter most?",
-    2:"As {name}, food is running low in your world. Describe your boldest idea to make sure nobody around you goes hungry.",
-    3:"As {name}, what's the biggest health risk in your unusual world, and how do you protect the people (or creatures) you care about from it?",
-    4:"As {name}, how would you teach a curious kid everything they need to know to survive and thrive in your world?",
-    5:"As {name}, imagine someone says a job in your world is 'not for them' because of who they are. What do you say back?",
-    6:"As {name}, clean water just ran out in your world. What's your emergency plan to find or make more?",
-    7:"As {name}, the power just went out. What clever, resourceful way do you keep your world running?",
-    8:"As {name}, describe the fairest possible workday you could design for everyone in your world.",
-    9:"As {name}, what's one invention your world desperately needs — and how would you build it?",
-    10:"As {name}, who gets left out or left behind in your world, and what's your plan to include them?",
-    11:"As {name}, design the perfect, sustainable home base for your world. What does it look like?",
-    12:"As {name}, what's one wasteful habit in your world you'd ban forever — and what would you replace it with?",
-    13:"As {name}, a sudden climate disaster is heading your way. What's your survival plan?",
-    14:"As {name}, how would you convince someone to stop polluting the waters near your world?",
-    15:"As {name}, which creature in your world needs the most protecting, and how do you protect it?",
-    16:"As {name}, two rivals in your world are about to fight. How do you make peace between them?",
-    17:"As {name}, which other Extraordinary character would you team up with to solve a huge problem — and what would you build together?"
+    1:"You are {name}. A new support programme has enough money for only half the families who qualify. Argue who should be first \u2014 then defend that to the families you left out.",
+    2:"You are {name}. Your country can buy cheap imported food now, or spend the same money on local farms that only pay off in ten years. Argue for one.",
+    3:"You are {name}. There is one health budget. Argue whether it should treat people who are sick today, or prevent illness that hasn't happened yet.",
+    4:"You are {name}. A family needs their 14-year-old working so they can eat. Argue what should happen \u2014 and who has to make that possible.",
+    5:"You are {name}. Someone tells you the rules about who does what in your world are 'just how things are done here.' Argue back.",
+    6:"You are {name}. A company wants to take water from your area, bottle it, and sell it. Argue for or against \u2014 and say plainly who gains.",
+    7:"You are {name}. Clean power costs more up front than the fuel people burn now. Argue who should pay that difference.",
+    8:"You are {name}. A job in your world is unsafe, but it pays better than anything else available. Argue what should change first.",
+    9:"You are {name}. Your area will get exactly one thing built: a road, internet, or a clinic. Argue for one and say what you're giving up.",
+    10:"You are {name}. Someone says people in your situation should simply work harder. Make the case for what that misses.",
+    11:"You are {name}. There is money to protect one neighbourhood from flooding, not two. Argue how that choice should be made.",
+    12:"You are {name}. Cutting waste in your world would cost people money they don't have. Argue for doing it anyway \u2014 or for not doing it.",
+    13:"You are {name}. Your country is being asked to cut emissions it barely caused. Argue your position.",
+    14:"You are {name}. Fishing limits would let stocks recover, but cut incomes this year. Argue for or against.",
+    15:"You are {name}. A piece of land can be farmed or left as forest, not both. Argue which \u2014 and for whose benefit.",
+    16:"You are {name}. Someone with power is about to make a decision about your world without asking you. Argue for a seat at that table.",
+    17:"You are {name}. A wealthy country offers help, but with conditions attached. Argue whether to take the deal."
   };
 
   const GOAL_FACTS = {
@@ -1168,6 +1220,12 @@
       rows.push(row);
     }
     return rows; // top row first
+  }
+
+  function esc(str){
+    return String(str == null ? '' : str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
   function luminance(hex){
@@ -2789,7 +2847,13 @@
   /* ----- Persona-adaptive subjective challenge mode ----- */
   function renderPersonaChallenge(p, goalNum){
     const template = GOAL_CHALLENGES[goalNum];
-    qText.innerHTML = template.replace('{name}', '<strong>' + p.persona.name + '</strong>');
+    qText.innerHTML = template.replace('{name}',
+      '<strong>' + esc(p.persona.name) + '</strong>' +
+      (p.persona.where ? ', ' + esc(p.persona.where) : ''));
+    pqStance.innerHTML =
+      '<div class="stance-line"><b>You want:</b> ' + esc(p.persona.position) + '</div>' +
+      '<div class="stance-line"><b>The hard part:</b> ' + esc(p.persona.tension) + '</div>';
+    pqStance.classList.remove('hidden');
     currentQCtx.fact = GOAL_FACTS[goalNum];
 
     pqAnswer.value = '';
@@ -2821,6 +2885,9 @@
     updatePersonaHuddleUI();
     const newTotal = personaVotes.up + personaVotes.more;
     if(newTotal >= huddleSize()){
+      /* Arguing a position counts toward 2030 the same as a correct answer —
+         otherwise a team holding a persona builds nothing all game. */
+      adoptBehavior(currentQCtx.p, currentQCtx.goalNum);
       pqFactBox.textContent = '💡 ' + currentQCtx.fact;
       pqFactBox.classList.remove('hidden');
       currentQCtx.correct = true;
@@ -2882,6 +2949,7 @@
   const pmSubtitle = document.getElementById('pmSubtitle');
   const pmEmoji = document.getElementById('pmEmoji');
   const pmName = document.getElementById('pmName');
+  const pmWhere = document.getElementById('pmWhere');
   const pmBlurb = document.getElementById('pmBlurb');
   const pmHint = document.getElementById('pmHint');
   const personaContinueBtn = document.getElementById('personaContinueBtn');
@@ -2896,8 +2964,12 @@
     pmSubtitle.textContent = p.name + ' drew a Persona card';
     pmEmoji.textContent = persona.emoji;
     pmName.textContent = persona.name;
+    pmWhere.textContent = persona.where;
     pmBlurb.textContent = persona.blurb;
-    pmHint.innerHTML = '<b>In character:</b> ' + persona.hint;
+    pmHint.innerHTML =
+      '<div class="stance-line"><b>What they want:</b> ' + esc(persona.position) + '</div>' +
+      '<div class="stance-line"><b>What makes it hard:</b> ' + esc(persona.tension) + '</div>' +
+      '<div class="stance-play">Argue from their side \u2014 even if you\'d choose differently.</div>';
     personaCard.classList.remove('flipped');
     personaModal._persona = persona;
 
@@ -3092,8 +3164,13 @@
     adTitle.textContent = 'Speak as ' + target.persona.name;
     adPickWrap.classList.add('hidden');
     adPromptWrap.classList.remove('hidden');
-    adPrompt.innerHTML = 'You are speaking on behalf of <strong>' + target.persona.name + '</strong> (' +
-      target.persona.emoji + ' ' + target.name + ').<br><br>' + prompt;
+    adPrompt.innerHTML =
+      'You are speaking on behalf of <strong>' + esc(target.persona.name) + '</strong>' +
+      (target.persona.where ? ', ' + esc(target.persona.where) : '') +
+      ' \u2014 played by ' + esc(target.name) + '.' +
+      '<div class="stance-line"><b>Their position:</b> ' + esc(target.persona.position) + '</div>' +
+      '<div class="stance-line"><b>What makes it hard:</b> ' + esc(target.persona.tension) + '</div>' +
+      '<div class="ad-task">' + prompt + '</div>';
 
     adAnswer.value = '';
     adAnswer.disabled = false;
