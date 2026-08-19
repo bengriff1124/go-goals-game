@@ -448,8 +448,8 @@
     border-radius:999px; padding:6px 14px; font-size:12.5px; font-weight:700; cursor:pointer;
     font-family:inherit; transition:background .15s, color .15s, border-color .15s;
   }
-  .vt-btn:hover{ border-color:var(--teal); color:var(--teal); }
-  .vt-btn.active{ background:var(--teal); border-color:var(--teal); color:#fff; }
+  .vt-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .vt-btn.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
   .walk-wrap{ position:relative; }
   #walkCanvas{ display:block; width:100%; border-radius:12px; background:#cfe9f5; }
   .walk-hud{
@@ -2313,6 +2313,7 @@
      arrowheads, so the snaking direction of the board is obvious without needing
      ladders/slides or memorising which way each row alternates. */
   function drawPathGuide(){
+    if(!document.getElementById('boardOuter').offsetWidth) return;
     const outer = document.getElementById('boardOuter').getBoundingClientRect();
     fxLayer.setAttribute('viewBox', '0 0 ' + outer.width + ' ' + outer.height);
     fxLayer.setAttribute('width', outer.width);
@@ -2366,6 +2367,7 @@
 
   function positionTokens(animate){
     if(!teams.length || !teams[0]._el) return;
+    if(!document.getElementById('boardOuter').offsetWidth) return;
     const byCell = {};
     teams.forEach(p=>{ (byCell[p.position] = byCell[p.position]||[]).push(p); });
 
@@ -3951,7 +3953,12 @@
         document.getElementById('boardOuter').classList.toggle('hidden', on);
         document.querySelector('.legend').classList.toggle('hidden', on);
         if(on){ resize(); jump(); start(); }
-        else if(raf){ cancelAnimationFrame(raf); raf = null; }
+        else {
+          if(raf){ cancelAnimationFrame(raf); raf = null; }
+          /* The board had no layout while hidden, so its guide line and tokens are
+             stale. Re-measure now that it is back on screen. */
+          requestAnimationFrame(()=>{ drawPathGuide(); positionTokens(false); });
+        }
       },
       jump,
       /* Walks the camera one space at a time; returns how long that will take so
