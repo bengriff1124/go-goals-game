@@ -1,0 +1,917 @@
+{
+  "goal": 1,
+  "goalName": "No Poverty",
+  "factSheet": "content/goal-01-facts.md",
+  "note": "Every citation below points at a source retrieved during research and recorded in the fact sheet. whyWrong is index-aligned with options; the correct index is null.",
+  "sources": {
+    "UN1": { "title": "SDG 1: No Poverty", "publisher": "United Nations", "url": "https://www.un.org/sustainabledevelopment/poverty/" },
+    "SDGR25": { "title": "SDG Report 2025 — Goal 1", "publisher": "United Nations", "url": "https://unstats.un.org/sdgs/report/2025/goal-01/" },
+    "WB": { "title": "Poverty Overview", "publisher": "World Bank", "url": "https://www.worldbank.org/en/topic/poverty/overview" },
+    "OWID": { "title": "Extreme Poverty in Brief", "publisher": "Our World in Data", "url": "https://ourworldindata.org/extreme-poverty-in-brief" },
+    "MPI25": { "title": "2025 Global Multidimensional Poverty Index", "publisher": "UNDP & OPHI", "url": "https://hdr.undp.org/content/2025-global-multidimensional-poverty-index-mpi" }
+  },
+  "questions": [
+    {
+      "id": "g01-f001", "tier": "foundational", "src": "SDGR25",
+      "prompt": "About how many people in the world live in extreme poverty today?",
+      "options": ["About 8 million", "About 80 million", "About 800 million", "About 8 billion"],
+      "correctIndex": 2,
+      "whyCorrect": "Roughly 800 million people — about 1 in 10 of us — live in extreme poverty. Different agencies publish 808, 826 or 831 million depending on the year they measured, so 'about 800 million' is the honest answer.",
+      "whyWrong": ["That's smaller than New York City's wider region. The real figure is about a hundred times larger.", "Still far too low — 80 million is roughly the population of one large country.", null, "8 billion is the entire world population. Poverty is enormous, but it isn't everyone."],
+      "action": "Say '1 in 10' out loud. Next time you're in a crowd of 30 people, that's 3 of them."
+    },
+    {
+      "id": "g01-f002", "tier": "foundational", "src": "WB",
+      "prompt": "How much money per day marks the line for 'extreme poverty'?",
+      "options": ["$3.00 a day", "$30 a day", "$100 a day", "$0.30 a day"],
+      "correctIndex": 0,
+      "whyCorrect": "The International Poverty Line is $3.00 per person per day, set by the World Bank in 2021 prices. Everything — food, shelter, clothes, everything — has to come out of that.",
+      "whyWrong": [null, "$30 a day is a different, much higher line. About 81% of the world lives below that one.", "$100 a day would put most of the planet in poverty — it isn't the extreme poverty line.", "The line is ten times higher than this, but still desperately low."],
+      "action": "Add up what you spent yesterday. Compare it to $3."
+    },
+    {
+      "id": "g01-f003", "tier": "foundational", "src": "OWID",
+      "prompt": "Roughly what share of the world's people live in extreme poverty?",
+      "options": ["About 1 in 2", "About 1 in 10", "About 1 in 100", "About 1 in 1,000"],
+      "correctIndex": 1,
+      "whyCorrect": "About 1 in 10 people live in extreme poverty — around 9–10% of the world.",
+      "whyWrong": ["That was roughly true in the 1950s, but the share has fallen a long way since.", null, "This is far too optimistic — the real rate is about ten times higher.", "Nowhere near. This would mean under 8 million people worldwide."],
+      "action": "Count 10 people you know. That ratio is the scale of the problem globally."
+    },
+    {
+      "id": "g01-f004", "tier": "foundational", "src": "OWID",
+      "prompt": "In 1990, about how many people lived in extreme poverty?",
+      "options": ["About 230 million", "About 800 million", "About 2.3 billion", "About 5 billion"],
+      "correctIndex": 2,
+      "whyCorrect": "About 2.3 billion people — roughly 44% of everyone alive — were in extreme poverty in 1990. That's nearly three times today's number.",
+      "whyWrong": ["Ten times too low. 1990 was far worse than that.", "That's roughly today's figure, not 1990's.", null, "Too high — even in 1990 it was under half the world, not most of it."],
+      "action": "Ask an adult what they remember about the world in 1990."
+    },
+    {
+      "id": "g01-f005", "tier": "foundational", "src": "SDGR25",
+      "prompt": "Since 1990, has the number of people in extreme poverty gone up or down?",
+      "options": ["Down — by about 1.5 billion people", "Up — by about 1.5 billion people", "It has stayed almost exactly the same", "Down, but only by a few thousand"],
+      "correctIndex": 0,
+      "whyCorrect": "About 1.5 billion people escaped extreme poverty between 1990 and 2022. It's one of the biggest improvements in human history — and most people don't know it happened.",
+      "whyWrong": [null, "The opposite is true. This is one of the most common misconceptions about the world.", "It has changed enormously — from about 2.3 billion down to about 800 million.", "The fall is a thousand times bigger than that."],
+      "action": "Tell someone this fact today. Most people guess it wrong."
+    },
+    {
+      "id": "g01-f006", "tier": "foundational", "src": "UN1",
+      "prompt": "How many people worldwide have no social protection at all — no benefits, no safety net?",
+      "options": ["380 million", "3.8 billion", "38 million", "380,000"],
+      "correctIndex": 1,
+      "whyCorrect": "3.8 billion people — close to half the planet — have no social protection whatsoever. If they lose work or fall ill, nothing catches them.",
+      "whyWrong": ["Ten times too low.", null, "A hundred times too low.", "This is roughly the population of a mid-sized city."],
+      "action": "Find out what safety nets exist where you live — and who can't access them."
+    },
+    {
+      "id": "g01-f007", "tier": "foundational", "src": "MPI25",
+      "prompt": "The Multidimensional Poverty Index measures poverty using more than money. Which three areas does it look at?",
+      "options": ["Health, education and living standards", "Income, savings and debt", "Housing, transport and internet", "Food, water and clothing"],
+      "correctIndex": 0,
+      "whyCorrect": "The MPI measures health, education and living standards — 10 indicators in all. It captures things a wage figure misses, like whether a child is in school or a home has clean cooking fuel.",
+      "whyWrong": [null, "These are all money measures. The MPI's whole purpose is to look past income.", "Housing is included under living standards, but transport and internet aren't the three dimensions.", "Food and water appear inside the indicators, but these aren't the three dimensions."],
+      "action": "List three things you'd need for a good life that money alone can't show."
+    },
+    {
+      "id": "g01-f008", "tier": "foundational", "src": "MPI25",
+      "prompt": "How many people are 'multidimensionally poor' — deprived in health, education or living standards?",
+      "options": ["110 million", "1.1 billion", "11 million", "11 billion"],
+      "correctIndex": 1,
+      "whyCorrect": "1.1 billion people across 109 countries are multidimensionally poor — about 17% of those surveyed. That's more than the number counted by income alone.",
+      "whyWrong": ["Ten times too low.", null, "A hundred times too low.", "More than the world's population — impossible."],
+      "action": "Notice that this number is larger than the income count. Ask yourself why."
+    },
+    {
+      "id": "g01-f009", "tier": "foundational", "src": "WB",
+      "prompt": "About how many children live in households below the extreme poverty line?",
+      "options": ["41 million", "412 million", "4 million", "4 billion"],
+      "correctIndex": 1,
+      "whyCorrect": "About 412 million children — roughly 1 in 5 children worldwide — live in households under $3 a day.",
+      "whyWrong": ["Ten times too low.", null, "A hundred times too low.", "That's about half the planet — far too high."],
+      "action": "1 in 5. Picture your class, and imagine that share."
+    },
+    {
+      "id": "g01-f010", "tier": "foundational", "src": "OWID",
+      "prompt": "Which region has the highest share of people living in extreme poverty?",
+      "options": ["Western Europe", "Sub-Saharan Africa", "North America", "Australia and New Zealand"],
+      "correctIndex": 1,
+      "whyCorrect": "Sub-Saharan Africa is the poorest region, with nearly 40% of its population in extreme poverty.",
+      "whyWrong": ["Western Europe has some of the world's strongest social protection systems.", null, "North America has poverty, but not at anything like this scale.", "These are high-income countries with very low extreme poverty rates."],
+      "action": "Find Sub-Saharan Africa on a map. Name three countries in it."
+    },
+    {
+      "id": "g01-f011", "tier": "foundational", "src": "SDGR25",
+      "prompt": "In 2023, what share of the world had at least one social protection benefit?",
+      "options": ["About 52% — just over half", "About 90%", "About 20%", "About 5%"],
+      "correctIndex": 0,
+      "whyCorrect": "52.4% — the first time in history more than half the world had any safety net at all. It was 42.8% in 2015, so it is improving.",
+      "whyWrong": [null, "That's roughly the figure for high-income countries only (85.9%), not the world.", "Too low — though this is close to the rate in low-income countries (9.7%).", "Far too low. Coverage passed half the world in 2023."],
+      "action": "Notice this crossed 50% only recently. Progress is real but slow."
+    },
+    {
+      "id": "g01-f012", "tier": "foundational", "src": "UN1",
+      "prompt": "Does having a job guarantee you're not in extreme poverty?",
+      "options": ["Yes — any job pays enough to escape poverty", "No — hundreds of millions of workers are still in extreme poverty", "Yes, but only in rich countries", "No, but only for people working part-time"],
+      "correctIndex": 1,
+      "whyCorrect": "About 284 million workers — 7.9% of the global workforce — are in extreme poverty despite working. Work is essential, but on its own it isn't a guarantee.",
+      "whyWrong": ["Many jobs pay far too little, or too unreliably, to lift a family over the line.", null, "Working poverty exists everywhere, and this framing hides the scale of it.", "Plenty of full-time workers live in extreme poverty too."],
+      "action": "Look up what a 'living wage' means where you live."
+    },
+    {
+      "id": "g01-f013", "tier": "foundational", "src": "UN1",
+      "prompt": "How many children have no social protection at all?",
+      "options": ["1.4 billion", "140 million", "14 million", "1.4 million"],
+      "correctIndex": 0,
+      "whyCorrect": "1.4 billion children have no social protection — no child benefit, no safety net if their family's income disappears.",
+      "whyWrong": [null, "Ten times too low.", "A hundred times too low.", "A thousand times too low."],
+      "action": "Ask what happens to a family near you if a parent suddenly can't work."
+    },
+    {
+      "id": "g01-f014", "tier": "foundational", "src": "OWID",
+      "prompt": "In 1820, roughly what share of the world lived in extreme poverty?",
+      "options": ["About one-quarter", "About half", "About three-quarters", "About one-tenth"],
+      "correctIndex": 2,
+      "whyCorrect": "About three-quarters of everyone alive in 1820 lived in extreme poverty. Mass prosperity is very recent in human history.",
+      "whyWrong": ["Far too low for 1820 — that's closer to the rate around 2001.", "The world didn't drop below 50% until 1956.", null, "That's roughly today's rate, two centuries later."],
+      "action": "Compare: three-quarters then, one-tenth now. That's the arc of two centuries."
+    },
+    {
+      "id": "g01-f015", "tier": "foundational", "src": "MPI25",
+      "prompt": "Among the 1.1 billion people who are multidimensionally poor, what share are children?",
+      "options": ["About 5%", "About one-quarter", "Over half", "Almost none"],
+      "correctIndex": 2,
+      "whyCorrect": "Over half of the multidimensionally poor are children. Poverty falls hardest on the people with the least power to change it.",
+      "whyWrong": ["Far too low — children are heavily over-represented among the poor.", "Still too low. It's more than half.", null, "Children are the single largest group among the poor."],
+      "action": "Ask why children are over-represented. What does a child need that money buys?"
+    },
+    {
+      "id": "g01-f016", "tier": "foundational", "src": "SDGR25",
+      "prompt": "Social protection coverage in low-income countries is about:",
+      "options": ["9.7%", "52%", "71%", "86%"],
+      "correctIndex": 0,
+      "whyCorrect": "Just 9.7% of people in low-income countries have any social protection — against 85.9% in high-income countries. The places that need safety nets most have them least.",
+      "whyWrong": [null, "That's the global average, not the low-income figure.", "That's the upper-middle-income figure.", "That's the high-income figure — nearly nine times the low-income rate."],
+      "action": "Compare 9.7% and 85.9%. Ask what that gap means for a family in each place."
+    },
+    {
+      "id": "g01-f017", "tier": "foundational", "src": "MPI25",
+      "prompt": "How many people living in poverty also face at least one climate hazard where they live?",
+      "options": ["887 million", "88 million", "8 million", "8 billion"],
+      "correctIndex": 0,
+      "whyCorrect": "887 million poor people live in areas facing at least one climate hazard — and 309 million face three or four at once. Poverty and climate risk pile up in the same places.",
+      "whyWrong": [null, "Ten times too low.", "A hundred times too low.", "That's the entire world population."],
+      "action": "Look up which climate hazards affect your own region."
+    },
+    {
+      "id": "g01-f018", "tier": "foundational", "src": "OWID",
+      "prompt": "What does living below the extreme poverty line actually mean day to day?",
+      "options": ["Not affording a tiny living space, minimum heating, and food that prevents malnutrition", "Not being able to afford a holiday abroad", "Not owning a car", "Not having a smartphone"],
+      "correctIndex": 0,
+      "whyCorrect": "The line is set where a person cannot afford a tiny place to live, minimum heating, and enough food to avoid malnutrition. It's about survival, not comfort.",
+      "whyWrong": [null, "Missing holidays is not what this line measures. Extreme poverty is about basic survival.", "Plenty of people who aren't in extreme poverty don't own cars, by choice or otherwise.", "Owning a phone tells you very little about whether someone can eat."],
+      "action": "Notice how often 'poor' gets used for things that aren't poverty at all."
+    },
+    {
+      "id": "g01-f019", "tier": "foundational", "src": "UN1",
+      "prompt": "If current trends continue, roughly what share of the world will still be in extreme poverty in 2030?",
+      "options": ["0% — it will be eradicated", "About 9%", "About 30%", "About 50%"],
+      "correctIndex": 1,
+      "whyCorrect": "About 9% of the world is projected to still be in extreme poverty in 2030 — meaning Goal 1's target of eradicating it will be missed at the current pace.",
+      "whyWrong": ["That's the goal, but current trends do not get us there.", null, "Too pessimistic — that's closer to the rate in the 1990s.", "The world hasn't been at 50% since the 1950s."],
+      "action": "The gap between 0% and 9% is hundreds of millions of people. Ask what would close it."
+    },
+    {
+      "id": "g01-f020", "tier": "foundational", "src": "OWID",
+      "prompt": "Roughly how many people have escaped extreme poverty each day, on average, over the last 35 years?",
+      "options": ["About 118 people", "About 1,180 people", "About 118,000 people", "About 11 million people"],
+      "correctIndex": 2,
+      "whyCorrect": "About 118,000 people a day — roughly 42.9 million a year — have left extreme poverty over the past 35 years. It never makes the news because it happens every single day.",
+      "whyWrong": ["A thousand times too low.", "A hundred times too low.", null, "Too high — that would empty the world of poverty in a couple of months."],
+      "action": "Ask why steady daily progress almost never gets reported."
+    },
+    {
+      "id": "g01-f021", "tier": "foundational", "src": "SDGR25",
+      "prompt": "Among people who work, what share of Least Developed Countries' workers live in working poverty?",
+      "options": ["About 30%", "About 3%", "About 60%", "About 1%"],
+      "correctIndex": 0,
+      "whyCorrect": "About 30% of workers in Least Developed Countries are in working poverty — against 9.5% in Small Island Developing States and 6.9% globally.",
+      "whyWrong": [null, "Ten times too low for LDCs, and below even the global average.", "Too high — though it shows how severe the problem is that this feels plausible.", "This is lower than the rate in wealthy countries."],
+      "action": "Look up which countries are classified as Least Developed."
+    },
+    {
+      "id": "g01-f022", "tier": "foundational", "src": "MPI25",
+      "prompt": "Where do most of the world's poor people live?",
+      "options": ["Mostly in low-income countries", "Mostly in middle-income countries", "Mostly in high-income countries", "Evenly spread across all countries"],
+      "correctIndex": 1,
+      "whyCorrect": "About 65% of the world's poor — 740 million people — live in middle-income countries. Poverty isn't only a problem of the very poorest nations; it's also about inequality inside growing ones.",
+      "whyWrong": ["A common assumption, but wrong — most poor people live in middle-income countries.", null, "High-income countries have poverty, but not the majority of the world's poor.", "It is heavily concentrated, not evenly spread."],
+      "action": "Ask how a country can grow richer while millions in it stay poor."
+    },
+    {
+      "id": "g01-f023", "tier": "foundational", "src": "OWID",
+      "prompt": "About how many people live on less than $30 a day?",
+      "options": ["800 million", "2 billion", "6.7 billion", "300 million"],
+      "correctIndex": 2,
+      "whyCorrect": "About 6.7 billion people — roughly 81% of the world — live on less than $30 a day. Extreme poverty is the sharpest edge of a much wider picture.",
+      "whyWrong": ["That's the extreme poverty figure at $3/day, not $30.", "Far too low — over 80% of the world is below this line.", null, "Nowhere near — this is a tiny fraction of the real number."],
+      "action": "Notice that 'not in extreme poverty' is a very long way from 'comfortable'."
+    },
+    {
+      "id": "g01-f024", "tier": "foundational", "src": "SDGR25",
+      "prompt": "Is there a gender gap in social protection coverage?",
+      "options": ["Yes — women are covered less than men", "Yes — men are covered less than women", "No — coverage is identical", "No — women are covered twice as often"],
+      "correctIndex": 0,
+      "whyCorrect": "In 2023, 50.1% of women had social protection against 54.6% of men. The gap is a few percentage points, but across billions of people that's an enormous number of women left uncovered.",
+      "whyWrong": [null, "It runs the other way — women are the less-covered group.", "There is a measurable gap of about 4.5 percentage points.", "Women are covered less often, not more."],
+      "action": "Ask why paid-work-linked benefits might miss women more often."
+    },
+    {
+      "id": "g01-f025", "tier": "foundational", "src": "SDGR25",
+      "prompt": "Worldwide, what share of people hold official documents proving their land rights?",
+      "options": ["43%", "93%", "66%", "15%"],
+      "correctIndex": 0,
+      "whyCorrect": "Only 43% hold official documentation, even though 66% feel their tenure is secure. Feeling secure and being legally protected are not the same thing.",
+      "whyWrong": [null, "Far too high — fewer than half hold formal documents.", "That's the share who *perceive* their rights as secure, not who hold documents.", "That's the figure for Sub-Saharan Africa specifically, not the world."],
+      "action": "Ask what happens to a family with no paperwork if someone claims their land."
+    },
+    {
+      "id": "g01-f026", "tier": "foundational", "src": "UN1",
+      "prompt": "Roughly how much extra money per year would fund basic social security in low- and middle-income countries?",
+      "options": ["$1.4 billion", "$1.4 trillion", "$14 million", "$140 billion"],
+      "correctIndex": 1,
+      "whyCorrect": "About $1.4 trillion a year — which sounds impossible until you learn it's only 3.3% of those countries' combined GDP.",
+      "whyWrong": ["A thousand times too low.", null, "A hundred thousand times too low.", "Ten times too low, though still a very large sum."],
+      "action": "Compare $1.4 trillion to global military spending. Look both up."
+    },
+    {
+      "id": "g01-f027", "tier": "foundational", "src": "OWID",
+      "prompt": "The poverty line is adjusted for 'purchasing power parity'. What does that mean?",
+      "options": ["It's adjusted so it buys the same amount in every country", "It's converted using today's exchange rate", "It's the same dollar amount everywhere, unadjusted", "It only applies to people paid in US dollars"],
+      "correctIndex": 0,
+      "whyCorrect": "PPP adjusts for inflation and for price differences between countries, so $3 represents the same real buying power in Malawi as in Mexico.",
+      "whyWrong": [null, "Exchange rates swing with markets and don't reflect what money actually buys locally.", "An unadjusted dollar buys wildly different amounts in different countries — which is exactly the problem PPP solves.", "The line applies to everyone, whatever currency they're paid in."],
+      "action": "Compare the price of bread in two countries. That difference is what PPP corrects for."
+    },
+    {
+      "id": "g01-f028", "tier": "foundational", "src": "OWID",
+      "prompt": "If a family grows its own food, does that count in poverty measurements?",
+      "options": ["Yes — non-monetary income like subsistence farming is included", "No — only cash counts", "Only if they sell it", "Only in high-income countries"],
+      "correctIndex": 0,
+      "whyCorrect": "Yes. Poverty measurement counts non-monetary income, including food a household grows for itself — otherwise subsistence farmers would look far poorer than they are.",
+      "whyWrong": [null, "Cash-only measurement would badly misrepresent rural households.", "It counts whether or not it's sold — the value to the household is what matters.", "This applies to measurement everywhere."],
+      "action": "Ask how you'd measure the 'income' of a family that grows most of what it eats."
+    },
+    {
+      "id": "g01-f029", "tier": "foundational", "src": "OWID",
+      "prompt": "In which decade did the share of the world in extreme poverty first fall below half?",
+      "options": ["The 1950s", "The 1890s", "The 1990s", "The 2010s"],
+      "correctIndex": 0,
+      "whyCorrect": "The global rate dropped below 50% in 1956 — and it had taken 136 years to get there from 1820.",
+      "whyWrong": [null, "Still around three-quarters at that point.", "By the 1990s it was already well under half, at around 44%.", "By then it was down near 12%."],
+      "action": "1820 to 1956 to halve. Then 1956 to 2001 to halve again. Notice it's speeding up."
+    },
+    {
+      "id": "g01-f030", "tier": "foundational", "src": "WB",
+      "prompt": "Beyond Sub-Saharan Africa, extreme poverty is increasingly concentrated in which kinds of places?",
+      "options": ["Conflict-affected and fragile places", "Coastal tourist regions", "Large capital cities", "Countries with the most farmland"],
+      "correctIndex": 0,
+      "whyCorrect": "Poverty is concentrating in conflict-affected and fragile settings. Where there's war or a collapsed state, poverty is hardest to shift.",
+      "whyWrong": [null, "Tourism regions aren't a recognised concentration of extreme poverty.", "Poverty exists in cities, but the concentration pattern is about fragility and conflict.", "Farmland is not the defining factor — governance and conflict are."],
+      "action": "Look up one country currently in conflict and what's happened to poverty there."
+    },
+    {
+      "id": "g01-f031", "tier": "foundational", "src": "OWID",
+      "prompt": "COVID-19 pushed roughly how many extra people into extreme poverty?",
+      "options": ["About 50 million", "About 500 million", "About 5 million", "None — poverty kept falling"],
+      "correctIndex": 0,
+      "whyCorrect": "About 50 million more people fell into extreme poverty around 2020 — the first substantial rise in a generation. Decades of progress can be interrupted quickly.",
+      "whyWrong": [null, "Ten times too high, though the disruption was severe.", "Ten times too low.", "Poverty rose — it was the first significant increase in decades."],
+      "action": "Ask what made some households survive the pandemic and others fall."
+    },
+    {
+      "id": "g01-f032", "tier": "foundational", "src": "MPI25",
+      "prompt": "Which of these is one of the MPI's living-standard indicators?",
+      "options": ["Clean cooking fuel", "Number of holidays taken", "Stock market investments", "Brand of phone owned"],
+      "correctIndex": 0,
+      "whyCorrect": "Clean cooking fuel is one of six living-standard indicators, alongside sanitation, drinking water, electricity, housing and assets. Cooking over open fires damages lungs and takes hours to gather fuel.",
+      "whyWrong": [null, "Holidays aren't a poverty indicator — the MPI measures basic deprivations.", "Investments say nothing about whether basic needs are met.", "Phone brand isn't measured; the MPI looks at essentials like water and sanitation."],
+      "action": "Find out what your household cooks with, and what that costs."
+    },
+    {
+      "id": "g01-f033", "tier": "foundational", "src": "SDGR25",
+      "prompt": "How has working poverty changed between 2015 and 2024?",
+      "options": ["It fell, from 8.4% to 6.9%", "It rose, from 6.9% to 8.4%", "It stayed exactly the same", "It more than doubled"],
+      "correctIndex": 0,
+      "whyCorrect": "Working poverty fell from 8.4% of employed people in 2015 to 6.9% in 2024. Real progress — but it still leaves over 240 million workers in extreme poverty.",
+      "whyWrong": [null, "It moved in the other direction — this is progress, not decline.", "There was a measurable improvement of about 1.5 percentage points.", "It fell rather than rose."],
+      "action": "Progress and crisis can be true at once. Hold both."
+    },
+    {
+      "id": "g01-f034", "tier": "foundational", "src": "SDGR25",
+      "prompt": "What share of women hold official documents proving their land rights?",
+      "options": ["24%", "64%", "84%", "44%"],
+      "correctIndex": 0,
+      "whyCorrect": "Only 24% of women hold legal documentation of land rights, against 43% of people overall. Land is often the single biggest asset a family has, and women are far less likely to have proof of owning it.",
+      "whyWrong": [null, "Far too high — it's roughly a quarter, not two-thirds.", "This would be better than the rate for men.", "That's close to the overall population figure, not the figure for women."],
+      "action": "Ask why a woman's name might be missing from a land document."
+    },
+    {
+      "id": "g01-f035", "tier": "foundational", "src": "UN1",
+      "prompt": "What has happened recently to international aid aimed at reducing poverty?",
+      "options": ["It has declined sharply, back to 2015 levels", "It has doubled since 2015", "It has stayed perfectly steady", "It was abolished entirely"],
+      "correctIndex": 0,
+      "whyCorrect": "Poverty-reduction aid has fallen sharply, back to where it was in 2015 — at exactly the moment progress on poverty is stalling.",
+      "whyWrong": [null, "It has fallen, not doubled.", "There has been a sharp decline.", "Aid still exists; it has shrunk, not disappeared."],
+      "action": "Look up whether your country's aid budget went up or down last year."
+    },
+    {
+      "id": "g01-f036", "tier": "foundational", "src": "UN1",
+      "prompt": "Goal 1 has a target about protecting people from disasters and economic shocks. Why does that matter for poverty?",
+      "options": ["One flood, drought or job loss can push a family straight back into poverty", "Disasters only affect rich countries", "Economic shocks make everyone equally poor", "It doesn't — disasters and poverty are unrelated"],
+      "correctIndex": 0,
+      "whyCorrect": "Target 1.5 is about resilience. A family can climb out of poverty over years and be pushed back by a single flood, drought or lost job — which is why safety nets matter as much as growth.",
+      "whyWrong": [null, "Poorer countries and households are hit hardest and recover slowest.", "Shocks hit the least protected hardest — they widen gaps rather than levelling them.", "887 million poor people live in areas facing climate hazards. They're deeply connected."],
+      "action": "Ask what would happen to your household if its main income stopped for three months."
+    },
+    {
+      "id": "g01-f037", "tier": "foundational", "src": "SDGR25",
+      "prompt": "How much of their spending do advanced economies put into essential services, compared with developing ones?",
+      "options": ["60% versus 43%", "43% versus 60%", "90% versus 10%", "They spend identical shares"],
+      "correctIndex": 0,
+      "whyCorrect": "Advanced economies spend about 60% of government spending on essential services; emerging and developing economies about 43%. The countries with the greatest needs have the least to spend.",
+      "whyWrong": [null, "It runs the other way — advanced economies spend the larger share.", "The gap is real but nothing like this extreme.", "There is a substantial 17-percentage-point gap."],
+      "action": "Look up what share of your country's budget goes to health and education."
+    },
+    {
+      "id": "g01-f038", "tier": "foundational", "src": "OWID",
+      "prompt": "What share of the world lives on less than $10 a day?",
+      "options": ["About 52%", "About 12%", "About 81%", "About 24%"],
+      "correctIndex": 0,
+      "whyCorrect": "About 52% of the world — more than half — lives on under $10 a day. Extreme poverty at $3 is the sharpest edge of a very large picture.",
+      "whyWrong": [null, "Far too low. That's closer to the extreme poverty rate.", "That's the share under $30 a day.", "That's the share under $5 a day."],
+      "action": "Work out what $10 a day would cover where you live."
+    },
+    {
+      "id": "g01-f039", "tier": "foundational", "src": "MPI25",
+      "prompt": "How many poor people face three or four climate hazards at the same time?",
+      "options": ["309 million", "30 million", "3 million", "3 billion"],
+      "correctIndex": 0,
+      "whyCorrect": "309 million poor people face three or four climate hazards simultaneously — drought and flood and heat, layered on top of each other.",
+      "whyWrong": [null, "Ten times too low.", "A hundred times too low.", "Ten times too high — that's over a third of humanity."],
+      "action": "Name three climate hazards that could hit the same place in one year."
+    },
+    {
+      "id": "g01-f040", "tier": "foundational", "src": "UN1",
+      "prompt": "What is Target 1.3 of Goal 1?",
+      "options": ["Implement social protection systems for everyone", "Send everyone to university", "Build a railway in every country", "Make all countries equally wealthy"],
+      "correctIndex": 0,
+      "whyCorrect": "Target 1.3 calls for social protection systems for all. With 3.8 billion people uncovered, it's one of the furthest-from-done targets in Goal 1.",
+      "whyWrong": [null, "Education is Goal 4. Goal 1's targets are about poverty and protection.", "Infrastructure is Goal 9.", "The goal is to end poverty, not to make every country identical."],
+      "action": "Look up all five of Goal 1's targets. Pick the one you'd fund first."
+    },
+
+    {
+      "id": "g01-c001", "tier": "core", "src": "OWID",
+      "prompt": "Most people asked to guess say global poverty has gotten worse over 30 years. Why are they wrong?",
+      "options": ["Bad news is reported; steady daily progress isn't", "Poverty really has gotten worse", "The data is fabricated", "Nobody has ever measured it"],
+      "correctIndex": 0,
+      "whyCorrect": "About 118,000 people leave extreme poverty every day — but 'things improved slightly again today' is never a headline. Disasters are events; progress is a trend, and trends are invisible.",
+      "whyWrong": [null, "The number fell from about 2.3 billion in 1990 to about 800 million today.", "Multiple independent bodies — the World Bank, UN and academic teams — reach the same conclusion.", "It's been measured for decades, with survey data from most countries."],
+      "action": "Ask three people to guess. Then show them the real number."
+    },
+    {
+      "id": "g01-c002", "tier": "core", "src": "MPI25",
+      "prompt": "Why does the world measure poverty in more than one way?",
+      "options": ["Income alone misses things like schooling, clean water and electricity", "Because nobody can agree on any number", "To make the figures look better", "Because currencies keep changing"],
+      "correctIndex": 0,
+      "whyCorrect": "A family might scrape past $3 a day and still have no toilet, no electricity and no child in school. The MPI catches that; an income line alone can't.",
+      "whyWrong": [null, "Different measures answer different questions — that's design, not disagreement.", "The MPI actually finds *more* poor people (1.1 billion) than the income line does.", "PPP already handles currency differences."],
+      "action": "Pick one thing in your home that money doesn't fully explain the value of."
+    },
+    {
+      "id": "g01-c003", "tier": "core", "src": "MPI25",
+      "prompt": "Most of the world's poor live in middle-income countries. What does that tell us?",
+      "options": ["A country can grow richer while millions inside it stay poor", "Middle-income countries are the poorest", "Economic growth never helps anyone", "Poverty has been solved in low-income countries"],
+      "correctIndex": 0,
+      "whyCorrect": "740 million poor people — 65% of the total — live in middle-income countries. National averages hide who's actually being left behind, which is why inequality matters as much as growth.",
+      "whyWrong": [null, "They're not the poorest on average; they're where the largest number of poor people happen to live.", "Growth has helped enormously — 1.5 billion people escaped poverty since 1990.", "Low-income countries still have the highest poverty *rates*, just smaller populations."],
+      "action": "Look up your country's average income, then who lives below it."
+    },
+    {
+      "id": "g01-c004", "tier": "core", "src": "UN1",
+      "prompt": "Someone says 'if poor people just got jobs, poverty would end.' What's the strongest response?",
+      "options": ["284 million people work and are still in extreme poverty", "Poor people don't want to work", "There are no jobs anywhere", "Jobs make poverty worse"],
+      "correctIndex": 0,
+      "whyCorrect": "7.9% of the global workforce works and is still in extreme poverty. The issue isn't willingness — it's wages, hours, security and whether the work pays enough to live on.",
+      "whyWrong": [null, "This is a stereotype the data flatly contradicts — hundreds of millions of poor people are working right now.", "Jobs exist; the problem is that many don't pay enough to clear the poverty line.", "Decent work is one of the strongest routes out of poverty. The problem is indecent work."],
+      "action": "Find out the minimum wage where you live, and whether it's a living wage."
+    },
+    {
+      "id": "g01-c005", "tier": "core", "src": "SDGR25",
+      "prompt": "Why does social protection coverage matter as much as raising incomes?",
+      "options": ["Without it, one illness or flood undoes years of progress", "It doesn't — only income matters", "It replaces the need for any jobs", "It only helps people who are already rich"],
+      "correctIndex": 0,
+      "whyCorrect": "Escaping poverty is one thing; staying out is another. With no safety net, a single hospital bill or failed harvest sends a family straight back — which is why 3.8 billion uncovered people is such a fragile position.",
+      "whyWrong": [null, "Income without protection is precarious — shocks reverse gains fast.", "Social protection supports people through gaps in work; it isn't a substitute for work.", "It matters most for people with the fewest reserves to fall back on."],
+      "action": "List what would catch your family if income stopped tomorrow."
+    },
+    {
+      "id": "g01-c006", "tier": "core", "src": "MPI25",
+      "prompt": "887 million poor people live in areas with climate hazards. Why is that combination especially dangerous?",
+      "options": ["They have the fewest resources to prepare, evacuate or rebuild", "Climate hazards only happen in poor areas", "Poor people cause climate hazards", "Wealthy areas never flood"],
+      "correctIndex": 0,
+      "whyCorrect": "The same storm hits a rich and a poor household very differently. Insurance, savings, sturdy housing and the ability to leave are all things poverty removes — so identical hazards produce wildly unequal harm.",
+      "whyWrong": [null, "Hazards hit everywhere; the *consequences* are what differ by wealth.", "The poorest contribute least to the emissions driving climate change.", "Wealthy areas flood too — they simply recover faster."],
+      "action": "Ask what your community would need to recover from a flood."
+    },
+    {
+      "id": "g01-c007", "tier": "core", "src": "SDGR25",
+      "prompt": "Why might a family feel their land is secure but still be at risk?",
+      "options": ["66% feel secure, but only 43% hold official documents", "Feelings are always accurate", "Documents don't exist anywhere", "Land can't be taken from anyone"],
+      "correctIndex": 0,
+      "whyCorrect": "There's a 23-point gap between feeling secure and being documented. Without paperwork, a family can be moved off land they've farmed for generations and have no way to prove their claim.",
+      "whyWrong": [null, "The gap between perception and legal protection is exactly the danger here.", "Documents exist — 43% of people have them. The problem is who doesn't.", "Land disputes and evictions are common, especially without documentation."],
+      "action": "Find out what proves land or home ownership where you live."
+    },
+    {
+      "id": "g01-c008", "tier": "core", "src": "SDGR25",
+      "prompt": "Low-income countries have 9.7% social protection coverage; high-income have 85.9%. What's the deeper problem?",
+      "options": ["The places with the greatest need have the least protection", "Low-income countries don't want safety nets", "High-income countries have too much protection", "The numbers are too close to matter"],
+      "correctIndex": 0,
+      "whyCorrect": "Coverage is almost exactly inverted against need. Safety nets cost money, and the countries with the most people needing them have the smallest budgets — which is why the $1.4 trillion financing gap exists.",
+      "whyWrong": [null, "Many have built systems as fast as budgets allow; the constraint is money, not willingness.", "85.9% still leaves people uncovered even in wealthy countries.", "A gap of 76 percentage points is one of the starkest in all the SDG data."],
+      "action": "Ask who pays for a safety net, and what happens when a country can't."
+    },
+    {
+      "id": "g01-c009", "tier": "core", "src": "OWID",
+      "prompt": "Why is the poverty line set using purchasing power parity instead of exchange rates?",
+      "options": ["Exchange rates don't reflect what money actually buys locally", "PPP is easier to calculate", "Exchange rates are secret", "PPP makes poverty look smaller"],
+      "correctIndex": 0,
+      "whyCorrect": "A dollar converted at the exchange rate might buy a loaf of bread in one country and a full meal in another. PPP fixes the line to real buying power so $3 means the same hardship everywhere.",
+      "whyWrong": [null, "PPP is considerably harder to calculate — it needs price surveys across countries.", "Exchange rates are public and updated constantly.", "PPP aims for accuracy, not for a flattering number."],
+      "action": "Compare the price of the same item in two countries online."
+    },
+    {
+      "id": "g01-c010", "tier": "core", "src": "WB",
+      "prompt": "Why is poverty hardest to reduce in conflict-affected places?",
+      "options": ["War destroys the schools, clinics, markets and safety nets people escape poverty through", "People in conflict zones don't work", "Conflict makes food cheaper", "Poverty causes all conflict"],
+      "correctIndex": 0,
+      "whyCorrect": "Poverty reduction runs on functioning institutions — schools, health systems, markets, records. Conflict dismantles exactly those, which is why extreme poverty is increasingly concentrated in fragile settings.",
+      "whyWrong": [null, "People work extremely hard in conflict zones; the systems around them have collapsed.", "Conflict usually disrupts supply and drives food prices up sharply.", "Poverty and conflict reinforce each other, but neither simply causes the other."],
+      "action": "Look up one country where conflict reversed poverty progress."
+    },
+    {
+      "id": "g01-c011", "tier": "core", "src": "MPI25",
+      "prompt": "The MPI counts 1.1 billion poor; the income line counts about 800 million. Why the difference?",
+      "options": ["Some people clear $3 a day but still lack water, schooling or electricity", "One of the two is simply wrong", "The MPI counts people twice", "Income data doesn't exist"],
+      "correctIndex": 0,
+      "whyCorrect": "They measure different things. You can earn just over the line and still have no sanitation, no electricity and children out of school — deprivations the MPI counts and an income figure can't see.",
+      "whyWrong": [null, "Both are valid; they answer different questions about the same reality.", "The MPI surveys households once, across 109 countries.", "Income data is extensive — it's just incomplete as a picture of poverty."],
+      "action": "Decide which measure you'd use to plan a school, and which to plan a wage."
+    },
+    {
+      "id": "g01-c012", "tier": "core", "src": "OWID",
+      "prompt": "Progress on poverty has slowed since 2020. What best explains it?",
+      "options": ["The pandemic, conflict, debt and weather shocks stacking together", "People stopped trying", "The poverty line was abolished", "All the poverty was already ended"],
+      "correctIndex": 0,
+      "whyCorrect": "COVID alone pushed about 50 million people back into extreme poverty, and it landed on top of rising debt, conflict and climate shocks. Progress isn't automatic — it can stall or reverse.",
+      "whyWrong": [null, "The causes are structural shocks, not effort.", "The line was updated to $3.00 (2021 PPP), not abolished.", "About 800 million people remain in extreme poverty."],
+      "action": "Name one shock in the last five years that hit your own community."
+    },
+    {
+      "id": "g01-c013", "tier": "core", "src": "WB",
+      "prompt": "Why are children over-represented among the poor?",
+      "options": ["Poor households tend to be larger, and children can't earn or change their circumstances", "Children waste money", "Children are counted twice", "Children choose to be poor"],
+      "correctIndex": 0,
+      "whyCorrect": "About 412 million children — 1 in 5 — live below the line, and over half of the multidimensionally poor are children. They have no control over their household's income and depend entirely on adults and public services.",
+      "whyWrong": [null, "Children have almost no control over household spending.", "Household surveys count each person once.", "Nobody chooses the household they're born into — which is the entire point."],
+      "action": "Ask what a child needs that only adults or governments can provide."
+    },
+    {
+      "id": "g01-c014", "tier": "core", "src": "UN1",
+      "prompt": "$1.4 trillion sounds impossible. What makes it more achievable than it appears?",
+      "options": ["It's only 3.3% of those countries' combined GDP", "It's a one-time payment", "It's already been paid", "It would come from a single donor"],
+      "correctIndex": 0,
+      "whyCorrect": "3.3% of GDP is a policy choice, not a physical impossibility. Framing the number as a share rather than a total changes it from unimaginable to arguable.",
+      "whyWrong": [null, "It's an annual figure — basic social security is an ongoing commitment.", "The financing gap is precisely what hasn't been paid.", "It would require many governments and institutions, not one."],
+      "action": "Find a big number in the news and convert it to a share of something."
+    },
+    {
+      "id": "g01-c015", "tier": "core", "src": "SDGR25",
+      "prompt": "Women's social protection coverage is 50.1% against men's 54.6%. Why might that gap exist?",
+      "options": ["Many benefits are tied to formal paid work, and women do more unpaid and informal work", "Women don't apply for benefits", "Women need less protection", "The gap is a measurement error"],
+      "correctIndex": 0,
+      "whyCorrect": "Social protection is often linked to formal employment. Women do a disproportionate share of unpaid care and informal work, so systems built around payslips miss them.",
+      "whyWrong": [null, "Access barriers are structural, not a matter of individual effort.", "Women face higher poverty risk in old age and during caregiving years.", "The gap appears consistently across years and countries."],
+      "action": "List the unpaid work done in your home this week, and by whom."
+    },
+    {
+      "id": "g01-c016", "tier": "core", "src": "OWID",
+      "prompt": "81% of the world lives on under $30 a day. Why does that matter if extreme poverty is only 10%?",
+      "options": ["Clearing $3 a day isn't the same as security or comfort", "It doesn't — only extreme poverty counts", "It means 81% are in extreme poverty", "It proves poverty is increasing"],
+      "correctIndex": 0,
+      "whyCorrect": "The $3 line marks survival, not sufficiency. Vast numbers live just above it — better off, but still one shock away from falling back.",
+      "whyWrong": [null, "Goal 1's Target 1.2 is explicitly about poverty 'in all its dimensions', not just the extreme line.", "$30 a day is a much higher threshold — being under it isn't extreme poverty.", "These figures describe distribution at one moment, not a trend."],
+      "action": "Work out your household's daily spend per person. Compare it to $3, $10 and $30."
+    },
+    {
+      "id": "g01-c017", "tier": "core", "src": "OWID",
+      "prompt": "It took 136 years for poverty to fall from 75% to 50%, but only 45 more to halve again. What does that pattern suggest?",
+      "options": ["Progress accelerated as health, education and industry spread", "The data must be wrong", "Poverty falls at a fixed rate", "Nothing changed after 1956"],
+      "correctIndex": 0,
+      "whyCorrect": "1820→1956 to halve, then 1956→2001 to halve again, then again by 2014. Progress compounds — but the recent slowdown shows it isn't guaranteed to continue.",
+      "whyWrong": [null, "The pattern is consistent across independent historical reconstructions.", "The rate has changed dramatically — that's the whole point.", "The steepest falls came after 1956."],
+      "action": "Sketch the numbers on a timeline. Notice the curve."
+    },
+    {
+      "id": "g01-c018", "tier": "core", "src": "MPI25",
+      "prompt": "Why is 'clean cooking fuel' treated as a poverty indicator?",
+      "options": ["Open-fire cooking harms health and takes hours of fuel-gathering, usually by women and girls", "It's about food tasting better", "Only rich people cook", "It measures kitchen size"],
+      "correctIndex": 0,
+      "whyCorrect": "Cooking on open fires causes serious respiratory illness and consumes hours a day gathering fuel — time that could be school or paid work. It's a deprivation with knock-on effects across health, education and income.",
+      "whyWrong": [null, "It's about health and time, not taste.", "Everyone cooks; the question is what they burn to do it.", "The indicator is fuel type, not space."],
+      "action": "Find out what fuel your meals were cooked with today."
+    },
+    {
+      "id": "g01-c019", "tier": "core", "src": "SDGR25",
+      "prompt": "Working poverty in Least Developed Countries is 30%, against 6.9% globally. What does that gap show?",
+      "options": ["Where you're born shapes whether work can lift you out of poverty", "LDC workers are lazy", "Global figures are fake", "Work always pays the same everywhere"],
+      "correctIndex": 0,
+      "whyCorrect": "Nearly a third of LDC workers are in extreme poverty despite working. The same effort produces very different outcomes depending on the economy, infrastructure and protections around it.",
+      "whyWrong": [null, "The gap reflects economic structure, not effort — these are people already working.", "The ILO and UN compile these from national labour surveys.", "Wages, security and conditions vary enormously between countries."],
+      "action": "Compare the minimum wage in two countries on different continents."
+    },
+    {
+      "id": "g01-c020", "tier": "core", "src": "UN1",
+      "prompt": "Aid for poverty reduction has fallen back to 2015 levels. Why is the timing significant?",
+      "options": ["It's falling exactly when progress has stalled and needs are rising", "Aid was never needed", "Poverty ended in 2015", "It means the targets were met early"],
+      "correctIndex": 0,
+      "whyCorrect": "Support is shrinking at the moment the pandemic, conflict and climate shocks have made it hardest for countries to fund their own safety nets — the worst possible timing.",
+      "whyWrong": [null, "Aid remains a significant part of financing for the lowest-income countries.", "About 800 million people are still in extreme poverty.", "Goal 1's targets are projected to be missed, not met."],
+      "action": "Look up whether your country's aid spending rose or fell this year."
+    },
+    {
+      "id": "g01-c021", "tier": "core", "src": "MPI25",
+      "prompt": "A household clears $3.10 a day but has no electricity, no toilet, and a child out of school. Are they poor?",
+      "options": ["Yes by the MPI, no by the income line — which is why both are used", "No — they're above the line, so they aren't poor", "Yes by both measures", "Poverty can't be measured at all"],
+      "correctIndex": 0,
+      "whyCorrect": "This is exactly the gap between the two measures. Income says they've cleared the bar; the MPI says they're deprived in health, education and living standards at once.",
+      "whyWrong": [null, "Being a cent over an income line doesn't mean basic needs are met.", "The income line would count them as not extremely poor.", "It's measured extensively — the debate is about which measure fits which question."],
+      "action": "Decide which answer you'd give if you were designing government policy."
+    },
+    {
+      "id": "g01-c022", "tier": "core", "src": "OWID",
+      "prompt": "Why does including subsistence farming change poverty measurement?",
+      "options": ["A family growing its own food has real income that never appears as cash", "It makes farmers look poorer", "It only applies to rich countries", "It doubles the count"],
+      "correctIndex": 0,
+      "whyCorrect": "If you only counted cash, a family feeding itself from its own land would look destitute. Counting non-monetary income gives a truer picture of what people actually consume.",
+      "whyWrong": [null, "It does the opposite — it correctly shows they're better off than cash alone suggests.", "Subsistence farming is most significant in lower-income rural economies.", "It adjusts accuracy; it doesn't double anything."],
+      "action": "Estimate what your household would grow if it had to."
+    },
+    {
+      "id": "g01-c023", "tier": "core", "src": "SDGR25",
+      "prompt": "Social protection reached 52.4% in 2023, up from 42.8% in 2015. How should we read that?",
+      "options": ["Real progress, but 3.8 billion people are still uncovered", "The problem is solved", "Nothing improved", "Coverage went backwards"],
+      "correctIndex": 0,
+      "whyCorrect": "Ten percentage points in eight years is genuine progress — and it still leaves close to half the planet with nothing. Both halves of that sentence are true.",
+      "whyWrong": [null, "Nearly half the world remains uncovered.", "A rise from 42.8% to 52.4% is substantial improvement.", "Coverage rose; it didn't fall."],
+      "action": "Practise saying a fact that's good news and bad news at once."
+    },
+    {
+      "id": "g01-c024", "tier": "core", "src": "WB",
+      "prompt": "Why do the World Bank, the UN and others publish slightly different poverty numbers (808m, 826m, 831m)?",
+      "options": ["They measure in different years with different survey vintages", "One of them is lying", "They use different currencies", "The number is a guess"],
+      "correctIndex": 0,
+      "whyCorrect": "All three use the same $3.00 (2021 PPP) line but draw on surveys from different years. Small differences between careful sources are normal — the shared conclusion is 'about 800 million, roughly 1 in 10'.",
+      "whyWrong": [null, "These are peer-reviewed methodologies published openly.", "All use international dollars at 2021 PPP.", "They're built from household surveys across most countries."],
+      "action": "When sources differ slightly, look for what they agree on."
+    },
+    {
+      "id": "g01-c025", "tier": "core", "src": "UN1",
+      "prompt": "Target 1.4 is about equal rights to economic resources and property. Why does property matter for poverty?",
+      "options": ["Land and property are collateral, security and inheritance — losing them traps families", "Property only matters to the wealthy", "Property has no economic value", "Only businesses own property"],
+      "correctIndex": 0,
+      "whyCorrect": "Documented property can be borrowed against, farmed with confidence and passed on. Without it — and only 43% have documents, 24% of women — families can be evicted with no recourse.",
+      "whyWrong": [null, "For poor households, land is often the only significant asset they have.", "Land is frequently a family's single largest economic asset.", "Households own property too — when they can prove it."],
+      "action": "Ask who in your family's history owned land, and what happened to it."
+    },
+    {
+      "id": "g01-c026", "tier": "core", "src": "MPI25",
+      "prompt": "Why does the MPI use 10 indicators instead of just one?",
+      "options": ["Poverty is several deprivations at once, and single measures hide that overlap", "To make it complicated", "Because one indicator was banned", "To produce a smaller number"],
+      "correctIndex": 0,
+      "whyCorrect": "Real poverty is compound — no toilet *and* no electricity *and* a child out of school. Ten indicators across three dimensions capture how deprivations stack, which a single number can't.",
+      "whyWrong": [null, "The complexity mirrors the reality it measures.", "No indicator was banned; the design is deliberate.", "It produces a larger count (1.1 billion) than the income line."],
+      "action": "Name two deprivations that would make each other worse."
+    },
+    {
+      "id": "g01-c027", "tier": "core", "src": "OWID",
+      "prompt": "Sub-Saharan Africa has nearly 40% in extreme poverty, but most of the world's poor live elsewhere. How can both be true?",
+      "options": ["It has the highest rate; more populous middle-income regions hold larger numbers", "One of the statements is false", "Percentages and totals always match", "Sub-Saharan Africa has no people"],
+      "correctIndex": 0,
+      "whyCorrect": "Rate and total are different questions. Sub-Saharan Africa has the highest *share* in poverty; middle-income countries, with far larger populations, hold about 65% of the *number* of poor people.",
+      "whyWrong": [null, "Both are accurate — they're simply different measures.", "A small country with a high rate contributes fewer people than a huge country with a low one.", "It's home to over a billion people."],
+      "action": "Whenever you see a statistic, ask: is this a rate or a total?"
+    },
+    {
+      "id": "g01-c028", "tier": "core", "src": "SDGR25",
+      "prompt": "Why is it a problem that only 24% of women hold land documents?",
+      "options": ["Without documents a woman can lose her home on divorce, widowhood or dispute", "Women don't farm land", "Documents are only symbolic", "Men manage land better"],
+      "correctIndex": 0,
+      "whyCorrect": "Undocumented land rights collapse at exactly the moments women are most vulnerable — widowhood, divorce, a relative's claim. That's why Target 1.4 names equal rights to economic resources explicitly.",
+      "whyWrong": [null, "Women do a large share of the world's agricultural work.", "Documents are what make a claim enforceable in court.", "There's no evidence for this, and it isn't what the indicator measures."],
+      "action": "Find out whose name is on the paperwork where you live."
+    },
+    {
+      "id": "g01-c029", "tier": "core", "src": "UN1",
+      "prompt": "Why does Goal 1 include a target on resilience to disasters and shocks?",
+      "options": ["Escaping poverty is reversible — resilience is what makes it stick", "Disasters are unrelated to poverty", "It's there by mistake", "Only earthquakes matter"],
+      "correctIndex": 0,
+      "whyCorrect": "Target 1.5 exists because gains are fragile: COVID alone pushed 50 million people back. Ending poverty means both lifting people out and stopping them being knocked back in.",
+      "whyWrong": [null, "887 million poor people live in areas facing climate hazards.", "It's a deliberate response to how easily progress reverses.", "The target covers climate, economic and social shocks broadly."],
+      "action": "Ask what makes a community bounce back faster after a disaster."
+    },
+    {
+      "id": "g01-c030", "tier": "core", "src": "OWID",
+      "prompt": "If someone says 'aid never works, poverty never changes', what evidence contradicts them?",
+      "options": ["1.5 billion people left extreme poverty since 1990", "Nothing — they're right", "Poverty rose since 1990", "There's no data on the subject"],
+      "correctIndex": 0,
+      "whyCorrect": "The single strongest counter-fact is the scale of change: 2.3 billion down to about 800 million, while the world's population grew. Whatever the debate about *which* interventions work, the direction is not in doubt.",
+      "whyWrong": [null, "The data shows one of the largest improvements in human history.", "It fell dramatically — this is the most common misconception about global development.", "Decades of household survey data exist across most countries."],
+      "action": "Keep one number in your pocket for this argument: 2.3 billion, down to 800 million."
+    },
+    {
+      "id": "g01-c031", "tier": "core", "src": "SDGR25",
+      "prompt": "Working poverty fell from 8.4% to 6.9%, yet over 240 million workers remain poor. What's the lesson about percentages?",
+      "options": ["A small percentage of a huge number is still an enormous number of people", "Percentages are meaningless", "240 million is a small figure", "The percentage must be wrong"],
+      "correctIndex": 0,
+      "whyCorrect": "6.9% sounds modest until you convert it: over 240 million human beings working full days and still unable to clear the poverty line. Always turn a rate back into people.",
+      "whyWrong": [null, "Percentages are useful — they just need converting back to absolute numbers.", "It's roughly the population of a large country.", "Both figures come from the same labour survey data."],
+      "action": "Next percentage you read, work out how many people it actually is."
+    },
+    {
+      "id": "g01-c032", "tier": "core", "src": "MPI25",
+      "prompt": "What does it mean that over half the multidimensionally poor are children?",
+      "options": ["Poverty is being inherited — it shapes people before they can act on it", "Children are bad with money", "The survey only asked children", "Children recover from poverty automatically"],
+      "correctIndex": 0,
+      "whyCorrect": "When most poor people are children, poverty is arriving at the start of life — affecting nutrition, schooling and health during the years that shape everything after. That's how it passes between generations.",
+      "whyWrong": [null, "Children don't control household finances.", "The MPI surveys whole households across 109 countries.", "Childhood deprivation has lifelong effects on health and earnings."],
+      "action": "Name one thing that, given to a poor child, would change their whole life."
+    },
+    {
+      "id": "g01-c033", "tier": "core", "src": "WB",
+      "prompt": "Why does the poverty line get updated (from $1.90 to $3.00, 2021 prices)?",
+      "options": ["Prices rise, so the line must be re-based to reflect the same real hardship", "To make poverty look worse", "Because the old line was a mistake", "Lines are changed at random"],
+      "correctIndex": 0,
+      "whyCorrect": "$1.90 in 2011 prices and $3.00 in 2021 prices describe a similar standard of living — the number changed because money did. Comparing across decades requires re-basing.",
+      "whyWrong": [null, "Re-basing keeps the measure honest; it isn't presentational.", "The old line was correct for its price base.", "Updates follow international price surveys on a defined schedule."],
+      "action": "Ask an adult what a loaf of bread cost when they were your age."
+    },
+    {
+      "id": "g01-c034", "tier": "core", "src": "SDGR25",
+      "prompt": "Advanced economies spend 60% on essential services, developing ones 43%. Why does that gap compound poverty?",
+      "options": ["The countries with the greatest needs can fund the least of what reduces poverty", "Developing countries don't value services", "60% and 43% are basically the same", "Spending doesn't affect poverty"],
+      "correctIndex": 0,
+      "whyCorrect": "Health, education and social protection are exactly what pull people out of poverty — and the countries with the most people needing them have both smaller budgets and a smaller share going to them.",
+      "whyWrong": [null, "The constraint is fiscal capacity and debt, not values.", "17 percentage points across national budgets is enormous.", "Public spending on health and education is among the strongest anti-poverty tools known."],
+      "action": "Look up how much of your country's budget goes to health and schools."
+    },
+    {
+      "id": "g01-c035", "tier": "core", "src": "OWID",
+      "prompt": "Why might someone in a wealthy country find the $3 line hard to imagine?",
+      "options": ["It covers everything — food, shelter, clothing — not just spending money", "It only applies to holidays", "It's a monthly figure", "It excludes food"],
+      "correctIndex": 0,
+      "whyCorrect": "The line isn't pocket money left over after rent. It's the total: housing, food, heat, clothes, everything, per person, per day.",
+      "whyWrong": [null, "It's a measure of total daily consumption, not discretionary spending.", "It's per day, per person.", "Food is one of the main things it has to cover."],
+      "action": "Try planning one full day — food and shelter included — on $3."
+    },
+    {
+      "id": "g01-c036", "tier": "core", "src": "MPI25",
+      "prompt": "Why is it significant that 309 million poor people face three or four climate hazards at once?",
+      "options": ["Overlapping hazards leave no recovery window between shocks", "Multiple hazards cancel each other out", "It's the same as facing one hazard", "Hazards only matter to farmers"],
+      "correctIndex": 0,
+      "whyCorrect": "Recovering from a flood takes years. If drought and heat arrive during that recovery, a household never gets back to where it started — each shock lands on weakened ground.",
+      "whyWrong": [null, "They compound rather than offset.", "Compound exposure is substantially more damaging than a single hazard.", "Hazards affect water, health, housing and work across whole communities."],
+      "action": "Ask how long your area would take to recover from a serious flood."
+    },
+    {
+      "id": "g01-c037", "tier": "core", "src": "UN1",
+      "prompt": "Why is it important that social protection crossed 50% for the first time in 2023?",
+      "options": ["It's a genuine milestone, and it shows the remaining half is a choice not a fact of nature", "It means the job is finished", "It's meaningless symbolism", "It means coverage will now fall"],
+      "correctIndex": 0,
+      "whyCorrect": "Crossing half proves large-scale coverage is achievable — which reframes the 3.8 billion still uncovered as a policy and financing gap rather than an inevitability.",
+      "whyWrong": [null, "Nearly half the world still has nothing.", "It reflects real systems reaching real people, up from 42.8% in 2015.", "The trend has been rising, not falling."],
+      "action": "Ask what your country would have to do to cover everyone."
+    },
+    {
+      "id": "g01-c038", "tier": "core", "src": "WB",
+      "prompt": "'1 in 5 children live below the poverty line, but only 1 in 10 people overall.' What does the difference tell you?",
+      "options": ["Children are twice as likely as the average person to be poor", "Children are half as likely to be poor", "The rates are the same", "Children aren't counted in the overall figure"],
+      "correctIndex": 0,
+      "whyCorrect": "1 in 5 versus 1 in 10 means childhood roughly doubles your odds of being in extreme poverty — a consequence of larger poor households and total dependence on adults.",
+      "whyWrong": [null, "The rate is higher for children, not lower.", "20% and 10% differ by a factor of two.", "Children are included in the overall figure — which is what makes their higher rate notable."],
+      "action": "Compare 1 in 5 and 1 in 10 using the people in one classroom."
+    },
+    {
+      "id": "g01-c039", "tier": "core", "src": "SDGR25",
+      "prompt": "What's the strongest reason to care about poverty in a country other than your own?",
+      "options": ["Poverty drives migration, conflict, disease and instability that cross every border", "There is no reason", "Only nearby countries matter", "Other countries' poverty is imaginary"],
+      "correctIndex": 0,
+      "whyCorrect": "Beyond the moral case, poverty shapes migration, conflict, pandemic risk and economic stability worldwide. The SDGs are framed as universal precisely because these effects don't stop at borders.",
+      "whyWrong": [null, "There are strong moral and practical reasons.", "Global systems connect distant economies directly.", "It's documented in extensive survey data across 100+ countries."],
+      "action": "Trace where three things you own were made."
+    },
+    {
+      "id": "g01-c040", "tier": "core", "src": "UN1",
+      "prompt": "Goal 1's targets include eradicating extreme poverty AND halving poverty 'in all its dimensions'. Why both?",
+      "options": ["Ending the worst deprivation isn't the same as ending poverty everywhere", "They mean exactly the same thing", "One target was added by accident", "Dimensions refers to geography"],
+      "correctIndex": 0,
+      "whyCorrect": "Target 1.1 attacks extreme poverty at $3 a day. Target 1.2 recognises that poverty exists above that line and in non-income forms — which is why every country, including wealthy ones, has work to do.",
+      "whyWrong": [null, "1.1 is about the extreme line; 1.2 covers national definitions and multiple dimensions.", "Both were deliberately negotiated.", "'Dimensions' means health, education, living standards — not places."],
+      "action": "Look up your own country's national poverty measure."
+    },
+
+    {
+      "id": "g01-s001", "tier": "stretch", "src": "MPI25",
+      "prompt": "You have a fixed budget to cut poverty in one region. The MPI shows most people there lack electricity and clean cooking fuel, but incomes are just above $3. What's the strongest case for spending on energy rather than cash transfers?",
+      "options": ["Energy access unlocks study time, health and income at once, addressing the deprivations actually present", "Cash is always better in every situation", "Energy projects are cheaper than anything else", "The MPI data should be ignored"],
+      "correctIndex": 0,
+      "whyCorrect": "The MPI exists to answer exactly this. If the binding deprivations are energy-related, cash may not fix them — while electricity extends study hours, cuts respiratory illness from open fires, and frees the hours currently spent gathering fuel.",
+      "whyWrong": [null, "Cash is powerful, but it can't build a grid or a clinic that doesn't exist.", "Infrastructure is often expensive; the case rests on impact, not cheapness.", "The data is what identifies which deprivations bind hardest."],
+      "action": "Pick a real place and look up which MPI indicators it fails on."
+    },
+    {
+      "id": "g01-s002", "tier": "stretch", "src": "SDGR25",
+      "prompt": "A country's economy grows 5% a year but its poverty rate barely moves. What's the most likely explanation?",
+      "options": ["The growth is concentrated among people who were already better off", "Growth never reduces poverty", "The poverty line must be broken", "Economic growth causes poverty"],
+      "correctIndex": 0,
+      "whyCorrect": "This is why 740 million poor people live in middle-income countries. Growth reduces poverty only when it reaches poor households — through jobs, wages, or public spending on services.",
+      "whyWrong": [null, "Growth drove much of the 1.5 billion escape since 1990 — but only where it was broadly shared.", "The line is standardised and internationally comparable.", "Growth is generally necessary for poverty reduction; the question is distribution."],
+      "action": "Find out whether wages in your country grew as fast as the economy last year."
+    },
+    {
+      "id": "g01-s003", "tier": "stretch", "src": "MPI25",
+      "prompt": "Two countries have identical income poverty rates. One has far worse MPI scores. What would you expect to see there?",
+      "options": ["Weaker schools, clinics, water and electricity — services incomes can't substitute for", "Identical living conditions", "Higher average wages", "No difference at all"],
+      "correctIndex": 0,
+      "whyCorrect": "Income measures what a household earns; the MPI measures what exists around it. A country can have similar wages but far worse public infrastructure — and families can't privately buy a school system.",
+      "whyWrong": [null, "The MPI difference is precisely evidence that conditions differ.", "MPI measures deprivation, not wages.", "The measures diverge because they capture different things."],
+      "action": "Name one thing money can't buy you individually if your whole area lacks it."
+    },
+    {
+      "id": "g01-s004", "tier": "stretch", "src": "UN1",
+      "prompt": "A government must choose: cash payments now, or building a social protection system over ten years. What's the strongest argument for the system?",
+      "options": ["It keeps catching people during every future shock, not just this one", "Cash payments never help", "Systems are always cheaper immediately", "Future shocks won't happen"],
+      "correctIndex": 0,
+      "whyCorrect": "COVID pushed 50 million people back into poverty; 3.8 billion had nothing to catch them. A permanent system is what turns a one-off rescue into ongoing protection — which is exactly what Target 1.3 asks for.",
+      "whyWrong": [null, "Emergency cash is often the fastest effective response to an immediate crisis.", "Systems usually cost more upfront; the argument is about durability.", "Climate, economic and health shocks are becoming more frequent, not less."],
+      "action": "Ask which safety nets in your country were built after a past crisis."
+    },
+    {
+      "id": "g01-s005", "tier": "stretch", "src": "MPI25",
+      "prompt": "Why might reducing poverty in climate-hazard regions require different tools than elsewhere?",
+      "options": ["Gains get repeatedly erased, so protection and rebuilding matter as much as income", "Poverty is easier to fix there", "Climate has no economic effect", "The same tools always work everywhere"],
+      "correctIndex": 0,
+      "whyCorrect": "For the 887 million poor people in hazard-exposed areas — and 309 million facing several hazards at once — anything that isn't shock-resistant gets destroyed. Resilience isn't an add-on; it's the precondition.",
+      "whyWrong": [null, "Repeated shocks make it substantially harder.", "Climate shocks destroy crops, homes, roads and livelihoods directly.", "Context determines which interventions survive."],
+      "action": "Design one thing that would still work after a flood."
+    },
+    {
+      "id": "g01-s006", "tier": "stretch", "src": "SDGR25",
+      "prompt": "You want to close the gender gap in social protection. Which approach targets the actual cause?",
+      "options": ["Decouple benefits from formal employment so unpaid and informal work is covered", "Tell women to apply more often", "Reduce men's coverage to match", "Wait for the gap to close naturally"],
+      "correctIndex": 0,
+      "whyCorrect": "The 50.1%/54.6% gap arises largely because benefits are tied to formal payrolls, and women do more unpaid care and informal work. Universal or care-linked benefits address the mechanism rather than the symptom.",
+      "whyWrong": [null, "The barrier is structural eligibility, not individual effort.", "Levelling down leaves more people unprotected, not fewer.", "The gap has persisted across years without closing on its own."],
+      "action": "Ask whether benefits where you live require a formal job."
+    },
+    {
+      "id": "g01-s007", "tier": "stretch", "src": "OWID",
+      "prompt": "Someone argues poverty numbers are meaningless because the line moved from $1.90 to $3.00. How would you answer?",
+      "options": ["The line was re-based for inflation to describe the same real hardship; trends are compared consistently", "They're right, the numbers mean nothing", "The line should never change", "Only the newest number counts"],
+      "correctIndex": 0,
+      "whyCorrect": "Re-basing is what *preserves* comparability — $1.90 in 2011 prices and $3.00 in 2021 prices describe a similar standard of living. Analysts recompute history on the new line, which is why we can still say 1.5 billion escaped since 1990.",
+      "whyWrong": [null, "Consistent re-basing is standard practice in economic measurement.", "A fixed nominal line would drift away from real hardship as prices rise.", "Historical series are recalculated on the current basis for comparison."],
+      "action": "Look up what 'adjusted for inflation' means and why reports say it so often."
+    },
+    {
+      "id": "g01-s008", "tier": "stretch", "src": "WB",
+      "prompt": "Poverty is concentrating in conflict-affected places. What does that imply about ending extreme poverty by 2030?",
+      "options": ["The remaining poverty is in the hardest places, so progress gets slower not faster", "The last stretch will be easiest", "Conflict makes poverty reduction cheaper", "It has no bearing on the target"],
+      "correctIndex": 0,
+      "whyCorrect": "The easiest gains came first. What remains sits disproportionately in fragile and conflict-affected settings where institutions have collapsed — which is a major reason ~9% is still projected for 2030.",
+      "whyWrong": [null, "Conflict settings are the hardest environments for any intervention.", "Conflict raises costs and destroys what's already been built.", "It's central to why the target is projected to be missed."],
+      "action": "Ask what has to exist in a country before poverty programmes can work."
+    },
+    {
+      "id": "g01-s009", "tier": "stretch", "src": "MPI25",
+      "prompt": "If you could fix only one MPI indicator across the world, what makes a strong case for choosing school attendance?",
+      "options": ["Education compounds — it changes health, income and the next generation's odds", "Schools are the cheapest thing to build", "Education has no link to income", "Only literacy matters"],
+      "correctIndex": 0,
+      "whyCorrect": "With over half the multidimensionally poor being children, schooling reaches poverty at the point it's transmitted. Its effects run through earnings, health decisions and children's outcomes decades later.",
+      "whyWrong": [null, "Schools and teachers are a major long-term expense.", "Education is one of the strongest predictors of lifetime earnings.", "Attendance drives numeracy, health knowledge and social outcomes too."],
+      "action": "Argue for a different indicator instead. Which is stronger, and why?"
+    },
+    {
+      "id": "g01-s010", "tier": "stretch", "src": "SDGR25",
+      "prompt": "Working poverty fell while overall progress stalled. What does that combination suggest?",
+      "options": ["Job quality improved for some while shocks hit others — averages hide diverging groups", "Every measure moves together", "Working poverty data is unrelated to poverty", "Progress never stalled"],
+      "correctIndex": 0,
+      "whyCorrect": "Different indicators can move in opposite directions at once. Labour markets improved for some workers while pandemic, conflict and climate shocks hit other households — which is why no single number tells the whole story.",
+      "whyWrong": [null, "Indicators frequently diverge; that divergence is informative.", "Working poverty is a direct component of overall poverty.", "The World Bank documents a substantial slowdown."],
+      "action": "Find two statistics about your country that seem to disagree. Work out why."
+    },
+    {
+      "id": "g01-s011", "tier": "stretch", "src": "UN1",
+      "prompt": "The financing gap for basic social security is 3.3% of low- and middle-income countries' GDP. What's the strongest counter to 'it's unaffordable'?",
+      "options": ["3.3% is a political choice — comparable to what many states spend on other priorities", "It's affordable because it's a small absolute number", "Nobody has calculated the cost", "Affordability doesn't matter"],
+      "correctIndex": 0,
+      "whyCorrect": "Framing it as a share rather than a headline total turns 'impossible' into 'contested'. Countries routinely spend comparable shares on defence, fuel subsidies or debt service — so this is about priorities, not physics.",
+      "whyWrong": [null, "$1.4 trillion is an enormous absolute number — the share is what makes it tractable.", "The UN has costed it precisely.", "Affordability is central; the argument is about what it's measured against."],
+      "action": "Look up what share of GDP your country spends on defence, health and debt."
+    },
+    {
+      "id": "g01-s012", "tier": "stretch", "src": "OWID",
+      "prompt": "Progress halved poverty in 136 years, then 45, then 13. Then it stalled. What's the honest conclusion?",
+      "options": ["Progress is real and can accelerate, but it is not automatic and can reverse", "Progress is guaranteed to continue", "Progress was always an illusion", "Poverty has never changed"],
+      "correctIndex": 0,
+      "whyCorrect": "Both halves matter. The acceleration was real; so is the stall since 2020. Treating progress as inevitable is as wrong as denying it happened.",
+      "whyWrong": [null, "COVID reversed gains for about 50 million people.", "1.5 billion people leaving poverty is thoroughly documented.", "It fell from about 2.3 billion to about 800 million since 1990."],
+      "action": "Write one sentence that is honest about both the progress and the stall."
+    },
+    {
+      "id": "g01-s013", "tier": "stretch", "src": "MPI25",
+      "prompt": "Why might a government prefer to report income poverty rather than multidimensional poverty?",
+      "options": ["The income count is lower, and MPI exposes failures in services it is responsible for", "MPI is illegal to publish", "Income data is more accurate in every case", "There's no difference in the numbers"],
+      "correctIndex": 0,
+      "whyCorrect": "The MPI counts 1.1 billion against about 800 million on income — and it attributes deprivation to schools, clinics, water and power, which are government responsibilities. Which measure you choose is itself a political act.",
+      "whyWrong": [null, "The MPI is published openly by UNDP and OPHI.", "Each is more accurate for different questions.", "The MPI counts roughly 300 million more people."],
+      "action": "Check which poverty measure your government quotes most often."
+    },
+    {
+      "id": "g01-s014", "tier": "stretch", "src": "WB",
+      "prompt": "Aid is falling while poverty progress stalls. What's the risk of cutting support during a slowdown?",
+      "options": ["Countries lose capacity exactly when shocks are hitting hardest, deepening and lengthening setbacks", "Nothing — aid has no effect", "Poverty falls faster without aid", "Aid only matters in good times"],
+      "correctIndex": 0,
+      "whyCorrect": "Support is contracting precisely when the pandemic, conflict, debt and climate shocks have stretched national budgets thinnest — removing a buffer at the moment the buffer is needed most.",
+      "whyWrong": [null, "Aid finances a significant share of health and social spending in the lowest-income countries.", "There's no evidence for this, and the slowdown coincides with declining support.", "Its counter-cyclical role during crises is among its strongest justifications."],
+      "action": "Find out what your country's aid budget funds most."
+    },
+    {
+      "id": "g01-s015", "tier": "stretch", "src": "SDGR25",
+      "prompt": "You're designing a land-titling programme. Given the data, what would you build in from the start?",
+      "options": ["Both spouses named on documents, since only 24% of women hold them", "Documents issued only to household heads", "No documents, to keep it simple", "Titles for businesses only"],
+      "correctIndex": 0,
+      "whyCorrect": "Titling that defaults to a single household head reproduces the existing gap — 43% overall hold documents but only 24% of women. Joint titling is a concrete design choice that directly serves Target 1.4.",
+      "whyWrong": [null, "This is the practice that produced the gap in the first place.", "Undocumented tenure is what leaves families unable to defend a claim.", "Household land rights are the issue Target 1.4 addresses."],
+      "action": "Ask what a small design choice can do to a statistic over twenty years."
+    },
+    {
+      "id": "g01-s016", "tier": "stretch", "src": "OWID",
+      "prompt": "How would you explain to someone that poverty has fallen dramatically AND remains a crisis?",
+      "options": ["Both are true: 1.5 billion escaped, and about 800 million remain", "Only the good news is true", "Only the bad news is true", "The two statements can't both be true"],
+      "correctIndex": 0,
+      "whyCorrect": "Holding both is the mature position. Denying the progress makes the problem look hopeless; denying the crisis makes it look finished. Neither error helps the 800 million people still living it.",
+      "whyWrong": [null, "About 800 million people remain in extreme poverty.", "1.5 billion escaping is among the largest improvements in history.", "A number can fall a great deal and still be far too high."],
+      "action": "Practise saying both halves in one sentence, without a 'but' that cancels either."
+    },
+    {
+      "id": "g01-s017", "tier": "stretch", "src": "MPI25",
+      "prompt": "A region's income poverty is falling but its MPI is flat. What's the most useful interpretation?",
+      "options": ["Wages are rising while schools, clinics, water and power haven't improved", "The MPI must be broken", "Income data must be fake", "Nothing can be inferred"],
+      "correctIndex": 0,
+      "whyCorrect": "Households can earn more while the infrastructure around them stays unchanged — because families can't individually purchase a functioning water system or school. It signals that public investment is lagging private income.",
+      "whyWrong": [null, "Divergence between measures is informative, not evidence of error.", "Both come from established survey programmes.", "The divergence points clearly at services versus earnings."],
+      "action": "Name three things that only improve if someone invests collectively."
+    },
+    {
+      "id": "g01-s018", "tier": "stretch", "src": "UN1",
+      "prompt": "Goal 1 is projected to be missed. What's the most constructive response to that?",
+      "options": ["Treat the gap as a measure of what must change, not proof that trying is pointless", "Abandon the goal", "Declare it achieved anyway", "Stop measuring poverty"],
+      "correctIndex": 0,
+      "whyCorrect": "The 9% projection is a forecast of the current path, not a law. It quantifies the shortfall — which is what makes it useful for arguing over financing, protection and priorities.",
+      "whyWrong": [null, "Abandonment guarantees the shortfall.", "About 800 million people are still living it.", "Measurement is what revealed both the progress and the stall."],
+      "action": "Name one policy you'd change to bend the 2030 projection."
+    },
+    {
+      "id": "g01-s019", "tier": "stretch", "src": "SDGR25",
+      "prompt": "Why is 'poverty' in Goal 1 measured with several different indicators rather than one headline number?",
+      "options": ["Different indicators reveal different failures and prompt different fixes", "To confuse people", "Because nobody trusts any single agency", "One number was tried and banned"],
+      "correctIndex": 0,
+      "whyCorrect": "Income poverty points at wages and transfers; working poverty at labour markets; social protection coverage at safety nets; land documentation at legal rights. Each names a different lever — a single number would hide which one to pull.",
+      "whyWrong": [null, "The indicator set exists so progress can be diagnosed, not obscured.", "The indicators are agreed internationally, not a sign of distrust.", "Multiple indicators were designed in from the start."],
+      "action": "Pick the Goal 1 indicator you'd track most closely, and defend the choice."
+    },
+    {
+      "id": "g01-s020", "tier": "stretch", "src": "MPI25",
+      "prompt": "What's the most important thing to understand about poverty from all of Goal 1's data together?",
+      "options": ["It's multi-causal and reversible — which is why it needs income, services and protection at once", "It's caused by laziness", "It's permanent and unfixable", "It's purely about money"],
+      "correctIndex": 0,
+      "whyCorrect": "1.5 billion escaped, 50 million were pushed back by one pandemic, 1.1 billion are deprived beyond income, and 887 million face climate hazards. Poverty responds to policy, and it takes wages, public services and safety nets together.",
+      "whyWrong": [null, "284 million people work full time and remain in extreme poverty.", "1.5 billion people escaping since 1990 disproves permanence.", "The MPI finds 1.1 billion deprived in health, education and living standards."],
+      "action": "Name the one change you'd make first, and what evidence backs it."
+    }
+  ]
+}
