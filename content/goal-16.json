@@ -1,0 +1,914 @@
+{
+  "goal": 16,
+  "goalName": "Peace, Justice and Strong Institutions",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 16",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-16/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g16-001",
+      "src": "SDGR25",
+      "prompt": "How many people died in conflicts in 2024?",
+      "options": [
+        "Nearly 50,000",
+        "Nearly 5,000",
+        "Nearly 500"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "48,384 documented deaths — one life lost every 12 minutes, and 40% more than in 2023.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Work out how many deaths that is per day."
+    },
+    {
+      "id": "g16-002",
+      "src": "SDGR25",
+      "prompt": "Conflict deaths in 2024 compared with 2023:",
+      "options": [
+        "Rose 40%",
+        "Fell 40%",
+        "Did not change"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Rose 40% — the sharpest recent deterioration in any Goal 16 indicator.",
+      "whyWrong": [
+        null,
+        "Deaths rose substantially.",
+        "There was a large increase."
+      ],
+      "action": "Name the conflicts that escalated in 2024."
+    },
+    {
+      "id": "g16-003",
+      "src": "SDGR25",
+      "prompt": "One conflict death occurs, on average, every:",
+      "options": [
+        "12 minutes",
+        "12 hours",
+        "12 days"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Every 12 minutes. Nearly 50,000 deaths a year, spread evenly, is roughly five people every hour of every day.",
+      "whyWrong": [
+        null,
+        "Far too infrequent for 48,384 deaths a year.",
+        "Vastly too infrequent."
+      ],
+      "action": "Divide the minutes in a year by 48,384."
+    },
+    {
+      "id": "g16-004",
+      "src": "SDGR25",
+      "prompt": "Children killed in conflict in 2023-2024 rose by how much over the previous two years?",
+      "options": [
+        "337%",
+        "37%",
+        "3.7%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "337% — more than a fourfold increase. Children are being killed in conflict at rates without recent precedent.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask why civilian deaths rise in urban warfare."
+    },
+    {
+      "id": "g16-005",
+      "src": "SDGR25",
+      "prompt": "Women killed in conflict in 2023-2024 rose by:",
+      "options": [
+        "25%",
+        "258%",
+        "2.5%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "258% — a more than threefold rise, alongside the 337% increase for children. Conflict is increasingly hitting civilians.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask what protections civilians have under international law."
+    },
+    {
+      "id": "g16-006",
+      "src": "SDGR25",
+      "prompt": "How many people were forcibly displaced by the end of 2024?",
+      "options": [
+        "123.2 million",
+        "12.3 million",
+        "1.23 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "123.2 million — more than the population of Japan, forced from home by conflict and persecution.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Find a country with about 123 million people."
+    },
+    {
+      "id": "g16-007",
+      "src": "SDGR25",
+      "prompt": "The global homicide rate fell from 5.9 per 100,000 in 2015 to:",
+      "options": [
+        "8.0",
+        "2.5",
+        "5.2"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "5.2 per 100,000 by 2023 — a real decline, but on track for only a 25% reduction by 2030 against a 50% target.",
+      "whyWrong": [
+        "Homicide fell rather than rose.",
+        "Far below the actual rate.",
+        null
+      ],
+      "action": "Look up the homicide rate in your country."
+    },
+    {
+      "id": "g16-008",
+      "src": "SDGR25",
+      "prompt": "The homicide reduction target for 2030 is 50%. Current projections reach:",
+      "options": [
+        "50%",
+        "25%",
+        "75%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "25% — half the target. Genuine progress, at half the pace the world committed to.",
+      "whyWrong": [
+        "That's the target, not the projection.",
+        null,
+        "Far beyond what's projected."
+      ],
+      "action": "Ask what has driven homicide rates down since 2015."
+    },
+    {
+      "id": "g16-009",
+      "src": "SDGR25",
+      "prompt": "What share of homicide victims are men?",
+      "options": [
+        "20%",
+        "50%",
+        "80%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "80% — homicide is overwhelmingly a risk to men, mostly young men, mostly outside the home.",
+      "whyWrong": [
+        "That's the share for women.",
+        "Men are far over-represented.",
+        null
+      ],
+      "action": "Ask why young men are most at risk of homicide."
+    },
+    {
+      "id": "g16-010",
+      "src": "SDGR25",
+      "prompt": "How many women were killed by partners or family members in 2023?",
+      "options": [
+        "About 510",
+        "About 5,100",
+        "About 51,000"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 51,000 — roughly 140 women a day, killed by someone they knew. For women, the most dangerous place is often home.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Divide 51,000 by 365."
+    },
+    {
+      "id": "g16-011",
+      "src": "SDGR25",
+      "prompt": "Male homicide fell 14% since 2015. Female homicide fell:",
+      "options": [
+        "14%",
+        "5%",
+        "30%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Only 5%. Public violence is falling much faster than violence inside the home, which policing reaches less easily.",
+      "whyWrong": [
+        "That's the figure for men.",
+        null,
+        "The decline for women was much smaller."
+      ],
+      "action": "Ask why domestic violence is harder to reduce."
+    },
+    {
+      "id": "g16-012",
+      "src": "SDGR25",
+      "prompt": "Detected human trafficking victims rose how much compared with 2020?",
+      "options": [
+        "They fell",
+        "4.3%",
+        "43%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "43% more detected victims than in 2020, and 25% more than pre-pandemic — partly better detection, partly more trafficking.",
+      "whyWrong": [
+        "Detections rose sharply.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what makes trafficking hard to detect."
+    },
+    {
+      "id": "g16-013",
+      "src": "SDGR25",
+      "prompt": "Children are what share of all detected trafficking victims?",
+      "options": [
+        "38%",
+        "8%",
+        "3.8%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "38% — more than a third, and up 31% since 2019. Children are the fastest-growing group of trafficking victims.",
+      "whyWrong": [
+        null,
+        "Far too low.",
+        "Vastly too low."
+      ],
+      "action": "Look up what trafficking actually involves."
+    },
+    {
+      "id": "g16-014",
+      "src": "SDGR25",
+      "prompt": "What share of trafficked girls are exploited sexually?",
+      "options": [
+        "6%",
+        "60%",
+        "16%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "60% of trafficked girls, while 45% of trafficked boys are exploited for forced labour. Traffickers target children differently by gender.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Far below the actual share."
+      ],
+      "action": "Look up who to contact about suspected trafficking."
+    },
+    {
+      "id": "g16-015",
+      "src": "SDGR25",
+      "prompt": "What share of trafficked boys are exploited for forced labour?",
+      "options": [
+        "45%",
+        "4.5%",
+        "95%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "45% — compared with 60% of girls trafficked for sexual exploitation. Both patterns are severe and distinct.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Too high — the figure is under half."
+      ],
+      "action": "Ask what industries forced labour appears in."
+    },
+    {
+      "id": "g16-016",
+      "src": "SDGR25",
+      "prompt": "How many people are in prison worldwide?",
+      "options": [
+        "11.7 million",
+        "1.17 million",
+        "117 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "11.7 million — and 3.7 million of them have never been sentenced for anything.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Ten times too high."
+      ],
+      "action": "Look up your country's prison population."
+    },
+    {
+      "id": "g16-017",
+      "src": "SDGR25",
+      "prompt": "How many prisoners have never been sentenced?",
+      "options": [
+        "370,000",
+        "3.7 million",
+        "37,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "3.7 million — 31% of all prisoners are held before trial, presumed innocent under law but locked up in fact.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask how long someone can be held before trial where you live."
+    },
+    {
+      "id": "g16-018",
+      "src": "SDGR25",
+      "prompt": "Pretrial detention as a share of prisoners went from 29% in 2015 to:",
+      "options": [
+        "50%",
+        "10%",
+        "31%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "31% — it got slightly worse. Court backlogs mean more people wait in cells for trials that may take years.",
+      "whyWrong": [
+        "Too high — it is just under a third.",
+        "The share rose rather than fell.",
+        null
+      ],
+      "action": "Ask what 'innocent until proven guilty' means in practice."
+    },
+    {
+      "id": "g16-019",
+      "src": "SDGR25",
+      "prompt": "What share of unsentenced detainees are men?",
+      "options": [
+        "60%",
+        "94%",
+        "50%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "94% men, 6% women — mirroring the wider pattern where men are most involved in and most affected by public violence and policing.",
+      "whyWrong": [
+        "Far too low.",
+        null,
+        "The imbalance is extreme."
+      ],
+      "action": "Ask why prison populations are so heavily male."
+    },
+    {
+      "id": "g16-020",
+      "src": "SDGR25",
+      "prompt": "How many human rights defenders were killed in 2024?",
+      "options": [
+        "52",
+        "502",
+        "5,002"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "502 killings across 44 countries, plus 123 disappearances in 37 countries. Defending rights is measurably dangerous work.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Look up what a human rights defender does."
+    },
+    {
+      "id": "g16-021",
+      "src": "SDGR25",
+      "prompt": "How many journalists were killed in 2024?",
+      "options": [
+        "82",
+        "8",
+        "820"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "82 — an 11% increase, with over 60% killed in conflict zones. Reporting from a war is now among the deadliest jobs there is.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Ten times too high."
+      ],
+      "action": "Ask why a country would want to silence journalists."
+    },
+    {
+      "id": "g16-022",
+      "src": "SDGR25",
+      "prompt": "What share of journalist killings happened in conflict zones?",
+      "options": [
+        "None",
+        "About 6%",
+        "Over 60%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Over 60% — but that means nearly 40% were killed outside any war, often for investigating corruption or crime.",
+      "whyWrong": [
+        "Conflict zones account for the majority.",
+        "Far too low.",
+        null
+      ],
+      "action": "Look up a journalist killed for an investigation."
+    },
+    {
+      "id": "g16-023",
+      "src": "SDGR25",
+      "prompt": "How many countries have access-to-information laws?",
+      "options": [
+        "40",
+        "14",
+        "140"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "140 countries — up from just 14 in 1990. A tenfold rise in the legal right to ask governments what they are doing.",
+      "whyWrong": [
+        "Far below the current number.",
+        "That's the 1990 figure.",
+        null
+      ],
+      "action": "Find out how to request public information in your country."
+    },
+    {
+      "id": "g16-024",
+      "src": "SDGR25",
+      "prompt": "In 1990, how many countries had access-to-information laws?",
+      "options": [
+        "140",
+        "90",
+        "14"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Just 14. The right to know what your government does is a remarkably recent legal invention in most of the world.",
+      "whyWrong": [
+        "That's today's figure.",
+        "Far more than existed in 1990.",
+        null
+      ],
+      "action": "Ask what a government could hide before such laws."
+    },
+    {
+      "id": "g16-025",
+      "src": "SDGR25",
+      "prompt": "How many countries have fully compliant national human rights institutions?",
+      "options": [
+        "9",
+        "89",
+        "189"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "89, up from 70 in 2015. These bodies investigate abuses independently of the government that funds them.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "More than actually comply."
+      ],
+      "action": "Find out if your country has one."
+    },
+    {
+      "id": "g16-026",
+      "src": "SDGR25",
+      "prompt": "Government budget deviation — the gap between planned and actual spending — improved from 12.6% in 2020 to:",
+      "options": [
+        "9.6%",
+        "15.6%",
+        "0.6%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "9.6% by 2023. Governments are spending closer to what they publicly promised — a quiet but real accountability gain.",
+      "whyWrong": [
+        null,
+        "The figure improved rather than worsened.",
+        "Far below the actual deviation."
+      ],
+      "action": "Ask why a government might not spend what it budgeted."
+    },
+    {
+      "id": "g16-027",
+      "src": "SDGR25",
+      "prompt": "Conflict deaths rose 40% while homicide fell. Together this suggests:",
+      "options": [
+        "Everyday violence is declining while organised armed conflict is intensifying",
+        "All violence is falling",
+        "All violence is rising"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Two different trends: policing and development are reducing everyday killings, while wars are getting deadlier.",
+      "whyWrong": [
+        null,
+        "Conflict deaths rose 40%.",
+        "The homicide rate fell from 5.9 to 5.2."
+      ],
+      "action": "Ask why these two trends move independently."
+    },
+    {
+      "id": "g16-028",
+      "src": "SDGR25",
+      "prompt": "31% of prisoners being unsentenced matters because:",
+      "options": [
+        "It doesn't",
+        "They're all guilty anyway",
+        "People presumed innocent lose jobs, homes and family ties while waiting for trial"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Pretrial detention punishes before any verdict — and those who cannot afford bail or a lawyer are the ones who wait longest.",
+      "whyWrong": [
+        "3.7 million people are affected directly.",
+        "By law they are presumed innocent.",
+        null
+      ],
+      "action": "Ask what happens to someone's job after six months in detention."
+    },
+    {
+      "id": "g16-029",
+      "src": "SDGR25",
+      "prompt": "The 337% rise in children killed in conflict mainly reflects:",
+      "options": [
+        "More children in the world",
+        "Better counting only",
+        "Fighting moving into densely populated civilian areas"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "When conflicts are fought in cities and camps, civilians — especially children — make up a far larger share of the casualties.",
+      "whyWrong": [
+        "Population change cannot explain a fourfold rise.",
+        "The increase reflects a real change in casualties.",
+        null
+      ],
+      "action": "Ask what makes urban warfare different for civilians."
+    },
+    {
+      "id": "g16-030",
+      "src": "SDGR25",
+      "prompt": "51,000 women killed by partners or family means roughly:",
+      "options": [
+        "140 a day",
+        "14 a day",
+        "1.4 a day"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About 140 women every day, killed by someone who knew them. It's the single largest category of gender-based lethal violence.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Find out what support services exist near you."
+    },
+    {
+      "id": "g16-031",
+      "src": "SDGR25",
+      "prompt": "Access-to-information laws going from 14 to 140 countries shows:",
+      "options": [
+        "Nothing changed",
+        "Transparency has become a global legal norm in one generation",
+        "Governments got more secretive"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A tenfold rise in 35 years. The idea that citizens can demand government records went from rare to standard.",
+      "whyWrong": [
+        "The change was tenfold.",
+        null,
+        "The legal trend is strongly toward openness."
+      ],
+      "action": "Try finding your local government's spending records."
+    },
+    {
+      "id": "g16-032",
+      "src": "SDGR25",
+      "prompt": "123.2 million forcibly displaced people compares with 2015 as:",
+      "options": [
+        "Far lower",
+        "Far higher — displacement has risen every year",
+        "Unchanged"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Displacement has risen essentially every year of the SDG period, driven by conflicts whose death toll rose 40% in 2024 alone.",
+      "whyWrong": [
+        "Displacement is at record levels.",
+        null,
+        "It has increased substantially."
+      ],
+      "action": "Ask how long the average refugee stays displaced."
+    },
+    {
+      "id": "g16-033",
+      "src": "SDGR25",
+      "prompt": "Homicide falling 14% for men but 5% for women shows:",
+      "options": [
+        "Women are safer",
+        "Violence in public spaces is easier to reduce than violence at home",
+        "The data is wrong"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Street policing, lighting and youth programmes cut public violence. Killings inside families need entirely different interventions.",
+      "whyWrong": [
+        "Their rate fell far less than men's.",
+        null,
+        "Both figures are consistently measured."
+      ],
+      "action": "Ask what policy reduces violence inside homes."
+    },
+    {
+      "id": "g16-034",
+      "src": "SDGR25",
+      "prompt": "National human rights institutions rising from 70 to 89 countries means:",
+      "options": [
+        "Fewer rights are protected",
+        "More countries have independent bodies that can investigate their own government",
+        "Nothing measurable"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A fully compliant institution can investigate a government that funds it — which is precisely why building one is politically difficult.",
+      "whyWrong": [
+        "The number of compliant institutions rose.",
+        null,
+        "It's a tracked SDG indicator with clear criteria."
+      ],
+      "action": "Look up what makes such an institution 'compliant'."
+    },
+    {
+      "id": "g16-035",
+      "src": "SDGR25",
+      "prompt": "Trafficking detections rising 43% since 2020 could mean:",
+      "options": [
+        "Only that trafficking increased",
+        "Trafficking has ended",
+        "Either more trafficking, better detection, or both"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Detection figures measure what authorities find, not what exists. Rising numbers can mean a worse problem or better policing — usually both.",
+      "whyWrong": [
+        "Detection capacity also improved over this period.",
+        "Detections rose sharply.",
+        null
+      ],
+      "action": "Ask why 'detected' and 'actual' are different numbers."
+    },
+    {
+      "id": "g16-036",
+      "src": "SDGR25",
+      "prompt": "Human rights defenders were killed across how many countries in 2024?",
+      "options": [
+        "4",
+        "44",
+        "144"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "44 countries recorded killings, and 37 recorded disappearances. This is not confined to a handful of states.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "More than actually recorded killings."
+      ],
+      "action": "Ask what causes defenders are usually working on."
+    },
+    {
+      "id": "g16-037",
+      "src": "SDGR25",
+      "prompt": "The homicide rate of 5.2 per 100,000 means, in a city of a million:",
+      "options": [
+        "About 520 killings",
+        "About 5 killings",
+        "About 52 killings a year"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 52 a year on the global average — though rates vary more than tenfold between countries and neighbourhoods.",
+      "whyWrong": [
+        "Ten times too high.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Multiply 5.2 by ten for a per-million figure."
+    },
+    {
+      "id": "g16-038",
+      "src": "SDGR25",
+      "prompt": "Journalist killings rising 11% while over 60% occur in conflict zones suggests:",
+      "options": [
+        "Journalism has become safe",
+        "Escalating conflicts are the main driver, but non-conflict killings persist",
+        "All killings are in wars"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "The 40% rise in conflict deaths drags journalist deaths up with it — while nearly 40% still die investigating stories in peacetime.",
+      "whyWrong": [
+        "Killings rose 11%.",
+        null,
+        "Nearly 40% occur outside conflict zones."
+      ],
+      "action": "Look up how journalists protect themselves in conflict."
+    },
+    {
+      "id": "g16-039",
+      "src": "SDGR25",
+      "prompt": "Why does Goal 16 group peace, justice and institutions together?",
+      "options": [
+        "They're unrelated",
+        "Without functioning courts and honest institutions, peace and rights cannot be enforced",
+        "For alphabetical reasons"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Rights without courts are words on paper. Goal 16 treats institutions as the machinery that makes peace and justice real.",
+      "whyWrong": [
+        "They are tightly interdependent.",
+        null,
+        "The grouping reflects function, not naming."
+      ],
+      "action": "Ask what happens to a right nobody can enforce."
+    },
+    {
+      "id": "g16-040",
+      "src": "SDGR25",
+      "prompt": "Budget deviation improving from 12.6% to 9.6% means governments are:",
+      "options": [
+        "Spending closer to what they publicly promised",
+        "Spending less overall",
+        "Hiding more spending"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A smaller gap between the published budget and actual spending means the public budget is a more honest description of what happens.",
+      "whyWrong": [
+        null,
+        "It measures accuracy, not total spending.",
+        "It indicates more accountability, not less."
+      ],
+      "action": "Ask why matching your budget is a sign of good management."
+    },
+    {
+      "id": "g16-041",
+      "src": "SDGR25",
+      "prompt": "38% of trafficking victims being children, up 31% since 2019, is alarming because:",
+      "options": [
+        "Children are the least able to escape or report it",
+        "Children are trafficked less than adults",
+        "It's unchanged"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Children have the least power to leave, complain or be believed — and they are the fastest-growing share of detected victims.",
+      "whyWrong": [
+        null,
+        "They are 38% of detected victims.",
+        "Their share rose 31% since 2019."
+      ],
+      "action": "Look up the warning signs of child trafficking."
+    },
+    {
+      "id": "g16-042",
+      "src": "SDGR25",
+      "prompt": "80% of homicide victims are men, but 51,000 women are killed by family. Together this means:",
+      "options": [
+        "Only women are at risk",
+        "Only men are at risk",
+        "Men face more homicide overall; women face more homicide from people they know"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The risk profile differs completely by gender — which is why one policy cannot address both patterns.",
+      "whyWrong": [
+        "Men are 80% of homicide victims.",
+        "51,000 women were killed by partners or family in 2023.",
+        null
+      ],
+      "action": "Ask what different policies each pattern needs."
+    },
+    {
+      "id": "g16-043",
+      "src": "SDGR25",
+      "prompt": "48,384 conflict deaths in 2024 is what compared with the 2023 figure?",
+      "options": [
+        "Identical",
+        "About 40% lower",
+        "About 40% higher"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About 40% higher — meaning roughly 14,000 additional deaths in a single year of escalation.",
+      "whyWrong": [
+        "There was a large change.",
+        "Deaths increased sharply.",
+        null
+      ],
+      "action": "Calculate what 2023's total would have been."
+    },
+    {
+      "id": "g16-044",
+      "src": "SDGR25",
+      "prompt": "Which Goal 16 indicator has improved most clearly?",
+      "options": [
+        "Conflict deaths",
+        "Pretrial detention",
+        "Access-to-information laws, from 14 to 140 countries"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "A tenfold rise in transparency laws since 1990. Conflict deaths rose 40% and pretrial detention worsened from 29% to 31%.",
+      "whyWrong": [
+        "Conflict deaths rose 40% in 2024.",
+        "That indicator got slightly worse.",
+        null
+      ],
+      "action": "Find one thing your government publishes that it once wouldn't have."
+    },
+    {
+      "id": "g16-045",
+      "src": "SDGR25",
+      "prompt": "Homicide falling 25% by 2030 instead of the 50% target means:",
+      "options": [
+        "Real progress at half the committed pace",
+        "Total failure",
+        "The target was exceeded"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A quarter fewer killings is thousands of lives saved — and still only half of what governments agreed to deliver.",
+      "whyWrong": [
+        null,
+        "The rate fell from 5.9 to 5.2.",
+        "The projection falls short of the target."
+      ],
+      "action": "Ask what would double the rate of improvement."
+    },
+    {
+      "id": "g16-046",
+      "src": "SDGR25",
+      "prompt": "Corruption and weak institutions matter for the other 16 goals because:",
+      "options": [
+        "They don't",
+        "They only affect courts",
+        "Money meant for schools, clinics and water disappears before it arrives"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Every other goal runs on public money and public rules. That's why budget accuracy and information laws are tracked as SDG indicators.",
+      "whyWrong": [
+        "Institutional quality shapes delivery of every goal.",
+        "It affects all public spending, not just justice.",
+        null
+      ],
+      "action": "Trace how funding reaches your school."
+    },
+    {
+      "id": "g16-047",
+      "src": "SDGR25",
+      "prompt": "94% of unsentenced detainees being men reflects:",
+      "options": [
+        "A data error",
+        "The same gender pattern seen in homicide and arrests generally",
+        "Women committing more crime"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Men are 80% of homicide victims and the overwhelming majority of those arrested and detained — a consistent global pattern.",
+      "whyWrong": [
+        "The figure is consistent with other justice statistics.",
+        null,
+        "Women are 6% of unsentenced detainees."
+      ],
+      "action": "Ask why criminal justice systems are so male-dominated."
+    },
+    {
+      "id": "g16-048",
+      "src": "SDGR25",
+      "prompt": "502 defenders killed and 123 disappeared in 2024 shows that:",
+      "options": [
+        "Activism is safe",
+        "Speaking up against powerful interests carries lethal risk in dozens of countries",
+        "The numbers are trivial"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Across 44 countries, people were killed for defending land, labour, environmental or human rights. Disappearance is often used to intimidate others.",
+      "whyWrong": [
+        "625 killings and disappearances were documented.",
+        null,
+        "Each figure represents a person killed or missing."
+      ],
+      "action": "Look up a defender killed for protecting land or forest."
+    },
+    {
+      "id": "g16-049",
+      "src": "SDGR25",
+      "prompt": "The 40% rise in conflict deaths alongside 123.2 million displaced shows:",
+      "options": [
+        "Conflict is both killing more people and uprooting more",
+        "Conflict is declining",
+        "Displacement is unrelated to conflict"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "The two move together — people flee the same violence that is killing civilians at rising rates.",
+      "whyWrong": [
+        null,
+        "Both indicators worsened sharply.",
+        "Conflict is the primary driver of displacement."
+      ],
+      "action": "Ask what happens to a city's population during a war."
+    },
+    {
+      "id": "g16-050",
+      "src": "SDGR25",
+      "prompt": "The sharpest Goal 16 warning sign is:",
+      "options": [
+        "A 337% rise in children killed in conflict",
+        "140 countries with information laws",
+        "Budget deviation improving"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Children killed in conflict more than quadrupled in two years — the fastest deterioration of any indicator in the goal.",
+      "whyWrong": [
+        null,
+        "That is a major success, up from 14 in 1990.",
+        "That improved from 12.6% to 9.6%."
+      ],
+      "action": "Look up what the Geneva Conventions say about children."
+    }
+  ]
+}

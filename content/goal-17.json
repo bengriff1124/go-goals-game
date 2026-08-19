@@ -1,0 +1,914 @@
+{
+  "goal": 17,
+  "goalName": "Partnerships for the Goals",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 17",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-17/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g17-001",
+      "src": "SDGR25",
+      "prompt": "How much did developing countries pay to service their debts in 2023?",
+      "options": [
+        "$1.4 billion",
+        "$1.4 trillion",
+        "$140 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$1.4 trillion — more than six times the $212 billion the world gave in aid that year.",
+      "whyWrong": [
+        "A thousand times too low.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Compare debt payments with total aid."
+    },
+    {
+      "id": "g17-002",
+      "src": "SDGR25",
+      "prompt": "How much aid did wealthy countries give in 2024?",
+      "options": [
+        "$212.1 billion",
+        "$212.1 million",
+        "$2.1 trillion"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$212.1 billion — and it fell 7.1% in real terms from 2023, the first significant decline in years.",
+      "whyWrong": [
+        null,
+        "A thousand times too low.",
+        "Ten times too high."
+      ],
+      "action": "Compare $212 billion in aid with $1.4 trillion in debt payments."
+    },
+    {
+      "id": "g17-003",
+      "src": "SDGR25",
+      "prompt": "Aid in 2024 compared with 2023:",
+      "options": [
+        "Rose 7.1%",
+        "Fell 7.1% in real terms",
+        "Was unchanged"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Fell 7.1% in real terms, with net flows down 9.3%. Aid is shrinking exactly when needs are rising.",
+      "whyWrong": [
+        "Aid declined rather than grew.",
+        null,
+        "There was a substantial fall."
+      ],
+      "action": "Ask why rich countries cut aid budgets."
+    },
+    {
+      "id": "g17-004",
+      "src": "SDGR25",
+      "prompt": "Aid as a share of donor countries' national income is:",
+      "options": [
+        "3.3%",
+        "0.33%",
+        "33%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "0.33% — about one dollar in every three hundred. The long-standing UN target is 0.7%, more than double this.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "A hundred times too high."
+      ],
+      "action": "Work out 0.33% of a $50,000 income."
+    },
+    {
+      "id": "g17-005",
+      "src": "SDGR25",
+      "prompt": "How much of their national income do developing countries spend servicing debt?",
+      "options": [
+        "3.7%",
+        "0.37%",
+        "37%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "3.7% of gross national income — more than eleven times what donors give as a share of theirs.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Ten times too high."
+      ],
+      "action": "Compare 3.7% paid out with 0.33% given in aid."
+    },
+    {
+      "id": "g17-006",
+      "src": "SDGR25",
+      "prompt": "How much of the $1.4 trillion debt bill was interest alone?",
+      "options": [
+        "$40.5 billion",
+        "$405.3 billion",
+        "$4 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$405.3 billion in interest — up 37.1% in a single year, as global interest rates rose.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask what happens to debt costs when interest rates rise."
+    },
+    {
+      "id": "g17-007",
+      "src": "SDGR25",
+      "prompt": "Interest payments by developing countries rose by how much in one year?",
+      "options": [
+        "37.1%",
+        "3.7%",
+        "They fell"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "37.1% — a shock caused mostly by decisions taken in rich-country central banks, not by anything borrowers did.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Interest costs rose sharply."
+      ],
+      "action": "Ask who sets the interest rates that affect poor countries."
+    },
+    {
+      "id": "g17-008",
+      "src": "SDGR25",
+      "prompt": "How much of developing countries' export earnings goes to debt service?",
+      "options": [
+        "14.7%",
+        "1.47%",
+        "47%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "14.7% — about one dollar in seven earned from exports leaves again immediately to pay creditors.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Too high, though the real burden is heavy."
+      ],
+      "action": "Ask what a country could build with that 14.7%."
+    },
+    {
+      "id": "g17-009",
+      "src": "SDGR25",
+      "prompt": "How many people use the internet?",
+      "options": [
+        "55 million",
+        "550 million",
+        "5.5 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "5.5 billion — 68% of humanity, up from 40% in 2015. One of the fastest global changes ever measured.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what share of your school has internet at home."
+    },
+    {
+      "id": "g17-010",
+      "src": "SDGR25",
+      "prompt": "What share of the world is online?",
+      "options": [
+        "68%",
+        "38%",
+        "98%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "68% in 2024, up from 40% in 2015 — meaning about 2.6 billion people are still offline.",
+      "whyWrong": [
+        null,
+        "Far too pessimistic.",
+        "About a third remain unconnected."
+      ],
+      "action": "Calculate how many people 32% of the world is."
+    },
+    {
+      "id": "g17-011",
+      "src": "SDGR25",
+      "prompt": "Internet use in sub-Saharan Africa is:",
+      "options": [
+        "87%",
+        "67%",
+        "37%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "37% — barely half the global 68%. The digital divide follows the same map as almost every other SDG gap.",
+      "whyWrong": [
+        "Far too optimistic for the region.",
+        "Close to the global figure, not the regional one.",
+        null
+      ],
+      "action": "Compare 37% with the world's 68%."
+    },
+    {
+      "id": "g17-012",
+      "src": "SDGR25",
+      "prompt": "70% of men are online. What share of women are?",
+      "options": [
+        "70%",
+        "65%",
+        "40%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "65% — a five-point gender gap that persists worldwide, driven by cost, safety concerns and social restrictions.",
+      "whyWrong": [
+        "That's the figure for men.",
+        null,
+        "The gap is five points, not thirty."
+      ],
+      "action": "Ask what stops a woman getting online in some countries."
+    },
+    {
+      "id": "g17-013",
+      "src": "SDGR25",
+      "prompt": "Internet use went from 40% in 2015 to:",
+      "options": [
+        "90%",
+        "45%",
+        "68%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "68% in nine years — 28 percentage points, or roughly 2.6 billion more people connected.",
+      "whyWrong": [
+        "About a third remain offline.",
+        "The rise was far larger.",
+        null
+      ],
+      "action": "Ask what you did online today that was impossible in 2015."
+    },
+    {
+      "id": "g17-014",
+      "src": "SDGR25",
+      "prompt": "What share of world exports come from the least developed countries?",
+      "options": [
+        "31%",
+        "11%",
+        "1.1%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "1.1% — the 44 poorest countries, holding around 14% of the world's people, sell about one hundredth of its exports.",
+      "whyWrong": [
+        "Vastly too high.",
+        "Ten times too high.",
+        null
+      ],
+      "action": "Compare 1.1% of exports with their share of world population."
+    },
+    {
+      "id": "g17-015",
+      "src": "SDGR25",
+      "prompt": "Landlocked developing countries' share of world exports is:",
+      "options": [
+        "1.2%",
+        "12%",
+        "22%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.2% — barely more than LDCs. Having no coastline adds cost and delay to every single shipment.",
+      "whyWrong": [
+        null,
+        "Ten times too high.",
+        "Vastly too high."
+      ],
+      "action": "Trace a landlocked country's route to the nearest port."
+    },
+    {
+      "id": "g17-016",
+      "src": "SDGR25",
+      "prompt": "How much money did migrants send home in 2023?",
+      "options": [
+        "$86 billion",
+        "$861 billion",
+        "$8.6 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$861 billion — four times the world's total aid budget, sent by individuals to their own families.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Compare $861 billion in remittances with $212 billion in aid."
+    },
+    {
+      "id": "g17-017",
+      "src": "SDGR25",
+      "prompt": "How much of the $861 billion in remittances went to low- and middle-income countries?",
+      "options": [
+        "All of it",
+        "$64.7 billion",
+        "$647 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "$647 billion — three times the world's aid budget, arriving directly in household bank accounts rather than through governments.",
+      "whyWrong": [
+        "Some flows go between higher-income countries.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask why remittances reach families more directly than aid."
+    },
+    {
+      "id": "g17-018",
+      "src": "SDGR25",
+      "prompt": "Global foreign direct investment in 2024 was:",
+      "options": [
+        "$1.4 trillion",
+        "$140 billion",
+        "$14 billion"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$1.4 trillion, up 11% — but most of it flows between wealthy economies rather than to the countries that need capital most.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask what foreign direct investment actually buys."
+    },
+    {
+      "id": "g17-019",
+      "src": "SDGR25",
+      "prompt": "How much private finance was mobilised for development in 2023?",
+      "options": [
+        "$587 billion",
+        "$58.7 billion",
+        "$5.8 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$58.7 billion, alongside $303 billion in official resources — private money is growing but remains a fraction of public flows.",
+      "whyWrong": [
+        "Ten times too high.",
+        null,
+        "Ten times too low."
+      ],
+      "action": "Ask what makes an investor fund a project in a poor country."
+    },
+    {
+      "id": "g17-020",
+      "src": "SDGR25",
+      "prompt": "Official development resources in 2023 totalled:",
+      "options": [
+        "$30 billion",
+        "$303 billion",
+        "$3 trillion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "$303 billion — about a fifth of what developing countries paid out in debt service that year.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "Ten times too high."
+      ],
+      "action": "Divide $1.4 trillion by $303 billion."
+    },
+    {
+      "id": "g17-021",
+      "src": "SDGR25",
+      "prompt": "How many countries have statistical laws meeting international standards?",
+      "options": [
+        "159",
+        "59",
+        "15"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "159, up from 132 in 2019. Independent statistics are how any of these goals get measured honestly.",
+      "whyWrong": [
+        null,
+        "Far below the actual number.",
+        "Ten times too low."
+      ],
+      "action": "Look up who publishes your country's official statistics."
+    },
+    {
+      "id": "g17-022",
+      "src": "SDGR25",
+      "prompt": "How many countries have national statistical plans?",
+      "options": [
+        "197",
+        "37",
+        "137"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "137 have a plan — but only 95 are fully funded. Plans without budgets do not produce data.",
+      "whyWrong": [
+        "More than actually have plans.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what a country cannot do without good statistics."
+    },
+    {
+      "id": "g17-023",
+      "src": "SDGR25",
+      "prompt": "Of 137 countries with statistical plans, how many are fully funded?",
+      "options": [
+        "137",
+        "95",
+        "5"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Only 95. Forty-two countries have written a plan to measure their own development and have no money to carry it out.",
+      "whyWrong": [
+        "That's the number with plans, not funding.",
+        null,
+        "Far more than five are funded."
+      ],
+      "action": "Ask why measuring progress is itself expensive."
+    },
+    {
+      "id": "g17-024",
+      "src": "SDGR25",
+      "prompt": "The long-standing UN target for aid as a share of donor income is:",
+      "options": [
+        "0.33%",
+        "0.7%",
+        "5%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "0.7% — agreed in 1970 and met by only a handful of countries. Actual giving is 0.33%, less than half.",
+      "whyWrong": [
+        "That's what donors actually give.",
+        null,
+        "Far above any agreed target."
+      ],
+      "action": "Look up which countries actually meet 0.7%."
+    },
+    {
+      "id": "g17-025",
+      "src": "SDGR25",
+      "prompt": "Remittances of $861 billion compared with aid of $212 billion are:",
+      "options": [
+        "Much smaller",
+        "About the same",
+        "About four times larger"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Migrants send home about four times what all the world's governments give in aid — the largest financial flow to developing countries by far.",
+      "whyWrong": [
+        "Remittances vastly exceed aid.",
+        "The gap is fourfold.",
+        null
+      ],
+      "action": "Divide $861 billion by $212 billion."
+    },
+    {
+      "id": "g17-026",
+      "src": "SDGR25",
+      "prompt": "Developing countries paid $1.4 trillion in debt and received $212 billion in aid. The net flow was:",
+      "options": [
+        "Strongly inward",
+        "Strongly outward — more money left than arrived",
+        "Exactly balanced"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Debt service alone was more than six times aid received. On this measure, money flows from poorer countries to richer ones.",
+      "whyWrong": [
+        "Debt payments dwarfed aid.",
+        null,
+        "The imbalance is enormous."
+      ],
+      "action": "Subtract $212 billion from $1.4 trillion."
+    },
+    {
+      "id": "g17-027",
+      "src": "SDGR25",
+      "prompt": "Principal repayments by developing countries in 2023 were:",
+      "options": [
+        "$950.9 billion",
+        "$95 billion",
+        "$9.5 billion"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$950.9 billion, plus $405.3 billion of interest — together the $1.4 trillion total.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Add $950.9 billion and $405.3 billion."
+    },
+    {
+      "id": "g17-028",
+      "src": "SDGR25",
+      "prompt": "The difference between principal and interest on a debt is:",
+      "options": [
+        "They're the same thing",
+        "Interest is repaid first",
+        "Principal is the borrowed amount; interest is the extra cost of borrowing it"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Principal reduces what you owe; interest doesn't. Interest rising 37.1% means far more money spent without reducing the debt at all.",
+      "whyWrong": [
+        "They are distinct components of a repayment.",
+        "Payments usually cover interest and principal together.",
+        null
+      ],
+      "action": "Look at how a loan repayment splits into two parts."
+    },
+    {
+      "id": "g17-029",
+      "src": "SDGR25",
+      "prompt": "2.6 billion people still offline mostly lack:",
+      "options": [
+        "Interest in the internet",
+        "Electricity only",
+        "Affordable devices, data and in some places any coverage"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Coverage reaches 96% of people, so the barrier is mostly cost — the device and the data, not the signal.",
+      "whyWrong": [
+        "Demand is high wherever access becomes affordable.",
+        "Electricity matters, but affordability is the main barrier.",
+        null
+      ],
+      "action": "Price the cheapest smartphone and monthly data where you live."
+    },
+    {
+      "id": "g17-030",
+      "src": "SDGR25",
+      "prompt": "LDCs holding 1.1% of world exports while home to about 14% of people means:",
+      "options": [
+        "They're excluded from the trading system that drives global growth",
+        "They export more than their share",
+        "Trade is evenly spread"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A thirteenfold gap between population share and export share. Trade is the main engine of growth, and the poorest countries barely participate.",
+      "whyWrong": [
+        null,
+        "Their export share is far below their population share.",
+        "Trade is heavily concentrated in richer economies."
+      ],
+      "action": "Ask what a country needs before it can export."
+    },
+    {
+      "id": "g17-031",
+      "src": "SDGR25",
+      "prompt": "Interest costs rising 37.1% in one year hurts development because:",
+      "options": [
+        "Every extra dollar of interest is a dollar not spent on schools, clinics or roads",
+        "It doesn't",
+        "Interest funds development"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Debt service competes directly with public services. Many countries now spend more on interest than on health or education.",
+      "whyWrong": [
+        null,
+        "A $405 billion interest bill has enormous opportunity cost.",
+        "Interest is a cost, not a source of funding."
+      ],
+      "action": "Compare your country's debt interest with its health budget."
+    },
+    {
+      "id": "g17-032",
+      "src": "SDGR25",
+      "prompt": "Aid falling 7.1% in 2024 matters most because:",
+      "options": [
+        "It's a small technical change",
+        "Aid was already too high",
+        "It happens as conflict, debt and climate costs all rise together"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Conflict deaths rose 40%, displacement hit 123 million, and debt service hit $1.4 trillion — while the aid response shrank.",
+      "whyWrong": [
+        "It represents roughly $16 billion less.",
+        "Aid is 0.33% of donor income against a 0.7% target.",
+        null
+      ],
+      "action": "Ask what a donor country cut to reduce its aid."
+    },
+    {
+      "id": "g17-033",
+      "src": "SDGR25",
+      "prompt": "The five-point internet gender gap (70% men, 65% women) is largest in:",
+      "options": [
+        "High-income countries",
+        "It's identical everywhere",
+        "Lower-income countries, where the gap is far wider than the global average"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The global gap is five points, but in poorer regions cost, safety and social restrictions widen it considerably.",
+      "whyWrong": [
+        "Richer countries have near-parity.",
+        "The gap varies substantially by region.",
+        null
+      ],
+      "action": "Ask what a phone gives someone that they lose without one."
+    },
+    {
+      "id": "g17-034",
+      "src": "SDGR25",
+      "prompt": "Only 95 of 137 statistical plans being funded means:",
+      "options": [
+        "All plans are funded",
+        "42 countries plan to measure their development but cannot pay to do it",
+        "Statistics are free"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Censuses and surveys cost real money. Unfunded plans mean countries — and the world — flying blind on their own progress.",
+      "whyWrong": [
+        "Only 95 of 137 are fully funded.",
+        null,
+        "A national census costs tens of millions."
+      ],
+      "action": "Look up when your country last ran a census."
+    },
+    {
+      "id": "g17-035",
+      "src": "SDGR25",
+      "prompt": "$647 billion in remittances to developing countries reaches families:",
+      "options": [
+        "Through government programmes",
+        "Only as loans",
+        "Directly, without passing through any institution's priorities"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Remittances go straight to households, which is why they're so effective — and why the 6.7% transfer fee matters so much.",
+      "whyWrong": [
+        "Remittances bypass governments entirely.",
+        "They are gifts to family, not loans.",
+        null
+      ],
+      "action": "Ask what a family spends remittance money on first."
+    },
+    {
+      "id": "g17-036",
+      "src": "SDGR25",
+      "prompt": "Global FDI of $1.4 trillion rising 11% mostly benefits:",
+      "options": [
+        "Economies that already have infrastructure, skilled workers and stable rules",
+        "The poorest countries",
+        "Nobody"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Investors go where returns are safest — which means capital flows toward places that already have capital, not toward the greatest need.",
+      "whyWrong": [
+        null,
+        "LDCs receive a tiny share of global FDI.",
+        "FDI drives significant growth where it lands."
+      ],
+      "action": "Ask what an investor checks before building a factory abroad."
+    },
+    {
+      "id": "g17-037",
+      "src": "SDGR25",
+      "prompt": "Statistical laws meeting standards rose from 132 to 159 countries. This matters because:",
+      "options": [
+        "Independent statistics make it harder for a government to hide bad results",
+        "It doesn't",
+        "Statistics are only for economists"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "A statistics office that can't be overruled produces numbers a government may not like — which is exactly what accountability requires.",
+      "whyWrong": [
+        null,
+        "Independence is the foundation of credible measurement.",
+        "Every SDG target depends on measurement."
+      ],
+      "action": "Ask who could change an inconvenient official statistic."
+    },
+    {
+      "id": "g17-038",
+      "src": "SDGR25",
+      "prompt": "14.7% of exports going to debt service means a country must:",
+      "options": [
+        "Borrow more automatically",
+        "Export nothing",
+        "Earn foreign currency mainly to repay creditors before importing what it needs"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Debt is usually owed in foreign currency, so exports must cover repayments first — before medicine, fuel or food imports.",
+      "whyWrong": [
+        "Borrowing is a choice, not automatic.",
+        "Exports continue; a share of earnings is committed.",
+        null
+      ],
+      "action": "Ask why debts owed in dollars are riskier."
+    },
+    {
+      "id": "g17-039",
+      "src": "SDGR25",
+      "prompt": "Which flow to developing countries is largest?",
+      "options": [
+        "Aid at $212 billion",
+        "Remittances at $861 billion",
+        "Private development finance at $58.7 billion"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Remittances dwarf every other flow — ordinary workers abroad send home four times what all governments give in aid.",
+      "whyWrong": [
+        "Aid is a quarter the size of remittances.",
+        null,
+        "Mobilised private finance is the smallest of the three."
+      ],
+      "action": "Rank the three flows by size."
+    },
+    {
+      "id": "g17-040",
+      "src": "SDGR25",
+      "prompt": "Sub-Saharan Africa at 37% online while the world is at 68% means:",
+      "options": [
+        "The region leads the world",
+        "The region is roughly a decade behind on connectivity",
+        "There is no gap"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "37% is close to the world's 2015 level of 40% — the region is about where everyone else was nine years ago.",
+      "whyWrong": [
+        "It has the lowest connectivity of any region.",
+        null,
+        "The gap is 31 percentage points."
+      ],
+      "action": "Compare 37% today with the world's 40% in 2015."
+    },
+    {
+      "id": "g17-041",
+      "src": "SDGR25",
+      "prompt": "Why is Goal 17 different from the other sixteen?",
+      "options": [
+        "It's the least important",
+        "It's about money, data and cooperation — the means to achieve every other goal",
+        "It has no targets"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Goal 17 is the machinery: finance, trade, technology and statistics. Without it, the other sixteen have ambitions but no engine.",
+      "whyWrong": [
+        "Every other goal depends on it.",
+        null,
+        "It has 19 targets, more than most goals."
+      ],
+      "action": "Pick another goal and name what Goal 17 supplies it."
+    },
+    {
+      "id": "g17-042",
+      "src": "SDGR25",
+      "prompt": "Donors give 0.33% of income while borrowers pay 3.7% of income in debt service. That ratio is roughly:",
+      "options": [
+        "In developing countries' favour",
+        "Even",
+        "11 to 1 against developing countries"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Poorer countries pay out about eleven times more of their income than rich countries give — the clearest single number in Goal 17.",
+      "whyWrong": [
+        "The flow runs against developing countries.",
+        "The imbalance is more than tenfold.",
+        null
+      ],
+      "action": "Divide 3.7 by 0.33."
+    },
+    {
+      "id": "g17-043",
+      "src": "SDGR25",
+      "prompt": "Internet access rising from 40% to 68% in nine years is:",
+      "options": [
+        "One of the fastest technology adoptions in human history",
+        "Slow progress",
+        "A decline"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "About 2.6 billion people connected in under a decade — faster than electricity, telephones or literacy ever spread.",
+      "whyWrong": [
+        null,
+        "It is exceptionally rapid by historical standards.",
+        "Access increased substantially."
+      ],
+      "action": "Ask how long electricity took to reach two thirds of the world."
+    },
+    {
+      "id": "g17-044",
+      "src": "SDGR25",
+      "prompt": "LDCs and landlocked countries hold about 1.1% and 1.2% of exports. This suggests:",
+      "options": [
+        "They are the same countries",
+        "Being poor and being landlocked are separate but similar barriers to trade",
+        "Geography doesn't matter"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Poverty and geography each independently lock countries out of world trade — and some countries face both at once.",
+      "whyWrong": [
+        "The groups overlap but are not identical.",
+        null,
+        "Having no coastline adds major cost to every shipment."
+      ],
+      "action": "Find a country that is both an LDC and landlocked."
+    },
+    {
+      "id": "g17-045",
+      "src": "SDGR25",
+      "prompt": "Aid falling 7.1% while debt service hits $1.4 trillion creates:",
+      "options": [
+        "A balanced budget",
+        "A squeeze where less comes in exactly as more goes out",
+        "No effect"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Both flows moved the wrong way at the same time — the core reason many countries are cutting health and education budgets right now.",
+      "whyWrong": [
+        "The flows are severely imbalanced.",
+        null,
+        "It directly reduces money available for services."
+      ],
+      "action": "Ask what a government cuts first under a debt squeeze."
+    },
+    {
+      "id": "g17-046",
+      "src": "SDGR25",
+      "prompt": "$58.7 billion in mobilised private finance versus $303 billion official means:",
+      "options": [
+        "Private finance doesn't exist",
+        "Private money dominates",
+        "Private money is growing but still a fraction of public development finance"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "About one private dollar for every five public ones. Hopes that private capital would fill the SDG funding gap have not yet materialised.",
+      "whyWrong": [
+        "It reached $58.7 billion in 2023.",
+        "Official flows are five times larger.",
+        null
+      ],
+      "action": "Ask what would attract more private money to development."
+    },
+    {
+      "id": "g17-047",
+      "src": "SDGR25",
+      "prompt": "Which Goal 17 indicator improved most clearly?",
+      "options": [
+        "Internet access, from 40% to 68%",
+        "Aid volumes",
+        "Debt burdens"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Connectivity is the standout success. Aid fell 7.1% in 2024 and debt service reached a record $1.4 trillion.",
+      "whyWrong": [
+        null,
+        "Aid declined in 2024.",
+        "Debt service hit a record high."
+      ],
+      "action": "Ask what made internet access spread so fast."
+    },
+    {
+      "id": "g17-048",
+      "src": "SDGR25",
+      "prompt": "Good statistics matter to the SDGs because:",
+      "options": [
+        "Every target has an indicator, and unmeasured progress cannot be verified or funded",
+        "They don't",
+        "Only rich countries need data"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "All 17 goals rest on measurement — which is why 42 unfunded national statistical plans is a bigger problem than it sounds.",
+      "whyWrong": [
+        null,
+        "The entire framework depends on measurement.",
+        "159 countries have compliant statistical laws."
+      ],
+      "action": "Pick a goal and find the indicator used to track it."
+    },
+    {
+      "id": "g17-049",
+      "src": "SDGR25",
+      "prompt": "The 'partnership' in Goal 17 mainly means:",
+      "options": [
+        "Countries competing",
+        "One country funding everything",
+        "Countries, companies and institutions cooperating on finance, trade, technology and data"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "No country can deliver the goals alone — debt, trade rules, climate and technology all cross borders by definition.",
+      "whyWrong": [
+        "Competition alone doesn't deliver shared goals.",
+        "Even the largest donors give a fraction of what's needed.",
+        null
+      ],
+      "action": "Name one problem your country cannot solve alone."
+    },
+    {
+      "id": "g17-050",
+      "src": "SDGR25",
+      "prompt": "The single most important Goal 17 number is:",
+      "options": [
+        "$1.4 trillion in debt service against $212 billion in aid",
+        "159 statistical laws",
+        "$1.4 trillion in global FDI"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Developing countries pay out more than six times what they receive in aid. Until that reverses, the other sixteen goals lack their funding.",
+      "whyWrong": [
+        null,
+        "Important, but not the binding constraint.",
+        "Significant, but mostly flowing between rich economies."
+      ],
+      "action": "Look up what 'debt relief' has achieved in the past."
+    }
+  ]
+}
