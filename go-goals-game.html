@@ -437,6 +437,11 @@
   .persona-front .emoji{font-size:52px; line-height:1;}
   .persona-front .pname{font-weight:800; font-size:16px; margin-top:8px; color:#4b2278; line-height:1.25;}
   .persona-blurb{ font-size:14px; color:var(--ink); line-height:1.55; text-align:left; margin-top:4px; }
+  .brief-truth{
+    margin:10px auto 0; max-width:520px; background:#fff6e5; border:1px solid #f0d9a8;
+    border-radius:10px; padding:10px 14px; font-size:13px; line-height:1.55; color:#6b4e12; text-align:left;
+  }
+  .brief-truth b{ color:#8a6300; }
   .persona-where{ font-size:12.5px; color:var(--muted); font-weight:600; margin-top:-4px; margin-bottom:8px; }
   .stance-box{
     margin:2px 0 12px; background:#f4ecfb; border:1px solid #ddc6f2; border-radius:10px;
@@ -788,6 +793,7 @@
     <div class="brief-name" id="briefName"></div>
     <div class="brief-sub" id="briefSub"></div>
     <div class="brief-blurb" id="briefBlurb"></div>
+    <div class="brief-truth" id="briefTruth"></div>
     <div class="brief-stats">
       <div class="brief-stat">
         <div class="num" id="briefSpeed"></div>
@@ -1166,24 +1172,41 @@
      resources = the SDG numbers this nation has the capacity to address in a single
      question. Any goal NOT in this list costs the team two correct answers instead. */
   const NATIONS = [
-    { name:"Highvale", sub:"Wealthy Industrial Nation", emoji:"🏙️", tier:"A", rollMultiplier:2,
-      blurb:"Deep public funding, universal services and world-class infrastructure — but one of the highest consumption footprints on the planet.",
-      resources:[1,2,3,4,6,7,8,9,11,16] },
-    { name:"Meridian Federation", sub:"Wealthy Service Economy", emoji:"🏛️", tier:"A", rollMultiplier:2,
-      blurb:"Wealthy, highly educated and politically stable, with strong institutions — though it imports most of its food and energy.",
-      resources:[1,3,4,5,8,9,10,16,17] },
-    { name:"Terraverde", sub:"Fast-Growing Economy", emoji:"🏭", tier:"B", rollMultiplier:1,
-      blurb:"Industrialising fast with a booming young workforce, but public services and environmental protection haven't caught up.",
-      resources:[1,2,8,9,11,12] },
-    { name:"Kaya Republic", sub:"Agricultural Middle-Income Nation", emoji:"🌾", tier:"B", rollMultiplier:1,
-      blurb:"Rich farmland and deep ecological knowledge feed the region, but schools, clinics and power grids are stretched thin.",
-      resources:[2,6,12,13,15] },
-    { name:"Isla Menor", sub:"Small Island Developing State", emoji:"🏝️", tier:"C", rollMultiplier:0.5,
-      blurb:"Unmatched expertise in oceans, climate and renewable power — and almost no budget, land or leverage to act on anything else.",
-      resources:[7,13,14] },
-    { name:"Sahel Union", sub:"Post-Conflict Nation", emoji:"🕊️", tier:"C", rollMultiplier:0.5,
-      blurb:"Rebuilding after years of conflict. Strong community bonds and hard-won peacebuilding skill, but almost every system starts from zero.",
-      resources:[2,16,17] }
+    { name:"Finland", flag:"\ud83c\uddeb\ud83c\uddee", emoji:"\ud83c\uddeb\ud83c\uddee",
+      sub:"SDG Index #1 of 169 \u2014 score 87.4", tier:"A", rollMultiplier:2,
+      blurb:"The best-performing country in the world on the SDGs. Universal healthcare and schooling, 99.4% sanitation, 93.7% online, and the world's cleanest government scoring (CPI 88).",
+      truth:"Even the world's #1 fails four goals \u2014 climate, consumption, food systems and land \u2014 because of how much it consumes and imports.",
+      resources:[1,3,4,5,6,7,8,9,10,11,14,16,17] },
+
+    { name:"Germany", flag:"\ud83c\udde9\ud83c\uddea", emoji:"\ud83c\udde9\ud83c\uddea",
+      sub:"SDG Index #5 of 169 \u2014 score 84.0", tier:"A", rollMultiplier:2,
+      blurb:"Europe's largest economy, with 59% renewable electricity and 45.3% of its waters protected \u2014 the highest marine protection of any nation here.",
+      truth:"It emits 6.8 tonnes of CO\u2082 per person \u2014 the most of any nation in this game, and 68 times Chad's.",
+      resources:[1,3,4,5,6,7,8,9,10,14,16,17] },
+
+    { name:"Viet Nam", flag:"\ud83c\uddfb\ud83c\uddf3", emoji:"\ud83c\uddfb\ud83c\uddf3",
+      sub:"SDG Index #58 of 169 \u2014 score 73.8", tier:"B", rollMultiplier:1,
+      blurb:"One of the fastest development stories on Earth: poverty at $3/day is down to 1.6%, literacy is 96.1%, and 31.4% of its parliament is women.",
+      truth:"Its air is among the dirtiest here (PM2.5 of 25.6, five times the WHO guideline) and just 0.5% of its seas are protected.",
+      resources:[1,3,4,5,6,8,9,13] },
+
+    { name:"Brazil", flag:"\ud83c\udde7\ud83c\uddf7", emoji:"\ud83c\udde7\ud83c\uddf7",
+      sub:"SDG Index #53 of 169 \u2014 score 74.2", tier:"B", rollMultiplier:1,
+      blurb:"86.6% of its electricity is renewable \u2014 the highest here by far \u2014 and it protects 26.6% of its ocean while emitting only 2.3 tonnes of CO\u2082 per person.",
+      truth:"It is also one of the most unequal countries here (Gini 0.5), and only 18.1% of its parliament is women \u2014 lower than Chad's.",
+      resources:[1,2,3,7,9,13,14] },
+
+    { name:"Fiji", flag:"\ud83c\uddeb\ud83c\uddef", emoji:"\ud83c\uddeb\ud83c\uddef",
+      sub:"SDG Index #62 of 169 \u2014 score 73.4", tier:"B", rollMultiplier:1,
+      blurb:"A Pacific island state on the front line of climate change, with clean air (PM2.5 5.7), 63.5% renewable electricity and just 1.6 tonnes of CO\u2082 per person.",
+      truth:"Only 9.1% of its MPs are women \u2014 the lowest here \u2014 and life expectancy is 67.3 years, over 14 years below Finland's.",
+      resources:[1,7,10,11,13,16] },
+
+    { name:"Chad", flag:"\ud83c\uddf9\ud83c\udde9", emoji:"\ud83c\uddf9\ud83c\udde9",
+      sub:"SDG Index #167 of 169 \u2014 score 43.9", tier:"C", rollMultiplier:0.5,
+      blurb:"A landlocked Sahel nation hosting hundreds of thousands of refugees. 13.4% have electricity, 13.1% have basic sanitation, and 12.6% use the internet.",
+      truth:"It emits 0.1 tonnes of CO\u2082 per person \u2014 the lowest here by far \u2014 and after a 2021 quota law, 33.5% of its parliament is women: more than Germany or Brazil.",
+      resources:[5,13,15] }
   ];
 
   /* ---------------- Key behaviors society must adopt for each goal ----------------
@@ -2335,6 +2358,8 @@
     document.getElementById('briefName').textContent = p.name + ' — ' + p.nation.name;
     document.getElementById('briefSub').textContent = p.nation.sub;
     document.getElementById('briefBlurb').textContent = p.nation.blurb;
+    document.getElementById('briefTruth').innerHTML =
+      '<b>But:</b> ' + esc(p.nation.truth);
     document.getElementById('briefSpeed').textContent = speedLabel(p.nation.rollMultiplier);
     document.getElementById('briefResCount').textContent = p.nation.resources.length + '/17';
     buildNationDots(document.getElementById('briefDots'), p.nation);
