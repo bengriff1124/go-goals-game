@@ -1,0 +1,914 @@
+{
+  "goal": 3,
+  "goalName": "Good Health and Well-being",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 3",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-03/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g03-001",
+      "src": "SDGR25",
+      "prompt": "How many children under 5 died in 2023?",
+      "options": [
+        "4.8 million",
+        "480,000",
+        "48,000"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "4.8 million children under five died — most from causes we already know how to prevent, like infection, birth complications and malnutrition.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Look up the top three causes of death for young children."
+    },
+    {
+      "id": "g03-002",
+      "src": "SDGR25",
+      "prompt": "Malaria cases went which way between 2015 and 2023?",
+      "options": [
+        "Unchanged",
+        "Down, from 263m to 226m",
+        "Up, from 226m to 263m"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Malaria cases ROSE from 226 million to 263 million. It's one of the SDG measures moving backwards.",
+      "whyWrong": [
+        "There was a substantial rise.",
+        "Cases increased by around 37 million.",
+        null
+      ],
+      "action": "Look up how malaria is transmitted and prevented."
+    },
+    {
+      "id": "g03-003",
+      "src": "SDGR25",
+      "prompt": "Since 2000, how many malaria deaths have been prevented worldwide?",
+      "options": [
+        "12.7 million",
+        "127,000",
+        "1,270"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "12.7 million deaths averted, and 2.2 billion cases prevented. Even while cases rise, the fight against malaria has saved an extraordinary number of lives.",
+      "whyWrong": [
+        null,
+        "A hundred times too low.",
+        "Vastly too low."
+      ],
+      "action": "Find out what a bed net costs and how many lives they've saved."
+    },
+    {
+      "id": "g03-004",
+      "src": "SDGR25",
+      "prompt": "How many women died in pregnancy or childbirth in 2023?",
+      "options": [
+        "26,000",
+        "260,000",
+        "2,600"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "260,000 women — roughly one every two minutes. Almost all of these deaths are preventable with skilled care.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Work out how many that is per day."
+    },
+    {
+      "id": "g03-005",
+      "src": "SDGR25",
+      "prompt": "A woman in a low-income country is how much more likely to die giving birth than one in a high-income country?",
+      "options": [
+        "No difference",
+        "About twice",
+        "About 35 times"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "346 deaths per 100,000 births in low-income countries against 10 in high-income ones — roughly 35 times the risk, for the same biological event.",
+      "whyWrong": [
+        "It's one of the widest health gaps in the world.",
+        "The gap is enormous, not small.",
+        null
+      ],
+      "action": "Ask what makes childbirth safe — and what's missing where it isn't."
+    },
+    {
+      "id": "g03-006",
+      "src": "SDGR25",
+      "prompt": "In countries affected by conflict, the maternal death rate is:",
+      "options": [
+        "5 per 100,000",
+        "50 per 100,000",
+        "504 per 100,000 births"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "504 per 100,000 — more than two and a half times the global average of 197. War destroys the clinics and roads that make birth survivable.",
+      "whyWrong": [
+        "That's close to the high-income figure.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask what happens to a hospital during a war."
+    },
+    {
+      "id": "g03-007",
+      "src": "SDGR25",
+      "prompt": "How many people worldwide are living with HIV?",
+      "options": [
+        "40.8 million",
+        "4 million",
+        "400,000"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "40.8 million people. Thanks to treatment, most now live long lives — but 9.2 million still have no access to it.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Look up how HIV treatment changed life expectancy."
+    },
+    {
+      "id": "g03-008",
+      "src": "SDGR25",
+      "prompt": "AIDS deaths fell from 1.4 million in 2010 to what in 2024?",
+      "options": [
+        "50,000",
+        "1.2 million",
+        "630,000"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "630,000 — cut by more than half in 14 years. One of the biggest public health successes in modern history.",
+      "whyWrong": [
+        "Too optimistic — the toll is still enormous.",
+        "The fall was much steeper than this.",
+        null
+      ],
+      "action": "Ask what made AIDS deaths fall so fast."
+    },
+    {
+      "id": "g03-009",
+      "src": "SDGR25",
+      "prompt": "How many people fell ill with tuberculosis in 2023?",
+      "options": [
+        "108,000",
+        "1 million",
+        "10.8 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "10.8 million new cases and 1.25 million deaths. TB is curable and still kills more people than almost any other infection.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Look up how long TB treatment takes."
+    },
+    {
+      "id": "g03-010",
+      "src": "SDGR25",
+      "prompt": "How much did COVID-19 cut global life expectancy?",
+      "options": [
+        "By 1.8 years",
+        "By 10 years",
+        "It didn't change it"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.8 years wiped off global life expectancy — reversing roughly a decade of progress in a single event.",
+      "whyWrong": [
+        null,
+        "Severe, but not that severe.",
+        "It caused the largest drop in modern records."
+      ],
+      "action": "Ask an adult what changed in their life in 2020."
+    },
+    {
+      "id": "g03-011",
+      "src": "SDGR25",
+      "prompt": "How many health workers is the world short of?",
+      "options": [
+        "1.4 million",
+        "14.7 million",
+        "140,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "A shortage of 14.7 million doctors, nurses and midwives — projected to still be 11.1 million by 2030.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Find out how long it takes to train a nurse."
+    },
+    {
+      "id": "g03-012",
+      "src": "SDGR25",
+      "prompt": "How many people use tobacco worldwide?",
+      "options": [
+        "12 million",
+        "125 million",
+        "1.25 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "1.25 billion people. The good news: use has dropped by a third in two decades, with 118 million fewer users than in 2005.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Look up how many deaths a year tobacco causes."
+    },
+    {
+      "id": "g03-013",
+      "src": "SDGR25",
+      "prompt": "How many people died by suicide in 2021?",
+      "options": [
+        "7,000",
+        "72,000",
+        "727,000"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "727,000 people. The rate has fallen from 12.5 to 9.2 per 100,000 since 2000, but it remains a leading cause of death among young people.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Find out what mental health support exists at your school."
+    },
+    {
+      "id": "g03-014",
+      "src": "SDGR25",
+      "prompt": "Non-communicable diseases — heart disease, cancer, diabetes — killed how many people under 70 in 2021?",
+      "options": [
+        "18 million",
+        "1.8 million",
+        "180,000"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "18 million people died before 70 from diseases that aren't infectious. They're now the world's biggest killers, not epidemics.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Name three habits that lower your risk of these diseases."
+    },
+    {
+      "id": "g03-015",
+      "src": "SDGR25",
+      "prompt": "What share of babies are born with a skilled health worker present?",
+      "options": [
+        "87%",
+        "50%",
+        "99%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "87%, up from 80% in 2015. That leaves roughly one birth in eight happening without trained help.",
+      "whyWrong": [
+        null,
+        "Too pessimistic — coverage has improved a lot.",
+        "Too optimistic — millions of births still lack skilled care."
+      ],
+      "action": "Ask what a midwife actually does during a birth."
+    },
+    {
+      "id": "g03-016",
+      "src": "SDGR25",
+      "prompt": "How many people need treatment for neglected tropical diseases?",
+      "options": [
+        "150 million",
+        "1.5 billion",
+        "15 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 1.495 billion people — down from 2.19 billion in 2010. These are diseases like river blindness that mostly affect the poorest.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Look up one neglected tropical disease and who it affects."
+    },
+    {
+      "id": "g03-017",
+      "src": "SDGR25",
+      "prompt": "How many countries have eliminated at least one neglected tropical disease?",
+      "options": [
+        "5",
+        "54",
+        "150"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "54 countries by the end of 2024 — proof that diseases affecting the poorest can be beaten when there's focus and funding.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "More countries than have achieved it."
+      ],
+      "action": "Find one country that eliminated a disease and how."
+    },
+    {
+      "id": "g03-018",
+      "src": "SDGR25",
+      "prompt": "How many countries are now certified malaria-free?",
+      "options": [
+        "44",
+        "4",
+        "120"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "44 countries and one territory. Malaria used to be common in Europe and North America — it was eliminated there, which shows it can be beaten.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "Too many — malaria remains endemic in much of the world."
+      ],
+      "action": "Check whether malaria ever existed where you live."
+    },
+    {
+      "id": "g03-019",
+      "src": "SDGR25",
+      "prompt": "What share of children get the full three doses of the DTP vaccine?",
+      "options": [
+        "40%",
+        "99%",
+        "84%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "84% in 2023 — meaning roughly one child in six misses out on protection against diphtheria, tetanus and whooping cough.",
+      "whyWrong": [
+        "Too pessimistic — most children are vaccinated.",
+        "Too optimistic — global coverage has plateaued below this.",
+        null
+      ],
+      "action": "Find out which vaccines you had as a baby."
+    },
+    {
+      "id": "g03-020",
+      "src": "SDGR25",
+      "prompt": "Aid for health nearly halved recently. From what to what?",
+      "options": [
+        "It stayed flat",
+        "$13.4bn to $22.1bn",
+        "$22.1bn (2022) to $13.4bn (2023)"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "From $22.1 billion to $13.4 billion in a single year — a sharp cut at a time when health systems were still recovering from COVID.",
+      "whyWrong": [
+        "It dropped by nearly 40%.",
+        "It fell rather than rose.",
+        null
+      ],
+      "action": "Ask what a health system loses when funding drops suddenly."
+    },
+    {
+      "id": "g03-021",
+      "src": "SDGR25",
+      "prompt": "Child deaths under 5 fell from 44 per 1,000 births in 2015 to what in 2023?",
+      "options": [
+        "37",
+        "50",
+        "10"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "37 per 1,000 — real progress, though still meaning 4.8 million children died in a single year.",
+      "whyWrong": [
+        null,
+        "Child mortality fell rather than rose.",
+        "Too optimistic — that's closer to wealthy-country rates."
+      ],
+      "action": "Notice that progress and tragedy can be true at once."
+    },
+    {
+      "id": "g03-022",
+      "src": "SDGR25",
+      "prompt": "Newborn deaths — babies dying in their first month — are what share of under-5 deaths?",
+      "options": [
+        "About 5%",
+        "Nearly half",
+        "Almost none"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "At 17 per 1,000 out of 37 total, newborn deaths are nearly half of all under-5 deaths. The first month of life is by far the most dangerous.",
+      "whyWrong": [
+        "Far too low — the newborn period dominates child mortality.",
+        null,
+        "It's the single largest share."
+      ],
+      "action": "Ask why the first 28 days are so risky."
+    },
+    {
+      "id": "g03-023",
+      "src": "SDGR25",
+      "prompt": "How many teenage girls gave birth in 2024?",
+      "options": [
+        "1.2 million",
+        "12.4 million",
+        "124,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "12.4 million births to mothers aged 15–19 — down from 13.9 million in 2015, but still enormous.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Look up how early pregnancy affects a girl's schooling."
+    },
+    {
+      "id": "g03-024",
+      "src": "SDGR25",
+      "prompt": "How much did healthy life expectancy improve between 2000 and 2019?",
+      "options": [
+        "By 6 months",
+        "By over 5 years",
+        "It fell"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "More than five extra years of healthy life in under two decades — then COVID took 1.8 of them back.",
+      "whyWrong": [
+        "The gain was around ten times larger.",
+        null,
+        "It rose substantially before the pandemic."
+      ],
+      "action": "Ask what improvements added those five years."
+    },
+    {
+      "id": "g03-025",
+      "src": "SDGR25",
+      "prompt": "How many people with HIV still have no access to treatment?",
+      "options": [
+        "920,000",
+        "9.2 million",
+        "92,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "9.2 million people. Treatment exists, works, and keeps people alive — they simply can't get it.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Ask what stops a working medicine from reaching people."
+    },
+    {
+      "id": "g03-026",
+      "src": "SDGR25",
+      "prompt": "How many children are living with HIV?",
+      "options": [
+        "1.4 million",
+        "140,000",
+        "14,000"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.4 million children. Most were infected around birth — which is preventable when mothers get treatment.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Look up how mother-to-child HIV transmission is prevented."
+    },
+    {
+      "id": "g03-027",
+      "src": "SDGR25",
+      "prompt": "Alcohol consumption per person has moved which way since 2010?",
+      "options": [
+        "Up, 5.0 to 5.7 litres",
+        "Down, 5.7 to 5.0 litres",
+        "Unchanged"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Down from 5.7 to 5.0 litres of pure alcohol per person per year. Around 56% of adults don't drink at all.",
+      "whyWrong": [
+        "It fell rather than rose.",
+        null,
+        "There was a measurable decline."
+      ],
+      "action": "Look up how alcohol affects a developing brain."
+    },
+    {
+      "id": "g03-028",
+      "src": "SDGR25",
+      "prompt": "Tobacco use has fallen by roughly how much in two decades?",
+      "options": [
+        "It hasn't fallen",
+        "A tenth",
+        "A third"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Down by about a third, with 118 million fewer users than in 2005 — one of the great public health wins, driven by taxes, bans and warnings.",
+      "whyWrong": [
+        "It has fallen substantially.",
+        "The decline was much larger.",
+        null
+      ],
+      "action": "Find out what your country did to reduce smoking."
+    },
+    {
+      "id": "g03-029",
+      "src": "SDGR25",
+      "prompt": "The global health workforce is about how large?",
+      "options": [
+        "7 million",
+        "70 million people",
+        "700,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 70 million health workers — and still 14.7 million short of what's needed.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Count how many health workers you've met in your life."
+    },
+    {
+      "id": "g03-030",
+      "src": "SDGR25",
+      "prompt": "Maternal deaths fell from 228 per 100,000 births in 2015 to what in 2023?",
+      "options": [
+        "197",
+        "150",
+        "300"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "197 per 100,000 — progress, but far too slow to reach the 2030 target of under 70.",
+      "whyWrong": [
+        null,
+        "Too optimistic — progress has been slower than this.",
+        "Maternal mortality fell rather than rose."
+      ],
+      "action": "Work out how far 197 is from the target of 70."
+    },
+    {
+      "id": "g03-031",
+      "src": "SDGR25",
+      "prompt": "Which kills more people each year: tuberculosis or AIDS?",
+      "options": [
+        "They're equal",
+        "AIDS",
+        "Tuberculosis"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "TB killed 1.25 million people in 2023 against 630,000 AIDS deaths in 2024 — about twice as many, from a disease that's curable with antibiotics.",
+      "whyWrong": [
+        "TB kills roughly twice as many.",
+        "AIDS deaths have more than halved since 2010.",
+        null
+      ],
+      "action": "Ask why a curable disease still kills over a million people."
+    },
+    {
+      "id": "g03-032",
+      "src": "SDGR25",
+      "prompt": "What share of married women can make their own decisions about their reproductive health?",
+      "options": [
+        "20%",
+        "95%",
+        "56.3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 56.3% — meaning nearly half of married women can't fully decide about contraception or their own healthcare.",
+      "whyWrong": [
+        "Too pessimistic, though the real figure is troubling.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Ask what 'full decision-making power' should mean."
+    },
+    {
+      "id": "g03-033",
+      "src": "SDGR25",
+      "prompt": "The risk of dying early from non-communicable disease has moved which way since 2000?",
+      "options": [
+        "Down, 22.5% to 18%",
+        "Up, 18% to 22.5%",
+        "Unchanged"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Down from 22.5% to 18% — but progress stalled after 2015, and these diseases still kill 18 million people under 70 every year.",
+      "whyWrong": [
+        null,
+        "The risk fell rather than rose.",
+        "There was a clear improvement, then a plateau."
+      ],
+      "action": "Name the four main non-communicable diseases."
+    },
+    {
+      "id": "g03-034",
+      "src": "SDGR25",
+      "prompt": "Since 2000, how many malaria cases have been prevented?",
+      "options": [
+        "22,000",
+        "2.2 million",
+        "2.2 billion"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "2.2 billion cases prevented — more than a quarter of everyone alive today, spared an illness that might have killed them.",
+      "whyWrong": [
+        "Vastly too low.",
+        "A thousand times too low.",
+        null
+      ],
+      "action": "Ask which tools prevented those 2.2 billion cases."
+    },
+    {
+      "id": "g03-035",
+      "src": "SDGR25",
+      "prompt": "Least developed countries received what share of health aid in 2023?",
+      "options": [
+        "40%",
+        "5%",
+        "90%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "$5.5 billion of $13.4 billion — about 40% went to the least developed countries, where health needs are greatest.",
+      "whyWrong": [
+        null,
+        "Far too low a share.",
+        "Too high — most aid is spread more widely."
+      ],
+      "action": "Ask whether aid should go where need is greatest."
+    },
+    {
+      "id": "g03-036",
+      "src": "SDGR25",
+      "prompt": "The suicide rate has moved which way since 2000?",
+      "options": [
+        "Up, 9.2 to 12.5",
+        "Down, 12.5 to 9.2 per 100,000",
+        "Unchanged"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Down from 12.5 to 9.2 per 100,000. Real progress — and it still means 727,000 deaths a year.",
+      "whyWrong": [
+        "The rate fell rather than rose.",
+        null,
+        "There was a substantial decline."
+      ],
+      "action": "Find out who someone can talk to if they're struggling."
+    },
+    {
+      "id": "g03-037",
+      "src": "SDGR25",
+      "prompt": "TB rates are falling, but by how much between 2015 and 2023?",
+      "options": [
+        "80%",
+        "50%",
+        "8.3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Just 8.3% in eight years — far too slow. At this pace TB will still be killing over a million people a year for decades.",
+      "whyWrong": [
+        "Progress has been much slower than this.",
+        "The decline was far smaller.",
+        null
+      ],
+      "action": "Ask what would speed up progress on TB."
+    },
+    {
+      "id": "g03-038",
+      "src": "SDGR25",
+      "prompt": "Which age group is most at risk of dying in childhood?",
+      "options": [
+        "Children aged 3–5",
+        "Children aged 1–2",
+        "Newborns in their first month"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The first month of life. Newborn deaths are 17 of the 37 per 1,000 under-5 deaths — nearly half.",
+      "whyWrong": [
+        "This is the safest of the three.",
+        "Risk drops sharply after the newborn period.",
+        null
+      ],
+      "action": "Ask what care a newborn needs in the first 48 hours."
+    },
+    {
+      "id": "g03-039",
+      "src": "SDGR25",
+      "prompt": "The health worker shortage is projected to be what by 2030?",
+      "options": [
+        "11.1 million",
+        "Zero",
+        "50 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "11.1 million — improving from today's 14.7 million, but still an enormous gap at the SDG deadline.",
+      "whyWrong": [
+        null,
+        "The gap narrows but doesn't close.",
+        "Too high — the shortage is projected to shrink."
+      ],
+      "action": "Ask what would make more people train as nurses."
+    },
+    {
+      "id": "g03-040",
+      "src": "SDGR25",
+      "prompt": "Adolescent birth rates fell from 45.9 per 1,000 in 2015 to what in 2024?",
+      "options": [
+        "60",
+        "38.3",
+        "10"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "38.3 per 1,000 — a meaningful drop, closely linked to girls staying in school longer.",
+      "whyWrong": [
+        "The rate fell rather than rose.",
+        null,
+        "Too optimistic — the decline was steady, not dramatic."
+      ],
+      "action": "Ask how staying in school affects when someone starts a family."
+    },
+    {
+      "id": "g03-041",
+      "src": "SDGR25",
+      "prompt": "How many new HIV infections were there in 2024?",
+      "options": [
+        "1.3 million",
+        "130,000",
+        "13,000"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "1.3 million new infections. Despite treatment successes, prevention is still falling well short.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask why treatment progress outpaced prevention."
+    },
+    {
+      "id": "g03-042",
+      "src": "SDGR25",
+      "prompt": "Modern contraceptive use has barely moved since 2015. What is it now?",
+      "options": [
+        "50%",
+        "77.2%",
+        "95%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "77.2%, up from just 76.4% in 2015 — almost no change in a decade, leaving millions unable to plan their families.",
+      "whyWrong": [
+        "Too pessimistic — coverage is above three-quarters.",
+        null,
+        "Too optimistic — nearly a quarter still lack access."
+      ],
+      "action": "Ask what stops someone accessing family planning."
+    },
+    {
+      "id": "g03-043",
+      "src": "SDGR25",
+      "prompt": "Which region has the highest maternal death rate?",
+      "options": [
+        "Low-income countries at 346 per 100,000",
+        "High-income countries",
+        "They're about equal"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Low-income countries at 346 per 100,000, against 10 in high-income countries — a 35-fold gap.",
+      "whyWrong": [
+        null,
+        "High-income countries have the lowest rate at 10.",
+        "One of the widest gaps in global health."
+      ],
+      "action": "Ask what a hospital needs to make birth safe."
+    },
+    {
+      "id": "g03-044",
+      "src": "SDGR25",
+      "prompt": "Neglected tropical diseases affected 2.19 billion people in 2010. What about now?",
+      "options": [
+        "3 billion",
+        "1.5 billion",
+        "100 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 1.495 billion — nearly 700 million fewer people needing treatment. Enormous progress on diseases that get almost no attention.",
+      "whyWrong": [
+        "The number fell substantially rather than rising.",
+        null,
+        "Too optimistic — over a billion people are still affected."
+      ],
+      "action": "Ask why these diseases are called 'neglected'."
+    },
+    {
+      "id": "g03-045",
+      "src": "SDGR25",
+      "prompt": "Malaria's incidence rate in 2023 was about:",
+      "options": [
+        "6 per 1,000",
+        "60 cases per 1,000 at risk",
+        "600 per 1,000"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "60.4 cases per 1,000 people at risk — meaning roughly 1 in 17 people living in malaria zones catch it each year.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "That would be more than half of everyone at risk."
+      ],
+      "action": "Work out what 60 per 1,000 means as a fraction."
+    },
+    {
+      "id": "g03-046",
+      "src": "SDGR25",
+      "prompt": "What's the biggest killer of people under 70 worldwide?",
+      "options": [
+        "Non-communicable diseases",
+        "Infectious diseases",
+        "Accidents"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Non-communicable diseases — heart disease, cancer, diabetes and lung disease — killed 18 million people under 70 in 2021. The world's disease burden has shifted.",
+      "whyWrong": [
+        null,
+        "Infections still kill millions, but NCDs now dominate.",
+        "Accidents are a serious cause but far smaller."
+      ],
+      "action": "Name the four main non-communicable diseases."
+    },
+    {
+      "id": "g03-047",
+      "src": "SDGR25",
+      "prompt": "How many people avoid alcohol entirely?",
+      "options": [
+        "About 10%",
+        "About 56% of adults",
+        "About 90%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "About 56% of people aged 15 and over don't drink at all — the majority of the world, which surprises most people.",
+      "whyWrong": [
+        "Far too low — most adults worldwide don't drink.",
+        null,
+        "Too high, though abstainers are the majority."
+      ],
+      "action": "Ask whether that number matches what you'd assumed."
+    },
+    {
+      "id": "g03-048",
+      "src": "SDGR25",
+      "prompt": "Skilled birth attendance rose from 80% in 2015 to what by 2024?",
+      "options": [
+        "82%",
+        "95%",
+        "87%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "87% — seven percentage points in nine years, meaning millions more women giving birth with trained help.",
+      "whyWrong": [
+        "The improvement was larger than this.",
+        "Too optimistic — around one birth in eight still lacks skilled care.",
+        null
+      ],
+      "action": "Ask what difference a trained attendant makes at a birth."
+    },
+    {
+      "id": "g03-049",
+      "src": "SDGR25",
+      "prompt": "Health aid dropped sharply in 2023. Why does timing matter?",
+      "options": [
+        "Health needs had disappeared",
+        "It fell while systems were still recovering from COVID",
+        "Aid was replaced by something better"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Funding fell from $22.1bn to $13.4bn just as countries were rebuilding after the pandemic and facing rising malaria and TB.",
+      "whyWrong": [
+        "Malaria cases rose and 14.7 million health workers are still missing.",
+        null,
+        "No replacement source made up the gap."
+      ],
+      "action": "Ask what a clinic cuts first when its budget falls."
+    },
+    {
+      "id": "g03-050",
+      "src": "SDGR25",
+      "prompt": "Which of these is the clearest good-news story in global health?",
+      "options": [
+        "AIDS deaths more than halved since 2010",
+        "Malaria cases falling since 2015",
+        "Health aid rising steadily"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "AIDS deaths fell from 1.4 million to 630,000 — one of the great successes. Malaria cases actually rose, and health aid fell sharply.",
+      "whyWrong": [
+        null,
+        "Malaria cases rose from 226m to 263m.",
+        "Health aid nearly halved between 2022 and 2023."
+      ],
+      "action": "Ask what made the AIDS response work where others stalled."
+    }
+  ]
+}

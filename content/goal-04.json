@@ -1,0 +1,914 @@
+{
+  "goal": 4,
+  "goalName": "Quality Education",
+  "note": "50 questions, all one level. Built for surprise while staying guessable. Every citation points at a source retrieved during research.",
+  "sources": {
+    "SDGR25": {
+      "title": "SDG Report 2025 — Goal 4",
+      "publisher": "United Nations",
+      "url": "https://unstats.un.org/sdgs/report/2025/goal-04/"
+    }
+  },
+  "questions": [
+    {
+      "id": "g04-001",
+      "src": "SDGR25",
+      "prompt": "How many children and young people are out of school worldwide?",
+      "options": [
+        "27 million",
+        "272 million",
+        "2.7 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "272 million — and the number has actually gone UP by 3% since 2015. Over half of them live in sub-Saharan Africa.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Work out how many schools it would take to hold 272 million children."
+    },
+    {
+      "id": "g04-002",
+      "src": "SDGR25",
+      "prompt": "In low-income countries, what share of school-aged children are out of school?",
+      "options": [
+        "36%",
+        "3%",
+        "70%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "36% — against just 3% in high-income countries. Where you're born is the single biggest predictor of whether you'll go to school.",
+      "whyWrong": [
+        null,
+        "That's the high-income figure.",
+        "Too high — though the real gap is enormous."
+      ],
+      "action": "Compare 36% and 3%. That's a twelvefold difference."
+    },
+    {
+      "id": "g04-003",
+      "src": "SDGR25",
+      "prompt": "How many adults still cannot read and write?",
+      "options": [
+        "75 million",
+        "754 million",
+        "7.5 million"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "754 million adults — and 63% of them are women. Illiteracy is not evenly distributed between the sexes.",
+      "whyWrong": [
+        "Ten times too low.",
+        null,
+        "A hundred times too low."
+      ],
+      "action": "Imagine trying to use a bus timetable or medicine label without reading."
+    },
+    {
+      "id": "g04-004",
+      "src": "SDGR25",
+      "prompt": "Of the world's 754 million illiterate adults, what share are women?",
+      "options": [
+        "50%",
+        "63%",
+        "20%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "63% — nearly two-thirds. When families can only afford to educate some children, girls are more often the ones who miss out.",
+      "whyWrong": [
+        "It isn't an even split.",
+        null,
+        "Far too low — women are the majority."
+      ],
+      "action": "Ask why a family might educate a son before a daughter."
+    },
+    {
+      "id": "g04-005",
+      "src": "SDGR25",
+      "prompt": "What share of primary school children worldwide can read at a minimum level?",
+      "options": [
+        "20%",
+        "95%",
+        "58%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 58%. More than four in ten children finish primary years without basic reading ability — being in school isn't the same as learning.",
+      "whyWrong": [
+        "Too pessimistic, though the real figure is alarming.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Notice the difference between attending school and learning."
+    },
+    {
+      "id": "g04-006",
+      "src": "SDGR25",
+      "prompt": "What share of primary children reach minimum maths proficiency?",
+      "options": [
+        "88%",
+        "44%",
+        "10%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Just 44% — even lower than reading at 58%. The majority of the world's children are not learning basic maths.",
+      "whyWrong": [
+        "Far too optimistic.",
+        null,
+        "Too pessimistic, though the real figure is very low."
+      ],
+      "action": "Ask what 'minimum proficiency' should mean at age 10."
+    },
+    {
+      "id": "g04-007",
+      "src": "SDGR25",
+      "prompt": "In richer countries, learning scores between 2018 and 2022 did what?",
+      "options": [
+        "Fell sharply",
+        "Rose sharply",
+        "Stayed flat"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "They fell — maths down 15 percentage points and reading down 10 across 81 upper-middle and high-income countries. School closures hit learning hard.",
+      "whyWrong": [
+        null,
+        "Scores dropped substantially in this period.",
+        "There was a marked decline."
+      ],
+      "action": "Ask an older student what remote learning was actually like."
+    },
+    {
+      "id": "g04-008",
+      "src": "SDGR25",
+      "prompt": "What share of primary schools worldwide lack electricity, drinking water or a toilet?",
+      "options": [
+        "About 2%",
+        "Over 20%",
+        "About 60%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "More than one school in five lacks at least one of these basics. It's hard to learn without light, water or somewhere to go to the toilet.",
+      "whyWrong": [
+        "Ten times too optimistic.",
+        null,
+        "Too high globally, though it's true of least developed countries."
+      ],
+      "action": "List everything your school has that a school without electricity doesn't."
+    },
+    {
+      "id": "g04-009",
+      "src": "SDGR25",
+      "prompt": "In the least developed countries, what share of schools have no electricity?",
+      "options": [
+        "About 1%",
+        "About 5%",
+        "Over 50%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "More than half. Over two-thirds also lack digital tools, and over a third lack sanitation.",
+      "whyWrong": [
+        "Far too optimistic.",
+        "Ten times too optimistic.",
+        null
+      ],
+      "action": "Ask what lessons become impossible without power."
+    },
+    {
+      "id": "g04-010",
+      "src": "SDGR25",
+      "prompt": "What share of schools worldwide have computers or internet?",
+      "options": [
+        "Nearly all",
+        "Fewer than half",
+        "About 5%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Fewer than 50% have computers, internet, or facilities adapted for disabled students. The digital divide starts in the classroom.",
+      "whyWrong": [
+        "Far too optimistic globally.",
+        null,
+        "Too pessimistic — nearly half do have them."
+      ],
+      "action": "Count the computers in your school."
+    },
+    {
+      "id": "g04-011",
+      "src": "SDGR25",
+      "prompt": "Globally, who performs better at school — girls or boys?",
+      "options": [
+        "Exactly equal",
+        "Boys, by 2–3 points",
+        "Girls, by 2–3 percentage points"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Girls outperform boys at all levels by 2–3 percentage points — even though girls are more likely to be kept out of school entirely.",
+      "whyWrong": [
+        "There's a consistent measurable gap.",
+        "It runs the other way.",
+        null
+      ],
+      "action": "Ask why girls do better once they're actually in the classroom."
+    },
+    {
+      "id": "g04-012",
+      "src": "SDGR25",
+      "prompt": "How many countries have equal numbers of men and women in university?",
+      "options": [
+        "Only about 5%",
+        "About half",
+        "Nearly all"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Just 5% of countries achieve gender parity in university enrolment. In most places the numbers are lopsided one way or the other.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Very few countries achieve parity."
+      ],
+      "action": "Look up the gender split at a university near you."
+    },
+    {
+      "id": "g04-013",
+      "src": "SDGR25",
+      "prompt": "What share of children complete primary school?",
+      "options": [
+        "99%",
+        "60%",
+        "88%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "88%, up from 85% in 2015. Good — but it still means roughly one child in eight never finishes primary school.",
+      "whyWrong": [
+        "Too optimistic — millions don't complete.",
+        "That's closer to the upper secondary figure.",
+        null
+      ],
+      "action": "Work out what 12% of the world's children is in real numbers."
+    },
+    {
+      "id": "g04-014",
+      "src": "SDGR25",
+      "prompt": "What share of young people complete upper secondary school — the equivalent of finishing high school?",
+      "options": [
+        "25%",
+        "90%",
+        "60%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 60%, up from 53% in 2015. Four in ten young people worldwide never finish secondary education.",
+      "whyWrong": [
+        "Too pessimistic — most do complete.",
+        "Far too optimistic globally.",
+        null
+      ],
+      "action": "Ask what jobs need a completed secondary education."
+    },
+    {
+      "id": "g04-015",
+      "src": "SDGR25",
+      "prompt": "How many children aged 3 to 5 attend pre-primary education?",
+      "options": [
+        "40%",
+        "80%",
+        "10%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Only 40%, and participation has been stuck around 50% since 2015. Early years shape everything that follows, yet most children miss them.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Too pessimistic — four in ten do attend."
+      ],
+      "action": "Ask why the years before age 5 matter so much."
+    },
+    {
+      "id": "g04-016",
+      "src": "SDGR25",
+      "prompt": "In sub-Saharan Africa, what share of young children attend pre-primary school?",
+      "options": [
+        "5%",
+        "70%",
+        "27%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "27% — well below the global 40%. Northern Africa and Western Asia is similar at 30%.",
+      "whyWrong": [
+        "Too pessimistic — over a quarter attend.",
+        "Far too optimistic for the region.",
+        null
+      ],
+      "action": "Compare 27% with the global figure of 40%."
+    },
+    {
+      "id": "g04-017",
+      "src": "SDGR25",
+      "prompt": "What share of children aged 2 to 5 are developing normally for their age?",
+      "options": [
+        "One-tenth",
+        "Two-thirds",
+        "Nearly all"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Two-thirds are on track — meaning about a third of the world's young children are already falling behind before school even starts.",
+      "whyWrong": [
+        "Far too pessimistic.",
+        null,
+        "Too optimistic — a third are not on track."
+      ],
+      "action": "Ask what helps a toddler's brain develop."
+    },
+    {
+      "id": "g04-018",
+      "src": "SDGR25",
+      "prompt": "Youth literacy worldwide is now about:",
+      "options": [
+        "93%",
+        "70%",
+        "100%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "93%, up from 91% a decade ago. Young people are far more literate than older generations — adult literacy is 88%.",
+      "whyWrong": [
+        null,
+        "Too pessimistic — youth literacy is high.",
+        "Too optimistic — millions of young people still can't read."
+      ],
+      "action": "Compare youth literacy (93%) with adult (88%). Why the gap?"
+    },
+    {
+      "id": "g04-019",
+      "src": "SDGR25",
+      "prompt": "How many adults aged 25 to 54 took part in any education or training last year?",
+      "options": [
+        "About 30%",
+        "Only 3%",
+        "About 60%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Just 3%. For people over 55 it's 1%. 'Lifelong learning' is a goal that barely exists in practice for most adults.",
+      "whyWrong": [
+        "Ten times too optimistic.",
+        null,
+        "Far too optimistic."
+      ],
+      "action": "Ask an adult when they last took a class."
+    },
+    {
+      "id": "g04-020",
+      "src": "SDGR25",
+      "prompt": "Among young people aged 15 to 24, what share are in education or training?",
+      "options": [
+        "About 10%",
+        "Over half",
+        "Nearly all"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Over 50%, ranging from 45% in sub-Saharan Africa to 64% in Europe and North America.",
+      "whyWrong": [
+        "Far too pessimistic.",
+        null,
+        "Too optimistic — nearly half are not."
+      ],
+      "action": "Ask what the other half are doing instead."
+    },
+    {
+      "id": "g04-021",
+      "src": "SDGR25",
+      "prompt": "The number of out-of-school children since 2015 has:",
+      "options": [
+        "Stayed identical",
+        "Fallen by half",
+        "Risen by 3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It rose 3%. Education is one of the goals where the world has moved backwards rather than forwards.",
+      "whyWrong": [
+        "There was a measurable rise.",
+        "It increased rather than decreased.",
+        null
+      ],
+      "action": "Ask what pushed more children out of school after 2015."
+    },
+    {
+      "id": "g04-022",
+      "src": "SDGR25",
+      "prompt": "Where do over half of all out-of-school children live?",
+      "options": [
+        "Sub-Saharan Africa",
+        "Europe",
+        "South America"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "More than half of the 272 million out-of-school children are in sub-Saharan Africa — the region with the fastest-growing young population.",
+      "whyWrong": [
+        null,
+        "Europe has near-universal school attendance.",
+        "South America has high enrolment rates."
+      ],
+      "action": "Look up how many children will be school-age in Africa by 2050."
+    },
+    {
+      "id": "g04-023",
+      "src": "SDGR25",
+      "prompt": "Which is harder to achieve — getting children into school, or getting them to learn?",
+      "options": [
+        "Getting them into school",
+        "Getting them to learn",
+        "They're equally hard"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "88% complete primary school but only 58% can read at a minimum level. Attendance has improved far faster than actual learning.",
+      "whyWrong": [
+        "Enrolment has improved much faster than learning outcomes.",
+        null,
+        "The learning gap is substantially wider."
+      ],
+      "action": "Ask what makes a lesson actually work."
+    },
+    {
+      "id": "g04-024",
+      "src": "SDGR25",
+      "prompt": "How many countries fail to achieve gender parity at upper secondary completion?",
+      "options": [
+        "5%",
+        "20%",
+        "83%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "83% of countries. Gender gaps widen as education goes on — 40% lack parity at primary, over 50% at lower secondary, 83% at upper secondary.",
+      "whyWrong": [
+        "Very few countries achieve parity at this level.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Notice how the gap widens with each stage of education."
+    },
+    {
+      "id": "g04-025",
+      "src": "SDGR25",
+      "prompt": "Lower secondary completion is now about:",
+      "options": [
+        "50%",
+        "78%",
+        "95%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "78%, up from 74% in 2015. Slow progress — roughly one young person in five doesn't finish.",
+      "whyWrong": [
+        "Too pessimistic.",
+        null,
+        "Too optimistic — over a fifth don't complete."
+      ],
+      "action": "Compare 88% primary, 78% lower secondary, 60% upper secondary."
+    },
+    {
+      "id": "g04-026",
+      "src": "SDGR25",
+      "prompt": "School electricity access has improved since 2015 by roughly:",
+      "options": [
+        "It fell",
+        "Under 1 point",
+        "Over 10 percentage points"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "More than 10 percentage points in eight years — real progress, though over 20% of schools still lack basics.",
+      "whyWrong": [
+        "Access improved rather than declined.",
+        "The improvement was much larger.",
+        null
+      ],
+      "action": "Ask what solar power could do for a rural school."
+    },
+    {
+      "id": "g04-027",
+      "src": "SDGR25",
+      "prompt": "Among young people tested on digital skills, what were they weakest at?",
+      "options": [
+        "Using information",
+        "Communication",
+        "Online safety"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 57% were proficient in online safety — the lowest of all digital skills tested, below communication (83%) and information literacy (76%).",
+      "whyWrong": [
+        "This scored 76%, well above safety.",
+        "This was the strongest skill at 83%.",
+        null
+      ],
+      "action": "Test yourself: could you spot a scam message?"
+    },
+    {
+      "id": "g04-028",
+      "src": "SDGR25",
+      "prompt": "How many children lack basic drinking water at school?",
+      "options": [
+        "4 million",
+        "44 million",
+        "447 million"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "447 million children have no basic drinking water at school, and 427 million lack sanitation.",
+      "whyWrong": [
+        "A hundred times too low.",
+        "Ten times too low.",
+        null
+      ],
+      "action": "Ask how long you'd last at school without water."
+    },
+    {
+      "id": "g04-029",
+      "src": "SDGR25",
+      "prompt": "What share of schools provide basic hygiene facilities like handwashing?",
+      "options": [
+        "20%",
+        "95%",
+        "67%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Only 67% — leaving 646 million children at school without anywhere to wash their hands properly.",
+      "whyWrong": [
+        "Too pessimistic — two-thirds do have them.",
+        "Far too optimistic.",
+        null
+      ],
+      "action": "Count the handwashing points in your school."
+    },
+    {
+      "id": "g04-030",
+      "src": "SDGR25",
+      "prompt": "Adult literacy worldwide is now:",
+      "options": [
+        "88%",
+        "60%",
+        "99%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "88%, up from 85%. That still leaves 754 million adults unable to read this sentence.",
+      "whyWrong": [
+        null,
+        "Too pessimistic — most adults are literate.",
+        "Too optimistic — hundreds of millions cannot read."
+      ],
+      "action": "Ask what daily tasks need reading."
+    },
+    {
+      "id": "g04-031",
+      "src": "SDGR25",
+      "prompt": "Upper secondary completion rose from 53% in 2015 to 60%. Is that fast enough?",
+      "options": [
+        "Yes — it's on track",
+        "No — progress actually slowed",
+        "The rate is accelerating"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Progress decelerated to just 0.8 percentage points a year. At that pace universal secondary education is many decades away.",
+      "whyWrong": [
+        "The target will be missed by a wide margin.",
+        null,
+        "It slowed rather than sped up."
+      ],
+      "action": "Work out how long 40 more percentage points takes at 0.8 a year."
+    },
+    {
+      "id": "g04-032",
+      "src": "SDGR25",
+      "prompt": "In sub-Saharan Africa, what share of young people are in education or training?",
+      "options": [
+        "45%",
+        "80%",
+        "15%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "45%, against 64% in Europe and North America — a 19-point gap in access to learning after childhood.",
+      "whyWrong": [
+        null,
+        "That's closer to the European figure.",
+        "Too pessimistic — nearly half participate."
+      ],
+      "action": "Ask what happens to young people not in school or training."
+    },
+    {
+      "id": "g04-033",
+      "src": "SDGR25",
+      "prompt": "What share of countries lack gender parity at primary completion?",
+      "options": [
+        "40%",
+        "5%",
+        "90%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "40% of countries. Even at the most basic level of education, boys and girls complete at different rates in four countries out of ten.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Too high — most countries do reach parity at primary level."
+      ],
+      "action": "Compare 40% at primary with 83% at upper secondary."
+    },
+    {
+      "id": "g04-034",
+      "src": "SDGR25",
+      "prompt": "In the least developed countries, what share of schools lack digital tools?",
+      "options": [
+        "Over two-thirds",
+        "About 5%",
+        "About 20%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Over 67% have no computers or internet at all — meaning most students there will finish school having never used one.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Too optimistic — the real figure is over two-thirds."
+      ],
+      "action": "Ask what jobs require digital skills you learned at school."
+    },
+    {
+      "id": "g04-035",
+      "src": "SDGR25",
+      "prompt": "How many adults aged 55 to 64 take part in education or training?",
+      "options": [
+        "1%",
+        "25%",
+        "50%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Just 1%. Learning effectively stops for almost everyone once they leave formal education.",
+      "whyWrong": [
+        null,
+        "Vastly too optimistic.",
+        "Far too optimistic."
+      ],
+      "action": "Ask an older relative what they'd like to learn."
+    },
+    {
+      "id": "g04-036",
+      "src": "SDGR25",
+      "prompt": "Which basic school facility is most commonly missing worldwide?",
+      "options": [
+        "Blackboards",
+        "Desks",
+        "Digital tools and disability access"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Fewer than half of schools have computers, internet, or facilities adapted for disabled students — the most commonly missing of the measured basics.",
+      "whyWrong": [
+        "Not among the tracked global indicators.",
+        "Not among the tracked global indicators.",
+        null
+      ],
+      "action": "Check whether your school is accessible to a wheelchair user."
+    },
+    {
+      "id": "g04-037",
+      "src": "SDGR25",
+      "prompt": "Maths proficiency compared with reading proficiency at primary level is:",
+      "options": [
+        "Identical",
+        "Higher — 58% versus 44%",
+        "Lower — 44% versus 58%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "Maths lags reading by 14 percentage points. Fewer than half the world's primary children can do basic maths.",
+      "whyWrong": [
+        "There's a substantial gap between them.",
+        "It's the other way round.",
+        null
+      ],
+      "action": "Ask why maths might be harder to teach than reading."
+    },
+    {
+      "id": "g04-038",
+      "src": "SDGR25",
+      "prompt": "One in six people aged 15 to 64 took part in education last year. What does that suggest?",
+      "options": [
+        "Adults learn constantly",
+        "Learning mostly stops after youth",
+        "Education is evenly spread across life"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Over half of 15–24s participate, but only 3% of 25–54s and 1% of over-55s. Learning is concentrated almost entirely in youth.",
+      "whyWrong": [
+        "Only 3% of working-age adults participated.",
+        null,
+        "It's heavily concentrated in the youngest group."
+      ],
+      "action": "Ask what would make adult learning easier where you live."
+    },
+    {
+      "id": "g04-039",
+      "src": "SDGR25",
+      "prompt": "Primary completion rose from 85% to 88% between 2015 and 2024. How would you describe that?",
+      "options": [
+        "Real but slow progress",
+        "Rapid transformation",
+        "A decline"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Three percentage points in nine years. Real, but far too slow to reach every child by 2030.",
+      "whyWrong": [
+        null,
+        "Three points in nine years is modest.",
+        "Completion rose rather than fell."
+      ],
+      "action": "Ask what it would take to reach the last 12%."
+    },
+    {
+      "id": "g04-040",
+      "src": "SDGR25",
+      "prompt": "Which region has the lowest pre-primary participation?",
+      "options": [
+        "Europe",
+        "Sub-Saharan Africa at 27%",
+        "North America"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Sub-Saharan Africa at 27%, just below Northern Africa and Western Asia at 30%, against a global average of 40%.",
+      "whyWrong": [
+        "Europe has among the highest participation.",
+        null,
+        "North America has high participation."
+      ],
+      "action": "Ask what a child gains from two years of pre-school."
+    },
+    {
+      "id": "g04-041",
+      "src": "SDGR25",
+      "prompt": "Learning scores fell in richer countries after 2018. What's the most likely cause?",
+      "options": [
+        "Pandemic school closures",
+        "Harder exams",
+        "Fewer students"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Maths fell 15 points and reading 10 across 81 countries in the 2018–2022 window — the period covering worldwide school closures.",
+      "whyWrong": [
+        null,
+        "The tests were designed to be comparable over time.",
+        "Enrolment didn't collapse in these countries."
+      ],
+      "action": "Ask how much school time was lost where you live."
+    },
+    {
+      "id": "g04-042",
+      "src": "SDGR25",
+      "prompt": "Of the 272 million out-of-school children, the number has changed since 2015 by:",
+      "options": [
+        "-50%",
+        "-30%",
+        "+3%"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "It rose 3%. Population growth outpaced the expansion of school places, so more children are out of school than a decade ago.",
+      "whyWrong": [
+        "This is the opposite of what happened.",
+        "The number rose rather than fell.",
+        null
+      ],
+      "action": "Ask how population growth affects school planning."
+    },
+    {
+      "id": "g04-043",
+      "src": "SDGR25",
+      "prompt": "In least developed countries, what share of schools lack sanitation?",
+      "options": [
+        "Over a third",
+        "About 2%",
+        "About 90%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Over 33% have no sanitation. For girls especially, no toilet at school often means not attending at all during their period.",
+      "whyWrong": [
+        null,
+        "Far too optimistic.",
+        "Too high, though the real figure is serious."
+      ],
+      "action": "Ask why a school toilet matters more for girls."
+    },
+    {
+      "id": "g04-044",
+      "src": "SDGR25",
+      "prompt": "How many children lack basic sanitation at school?",
+      "options": [
+        "427 million",
+        "42 million",
+        "4 million"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "427 million children have no basic sanitation where they learn — alongside 447 million with no drinking water.",
+      "whyWrong": [
+        null,
+        "Ten times too low.",
+        "A hundred times too low."
+      ],
+      "action": "Ask what you'd do at school with no toilet available."
+    },
+    {
+      "id": "g04-045",
+      "src": "SDGR25",
+      "prompt": "Which digital skill were young people strongest at?",
+      "options": [
+        "Content creation at 60%",
+        "Communication and collaboration at 83%",
+        "Online safety at 57%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "Communication and collaboration at 83% — young people are good at connecting, weaker at creating content (60%) and staying safe (57%).",
+      "whyWrong": [
+        "This scored 60%, well below communication.",
+        null,
+        "This was the weakest at 57%."
+      ],
+      "action": "Rate yourself honestly on all five skills."
+    },
+    {
+      "id": "g04-046",
+      "src": "SDGR25",
+      "prompt": "What share of schools have basic drinking water?",
+      "options": [
+        "77%",
+        "97%",
+        "40%"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "77% — leaving 447 million children at schools with no safe water to drink during the day.",
+      "whyWrong": [
+        null,
+        "Too optimistic — nearly a quarter of schools lack it.",
+        "Too pessimistic — most schools do have water."
+      ],
+      "action": "Find the nearest drinking water in your school."
+    },
+    {
+      "id": "g04-047",
+      "src": "SDGR25",
+      "prompt": "Girls are more likely than boys to be out of school, yet once in school they:",
+      "options": [
+        "Outperform boys",
+        "Underperform boys",
+        "Perform identically"
+      ],
+      "correctIndex": 0,
+      "whyCorrect": "Girls outperform boys by 2–3 percentage points at every level. The barrier is access, not ability.",
+      "whyWrong": [
+        null,
+        "The data shows girls ahead once enrolled.",
+        "There's a consistent gap in girls' favour."
+      ],
+      "action": "Ask what stops a girl attending school in some countries."
+    },
+    {
+      "id": "g04-048",
+      "src": "SDGR25",
+      "prompt": "Early childhood education participation since 2015 has:",
+      "options": [
+        "Doubled",
+        "Stagnated around 50%",
+        "Collapsed"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "It's been stuck near 50% for a decade — no meaningful progress on the stage of education that shapes everything after it.",
+      "whyWrong": [
+        "There has been essentially no growth.",
+        null,
+        "It held steady rather than falling."
+      ],
+      "action": "Ask why early years get less funding than later ones."
+    },
+    {
+      "id": "g04-049",
+      "src": "SDGR25",
+      "prompt": "In high-income countries, what share of children are out of school?",
+      "options": [
+        "30%",
+        "3%",
+        "0%"
+      ],
+      "correctIndex": 1,
+      "whyCorrect": "3% — twelve times lower than the 36% in low-income countries. Even wealthy countries don't reach every child.",
+      "whyWrong": [
+        "That's closer to the low-income figure of 36%.",
+        null,
+        "No country reaches literally every child."
+      ],
+      "action": "Ask who the 3% in rich countries might be."
+    },
+    {
+      "id": "g04-050",
+      "src": "SDGR25",
+      "prompt": "What's the clearest sign that being in school isn't enough on its own?",
+      "options": [
+        "Schools lack electricity",
+        "272 million are out of school",
+        "88% finish primary but only 58% can read"
+      ],
+      "correctIndex": 2,
+      "whyCorrect": "The 30-point gap between completing primary school and being able to read is the sharpest evidence that attendance and learning are different problems.",
+      "whyWrong": [
+        "Important, but the completion-versus-literacy gap is the direct evidence.",
+        "This is about access, not about learning inside school.",
+        null
+      ],
+      "action": "Ask what your school does to check you're actually learning."
+    }
+  ]
+}
