@@ -442,6 +442,28 @@
     border-radius:10px; padding:10px 14px; font-size:13px; line-height:1.55; color:#6b4e12; text-align:left;
   }
   .brief-truth b{ color:#8a6300; }
+  .view-toggle{ display:flex; gap:6px; margin-bottom:10px; }
+  .vt-btn{
+    flex:0 0 auto; border:1px solid var(--line); background:#fff; color:var(--muted);
+    border-radius:999px; padding:6px 14px; font-size:12.5px; font-weight:700; cursor:pointer;
+    font-family:inherit; transition:background .15s, color .15s, border-color .15s;
+  }
+  .vt-btn:hover{ border-color:var(--teal); color:var(--teal); }
+  .vt-btn.active{ background:var(--teal); border-color:var(--teal); color:#fff; }
+  .walk-wrap{ position:relative; }
+  #walkCanvas{ display:block; width:100%; border-radius:12px; background:#cfe9f5; }
+  .walk-hud{
+    position:absolute; left:12px; top:12px; background:rgba(255,255,255,.92);
+    border:1px solid rgba(0,0,0,.06); border-radius:10px; padding:8px 12px;
+    font-size:12.5px; line-height:1.5; color:var(--ink); max-width:min(74%,340px);
+    box-shadow:0 2px 10px rgba(0,0,0,.08); pointer-events:none;
+  }
+  .wh-who{ font-weight:800; display:flex; align-items:center; gap:6px; }
+  .wh-dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .wh-pos{ color:var(--muted); font-size:11.5px; }
+  .wh-next{ margin-top:3px; }
+  .walk-note{ margin-top:8px; font-size:11.5px; color:var(--muted); text-align:center; }
+  @media (max-width:640px){ .walk-hud{ max-width:82%; font-size:11.5px; } }
   .persona-where{ font-size:12.5px; color:var(--muted); font-weight:600; margin-top:-4px; margin-bottom:8px; }
   .stance-box{
     margin:2px 0 12px; background:#f4ecfb; border:1px solid #ddc6f2; border-radius:10px;
@@ -638,6 +660,15 @@
   </div>
 
   <div class="board-panel">
+    <div class="view-toggle" id="viewToggle">
+      <button class="vt-btn active" data-view="board">🗺️ Whole Board</button>
+      <button class="vt-btn" data-view="walk">🚶 Walk the Path</button>
+    </div>
+    <div class="walk-wrap hidden" id="walkWrap">
+      <canvas id="walkCanvas"></canvas>
+      <div class="walk-hud" id="walkHud"></div>
+      <div class="walk-note">You can see about five spaces ahead. The scenery changes to match the goal you are walking toward.</div>
+    </div>
     <div class="board-outer" id="boardOuter">
       <div class="board-grid" id="boardGrid"></div>
       <svg class="fx-layer" id="fxLayer"></svg>
@@ -1543,6 +1574,7 @@
       document.getElementById('gameScreen').classList.remove('hidden');
       document.getElementById('newGameBtn').classList.remove('hidden');
       initBoard();
+      applySavedView();
       log('The race to 2030 begins with ' + teams.length + ' nations.');
       teams.forEach(t=> log(t.name + ' is ' + t.nation.emoji + ' ' + t.nation.name + ' (' + t.nation.sub + ').'));
     }
@@ -2019,6 +2051,7 @@
     document.getElementById('gameScreen').classList.remove('hidden');
     document.getElementById('newGameBtn').classList.remove('hidden');
     initBoard();
+    applySavedView();
     renderStandings();
     updateTurnUI();
     log('The race to 2030 begins with ' + teams.length + ' nations.');
@@ -2134,6 +2167,15 @@
   const tokensLayer = document.getElementById('tokensLayer');
   const fxLayer = document.getElementById('fxLayer');
   const cellEls = {};
+
+  function applySavedView(){
+    let want = false;
+    try{ want = localStorage.getItem('ggWalkView') === '1'; }catch(e){}
+    const btn = document.querySelector('#viewToggle .vt-btn[data-view="' + (want ? 'walk' : 'board') + '"]');
+    document.querySelectorAll('#viewToggle .vt-btn').forEach(x=>x.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    WALK.setActive(want);
+  }
 
   function initBoard(){
     boardGrid.innerHTML = '';
@@ -2446,6 +2488,7 @@
 
   function updateTurnUI(){
     const p = teams[currentIdx];
+    if(typeof WALK !== 'undefined' && WALK.active) WALK.jump();
     const titleEl = document.getElementById('turnTitle');
     titleEl.textContent = finalRound ? '🏁 Final Round — Current Turn' : 'Current Turn';
     const nameEl = document.getElementById('turnName');
@@ -2587,9 +2630,13 @@
   function advanceMove(){
     const mv = move;
     const cellNum = mv.stops[mv.idx];
+    const cameFrom = mv.p.position;
     mv.p.position = cellNum;
     renderStandings();
     positionTokens(true);
+    /* Walk view animates space by space, so the pause before the question has to
+       cover the walk rather than the board's fixed 620ms token slide. */
+    const walkMs = WALK.travel(cameFrom, cellNum);
 
     setTimeout(()=>{
       const isLastStop = (mv.idx === mv.stops.length - 1);
@@ -2605,7 +2652,7 @@
       } else {
         settleFinal(mv.p, cellNum);
       }
-    }, 620);
+    }, Math.max(620, walkMs));
   }
 
   function continueMove(){
@@ -3322,6 +3369,310 @@
     rolling = false;
     if(earned){ updateTurnUI(); } else { advanceTurn(); }
   });
+
+  /* ================= First-person walk view =================
+     A separate canvas scene, deliberately not a transform of the board grid:
+     rotating the grid would break every getBoundingClientRect() the token and
+     path-guide math depends on. Here the camera walks along the numbered path,
+     sees a few spaces ahead, and the scenery ahead is themed to the next SDG. */
+  const WALK = (function(){
+    const VIEW = 5;            // how many spaces ahead are visible
+    const CAM_H = 0.62;        // eye height, in cell widths
+    const HALF_W = 0.66;       // half-width of the walkway
+    const MS_PER_CELL = 430;
+
+    const wrap = document.getElementById('walkWrap');
+    const cv = document.getElementById('walkCanvas');
+    const hud = document.getElementById('walkHud');
+    const ctx = cv.getContext('2d');
+
+    let active = false, W = 0, H = 0, f = 0, hy = 0, cx = 0;
+    let camPos = 1, bob = 0, raf = null, anim = null;
+
+    /* Accepts both #rrggbb and the rgb() strings mix() itself produces, since sky
+       and fog colours are repeatedly re-mixed. */
+    function rgbOf(c){
+      if(typeof c !== 'string') return [128,128,128];
+      if(c[0] === '#'){ c=c.slice(1);
+        if(c.length===3) c=c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+        return [parseInt(c.slice(0,2),16),parseInt(c.slice(2,4),16),parseInt(c.slice(4,6),16)];
+      }
+      const m=c.match(/-?\d+(\.\d+)?/g);
+      return m ? [+m[0],+m[1],+m[2]] : [0,0,0];
+    }
+    function mix(a,b,t){
+      const A=rgbOf(a), B=rgbOf(b);
+      const q=v=>Math.max(0,Math.min(255,Math.round(v)));
+      return 'rgb('+q(A[0]+(B[0]-A[0])*t)+','+q(A[1]+(B[1]-A[1])*t)+','+q(A[2]+(B[2]-A[2])*t)+')';
+    }
+
+    /* Theme of the next scoring space decides sky, ground and props. */
+    function nextGoalAhead(pos){
+      for(let c=Math.ceil(pos); c<=FINISH; c++) if(GOAL_CELLS[c]) return GOAL_CELLS[c];
+      return 17;
+    }
+    function cellTheme(n){
+      if(n === FINISH) return { color:'#ffd23f', kind:'finish' };
+      if(GOAL_CELLS[n]) return { color: SDG[GOAL_CELLS[n]].color, kind:'goal', goal:GOAL_CELLS[n] };
+      if(PERSONA_CELLS.includes(n)) return { color:'#a97bd6', kind:'persona' };
+      if(CONSEQUENCE_CELLS.includes(n)) return { color:'#e8a33d', kind:'consequence' };
+      if(ADVOCATE_CELLS.includes(n)) return { color:'#5b9bd5', kind:'advocate' };
+      return { color:'#dcefe9', kind:'plain' };
+    }
+
+    let sky = '#cfe9f5';
+    function P(x, y, d){ return { x: cx + f*x/d, y: hy + f*(CAM_H + bob - y)/d }; }
+    function scaleAt(d){ return f/d; }
+    function fogged(color, d){
+      const t = Math.min(0.97, Math.max(0, (d-2.0)/(VIEW+1.2)));
+      return mix(color, sky, t);
+    }
+    function quad(p1,p2,p3,p4,fill){
+      ctx.fillStyle = fill; ctx.beginPath();
+      ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.lineTo(p3.x,p3.y); ctx.lineTo(p4.x,p4.y);
+      ctx.closePath(); ctx.fill();
+    }
+    function board(x,d,w,h,color){ beam(x,0,d,w,h,color); }
+    /* Same, but raised: bottom edge sits at height y rather than on the ground. */
+    function beam(x,y,d,w,h,color){
+      if(d < 0.30) return;
+      quad(P(x-w/2,y,d), P(x+w/2,y,d), P(x+w/2,y+h,d), P(x-w/2,y+h,d), fogged(color,d));
+    }
+    function orb(x,y,d,r,color){
+      if(d < 0.30) return;
+      const p = P(x,y,d), s = scaleAt(d);
+      ctx.fillStyle = fogged(color,d); ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(1,r*s),0,7); ctx.fill();
+    }
+    function tri(x,y,d,w,h,color){
+      if(d < 0.30) return;
+      const a=P(x-w/2,y,d), b=P(x+w/2,y,d), c=P(x,y+h,d);
+      ctx.fillStyle=fogged(color,d); ctx.beginPath();
+      ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.lineTo(c.x,c.y); ctx.closePath(); ctx.fill();
+    }
+
+    /* --- Scenery, one routine per goal. s = -1 left of path, +1 right. --- */
+    function scenery(goal, d, s, r){
+      const x = s * (1.35 + r*1.15);
+      switch(goal){
+        case 1: board(x,d,0.62,0.44,'#b98a5a'); tri(x,0.44,d,0.78,0.22,'#8d6540'); break;
+        case 2: for(let i=0;i<4;i++){ board(x+(i-1.5)*0.16,d+r*0.2,0.05,0.42+i%2*0.08,'#d8b23c'); orb(x+(i-1.5)*0.16,0.5,d+r*0.2,0.05,'#f0d264'); } break;
+        case 3: board(x,d,0.7,0.42,'#f4f7f8'); tri(x,0.42,d,0.86,0.2,'#dfe7ea');
+                beam(x,0.12,d-0.02,0.09,0.2,'#d64545'); beam(x,0.19,d-0.02,0.26,0.07,'#d64545'); break;
+        case 4: board(x,d,0.8,0.5,'#e8d8b7'); tri(x,0.5,d,0.95,0.24,'#a8483c');
+                board(x+0.45,d,0.04,0.85,'#8a8f92'); beam(x+0.53,0.7,d,0.18,0.12,'#3f8f7a'); break;
+        case 5: board(x-0.16,d,0.14,0.55,'#c9569b'); board(x+0.16,d,0.14,0.55,'#c9569b');
+                beam(x,0.55,d,0.5,0.07,'#e07ab4'); break;
+        case 6: board(x,d,0.5,0.3,'#9aa7ad'); beam(x,0.3,d,0.06,0.3,'#7d878c'); beam(x,0.6,d,0.44,0.05,'#5f6a6e');
+                orb(x,0.16,d-0.05,0.09,'#3fa9d8'); break;
+        case 7: board(x,d,0.07,1.1,'#e6ecee');
+                orb(x,1.1,d,0.07,'#f2f6f7');
+                for(let i=0;i<3;i++){ const a=(Date.now()/700+i*2.09+r); orb(x+Math.cos(a)*0.3,1.1+Math.sin(a)*0.3,d,0.05,'#f2f6f7'); }
+                orb(s*2.4,1.5,d+1.2,0.22,'#ffd76a'); break;
+        case 8: board(x,d,0.75,0.4,'#a8724a'); beam(x-0.2,0.4,d-0.03,0.07,0.3,'#6f7276');
+                beam(x+0.18,0.4,d-0.03,0.22,0.06,'#6f7276'); break;
+        case 9: board(x,d,0.12,0.95,'#8e9599'); beam(x,0.95,d,1.5,0.09,'#a6adb1');
+                beam(x,0.55,d,1.1,0.06,'#a6adb1'); break;
+        case 10: for(let i=0;i<3;i++) board(x+(i-1)*0.26,d,0.24,0.2+i*0.22,'#d4557a'); break;
+        case 11: board(x-0.3,d,0.34,0.8,'#f0a03c'); board(x+0.06,d,0.3,1.15,'#e08a2c'); board(x+0.38,d,0.28,0.62,'#f7b45c');
+                 for(let i=0;i<3;i++) orb(x+0.06,0.5+i*0.22,d-0.16,0.03,'#fff3d6'); break;
+        case 12: board(x-0.2,d,0.26,0.32,'#c8912f'); board(x+0.14,d,0.26,0.32,'#8fae4a');
+                 orb(x-0.2,0.42,d,0.06,'#e0b95a'); orb(x+0.14,0.42,d,0.06,'#a8c46a'); break;
+        case 13: orb(x,1.15,d,0.3,'#6b7480'); orb(x+0.28,1.22,d,0.24,'#7d8794'); orb(x-0.26,1.2,d,0.22,'#5f6874');
+                 for(let i=0;i<3;i++) beam(x+(i-1)*0.2,0.35,d,0.03,0.4,'#8fa3b8'); break;
+        case 14: for(let i=0;i<3;i++) beam(x+(i-1)*0.3,0.02+i*0.03,d+i*0.1,0.6,0.07,'#2f8fbf');
+                 tri(x,0.14,d,0.2,0.16,'#1f6e96'); break;
+        case 15: board(x,d,0.09,0.5,'#7a5230'); orb(x,0.78,d,0.3,'#3f8f52'); orb(x-0.2,0.66,d,0.2,'#4fa062'); orb(x+0.2,0.68,d,0.21,'#357c46'); break;
+        case 16: board(x-0.24,d,0.1,0.7,'#e9eef0'); board(x,d,0.1,0.7,'#e9eef0'); board(x+0.24,d,0.1,0.7,'#e9eef0');
+                 beam(x,0.7,d,0.72,0.08,'#dbe3e6'); tri(x,0.78,d,0.72,0.18,'#c9d4d8'); break;
+        default: board(x-0.2,d,0.1,0.6,'#1a6fa8'); board(x+0.2,d,0.1,0.6,'#1a6fa8');
+                 beam(x,0.6,d,0.5,0.07,'#2e88c4'); break;
+      }
+    }
+    function propFor(kind, goal, d, s, r){
+      if(kind === 'goal' || kind === 'finish') return scenery(goal, d, s, r);
+      if(kind === 'persona'){ board(s*(1.5+r), d, 0.07, 0.7, '#8f63bd'); orb(s*(1.5+r), 0.86, d, 0.15, '#c9a3e8'); return; }
+      if(kind === 'consequence'){ orb(s*(1.6+r), 1.05, d, 0.26, '#c98a2e'); beam(s*(1.6+r), 0.3, d, 0.03, 0.4, '#e0b25e'); return; }
+      if(kind === 'advocate'){ board(s*(1.5+r), d, 0.06, 0.62, '#4a7fae'); tri(s*(1.5+r), 0.62, d, 0.3, 0.22, '#5b9bd5'); return; }
+      /* plain roadside */
+      const gx = s*(1.25+r*1.2);
+      board(gx, d, 0.1, 0.16+r*0.1, '#6fae8d');
+      board(gx+s*0.22, d+0.18, 0.08, 0.12, '#7fbb99');
+      if(r > 0.62) orb(gx-s*0.3, 0.2, d+0.3, 0.11, '#8fc4ad');
+    }
+
+    function resize(){
+      const rect = wrap.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(320, rect.width); H = Math.max(240, Math.round(W * 0.58));
+      cv.width = W*dpr; cv.height = H*dpr; cv.style.width = W+'px'; cv.style.height = H+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      f = H * 0.92; hy = H * 0.40; cx = W/2;
+    }
+
+    function draw(){
+      if(!active || !teams.length) return;
+      const goalAhead = nextGoalAhead(camPos);
+      const gCol = SDG[goalAhead] ? SDG[goalAhead].color : '#1c8c8c';
+      sky = mix('#eaf6fb', gCol, 0.18);
+
+      const g = ctx.createLinearGradient(0,0,0,hy+4);
+      g.addColorStop(0, mix('#8ec7e8', gCol, 0.16));
+      g.addColorStop(0.72, mix('#cfe7f2', gCol, 0.10));
+      g.addColorStop(1, sky);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,hy+4);
+
+      /* Sun sits off to one side so the scene has a light direction. */
+      ctx.fillStyle = mix('#fff0b8', gCol, 0.18);
+      ctx.beginPath(); ctx.arc(W*0.78, hy*0.34, H*0.055, 0, 7); ctx.fill();
+      ctx.globalAlpha = 0.25; ctx.beginPath(); ctx.arc(W*0.78, hy*0.34, H*0.09, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
+
+      /* Distant hills give the horizon something to sit against. */
+      ctx.fillStyle = mix(sky, '#7fa98f', 0.42);
+      ctx.beginPath(); ctx.moveTo(0, hy+1);
+      for(let i=0;i<=10;i++){
+        const hx = W*i/10;
+        const hh = (Math.sin(i*1.7)*0.5+0.5) * H*0.05 + H*0.012;
+        ctx.lineTo(hx, hy+1-hh);
+      }
+      ctx.lineTo(W, hy+1); ctx.closePath(); ctx.fill();
+
+      const gg = ctx.createLinearGradient(0,hy,0,H);
+      gg.addColorStop(0, mix('#bcd9c6', sky, 0.45));
+      gg.addColorStop(0.35, '#a9cdb9');
+      gg.addColorStop(1, '#8ebb9f');
+      ctx.fillStyle = gg; ctx.fillRect(0,hy,W,H-hy);
+
+      const first = Math.floor(camPos);
+      /* Painter's algorithm: far tiles and their scenery first. */
+      for(let n = first + VIEW + 3; n >= first - 1; n--){
+        if(n < 1 || n > FINISH) continue;
+        const dC = n - camPos;
+        const dN = dC - 0.5, dF = dC + 0.5;
+        if(dF < 0.30) continue;
+        const th = cellTheme(n);
+        const nearD = Math.max(dN, 0.30);
+        quad(P(-HALF_W,0,nearD), P(HALF_W,0,nearD), P(HALF_W,0,dF), P(-HALF_W,0,dF),
+             fogged(th.kind==='plain' ? (n%2 ? '#e6f3ee' : '#d9ece5') : th.color, dC));
+        quad(P(-HALF_W-0.06,0,nearD), P(-HALF_W,0,nearD), P(-HALF_W,0,dF), P(-HALF_W-0.06,0,dF), fogged('#ffffff',dC));
+        quad(P(HALF_W,0,nearD), P(HALF_W+0.06,0,nearD), P(HALF_W+0.06,0,dF), P(HALF_W,0,dF), fogged('#ffffff',dC));
+
+        if(dC > VIEW + 0.6) continue;   // beyond here it is only haze
+        const rr = ((n*2654435761)%1000)/1000;
+        const rr2 = ((n*40503)%1000)/1000;
+        const gtheme = th.goal || goalAhead;
+        propFor(th.kind, gtheme, dC + 0.34, -1, rr2*0.7 + 0.5);
+        propFor(th.kind, gtheme, dC + 0.30,  1, rr*0.7 + 0.5);
+        propFor(th.kind, gtheme, dC - 0.10, -1, rr);
+        propFor(th.kind, gtheme, dC + 0.12,  1, 1-rr);
+
+        if(th.kind !== 'plain' && dC > 0.6 && dC < VIEW - 0.4){
+          const lab = th.kind === 'goal' ? String(th.goal)
+                    : th.kind === 'finish' ? '2030'
+                    : th.kind === 'persona' ? '🎭' : th.kind === 'consequence' ? '⛈️' : '🗣️';
+          const p = P(0, 0.02, dC), s = scaleAt(dC);
+          ctx.save(); ctx.globalAlpha = Math.max(0.25, 1 - dC/VIEW);
+          ctx.fillStyle = th.kind==='goal' ? (luminance(th.color)>0.6?'#3a3a3a':'#ffffff') : '#3a4a4f';
+          ctx.font = '700 ' + Math.max(9, s*0.28) + 'px system-ui, sans-serif';
+          ctx.textAlign='center'; ctx.textBaseline='middle';
+          ctx.fillText(lab, p.x, p.y); ctx.restore();
+        }
+      }
+      const me = teams[currentIdx];
+      if(me){
+        ctx.save();
+        ctx.globalAlpha = 0.20; ctx.fillStyle = '#0d2b26';
+        ctx.beginPath(); ctx.ellipse(cx, H*0.955, W*0.095, H*0.030, 0, 0, 7); ctx.fill();
+        ctx.globalAlpha = 0.9; ctx.fillStyle = me.color;
+        ctx.beginPath(); ctx.ellipse(cx, H*0.962, W*0.040, H*0.014, 0, 0, 7); ctx.fill();
+        ctx.restore();
+      }
+      hudText(goalAhead);
+    }
+
+    function hudText(goalAhead){
+      const p = teams[currentIdx]; if(!p) return;
+      const here = Math.round(camPos);
+      const th = cellTheme(here);
+      const info = SDG[goalAhead];
+      let next = null;
+      for(let c = here + 1; c <= FINISH; c++){ if(cellTheme(c).kind !== 'plain'){ next = c; break; } }
+      const away = next ? next - here : 0;
+      const nt = next ? cellTheme(next) : null;
+      const label = !nt ? '' :
+        nt.kind === 'goal' ? 'Goal ' + nt.goal + ' — ' + SDG[nt.goal].name :
+        nt.kind === 'finish' ? '2030 — the deadline' :
+        nt.kind === 'persona' ? 'A Persona card' :
+        nt.kind === 'consequence' ? 'A Consequence' : 'A Speak Up space';
+      hud.innerHTML =
+        '<div class="wh-who"><span class="wh-dot" style="background:' + p.color + '"></span>' +
+        esc(p.name) + ' · ' + p.nation.flag + ' ' + esc(p.nation.name) + '</div>' +
+        '<div class="wh-pos">Space ' + here + (th.kind==='goal' ? ' · Goal ' + th.goal : '') + '</div>' +
+        (next ? '<div class="wh-next">' + away + ' space' + (away>1?'s':'') + ' ahead: <b>' + esc(label) + '</b></div>' : '');
+    }
+
+    function loop(){
+      if(!active){ raf = null; return; }
+      if(anim){
+        const t = Math.min(1, (performance.now() - anim.t0) / anim.dur);
+        const e = t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+        camPos = anim.from + (anim.to - anim.from) * e;
+        bob = Math.sin(t * Math.PI * 2 * Math.abs(anim.to-anim.from)) * 0.022;
+        if(t >= 1){ camPos = anim.to; bob = 0; anim = null; }
+      } else {
+        /* Whenever nothing is being walked, the camera is simply wherever the acting
+           team is. Keeps the view truthful no matter how state was reached — turn
+           hand-off, a remote snapshot, a rejoin, or toggling the view mid-game. */
+        const p = teams[currentIdx];
+        if(p){
+          const want = Math.max(1, p.position || 1);
+          if(Math.abs(camPos - want) > 0.001) camPos = want;
+        }
+      }
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+    function start(){ if(!raf) raf = requestAnimationFrame(loop); }
+
+    /* Camera snaps to whoever is acting now (turn hand-off, new game, rejoin). */
+    function jump(){
+      const p = teams[currentIdx];
+      camPos = p ? Math.max(1, p.position || 1) : 1;
+      anim = null; bob = 0; if(active) draw();
+    }
+
+    return {
+      get active(){ return active; },
+      setActive(on){
+        active = on;
+        wrap.classList.toggle('hidden', !on);
+        document.getElementById('boardOuter').classList.toggle('hidden', on);
+        document.querySelector('.legend').classList.toggle('hidden', on);
+        if(on){ resize(); jump(); start(); }
+        else if(raf){ cancelAnimationFrame(raf); raf = null; }
+      },
+      jump,
+      /* Walks the camera one cell at a time; returns how long it will take. */
+      travel(from, to){
+        if(!active) return 0;
+        const a = Math.max(1, from || 1), b = Math.max(1, to || 1);
+        const dur = Math.min(2600, Math.max(320, Math.abs(b-a) * MS_PER_CELL));
+        anim = { from:a, to:b, t0: performance.now(), dur };
+        start();
+        return dur;
+      },
+      resize
+    };
+  })();
+  document.querySelectorAll('#viewToggle .vt-btn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('#viewToggle .vt-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const on = b.dataset.view === 'walk';
+      try{ localStorage.setItem('ggWalkView', on ? '1' : '0'); }catch(e){}
+      WALK.setActive(on);
+    });
+  });
+  window.addEventListener('resize', ()=>{ if(WALK.active) WALK.resize(); });
 
 })();
 </script>
