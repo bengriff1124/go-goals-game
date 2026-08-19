@@ -445,6 +445,47 @@
     border-radius:10px; padding:10px 14px; font-size:13px; line-height:1.55; color:#6b4e12; text-align:left;
   }
   .brief-truth b{ color:#8a6300; }
+  /* ---------- Wrap-up flip cards ---------- */
+  .talk-lead{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:-4px 0 16px; }
+  .talk-stage{ perspective:1400px; }
+  .talk-card{
+    position:relative; width:100%; min-height:300px; cursor:pointer;
+    transform-style:preserve-3d; transition:transform .62s cubic-bezier(.4,.05,.2,1);
+  }
+  .talk-card.flipped{ transform:rotateY(180deg); }
+  .talk-face{
+    position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    border-radius:16px; padding:26px 28px; display:flex; flex-direction:column; justify-content:center;
+    box-shadow:0 6px 22px rgba(15,60,60,.13); overflow-y:auto;
+  }
+  .talk-front{ background:linear-gradient(150deg,#ffffff,#f3fbfa); border:2px solid var(--line); }
+  .talk-back{ background:linear-gradient(150deg,#12706e,#0e5a58); color:#eafaf8; transform:rotateY(180deg); border:2px solid #0e5a58; }
+  .talk-kicker{ font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+  .talk-back .talk-kicker{ color:#8fdcd6; }
+  .talk-q{ font-size:22px; font-weight:800; line-height:1.35; color:var(--ink); }
+  .talk-a{ font-size:15px; line-height:1.65; }
+  .talk-a b{ color:#ffe9a8; }
+  .talk-follow{
+    margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,.22);
+    font-size:13.5px; line-height:1.55; color:#bfeae6; font-style:italic;
+  }
+  .talk-flip-hint{ margin-top:auto; padding-top:16px; font-size:12px; font-weight:700; color:var(--accent); }
+  .talk-nav{ display:flex; align-items:center; gap:12px; margin-top:16px; }
+  .talk-btn{
+    border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px;
+    padding:9px 18px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit;
+  }
+  .talk-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .talk-btn:disabled{ opacity:.4; cursor:default; }
+  .talk-dots{ flex:1; display:flex; gap:6px; justify-content:center; flex-wrap:wrap; }
+  .talk-dot{ width:9px; height:9px; border-radius:50%; background:var(--line); cursor:pointer; }
+  .talk-dot.done{ background:#9fd4cf; }
+  .talk-dot.at{ background:var(--accent); transform:scale(1.35); }
+  @media (max-width:640px){
+    .talk-q{ font-size:18px; } .talk-a{ font-size:14px; } .talk-card{ min-height:320px; }
+    .talk-face{ padding:20px; }
+  }
+  @media (prefers-reduced-motion: reduce){ .talk-card{ transition:none; } }
   .view-toggle{ display:flex; gap:6px; margin-bottom:10px; }
   .vt-btn{
     flex:0 0 auto; border:1px solid var(--line); background:#fff; color:var(--muted);
@@ -888,6 +929,30 @@
   <div class="reveal-section">
     <h2>What Actually Happened</h2>
     <div class="debrief-box" id="debriefBox"></div>
+  </div>
+
+  <div class="reveal-section" id="talkSection">
+    <h2>Talk It Through</h2>
+    <p class="talk-lead">One card at a time. Read the question out loud, let the room answer, <em>then</em> flip it to see what actually happened in your game.</p>
+    <div class="talk-stage">
+      <div class="talk-card" id="talkCard">
+        <div class="talk-face talk-front">
+          <div class="talk-kicker" id="talkKicker"></div>
+          <div class="talk-q" id="talkQ"></div>
+          <div class="talk-flip-hint">Tap to see what happened →</div>
+        </div>
+        <div class="talk-face talk-back">
+          <div class="talk-kicker" id="talkKickerB"></div>
+          <div class="talk-a" id="talkA"></div>
+          <div class="talk-follow" id="talkFollow"></div>
+        </div>
+      </div>
+    </div>
+    <div class="talk-nav">
+      <button class="talk-btn" id="talkPrev">← Back</button>
+      <div class="talk-dots" id="talkDots"></div>
+      <button class="talk-btn" id="talkNext">Next →</button>
+    </div>
   </div>
 
   <div class="reveal-actions">
@@ -1523,7 +1588,9 @@
         nationIdx: NATIONS.indexOf(t.nation),
         position: t.position, finished: t.finished,
         personaIdx: t.persona ? PERSONAS.indexOf(t.persona) : -1,
-        contributed: t.contributed
+        contributed: t.contributed,
+        qAsked: t.qAsked|0, qWrong: t.qWrong|0, rolls: t.rolls|0,
+        spaces: t.spaces|0, personasDrawn: t.personasDrawn|0
       })),
       currentIdx, gameOver, finalRound, finalRoundTrigger,
       world: { adopted: world.adopted, harmful: world.harmful },
@@ -1537,7 +1604,9 @@
       nation: NATIONS[t.nationIdx],
       position: t.position, finished: t.finished,
       persona: t.personaIdx >= 0 ? PERSONAS[t.personaIdx] : null,
-      contributed: t.contributed
+      contributed: t.contributed,
+      qAsked: t.qAsked|0, qWrong: t.qWrong|0, rolls: t.rolls|0,
+      spaces: t.spaces|0, personasDrawn: t.personasDrawn|0
     };
   }
 
@@ -1558,6 +1627,8 @@
         const local = teams.find(x=> x.id === t.id);
         if(!local) return;
         local.name = t.name; local.color = t.color; local.memberCount = t.memberCount;
+        local.qAsked = t.qAsked|0; local.qWrong = t.qWrong|0; local.rolls = t.rolls|0;
+        local.spaces = t.spaces|0; local.personasDrawn = t.personasDrawn|0;
         local.nation = NATIONS[t.nationIdx];
         local.position = t.position; local.finished = t.finished;
         local.persona = t.personaIdx >= 0 ? PERSONAS[t.personaIdx] : null;
@@ -1857,7 +1928,8 @@
     const teamDocs = joined.map(j=> ({
       id: j.slot, name: j.name, color: j.color, memberCount: j.members,
       nationIdx: nationDeck.pop(),
-      position: 0, finished: false, personaIdx: -1, contributed: 0
+      position: 0, finished: false, personaIdx: -1, contributed: 0,
+      qAsked: 0, qWrong: 0, rolls: 0, spaces: 0, personasDrawn: 0
     }));
     gameDocRef(currentGameId).set({
       code: currentGameId, phase: 'playing',
@@ -2038,7 +2110,8 @@
       memberCount: p.members,
       nation: NATIONS[nationDeck.pop()],
       position:0, finished:false, persona:null,
-      contributed:0
+      contributed:0,
+      qAsked:0, qWrong:0, rolls:0, spaces:0, personasDrawn:0
     }));
     currentIdx = 0;
     gameOver = false;
@@ -2607,9 +2680,11 @@
     const mult = p.nation.rollMultiplier;
     const steps = mult >= 1 ? roll * mult : Math.max(1, Math.ceil(roll * mult));
     if(steps !== roll){
+      p.rolls = (p.rolls|0) + 1; p.spaces = (p.spaces|0) + steps;
       log(p.name + ' rolled a ' + roll + ' → moves ' + steps + ' (' + p.nation.name + ', ' +
           (mult > 1 ? 'double speed' : 'half speed') + ').');
     } else {
+      p.rolls = (p.rolls|0) + 1; p.spaces = (p.spaces|0) + steps;
       log(p.name + ' rolled a ' + roll + '.');
     }
     const from = p.position;
@@ -2851,6 +2926,7 @@
     }
     debriefHtml += '<p>That\'s what the real Sustainable Development Goals are up against: every country pursuing the same 17 goals from a different starting line, on the same deadline.</p>';
     debrief.innerHTML = debriefHtml;
+    TALK.start(scores, achievedCount);
 
     document.getElementById('gameScreen').classList.add('hidden');
     document.getElementById('revealScreen').classList.remove('hidden');
@@ -2931,6 +3007,7 @@
   function renderStandardQuestion(goalNum){
     const question = nextQuestion(goalNum);
     currentQCtx.question = question;
+    currentQCtx.p.qAsked = (currentQCtx.p.qAsked|0) + 1;
     const noteEl = document.getElementById('qResourceNote');
     if(currentQCtx.needTwo){
       noteEl.textContent = '⚠️ ' + currentQCtx.p.nation.name + ' has no infrastructure here — question ' +
@@ -2956,6 +3033,7 @@
 
     const correct = chosenIdx === question.correct;
     currentQCtx.correct = correct;
+    if(!correct) p.qWrong = (p.qWrong|0) + 1;
     opts[chosenIdx].classList.add(correct ? 'correct' : 'wrong');
     if(!correct) opts[question.correct].classList.add('correct');
 
@@ -2995,6 +3073,7 @@
 
   /* ----- Persona-adaptive subjective challenge mode ----- */
   function renderPersonaChallenge(p, goalNum){
+    p.qAsked = (p.qAsked|0) + 1;
     const template = GOAL_CHALLENGES[goalNum];
     qText.innerHTML = template.replace('{name}',
       '<strong>' + esc(p.persona.name) + '</strong>' +
@@ -3132,6 +3211,7 @@
       const p = pendingPersonaPlayer;
       p.persona = personaModal._persona;
       syncPersonaBadge(p);
+      p.personasDrawn = (p.personasDrawn|0) + 1;
       log(p.name + ' became ' + p.persona.emoji + ' ' + p.persona.name + '!');
       renderStandings();
     }
@@ -3988,6 +4068,221 @@
     });
   });
   window.addEventListener('resize', ()=>{ if(WALK.active) WALK.resize(); });
+
+  /* ================= Wrap-up flip cards =================
+     Every card is built from what actually happened in this game, so the answer
+     side names real teams and real numbers rather than talking in general terms.
+     The front is asked out loud first; the back is the evidence. */
+  const TALK = (function(){
+    const card = document.getElementById('talkCard');
+    const kickerF = document.getElementById('talkKicker');
+    const kickerB = document.getElementById('talkKickerB');
+    const qEl = document.getElementById('talkQ');
+    const aEl = document.getElementById('talkA');
+    const followEl = document.getElementById('talkFollow');
+    const dotsEl = document.getElementById('talkDots');
+    let deck = [], at = 0, seen = new Set();
+
+    const nameOf = t => t.name + ' (' + t.nation.flag + ' ' + t.nation.name + ')';
+    const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
+
+    function build(scores, achievedCount){
+      const cards = [];
+      const bySpeed = [...teams].sort((a,b)=> b.nation.rollMultiplier - a.nation.rollMultiplier);
+      const fastest = bySpeed[0], slowest = bySpeed[bySpeed.length-1];
+      const byRes = [...teams].sort((a,b)=> b.nation.resources.length - a.nation.resources.length);
+      const mostReady = byRes[0], leastReady = byRes[byRes.length-1];
+      const byAsked = [...teams].sort((a,b)=> (b.qAsked|0) - (a.qAsked|0));
+      const mostAsked = byAsked[0], leastAsked = byAsked[byAsked.length-1];
+      const byPos = [...teams].sort((a,b)=> b.position - a.position);
+      const first = byPos[0], last = byPos[byPos.length-1];
+      const byScore = [...teams].sort((a,b)=> scores[b.id].achieved - scores[a.id].achieved || scores[b.id].total - scores[a.id].total);
+      const topScorer = byScore[0];
+      const totalQ = teams.reduce((n,t)=> n + (t.qAsked|0), 0);
+      const totalPersonas = teams.reduce((n,t)=> n + (t.personasDrawn|0), 0);
+      const missed = 17 - achievedCount;
+
+      /* --- speed --- */
+      if(fastest.nation.rollMultiplier !== slowest.nation.rollMultiplier){
+        cards.push({
+          k: 'Speed', q: 'Who moved fastest around the board — and who moved slowest?',
+          a: '<b>' + nameOf(fastest) + '</b> rolled at ' + speedLabel(fastest.nation.rollMultiplier) +
+             '. <b>' + nameOf(slowest) + '</b> rolled at ' + speedLabel(slowest.nation.rollMultiplier) + '.' +
+             '<br><br>Nobody chose that. It came from the nation card you drew, which came from that country\'s real SDG Index rank.',
+          f: 'To the slower team: what did it feel like watching another team move twice as far on the same roll?'
+        });
+        cards.push({
+          k: 'Speed', q: 'Did the slower team ever feel like giving up? Did the faster team notice?',
+          a: '<b>' + nameOf(slowest) + '</b> finished on space ' + slowest.position +
+             '. <b>' + nameOf(fastest) + '</b> finished on space ' + fastest.position + '.' +
+             '<br><br>Real countries feel this too — except the gap took decades to build and nobody gets to reroll.',
+          f: 'Faster team: be honest — were you paying attention to how the other teams were doing, or only to your own turn?'
+        });
+      }
+
+      /* --- the double-question penalty --- */
+      if(mostAsked !== leastAsked && (mostAsked.qAsked|0) > (leastAsked.qAsked|0)){
+        cards.push({
+          k: 'Effort', q: 'Which team had to answer the most questions? How did that feel?',
+          a: '<b>' + nameOf(mostAsked) + '</b> answered <b>' + plural(mostAsked.qAsked|0, 'question', 'questions') +
+             '</b>. <b>' + nameOf(leastAsked) + '</b> answered <b>' + plural(leastAsked.qAsked|0, 'question', 'questions') + '</b>.' +
+             '<br><br>Same board. Same 17 goals. Same deadline. Roughly ' +
+             Math.max(1, Math.round((mostAsked.qAsked|0) / Math.max(1, leastAsked.qAsked|0))) + '× the work.',
+          f: 'Was it harder because the questions were harder — or just because there were more of them?'
+        });
+      }
+      cards.push({
+        k: 'Privilege', q: 'Some nations cleared a goal with one right answer. Others needed two in a row. Why?',
+        a: '<b>' + nameOf(mostReady) + '</b> had the infrastructure for <b>' + mostReady.nation.resources.length +
+           ' of 17</b> goals. <b>' + nameOf(leastReady) + '</b> had it for <b>' + leastReady.nation.resources.length +
+           ' of 17</b>.' + '<br><br>That list came from real data — electricity access, sanitation, internet, emissions, women in parliament.',
+        f: 'Is a country that already has clean water "better" at Goal 6, or just further along the road?'
+      });
+
+      /* --- fairness --- */
+      cards.push({
+        k: 'Fairness', q: 'Was this game fair? Should it have been?',
+        a: 'It was not fair, and that was deliberate. Nobody earned their nation — you drew it.' +
+           '<br><br>Every country on Earth is working on the same 17 goals with the same 2030 deadline, starting from wildly different places.',
+        f: 'What would you have changed to make it fairer — and who would have had to give something up for that?'
+      });
+      cards.push({
+        k: 'Fairness', q: 'If you could have traded nations mid-game, would you have? With whom?',
+        a: 'In the real world, countries cannot swap. What they <i>can</i> do is trade, lend, share technology, cancel debt, or move people.' +
+           '<br><br>Goal 17 — Partnerships — exists because no country reaches 2030 alone.',
+        f: 'Name one thing a fast team could have given a slow team that would have actually helped.'
+      });
+
+      /* --- the reveal --- */
+      cards.push({
+        k: '2030', q: 'The world achieved ' + achievedCount + ' of 17 goals. Which ones did we leave behind?',
+        a: (missed === 0
+            ? 'You got all seventeen. That has never happened in real life.'
+            : '<b>' + plural(missed, 'goal', 'goals') + '</b> went unfinished at the deadline.') +
+           '<br><br>In reality, the UN reports that <b>none</b> of the 17 goals is currently on track for 2030.',
+        f: 'Look at the goals you missed. Do they have anything in common?'
+      });
+      if(world.harmful.length){
+        cards.push({
+          k: '2030', q: 'Wrong answers did not just cost you a turn. What else did they do?',
+          a: 'Your game locked in <b>' + plural(world.harmful.length, 'harmful practice', 'harmful practices') +
+             '</b> — real things the world does when it gets these questions wrong.' +
+             '<br><br>They are listed above this section.',
+          f: 'Which one on that list would you most want to undo?'
+        });
+      }
+      cards.push({
+        k: 'Hidden', q: 'Nothing you were building was shown to you until 2030. Why do you think the game hid it?',
+        a: 'Every correct answer quietly adopted one real behaviour a society needs for that goal — credited to your team.' +
+           '<br><br><b>' + nameOf(topScorer) + '</b> contributed the most, with <b>' + scores[topScorer.id].total + '</b>.',
+        f: 'Would you have played differently if you could see the scoreboard the whole time? Should you have?'
+      });
+
+      /* --- reaching 2030 --- */
+      cards.push({
+        k: 'Deadline', q: 'Reaching 2030 first did not win the game. Why not?',
+        a: '<b>' + nameOf(first) + '</b> got there first. But 2030 is a <i>deadline</i>, not a finish line — what counted was how many goals the world actually achieved.' +
+           '<br><br>Arriving fast with nothing built is not winning.',
+        f: 'Is there anything in your own life where you rushed to the end and missed the point?'
+      });
+
+      /* --- personas --- */
+      if(totalPersonas > 0){
+        const withP = teams.filter(t=> t.persona);
+        cards.push({
+          k: 'Personas', q: 'You argued as someone else. Whose position was hardest to defend?',
+          a: 'Your teams drew <b>' + plural(totalPersonas, 'persona card', 'persona cards') + '</b> between you.' +
+             (withP.length ? '<br><br>Still in character at the end: ' +
+               withP.map(t=> t.persona.emoji + ' ' + esc(t.persona.name) + ' — played by ' + esc(t.name)).join('<br>') : ''),
+          f: 'Did arguing their side change what you actually think? Is it okay if it did?'
+        });
+        cards.push({
+          k: 'Personas', q: 'Every persona wanted something reasonable — and every one had a catch. Why?',
+          a: 'Amara wants a fair price, but higher chocolate prices mean fewer sales. Joseph wants the coal plant closed, but not before there are other jobs.' +
+             '<br><br>Real problems come with real trade-offs. That is what makes them hard, not stupid.',
+          f: 'Think of a rule at school you disagree with. What is the trade-off the people who made it were worried about?'
+        });
+      }
+
+      /* --- the real countries --- */
+      cards.push({
+        k: 'Real world', q: 'Your nation was a real country. What surprised you about it?',
+        a: teams.map(t=> '<b>' + t.nation.flag + ' ' + esc(t.nation.name) + '</b> — ' + esc(t.nation.truth)).join('<br><br>'),
+        f: 'Which of those facts would most people in this room have guessed wrong?'
+      });
+      cards.push({
+        k: 'Real world', q: 'Rank matters, but so does what a country is already good at. Any surprises there?',
+        a: teams.map(t=> '<b>' + t.nation.flag + ' ' + esc(t.nation.name) + '</b> — ' + t.nation.sub +
+             ', strong on ' + t.nation.resources.length + ' of 17 goals').join('<br>') +
+           '<br><br>A low rank does not mean a country is doing nothing. It means the gap between what it has and what it needs is wide.',
+        f: 'Is "developing country" a fair label for a place that runs on 100% renewable electricity?'
+      });
+
+      /* --- close --- */
+      cards.push({
+        k: 'So what', q: 'You answered ' + totalQ + ' questions today. Name one fact you did not know this morning.',
+        a: 'Every question in this game came from real UN data, published in the last two years, with a source behind it.' +
+           '<br><br>None of it was made up to make a point. The point is what the numbers already say.',
+        f: 'Go around the room. One fact each, no repeats.'
+      });
+      cards.push({
+        k: 'So what', q: 'The real deadline is 2030. You will be about 20. What do you want the answer to be?',
+        a: 'Every question card ended with something small you could actually go and find out or do.' +
+           '<br><br>The goals were not written for governments alone — Goal 12 is about what gets bought and thrown away, Goal 13 about how people travel and eat.',
+        f: 'Pick one goal. What is one thing this class could genuinely change before the end of term?'
+      });
+      return cards;
+    }
+
+    function renderDots(){
+      dotsEl.innerHTML = '';
+      deck.forEach((_, i)=>{
+        const d = document.createElement('div');
+        d.className = 'talk-dot' + (i === at ? ' at' : (seen.has(i) ? ' done' : ''));
+        d.title = 'Card ' + (i+1) + ' of ' + deck.length;
+        d.addEventListener('click', ()=> go(i));
+        dotsEl.appendChild(d);
+      });
+    }
+    function show(){
+      const c = deck[at];
+      card.classList.remove('flipped');
+      kickerF.textContent = c.k + ' · ' + (at+1) + ' of ' + deck.length;
+      kickerB.textContent = c.k + ' · what happened';
+      qEl.textContent = c.q;
+      aEl.innerHTML = c.a;
+      followEl.innerHTML = '💬 ' + c.f;
+      document.getElementById('talkPrev').disabled = at === 0;
+      document.getElementById('talkNext').disabled = at === deck.length - 1;
+      renderDots();
+    }
+    function go(i){ at = Math.max(0, Math.min(deck.length-1, i)); show(); }
+
+    card.addEventListener('click', ()=>{
+      card.classList.toggle('flipped');
+      if(card.classList.contains('flipped')){ seen.add(at); renderDots(); }
+    });
+    document.getElementById('talkPrev').addEventListener('click', ()=> go(at-1));
+    document.getElementById('talkNext').addEventListener('click', ()=> go(at+1));
+    /* Arrow keys let a teacher drive the deck from the back of the room. */
+    document.addEventListener('keydown', e=>{
+      if(document.getElementById('revealScreen').classList.contains('hidden')) return;
+      if(e.key === 'ArrowRight') go(at+1);
+      else if(e.key === 'ArrowLeft') go(at-1);
+      else if(e.key === ' ' || e.key === 'Enter'){
+        if(document.activeElement && document.activeElement.tagName === 'BUTTON') return;
+        e.preventDefault(); card.click();
+      }
+    });
+
+    return {
+      start(scores, achievedCount){
+        deck = build(scores, achievedCount);
+        at = 0; seen = new Set();
+        show();
+      }
+    };
+  })();
 
 })();
 </script>
