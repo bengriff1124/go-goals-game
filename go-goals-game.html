@@ -501,6 +501,29 @@
     .talk-face{ padding:20px; }
   }
   @media (prefers-reduced-motion: reduce){ .talk-card{ transition:none; } }
+  .unveil-modal{ max-width:560px; }
+  .unveil-step{ font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .unveil-card{ position:relative; min-height:250px; margin:14px 0 4px; perspective:1200px; transform-style:preserve-3d;
+    transition:transform .7s cubic-bezier(.4,.05,.2,1); cursor:pointer; }
+  .unveil-card.open{ transform:rotateY(180deg); }
+  .unveil-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    border-radius:14px; padding:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .unveil-back{ background:linear-gradient(150deg,#12706e,#0e5a58); color:#eafaf8; border:2px solid #0e5a58; }
+  .unveil-q{ font-size:64px; font-weight:800; opacity:.55; }
+  .unveil-hint{ margin-top:8px; font-size:12.5px; font-weight:700; color:#a7ded9; }
+  .unveil-front{ background:linear-gradient(150deg,#ffffff,#f3fbfa); border:2px solid var(--line); transform:rotateY(180deg); }
+  .unveil-flag{ font-size:44px; line-height:1; }
+  .unveil-nation{ font-size:24px; font-weight:800; color:var(--ink); margin-top:4px; }
+  .unveil-rank{ font-size:12.5px; color:var(--muted); }
+  .unveil-sep{ width:52px; height:2px; background:var(--line); margin:12px 0; border-radius:2px; }
+  .unveil-person{ display:flex; align-items:center; gap:10px; text-align:left; }
+  .unveil-emoji{ font-size:30px; }
+  .unveil-person b{ display:block; font-size:16px; color:var(--ink); }
+  .unveil-where{ font-size:12px; color:var(--muted); }
+  .unveil-ordinary{ margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--ink); text-align:center; }
+  .unveil-more{ margin-top:6px; background:#f4ecfb; border:1px solid #ddc6f2; border-radius:10px; padding:11px 14px; text-align:left; }
+  .unveil-more .stance-line{ margin:3px 0; }
+  @media (max-width:560px){ .unveil-card{ min-height:300px; } .unveil-nation{ font-size:20px; } }
   .clock-card{
     background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow);
     padding:14px 18px; margin-bottom:14px;
@@ -912,6 +935,41 @@
   </div>
 </div>
 
+<!-- ============ UNVEILING ============ -->
+<div class="modal-overlay hidden" id="unveilModal">
+  <div class="modal unveil-modal">
+    <div class="unveil-step" id="unveilStep"></div>
+    <h2 id="unveilTeam"></h2>
+
+    <div class="unveil-card" id="unveilCard">
+      <div class="unveil-face unveil-back">
+        <div class="unveil-q">?</div>
+        <div class="unveil-hint">Tap to find out who you are</div>
+      </div>
+      <div class="unveil-face unveil-front">
+        <div class="unveil-flag" id="unveilFlag"></div>
+        <div class="unveil-nation" id="unveilNation"></div>
+        <div class="unveil-rank" id="unveilRank"></div>
+        <div class="unveil-sep"></div>
+        <div class="unveil-person">
+          <span class="unveil-emoji" id="unveilEmoji"></span>
+          <span>
+            <b id="unveilName"></b>
+            <span class="unveil-where" id="unveilWhere"></span>
+          </span>
+        </div>
+        <div class="unveil-ordinary" id="unveilOrdinary"></div>
+      </div>
+    </div>
+
+    <div class="unveil-more hidden" id="unveilMore"></div>
+
+    <div class="modal-actions">
+      <button class="primary-btn" id="unveilNextBtn">Reveal</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ NATION BRIEFING MODAL ============ -->
 <div class="modal-overlay hidden" id="briefModal">
   <div class="modal brief-modal">
@@ -1228,55 +1286,113 @@
   /* ---------------- Persona cards (inspired by imaginative character-design games) ---------------- */
   const PERSONAS = [
     { name:"Amara, Cocoa Farmer", emoji:"🌾", where:"C\u00f4te d'Ivoire",
+      home:"C\u00f4te d'Ivoire", ordinary:"You know every tree on your land by sight, you sing while you work because it makes the day shorter, and your youngest wants to be a goalkeeper.",
       blurb:"You grow the cocoa in chocolate bars sold on the other side of the world. For every chocolate bar sold, only about six cents reaches your farm. At harvest, your children work beside you because you cannot afford to hire help.",
       position:"I need a fair price for my beans \u2014 not charity, and not a lecture about my kids.",
       tension:"If chocolate costs more, shoppers overseas buy less, and I sell nothing at all." },
 
     { name:"Rafael, Delivery Rider", emoji:"🛵", where:"S\u00e3o Paulo, Brazil",
+      home:"Brazil", ordinary:"You know which cafes let you use the bathroom, you have opinions about every football referee alive, and you ride with one earphone in, always the same playlist.",
       blurb:"You ride ten hours a day for an app. No contract, no sick pay, no insurance if a car clips you at an intersection \u2014 but you choose your own hours, and no boss stands over you.",
       position:"Give me sick pay and safety gear without taking away the flexible hours.",
       tension:"The companies say if they have to provide that, they will hire far fewer riders \u2014 and I might be one of the ones cut." },
 
     { name:"Priya, Garment Worker", emoji:"🧵",
       where:"Dhaka, Bangladesh",
+      home:"Bangladesh", ordinary:"You and the women on your row eat lunch together every day and it is the best forty minutes of it. You are saving for a phone with a proper camera.",
       blurb:"You stitch clothing for brands you have never heard of. The hours are long and the building worries you. It is also the most money anyone in your family has ever earned, and it is yours.",
       position:"Don't shut this factory down to save me \u2014 fix it.",
       tension:"Safety upgrades cost money, and the buyer can move production to another country tomorrow." },
 
     { name:"Joseph, Power Plant Engineer", emoji:"\u26A1", where:"Silesia, Poland",
+      home:"Poland", ordinary:"Your grandfather worked this plant, your father worked it, and you keep it running. You fish on Sundays and you have never once caught anything worth photographing.",
       blurb:"Your grandfather worked this coal plant, your father worked it, and you keep it running now. The whole town \u2014 shops, school, clinic \u2014 exists because of it. You have read the climate science. You believe it.",
       position:"Close the plant, but not one day before there are other jobs here.",
       tension:"Every year we wait, the air my own children breathe gets worse." },
 
     { name:"Nadia, Rural Nurse", emoji:"🩺", where:"Turkana County, Kenya",
+      home:"Kenya", ordinary:"You can start a conversation with anyone. You drink your tea far too sweet, and you have delivered more babies than you can count.",
       blurb:"You are the only trained health worker for thousands of people across sixty miles of dry brush. You deliver babies, set broken bones, and hand out medicine a little at a time. Every colleague you trained with has taken a better-paid job in a city or abroad.",
       position:"Pay rural health workers properly, or we will all keep leaving.",
       tension:"That money would come out of the same budget that buys the medicine I hand out." },
 
     { name:"Tom\u00e1s, Small-Boat Fisher", emoji:"🎣", where:"Northern Peru",
+      home:"Peru", ordinary:"You are out before the light, you can read the water the way other people read a page, and you are teaching your niece the knots your father taught you.",
       blurb:"Four generations of your family have fished this stretch of coast from open boats. The catch has been shrinking for a decade. Huge industrial fishing ships work the water just beyond the horizon.",
       position:"Limit the big trawlers before you put limits on us.",
       tension:"Those trawlers employ people from my own town, and they pay better than fishing does." },
 
     { name:"Mei, City Planner", emoji:"🏙\uFE0F", where:"Jakarta, Indonesia",
+      home:"Indonesia", ordinary:"You take the long way home to look at buildings. You are the friend everyone asks to help them move house, and you cannot say no.",
       blurb:"Your city is sinking several centimeters a year while the sea rises to meet it. There is money to protect some districts with sea walls and drainage. There is not money to protect all of them. The decision is on your desk.",
       position:"I cannot save every neighborhood. Someone has to choose, and it is me.",
       tension:"The districts that are cheapest to protect are not the ones where the most vulnerable people live." },
 
     { name:"Yusuf, Refugee Student", emoji:"📚", where:"Zaatari Camp, Jordan",
+      home:"Jordan", ordinary:"You are top of your class in a language that is not your first. You play football on a gravel pitch every evening and you are, by common agreement, quick.",
       blurb:"You have lived in this camp for nine years \u2014 more than half your life. You study hard in a language that is not your first. You will graduate near the top of your class, and then you will not be legally allowed to work.",
       position:"Let me work legally when I finish school. I did not choose to be here.",
       tension:"Local families are worried there aren't enough jobs for their own children as it is." },
 
     { name:"Elena, Grocery Shop Owner", emoji:"🛒", where:"Valpara\u00edso, Chile",
+      home:"Chile", ordinary:"You know what everyone on your street buys and roughly why. You keep a stool by the till for whoever needs to sit and talk.",
       blurb:"You run a small corner shop on a steep street. You would genuinely like to sell food without plastic. The companies that sell to you wrap everything in plastic, and your customers count every coin at the register.",
       position:"I'll go plastic-free the day my suppliers and my customers make it possible.",
       tension:"Unwrapped food spoils faster, and spoiled food is money I do not have." },
 
     { name:"Kwame, Mining Community Leader", emoji:"\u26CF\uFE0F", where:"Kolwezi, DR Congo",
+      home:"DR Congo", ordinary:"You settle disputes, you remember every name, and you have a laugh people can hear from the next street.",
       blurb:"The cobalt under your town ends up in the battery of nearly every phone and electric car on Earth. Your community has the jobs. It does not have clean water, a secondary school, or safe conditions underground.",
       position:"The world wants our cobalt. We want schools and clean water in return.",
-      tension:"If we ask for too much, the buyers simply go to a mine that asks for nothing." }
+      tension:"If we ask for too much, the buyers simply go to a mine that asks for nothing." },
+
+    { name:"Aino, Student", emoji:"🎒", where:"Helsinki, Finland",
+      home:"Finland", ordinary:"You are fifteen. You argue about football, you are learning bass badly, and you and your friends spend Saturdays in a shopping centre because it is warm.",
+      blurb:"Your country is rated the best in the world at the Global Goals. Your school is free, your water is clean, your air is clean. Almost everything you own was made somewhere that cannot say the same.",
+      position:"Our schools are the best on Earth. Our shopping is wrecking somebody else's country.",
+      tension:"Buying less means Finnish jobs, and a life I actually like, getting smaller." },
+
+    { name:"Lukas, Truck Driver", emoji:"🚛", where:"Duisburg, Germany",
+      home:"Germany", ordinary:"You know every service station between here and Rotterdam, you call your daughter from the cab every night at eight, and you are very particular about coffee.",
+      blurb:"You move goods across Europe for a living. Your truck burns diesel. You have read the same headlines everyone else has and you do not argue with them.",
+      position:"Go electric — but retrain me before you scrap my truck, not after.",
+      tension:"Every year we wait, my engine adds more. Every year we rush, I am the one out of work." },
+
+    { name:"Haruko, Neighbourhood Carer", emoji:"🍵", where:"rural Hokkaido, Japan",
+      home:"Japan", ordinary:"You are seventy-eight. You grow more tomatoes than you can eat, you are unbeaten at the local card game, and you check on four neighbours every morning.",
+      blurb:"You live longer here than almost anywhere on Earth. The trouble is who is left: the young people moved to the cities, and the person caring for the eighty-year-olds is you.",
+      position:"Do not move us to the city. Bring the care out here to us.",
+      tension:"There are not enough young people left to do it, and the ones who stay cannot afford to." },
+
+    { name:"Marcus, Warehouse Packer", emoji:"📦", where:"Ohio, United States",
+      home:"United States", ordinary:"You pack about a thousand parcels a shift, you know the exact playlist that gets you through hour six, and you coach your nephew's basketball team on Sundays.",
+      blurb:"You work in the richest large economy on Earth, at two jobs, and you still count carefully at the checkout. Your country puts out more carbon per person than any nation in this game.",
+      position:"I would like one job that pays enough to be my only job.",
+      tension:"The cheap, next-day delivery everybody loves is exactly the thing that makes my job like this." },
+
+    { name:"Linh, Line Supervisor", emoji:"🔗", where:"Bình Dương, Viet Nam",
+      home:"Viet Nam", ordinary:"You run a line of forty people, you are the one who remembers everybody's birthday, and you are saving for a motorbike you have already chosen the colour of.",
+      blurb:"The factories here pulled your family out of poverty inside one generation. They also sit under some of the dirtiest air in this game.",
+      position:"Do not shut the factories to save me. Clean them.",
+      tension:"Cleaning them costs money, and the buyers can move to a cheaper country inside a month." },
+
+    { name:"Sione, Village Headman", emoji:"🏝️", where:"coastal Viti Levu, Fiji",
+      home:"Fiji", ordinary:"You settle arguments, you run the Sunday feast, and you are quietly proud that your village has the best choir on this coast.",
+      blurb:"The sea is taking the bottom of your village a little each year. Your country puts out barely any carbon and is among the first to pay for everyone else's.",
+      position:"We did not cause this. Help us move, or help us stay — but decide with us, not about us.",
+      tension:"The land inland belongs to another clan, and our grandparents are buried here." },
+
+    { name:"Divya, Rickshaw Driver", emoji:"🛺", where:"Delhi, India",
+      home:"India", ordinary:"You drive twelve hours, you know a shortcut nobody else knows, and your daughter is top of her class and will not let you forget it.",
+      blurb:"You breathe Delhi's air all day with the windows open. It carries about nine times the soot the World Health Organization calls safe — and your rickshaw is part of what puts it there.",
+      position:"Sell me an electric rickshaw I can afford. Do not just fine me for the one I have.",
+      tension:"The electric one costs two years of what I earn, and there is nowhere on my route to charge it." },
+
+    { name:"Fatimé, Water Committee Chair", emoji:"🚰", where:"near Lake Chad",
+      home:"Chad", ordinary:"You are the person everyone comes to. You are teaching your son to ride a bicycle, badly, and you laugh at your own jokes before you finish them.",
+      blurb:"You keep the borehole running for four hundred people. The lake your grandmother swam in is a fraction of the size. Your country puts out the least carbon of any nation in this game.",
+      position:"Fund the pump, not another workshop about the pump.",
+      tension:"The people with the money want reports written, and writing reports is not fixing pumps." }
   ];
 
   /* ---------------- Persona-adaptive challenge prompts, one per SDG ---------------- */
@@ -1631,6 +1747,14 @@
     for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
     return arr;
   }
+  /* A nation is not an abstraction with a flag on it — it is somewhere a person lives.
+     Each team plays the same person from first roll to 2030, so the statistics have
+     somewhere to land: "cocoa farmers keep six cents a bar" means nothing, "YOU keep six
+     cents" is a different sentence. */
+  function personaForNation(nation){
+    return PERSONAS.find(p => p.home === nation.name) || null;
+  }
+
   function nextPersona(excludeName){
     if(!personaDeck.length) personaDeck = shuffledPersonaDeck();
     let idx = personaDeck.pop();
@@ -1822,7 +1946,8 @@
       initBoard();
       applySavedView();
       log('The race to 2030 begins with ' + teams.length + ' nations.');
-      teams.forEach(t=> log(t.name + ' is ' + t.nation.emoji + ' ' + t.nation.name + ' (' + t.nation.sub + ').'));
+      suppressBriefing = true;
+      UNVEIL.start(()=>{ suppressBriefing = false; lastBriefedTeamId = null; updateTurnUI(); });
     }
 
     renderStandings();
@@ -2101,12 +2226,17 @@
        so the host's own snapshot takes the same firstApply path as every team device. */
     const nationDeck = shuffleIndices(NATIONS.length);
     const joined = [...latestLobby.joined].sort((a,b)=> a.slot - b.slot);
-    const teamDocs = joined.map(j=> ({
-      id: j.slot, name: j.name, color: j.color, memberCount: j.members,
-      nationIdx: nationDeck.pop(),
-      position: 0, finished: false, personaIdx: -1, contributed: 0,
-      qAsked: 0, qWrong: 0, rolls: 0, spaces: 0, personasDrawn: 0
-    }));
+    const teamDocs = joined.map(j=>{
+      const nationIdx = nationDeck.pop();
+      return {
+        id: j.slot, name: j.name, color: j.color, memberCount: j.members,
+        nationIdx,
+        personaIdx: PERSONAS.indexOf(personaForNation(NATIONS[nationIdx])),
+        position: 0, finished: false, contributed: 0,
+        qAsked: 0, qWrong: 0, rolls: 0, spaces: 0, personasDrawn: 0,
+        twoDice: 0, heldBack: 0, helped: 0
+      };
+    });
     gameDocRef(currentGameId).set({
       code: currentGameId, phase: 'playing',
       teams: teamDocs,
@@ -2280,16 +2410,21 @@
     gameStarted = false;
 
     const nationDeck = shuffleIndices(NATIONS.length);
-    teams = draftPlayers.map((p,i)=>({
-      id:i,
-      name:p.name.trim() || ('Team '+(i+1)),
-      color:p.color,
-      memberCount: p.members,
-      nation: NATIONS[nationDeck.pop()],
-      position:0, finished:false, persona:null,
-      contributed:0,
-      qAsked:0, qWrong:0, rolls:0, spaces:0, personasDrawn:0
-    }));
+    teams = draftPlayers.map((p,i)=>{
+      const nation = NATIONS[nationDeck.pop()];
+      return {
+        id:i,
+        name:p.name.trim() || ('Team '+(i+1)),
+        color:p.color,
+        memberCount: p.members,
+        nation,
+        position:0, finished:false,
+        persona: personaForNation(nation),
+        contributed:0,
+        qAsked:0, qWrong:0, rolls:0, spaces:0, personasDrawn:0,
+        twoDice:0, heldBack:0, helped:0
+      };
+    });
     currentIdx = 0;
     gameOver = false;
     ticks = ticksTotal(); footprint = 0; turnCharged = false;
@@ -2306,9 +2441,11 @@
     initBoard();
     applySavedView();
     renderStandings();
-    updateTurnUI();
     log('The race to 2030 begins with ' + teams.length + ' nations.');
-    teams.forEach(t=> log(t.name + ' is ' + t.nation.emoji + ' ' + t.nation.name + ' (' + t.nation.sub + ').'));
+    /* Hold the first turn until every team has met their country and their person. */
+    suppressBriefing = true;
+    UNVEIL.start(()=>{ suppressBriefing = false; lastBriefedTeamId = null; updateTurnUI(); });
+    updateTurnUI();
   });
 
   /* ---------------- Confirmation dialog ---------------- */
@@ -2751,9 +2888,74 @@
   document.getElementById('briefCloseBtn').addEventListener('click', ()=> briefModal.classList.add('hidden'));
   document.getElementById('nationInfoBtn').addEventListener('click', ()=> showNationBriefing(teams[currentIdx]));
 
+  /* ================= The unveiling =================
+     Before anyone rolls, each team finds out in turn who they are. Card face down, tap to
+     flip: their country, and the person whose life they will argue from for the whole
+     game. The ordinary detail comes first and the hard part second, on purpose — a
+     student connects to "she is teaching her son to ride a bike, badly" far faster than
+     to "39.5% live on under $3 a day", and the second one lands differently once the
+     first has. */
+  const UNVEIL = (function(){
+    const modal = document.getElementById('unveilModal');
+    const card  = document.getElementById('unveilCard');
+    const more  = document.getElementById('unveilMore');
+    const nextBtn = document.getElementById('unveilNextBtn');
+    let at = 0, flipped = false, onDone = null;
+
+    function paint(){
+      const t = teams[at];
+      document.getElementById('unveilStep').textContent = 'Team ' + (at + 1) + ' of ' + teams.length;
+      document.getElementById('unveilTeam').textContent = t.name;
+      document.getElementById('unveilFlag').textContent = t.nation.flag;
+      document.getElementById('unveilNation').textContent = t.nation.name;
+      document.getElementById('unveilRank').textContent = t.nation.sub;
+      const p = t.persona;
+      document.getElementById('unveilEmoji').textContent = p ? p.emoji : '';
+      document.getElementById('unveilName').textContent = p ? p.name : '';
+      document.getElementById('unveilWhere').textContent = p ? p.where : '';
+      document.getElementById('unveilOrdinary').textContent = p ? p.ordinary : '';
+      more.innerHTML = p
+        ? '<div class="stance-line"><b>What they want:</b> ' + esc(p.position) + '</div>' +
+          '<div class="stance-line"><b>What makes it hard:</b> ' + esc(p.tension) + '</div>'
+        : '';
+      card.classList.remove('open');
+      more.classList.add('hidden');
+      flipped = false;
+      nextBtn.textContent = 'Reveal';
+    }
+
+    function flip(){
+      if(flipped) return;
+      flipped = true;
+      card.classList.add('open');
+      setTimeout(()=>{ more.classList.remove('hidden'); }, 420);
+      nextBtn.textContent = (at === teams.length - 1) ? 'Start the race to 2030' : 'Next team';
+      const t = teams[at];
+      log(t.name + ' is ' + t.nation.flag + ' ' + t.nation.name +
+          (t.persona ? ' — playing ' + t.persona.name + ', ' + t.persona.where : '') + '.');
+    }
+
+    card.addEventListener('click', flip);
+    nextBtn.addEventListener('click', ()=>{
+      if(!flipped){ flip(); return; }
+      at++;
+      if(at >= teams.length){ modal.classList.add('hidden'); if(onDone) onDone(); return; }
+      paint();
+    });
+
+    return {
+      start(done){
+        onDone = done; at = 0;
+        paint();
+        modal.classList.remove('hidden');
+      }
+    };
+  })();
+
   /* Auto-briefed once per team change (not on same-team bonus rerolls), so nobody can
      roll without having seen what their nation can and can't do this game. */
   let lastBriefedTeamId = null;
+  let suppressBriefing = false;
 
   /* Deliberately visible. Everything else in this game stays hidden until 2030, but a
      lock nobody can see is indistinguishable from a bug — and twelve of the eighteen
@@ -2820,7 +3022,8 @@
     /* Auto-brief only where the turn will actually be played: everywhere in local
        mode, but in hosted games only on the acting team's own device — spectators
        shouldn't get another team's briefing modal popping over their board. */
-    const briefHere = syncMode === 'local' || (syncMode === 'team' && p.id === myTeamId);
+    const briefHere = !suppressBriefing &&
+      (syncMode === 'local' || (syncMode === 'team' && p.id === myTeamId));
     if(briefHere && p.id !== lastBriefedTeamId){
       lastBriefedTeamId = p.id;
       showNationBriefing(p);
@@ -3435,6 +3638,30 @@
   let pendingPersonaPlayer = null;
 
   function openPersona(p){
+    if(p.persona){
+      pendingPersonaPlayer = null;
+      pmTitle.textContent = 'A moment for ' + p.persona.name.split(',')[0];
+      pmSubtitle.textContent = p.name + ' — ' + p.nation.flag + ' ' + p.nation.name;
+      pmEmoji.textContent = p.persona.emoji;
+      pmName.textContent = p.persona.name;
+      pmWhere.textContent = p.persona.where;
+      pmBlurb.textContent = p.persona.ordinary || p.persona.blurb;
+      pmHint.innerHTML =
+        '<div class="stance-line"><b>Still true:</b> ' + esc(p.persona.position) + '</div>' +
+        '<div class="stance-line"><b>Still hard:</b> ' + esc(p.persona.tension) + '</div>';
+      personaCard.classList.add('flipped');
+      personaContinueBtn.textContent = 'Roll again';
+      personaModal.classList.remove('hidden');
+      personaEarnedRoll = true;
+      return;
+    }
+    return openPersonaLegacy(p);
+  }
+
+  let personaEarnedRoll = false;
+
+  function openPersonaLegacy(p){
+    personaContinueBtn.textContent = 'Take on this Persona';
     const previous = p.persona ? p.persona.name : null;
     const persona = nextPersona(previous);
     pendingPersonaPlayer = p;
@@ -3458,6 +3685,14 @@
   }
 
   personaContinueBtn.addEventListener('click', ()=>{
+    if(personaEarnedRoll){
+      personaEarnedRoll = false;
+      personaModal.classList.add('hidden');
+      pendingPersonaPlayer = null;
+      rolling = false;
+      updateTurnUI();          // the space gives the roll back rather than eating a turn
+      return;
+    }
     if(pendingPersonaPlayer){
       const p = pendingPersonaPlayer;
       p.persona = personaModal._persona;
