@@ -577,6 +577,7 @@
   </div>
   <div class="topbtns">
     <button class="ghost-btn" id="rulesBtn">How to Play</button>
+    <button class="ghost-btn hidden" id="endNowBtn" title="Jump straight to the 2030 results with whatever the world has built so far">⏱ End at 2030</button>
     <button class="ghost-btn hidden" id="newGameBtn">New Game</button>
   </div>
 </div>
@@ -1451,9 +1452,15 @@
   /* Huddle votes come from the acting team's own members, not the whole table. */
   function huddleSize(){ const t = actingTeam(); return t ? t.memberCount : 1; }
   function hasResource(team, goal){ return team.nation.resources.includes(goal); }
-  function goalAchieved(goal){
-    return (world.adopted[goal] || []).length >= BEHAVIORS[goal].length;
-  }
+  /* A goal counts as achieved once most of its behaviors are in place. Requiring all
+     three made a two-team game mathematically unwinnable: two teams cannot generate
+     51 adoptions, so the 2030 reveal read "0 of 17 goals" every single time. At two
+     of three it lands around 8 of 17 for two teams and 12 for four — always a real
+     result, never a clean sweep. */
+  const NEEDED_PER_GOAL = 2;
+  function goalNeeds(goal){ return Math.min(NEEDED_PER_GOAL, BEHAVIORS[goal].length); }
+  function goalAchieved(goal){ return (world.adopted[goal] || []).length >= goalNeeds(goal); }
+
   function adoptBehavior(team, goal){
     const taken = world.adopted[goal] || (world.adopted[goal] = []);
     if(taken.length >= BEHAVIORS[goal].length) return null;
@@ -1653,6 +1660,7 @@
       document.getElementById('setupScreen').classList.add('hidden');
       document.getElementById('gameScreen').classList.remove('hidden');
       document.getElementById('newGameBtn').classList.remove('hidden');
+    document.getElementById('endNowBtn').classList.remove('hidden');
       initBoard();
       applySavedView();
       log('The race to 2030 begins with ' + teams.length + ' nations.');
@@ -2132,6 +2140,7 @@
     document.getElementById('setupScreen').classList.add('hidden');
     document.getElementById('gameScreen').classList.remove('hidden');
     document.getElementById('newGameBtn').classList.remove('hidden');
+    document.getElementById('endNowBtn').classList.remove('hidden');
     initBoard();
     applySavedView();
     renderStandings();
@@ -2220,6 +2229,7 @@
     document.getElementById('gameScreen').classList.add('hidden');
     document.getElementById('revealScreen').classList.add('hidden');
     document.getElementById('newGameBtn').classList.add('hidden');
+    document.getElementById('endNowBtn').classList.add('hidden');
     document.getElementById('setupScreen').classList.remove('hidden');
     window.scrollTo(0, 0);
   }
@@ -2230,6 +2240,18 @@
       'Your current game will be lost, including every persona and all progress on the board.',
       'Start New Game',
       resetToSetup
+    );
+  });
+
+  /* A full game runs about 16 turns per team. When the period is nearly over, a
+     teacher needs to reach the 2030 reveal rather than abandon the lesson. */
+  document.getElementById('endNowBtn').addEventListener('click', ()=>{
+    if(gameOver) return;
+    showConfirm(
+      'Jump to 2030 now?',
+      'The game stops here and you go straight to the results, using whatever the world has built so far. Teams still on the board will not get another turn.',
+      'Show the 2030 Results',
+      ()=>{ if(!gameOver){ rolling = false; endGame(); } }
     );
   });
 
@@ -2658,16 +2680,11 @@
   /* A roll can no longer sail past an SDG space untouched: we walk the exact path of
      cells the token crosses and force a stop at every goal cell along the way (in order),
      before the token is allowed to reach its true destination. */
-  let move = null; // { p, stops, idx, finalPos, bounced }
+  let move = null; // { p, stops, idx, finalPos }
 
-  function buildPath(from, finalPos, bounced){
+  function buildPath(from, finalPos){
     const path = [];
-    if(!bounced){
-      for(let c=from+1; c<=finalPos; c++) path.push(c);
-    } else {
-      for(let c=from+1; c<=FINISH; c++) path.push(c);
-      for(let c=FINISH-1; c>=finalPos; c--) path.push(c);
-    }
+    for(let c=from+1; c<=finalPos; c++) path.push(c);
     return path;
   }
 
@@ -2696,20 +2713,15 @@
     const from = p.position;
     const target = from + steps;
 
-    let finalPos, bounced = false;
-    if(target === FINISH){
-      finalPos = FINISH;
-    } else if(target > FINISH){
-      const surplus = target - FINISH;
-      finalPos = FINISH - surplus;
-      bounced = true;
-    } else {
-      finalPos = target;
-    }
+    /* Reaching OR passing 2030 means you have arrived. The old rule bounced an
+       overshoot back down the board, which quietly made 2030 unreachable for
+       double-speed nations: their steps are always even and 2030 is space 63, so
+       parity never let them land on it and they ricocheted off the finish forever. */
+    const finalPos = Math.min(target, FINISH);
 
-    const path = buildPath(from, finalPos, bounced);
+    const path = buildPath(from, finalPos);
     const stops = computeStops(path, finalPos);
-    move = { p, stops, idx:0, finalPos, bounced };
+    move = { p, stops, idx:0, finalPos };
     advanceMove();
   }
 
@@ -2726,14 +2738,11 @@
 
     setTimeout(()=>{
       const isLastStop = (mv.idx === mv.stops.length - 1);
-      if(mv.bounced && isLastStop){
-        log(mv.p.name + ' overshot 2030 and bounced back to space ' + mv.finalPos + '.');
-      }
       if(cellNum === FINISH){ finishGame(mv.p); return; }
       if(GOAL_CELLS[cellNum]){
         openQuestion(mv.p, GOAL_CELLS[cellNum], {
           isFinalStop: isLastStop,
-          onlyStop: mv.stops.length === 1 && !mv.bounced
+          onlyStop: mv.stops.length === 1
         });
       } else {
         settleFinal(mv.p, cellNum);
@@ -2781,7 +2790,7 @@
     teams.forEach(t=> scores[t.id] = { achieved:0, total:t.contributed });
     Object.keys(world.adopted).forEach(goalNum=>{
       const entries = world.adopted[goalNum];
-      if(entries.length >= BEHAVIORS[goalNum].length){
+      if(entries.length >= goalNeeds(goalNum)){
         entries.forEach(e=>{ scores[e.teamId].achieved++; });
       }
     });
@@ -2815,7 +2824,8 @@
     wDot.style.background = winner.color;
     wDot.style.display = 'inline-block';
     winnerEl.append('🏆 ', wDot, ' ' + winner.name + ' — ' + winner.nation.emoji + ' ' + winner.nation.name +
-      ' — ' + scores[winner.id].achieved + ' goals achieved, ' + scores[winner.id].total + ' real-world changes added');
+      ' — ' + scores[winner.id].achieved + (scores[winner.id].achieved === 1 ? ' goal achieved, ' : ' goals achieved, ') +
+      scores[winner.id].total + (scores[winner.id].total === 1 ? ' real-world change added' : ' real-world changes added'));
 
     let achievedCount = 0;
     const goalGrid = document.getElementById('goalStatusGrid');
@@ -2823,7 +2833,7 @@
     for(let g=1; g<=17; g++){
       const info = SDG[g];
       const entries = world.adopted[g] || [];
-      const total = BEHAVIORS[g].length;
+      const total = goalNeeds(g);
       const achieved = entries.length >= total;
       if(achieved) achievedCount++;
       const status = achieved ? 'achieved' : (entries.length ? 'progress' : 'none');
@@ -2841,7 +2851,8 @@
       label.textContent = info.name;
       const statusTag = document.createElement('span');
       statusTag.className = 'gst-status s-' + status;
-      statusTag.textContent = achieved ? 'Achieved' : (entries.length ? 'In progress' : 'Not started');
+      statusTag.textContent = achieved ? 'Achieved'
+        : (entries.length ? entries.length + ' of ' + total + ' done' : 'Not started');
       head.append(badge, label, statusTag);
 
       const list = document.createElement('ul');
@@ -2908,7 +2919,8 @@
       const stats = document.createElement('div');
       stats.className = 'tr-stats';
       const s = scores[t.id];
-      stats.innerHTML = '<div><b>' + s.achieved + '</b>goals achieved</div><div><b>' + s.total + '</b>real-world changes added</div>';
+      stats.innerHTML = '<div><b>' + s.achieved + '</b>' + (s.achieved === 1 ? 'goal achieved' : 'goals achieved') +
+        '</div><div><b>' + s.total + '</b>' + (s.total === 1 ? 'real-world change added' : 'real-world changes added') + '</div>';
 
       card.append(head, nationLine, stats);
       teamGrid.appendChild(card);
@@ -3355,10 +3367,11 @@
     if(!eligible.length){
       adTitle.textContent = 'Nobody to speak for yet';
       adPickWrap.classList.add('hidden');
-      adFactBox.textContent = "💡 Once another team has drawn a Persona, landing here lets you argue on their behalf — and they decide whether you got their world right.";
+      adFactBox.textContent = "💡 Once another team is playing a Persona, landing here lets you argue for them — and they decide whether you got their life right. Nothing to do this time, so take your roll again.";
       adFactBox.classList.remove('hidden');
       adContinueBtn.classList.remove('hidden');
-      log(p.name + ' landed on Speak Up, but no one else has a Persona yet.');
+      adCtx.earnedRoll = true;   // the space did nothing, so it should not cost a turn
+      log(p.name + ' landed on Speak Up, but no other team is playing a Persona yet — rolls again.');
       advocateModal.classList.remove('hidden');
       return;
     }
