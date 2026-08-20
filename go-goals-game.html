@@ -271,6 +271,7 @@
   .brief-stat .lbl{ font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-weight:700; }
   .brief-legend{ font-size:11.5px; color:var(--muted); margin-top:12px; text-align:left; line-height:1.5; }
   .brief-legend b{ color:var(--ink); }
+  .dice-tray{ display:flex; gap:6px; flex:none; }
   .dice{
     width:44px; height:44px; flex:none; background:#fff; border-radius:11px;
     border:2px solid var(--line); display:flex; align-items:center; justify-content:center;
@@ -452,6 +453,14 @@
   }
   .brief-truth b{ color:#8a6300; }
   /* ---------- Wrap-up flip cards ---------- */
+  .q-teach{
+    margin-top:12px; background:#f2faf9; border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:12px 15px; text-align:left;
+  }
+  .q-teach > div{ font-size:13.5px; line-height:1.6; color:var(--ink); }
+  .q-teach .qt-wrong{ margin-top:7px; color:#8a4b4b; }
+  .q-teach .qt-action{ margin-top:9px; font-weight:700; color:var(--accent-dark); }
+  .q-teach .qt-src{ margin-top:8px; font-size:11.5px; color:var(--muted); }
   .talk-lead{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:-4px 0 16px; }
   .talk-stage{ perspective:1400px; }
   .talk-card{
@@ -671,7 +680,7 @@
       <summary>Official rules</summary>
       <ol>
         <li>Set up 2&ndash;4 <strong>teams</strong> and how many players are on each. Every team shares one playing piece and draws a random <strong>nation</strong> &mdash; permanent for the whole game, and shown openly all game long.</li>
-        <li>A nation sets two things: how fast it moves (double speed, normal, or half speed) and which of the 17 goals it has already built the basics for &mdash; things like power lines, clean water, schools and clinics.</li>
+        <li>A nation sets two things: how fast it moves (wealthy nations roll two dice, others roll one, and the least resourced move half as far) and which of the 17 goals it has already built the basics for &mdash; things like power lines, clean water, schools and clinics.</li>
         <li>There are 63 spaces on the board, numbered in one continuous path from Start to 2030 &mdash; follow the arrowed guide line to see which way the path turns. Teams take turns rolling a single die and moving forward that many spaces, multiplied by their nation's speed.</li>
         <li>You cannot roll past a numbered SDG space (1&ndash;17) &mdash; if your move would carry you over one, you stop there first and answer it before continuing.</li>
         <li>Talk it over as a team, then pick an answer together — whoever's holding the device taps it in.</li>
@@ -679,7 +688,7 @@
         <li>What you're actually building is hidden: every correct answer quietly adopts one real behavior a society needs for that goal, credited to your team. None of this is shown until the game ends.</li>
         <li>Playing a Persona? Your question becomes an open-ended challenge written for that character instead &mdash; type an idea, talk it over with your team, read a fact, and continue. Your nation makes no difference here &mdash; these never need two answers.</li>
         <li>Land on a purple Persona space &rarr; draw a new character for your team to play until your next one. Orange <strong>Consequence</strong> spaces hit your team with something they didn't choose. Blue <strong>Speak Up</strong> spaces let you argue on behalf of a rival team's character &mdash; get it right and you roll again.</li>
-        <li>Reaching <strong>2030</strong> doesn't win the game &mdash; it's a deadline. The first team to arrive triggers one final turn for every other team, then the results are revealed: which goals the world actually achieved, and which team's nation made that easy or hard.</li>
+        <li>You don't need an exact roll to finish &mdash; reach or pass <strong>2030</strong> and you've arrived. Getting there doesn't win the game, though &mdash; it's a deadline. The first team to arrive triggers one final turn for every other team, then the results are revealed: which goals the world actually achieved, and which team's nation made that easy or hard.</li>
       </ol>
     </details>
   </div>
@@ -700,7 +709,10 @@
         <div class="turn-persona hidden" id="turnPersona"></div>
       </div>
       <button class="info-btn" id="nationInfoBtn" title="What can this nation do?">ⓘ</button>
-      <div class="dice" id="dice">1</div>
+      <div class="dice-tray" id="diceTray">
+        <div class="dice" id="dice">1</div>
+        <div class="dice hidden" id="dice2">1</div>
+      </div>
       <button class="roll-btn" id="rollBtn">Roll the Die</button>
     </div>
 
@@ -773,6 +785,7 @@
     </div>
 
     <div class="feedback" id="qFeedback"></div>
+    <div class="q-teach hidden" id="qTeach"></div>
     <div class="modal-actions">
       <button class="primary-btn hidden" id="qContinueBtn">Continue</button>
     </div>
@@ -992,8 +1005,11 @@
     17:{name:"Partnerships for the Goals", color:"#19486A"}
   };
 
-  /* ---------------- Question bank (from official Go Goals! question cards) ---------------- */
-  const QUESTIONS = {
+  /* ---------------- Offline question bank (official Go Goals! cards) ----------------
+     Used when content/bank.json can't be fetched — opening the file directly from
+     disk, or a classroom with no wifi. The researched 850-question bank replaces
+     these whenever it loads. */
+  const OFFLINE_QUESTIONS = {
     1:[
       {q:"How can you tell that someone is living in poverty?", opts:["The person doesn't have a smartphone","The person is not able to fulfil their basic needs, including food, healthcare, education among others","The person is not well dressed"], correct:1},
       {q:"Are there fewer people living in poverty now than there were 25 years ago?", opts:["No, 1 billion more people are now living in poverty","Yes, 1 billion people have been lifted out of poverty"], correct:1},
@@ -1273,6 +1289,28 @@
     17:"Did you know? None of the 17 Goals can be solved alone — they need everyone working together."
   };
 
+  /* One bad habit per goal, locked in when a team gets that goal wrong. The researched
+     bank has no per-question version of this, so it hangs off the goal instead. */
+  const HARMFUL_BY_GOAL = {
+    1:"Treating poverty as someone's own fault",
+    2:"Letting good food go to waste while people go hungry",
+    3:"Paying for health care only after people are already sick",
+    4:"Deciding some children are not worth educating",
+    5:"Leaving all the care work to women and girls",
+    6:"Treating fresh water as if it will never run out",
+    7:"Sticking with dirty power because it is cheaper today",
+    8:"Looking away from unsafe workplaces",
+    9:"Building only where there is already money",
+    10:"Telling people they should simply work harder",
+    11:"Building cities without room for the people who cannot pay",
+    12:"Buying, using once, and throwing away",
+    13:"Denying climate change instead of acting on it",
+    14:"Fishing the sea faster than it can recover",
+    15:"Clearing forests and never replanting",
+    16:"Deciding about people's lives without asking them",
+    17:"Leaving countries to solve shared problems alone"
+  };
+
   /* ---------------- Nation cards: each team's permanent privilege ----------------
      rollMultiplier 2 = moves at double speed, 1 = normal, 0.5 = half (rounded up, min 1).
      resources = the SDG numbers this nation has the capacity to address in a single
@@ -1475,15 +1513,62 @@
     }
   }
 
+  /* ---------------- Researched question bank ----------------
+     850 questions (50 per goal) with sourced explanations, fetched at runtime from
+     content/bank.json so they are not sitting in this file for a student to read.
+     The answer payload is scrambled in that file, which is a speed bump and not
+     security — anyone who reads this function can undo it. Real secrecy needs the
+     answers held server-side. */
+  let BANK = null;
+  const BANK_KEY = 'go-goals-2030';
+
+  function unscramble(b64){
+    const bin = atob(b64), key = BANK_KEY;
+    const bytes = new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+    return JSON.parse(new TextDecoder().decode(bytes));
+  }
+
+  function loadBank(){
+    return fetch('content/bank.json', { cache:'no-cache' })
+      .then(r=> r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+      .then(data=>{
+        if(!data || !data.goals) throw new Error('bank malformed');
+        BANK = data;
+        questionQueues = {};   // any queue built from the offline set is now stale
+        const n = Object.values(data.goals).reduce((t,a)=> t + a.length, 0);
+        console.info('Go Goals: loaded ' + n + ' researched questions.');
+      })
+      .catch(err=>{
+        BANK = null;
+        console.info('Go Goals: using the offline question set (' + err.message + ').');
+      });
+  }
+
+  function bankFor(goal){
+    const list = BANK && BANK.goals ? BANK.goals[String(goal)] : null;
+    return (list && list.length) ? list : null;
+  }
+
   function shuffledQueue(goal){
-    const arr = QUESTIONS[goal].map((q,i)=>i);
+    const size = (bankFor(goal) || OFFLINE_QUESTIONS[goal]).length;
+    const arr = []; for(let i=0;i<size;i++) arr.push(i);
     for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
     return arr;
   }
+
+  /* Normalises whichever bank is in play to one shape the question modal understands. */
   function nextQuestion(goal){
     if(!questionQueues[goal] || questionQueues[goal].length===0) questionQueues[goal] = shuffledQueue(goal);
     const idx = questionQueues[goal].pop();
-    return QUESTIONS[goal][idx];
+    const packed = bankFor(goal);
+    if(packed){
+      const item = packed[idx];
+      const a = unscramble(item.k);
+      const src = BANK.sources ? BANK.sources[a.s] : null;
+      return { q:item.p, opts:item.o, correct:a.c, why:a.w, whyWrong:a.x, action:a.a, source:src };
+    }
+    return OFFLINE_QUESTIONS[goal][idx];
   }
 
   let personaDeck = [];
@@ -1588,7 +1673,7 @@
   }
 
   function speedPhrase(m){
-    return m > 1 ? 'moved at double speed' : (m < 1 ? 'moved at half speed' : 'moved at normal speed');
+    return m > 1 ? 'rolled two dice every turn' : (m < 1 ? 'moved at half speed' : 'moved at normal speed');
   }
 
   /* ---- Serialize / apply: the entire synced game state is one flat document ---- */
@@ -2259,7 +2344,7 @@
   document.getElementById('rulesBtn').addEventListener('click', ()=>{
     const el = document.querySelector('details.rules');
     if(document.getElementById('setupScreen').classList.contains('hidden')){
-      alert('HOW TO PLAY\n\n1. 2-4 teams. Each team shares one playing piece and draws a real country at random. You keep it all game.\n2. Your country sets how fast you move (double, normal, or half speed) and which goals it has already built the basics for.\n3. You cannot roll past a numbered goal space (1-17). You stop and answer it before moving on, even in the middle of a roll.\n4. Talk it over as a team and tap the answer you agree on.\n5. If your country already has what that goal needs, one correct answer is enough. If not, you need two correct answers in a row. Miss either one and your turn ends.\n6. Every correct answer quietly builds one real change the world needs, credited to your team. You will not see any of it until the game ends.\n7. Playing a Persona? That question becomes an open question for your character instead. Your country makes no difference on those.\n8. The board is one path from Start to 2030. Follow the arrows for which way it turns.\n9. Purple Persona space: draw a new character. Orange Consequence space: something happens TO your team. Blue Speak Up space: argue for another team\'s character, and roll again if you get it right.\n10. Reaching 2030 does not win. It is a deadline. Every other team gets one last turn, then you see which goals the world actually achieved, and why.');
+      alert('HOW TO PLAY\n\n1. 2-4 teams. Each team shares one playing piece and draws a real country at random. You keep it all game.\n2. Your country sets how fast you move (wealthy countries roll two dice, others roll one, the least resourced move half as far) and which goals it has already built the basics for.\n3. You cannot roll past a numbered goal space (1-17). You stop and answer it before moving on, even in the middle of a roll.\n4. Talk it over as a team and tap the answer you agree on.\n5. If your country already has what that goal needs, one correct answer is enough. If not, you need two correct answers in a row. Miss either one and your turn ends.\n6. Every correct answer quietly builds one real change the world needs, credited to your team. You will not see any of it until the game ends.\n7. Playing a Persona? That question becomes an open question for your character instead. Your country makes no difference on those.\n8. The board is one path from Start to 2030. Follow the arrows for which way it turns.\n9. Purple Persona space: draw a new character. Orange Consequence space: something happens TO your team. Blue Speak Up space: argue for another team\'s character, and roll again if you get it right.\n10. You do not need an exact roll to finish — reach or pass 2030 and you have arrived. Getting there does not win, though. It is a deadline. Every other team gets one last turn, then you see which goals the world actually achieved, and why.');
     } else {
       el.open = true;
       el.scrollIntoView({behavior:'smooth'});
@@ -2280,6 +2365,8 @@
     if(btn) btn.classList.add('active');
     WALK.setActive(want);
   }
+
+  loadBank();
 
   function initBoard(){
     boardGrid.innerHTML = '';
@@ -2569,7 +2656,7 @@
   }
 
   function speedLabel(m){
-    return m > 1 ? 'double speed' : (m < 1 ? 'half speed' : 'normal speed');
+    return m > 1 ? 'rolls two dice' : (m < 1 ? 'half speed' : 'normal speed');
   }
 
   const briefModal = document.getElementById('briefModal');
@@ -2657,22 +2744,39 @@
     schedulePushState(true);
   }
 
+  const dice2El = document.getElementById('dice2');
+  const d6 = () => 1 + Math.floor(Math.random()*6);
+
+  /* Wealthy nations roll TWO dice rather than doubling one. Same average distance,
+     but the total can be odd — the old roll x2 was always even, and since 2030 sits
+     on space 63 that quietly made the finish unreachable for them. */
+  function rollsTwoDice(){
+    const p = teams[currentIdx];
+    return !!p && p.nation.rollMultiplier > 1;
+  }
+
   rollBtn.addEventListener('click', ()=>{
     if(rolling || gameOver) return;
     rolling = true;
     rollBtn.disabled = true;
+    const twin = rollsTwoDice();
+    dice2El.classList.toggle('hidden', !twin);
     diceEl.classList.add('rolling');
+    if(twin) dice2El.classList.add('rolling');
 
     let ticks = 0;
     const spin = setInterval(()=>{
-      diceEl.textContent = String(1 + Math.floor(Math.random()*6));
+      diceEl.textContent = String(d6());
+      if(twin) dice2El.textContent = String(d6());
       ticks++;
       if(ticks > 8){
         clearInterval(spin);
         diceEl.classList.remove('rolling');
-        const roll = 1 + Math.floor(Math.random()*6);
-        diceEl.textContent = String(roll);
-        handleRoll(roll);
+        dice2El.classList.remove('rolling');
+        const a = d6(), b = twin ? d6() : 0;
+        diceEl.textContent = String(a);
+        if(twin) dice2El.textContent = String(b);
+        handleRoll(a + b, twin ? [a, b] : null);
       }
     }, 70);
   });
@@ -2696,27 +2800,25 @@
     return stops;
   }
 
-  function handleRoll(roll){
+  function handleRoll(roll, pair){
     const p = teams[currentIdx];
-    /* A nation's privilege is felt first here: wealthy nations cover double the ground
-       per turn, the least resourced cover half. Nothing lets a slow nation catch up. */
+    /* A nation's privilege is felt first here: wealthy nations roll two dice, the
+       least resourced move half as far. Nothing lets a slow nation catch up. */
     const mult = p.nation.rollMultiplier;
-    const steps = mult >= 1 ? roll * mult : Math.max(1, Math.ceil(roll * mult));
-    if(steps !== roll){
-      p.rolls = (p.rolls|0) + 1; p.spaces = (p.spaces|0) + steps;
-      log(p.name + ' rolled a ' + roll + ' → moves ' + steps + ' (' + p.nation.name + ', ' +
-          (mult > 1 ? 'double speed' : 'half speed') + ').');
+    const steps = mult >= 1 ? roll : Math.max(1, Math.ceil(roll * mult));
+    p.rolls = (p.rolls|0) + 1; p.spaces = (p.spaces|0) + steps;
+    if(pair){
+      log(p.name + ' rolled ' + pair[0] + ' + ' + pair[1] + ' = ' + roll +
+          ' (' + p.nation.name + ' rolls two dice).');
+    } else if(steps !== roll){
+      log(p.name + ' rolled a ' + roll + ' → moves ' + steps + ' (' + p.nation.name + ', half speed).');
     } else {
-      p.rolls = (p.rolls|0) + 1; p.spaces = (p.spaces|0) + steps;
       log(p.name + ' rolled a ' + roll + '.');
     }
     const from = p.position;
     const target = from + steps;
 
-    /* Reaching OR passing 2030 means you have arrived. The old rule bounced an
-       overshoot back down the board, which quietly made 2030 unreachable for
-       double-speed nations: their steps are always even and 2030 is space 63, so
-       parity never let them land on it and they ricocheted off the finish forever. */
+    /* Reaching OR passing 2030 means you have arrived — no exact landing needed. */
     const finalPos = Math.min(target, FINISH);
 
     const path = buildPath(from, finalPos);
@@ -2912,7 +3014,7 @@
       const nationLine = document.createElement('div');
       nationLine.className = 'tr-nation';
       const m = t.nation.rollMultiplier;
-      const speedTxt = m > 1 ? 'double speed' : (m < 1 ? 'half speed' : 'normal speed');
+      const speedTxt = m > 1 ? 'rolls two dice' : (m < 1 ? 'half speed' : 'normal speed');
       nationLine.textContent = t.nation.emoji + ' ' + t.nation.name + ' (' + t.nation.sub + ') — ' +
         speedTxt + ', ' + t.nation.resources.length + '/17 goals in one question';
 
@@ -2987,6 +3089,7 @@
     pqShareBtn.textContent = 'Share with ' + p.name;
     qFeedback.textContent = '';
     qFeedback.className = 'feedback';
+    document.getElementById('qTeach').classList.add('hidden');
     qContinueBtn.classList.add('hidden');
 
     /* A nation without the resources for this goal cannot clear it on one question —
@@ -3055,9 +3158,27 @@
     opts[chosenIdx].classList.add(correct ? 'correct' : 'wrong');
     if(!correct) opts[question.correct].classList.add('correct');
 
-    /* Behaviors and entrenched practices are logged silently — never surfaced here. */
-    if(!correct && question.harmful && question.harmful[chosenIdx] !== undefined){
-      recordHarmful(p, question.harmful[chosenIdx]);
+    /* Behaviors and bad habits are logged silently — never surfaced until 2030. */
+    if(!correct){
+      const habit = (question.harmful && question.harmful[chosenIdx] !== undefined)
+        ? question.harmful[chosenIdx]
+        : HARMFUL_BY_GOAL[goalNum];
+      if(habit) recordHarmful(p, habit);
+    }
+
+    /* The researched bank explains itself: why the right answer is right, why the one
+       they picked is wrong, where the figure comes from, and one thing to go and do. */
+    const teach = document.getElementById('qTeach');
+    if(question.why){
+      let html = '<div class="qt-why"><b>' + (correct ? 'Why:' : 'The answer:') + '</b> ' + esc(question.why) + '</div>';
+      if(!correct && question.whyWrong && question.whyWrong[chosenIdx])
+        html += '<div class="qt-wrong"><b>Your pick:</b> ' + esc(question.whyWrong[chosenIdx]) + '</div>';
+      if(question.action) html += '<div class="qt-action">🔎 ' + esc(question.action) + '</div>';
+      if(question.source) html += '<div class="qt-src">Source: ' + esc(question.source.title) + ' — ' + esc(question.source.publisher) + '</div>';
+      teach.innerHTML = html;
+      teach.classList.remove('hidden');
+    } else {
+      teach.classList.add('hidden');
     }
 
     if(correct && currentQCtx.needTwo && currentQCtx.stage === 1){

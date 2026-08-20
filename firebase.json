@@ -8,7 +8,11 @@
       "README.md",
       ".git/**",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "content/goal-*.json",
+      "content/*.md",
+      "content/*.py",
+      "content/validate.py"
     ],
     "rewrites": [
       {
