@@ -224,8 +224,9 @@
   .control-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:stretch; }
   .turn-card{
     background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 18px;
-    display:flex; align-items:center; gap:14px; flex:1 1 300px;
+    display:flex; align-items:center; gap:14px; flex:1 1 460px;
   }
+  .roll-stack{ display:flex; flex-direction:column; gap:7px; flex:none; }
   .turn-info{ flex:1 1 auto; min-width:0; }
   .turn-title{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; font-weight:700;}
   .turn-name{font-size:17px; font-weight:800; margin:2px 0 0; display:flex; align-items:center; gap:7px;}
@@ -279,7 +280,7 @@
   .dice.rolling{ animation: shake .12s linear infinite; }
   @keyframes shake{ 0%{transform:rotate(0deg);} 25%{transform:rotate(-8deg);} 75%{transform:rotate(8deg);} 100%{transform:rotate(0deg);} }
   .roll-btn{
-    flex:none; padding:12px 20px; border:none; border-radius:12px; background:var(--accent); color:#fff;
+    flex:none; padding:11px 18px; border:none; border-radius:12px; background:var(--accent); color:#fff;
     font-weight:800; font-size:14px; box-shadow:var(--shadow); white-space:nowrap;
   }
   .roll-btn:disabled{ background:#b9c9c6; cursor:not-allowed; box-shadow:none; }
@@ -500,6 +501,22 @@
     .talk-face{ padding:20px; }
   }
   @media (prefers-reduced-motion: reduce){ .talk-card{ transition:none; } }
+  .clock-card{
+    background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:14px 18px; margin-bottom:14px;
+  }
+  .clock-row{ display:flex; align-items:baseline; gap:10px; }
+  .clock-num{ font-size:30px; font-weight:800; color:var(--accent-dark); font-variant-numeric:tabular-nums; }
+  .clock-lbl{ font-size:13px; color:var(--muted); }
+  .clock-card.urgent .clock-num{ color:#b23c38; }
+  .foot-row{ margin-top:10px; }
+  .foot-lbl{ font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .foot-bar{ height:9px; border-radius:999px; background:#e8f1ef; overflow:hidden; margin-top:5px; }
+  .foot-fill{ height:100%; width:0; border-radius:999px; background:#5fa88c; transition:width .3s, background .3s; }
+  .foot-row.over .foot-fill{ background:#c9683c; }
+  .foot-note{ margin-top:5px; font-size:11.5px; line-height:1.45; color:var(--muted); }
+  .foot-row.over .foot-note{ color:#a2502c; font-weight:600; }
+  .hold-btn{ background:#fff; color:var(--accent-dark); border:1px solid var(--accent); box-shadow:none; }
   .view-toggle{ display:flex; gap:6px; margin-bottom:10px; }
   .vt-btn{
     flex:0 0 auto; border:1px solid var(--line); background:#fff; color:var(--muted);
@@ -712,7 +729,22 @@
         <div class="dice" id="dice">1</div>
         <div class="dice hidden" id="dice2">1</div>
       </div>
-      <button class="roll-btn" id="rollBtn">Roll the Die</button>
+      <div class="roll-stack">
+        <button class="roll-btn" id="rollBtn">Roll the Die</button>
+        <button class="roll-btn hold-btn hidden" id="holdBtn" title="Roll one die instead. Adds nothing to the world's footprint.">Hold back &mdash; roll one</button>
+      </div>
+    </div>
+
+    <div class="clock-card" id="clockCard">
+      <div class="clock-row">
+        <div class="clock-num" id="clockTicks">40</div>
+        <div class="clock-lbl">turns left before <b>2030</b></div>
+      </div>
+      <div class="foot-row">
+        <div class="foot-lbl">World footprint</div>
+        <div class="foot-bar"><div class="foot-fill" id="footFill"></div></div>
+        <div class="foot-note" id="footNote"></div>
+      </div>
     </div>
 
     <div class="standings-card">
@@ -1479,8 +1511,23 @@
   let rolling = false;
   let questionQueues = {};
   let gameOver = false;
-  let finalRound = false;
-  let finalRoundTrigger = null;
+
+  /* ---------------- The shared 2030 clock ----------------
+     2030 is a deadline the whole table shares, not a space anyone races to. Every turn
+     spends a tick; while the world's footprint is over the cap every turn spends two, so
+     heavy consumption literally shortens the deadline for everyone. When the ticks run
+     out the game ends for all nations at once, wherever they happen to be standing. */
+  const TICKS_BASE = 20, TICKS_PER_TEAM = 10;
+  const FOOTPRINT_CAP = 4;
+  const FOOTPRINT_LOCKS = [12, 13, 15];   // consumption, climate, land — the goals wealth blocks
+  let ticks = 0;          // remaining
+  let footprint = 0;
+  let turnCharged = false; // a turn costs one tick however many bonus rolls it earns
+
+  function ticksTotal(){ return TICKS_BASE + TICKS_PER_TEAM * Math.max(1, teams.length); }
+  function tickCost(){ return footprint >= FOOTPRINT_CAP ? 2 : 1; }
+  function goalLocked(goal){ return FOOTPRINT_LOCKS.includes(+goal) && footprint >= FOOTPRINT_CAP; }
+  function bumpFootprint(d){ footprint = Math.max(0, footprint + d); }
 
   /* Shared global goal track. adopted[goal] = [{idx, teamId}] — a goal is Achieved only
      once every one of its behaviors has been adopted, by any team. Never shown in play. */
@@ -1497,7 +1544,14 @@
      result, never a clean sweep. */
   const NEEDED_PER_GOAL = 2;
   function goalNeeds(goal){ return Math.min(NEEDED_PER_GOAL, BEHAVIORS[goal].length); }
-  function goalAchieved(goal){ return (world.adopted[goal] || []).length >= goalNeeds(goal); }
+  /* The lock sits here and NOT in adoptBehavior on purpose. Blocking adoption would skip
+     team.contributed++, docking a team's own score for a choice someone else made, after
+     they had answered correctly. Blocking only the achieved check keeps their credit and
+     lets a later drop in footprint retroactively complete the goal. */
+  function goalAchieved(goal){
+    if(goalLocked(goal)) return false;
+    return (world.adopted[goal] || []).length >= goalNeeds(goal);
+  }
 
   function adoptBehavior(team, goal){
     const taken = world.adopted[goal] || (world.adopted[goal] = []);
@@ -1636,6 +1690,8 @@
     return fbReady;
   }
 
+  const WRITER_ID = Math.random().toString(36).slice(2, 10);
+  let stateRev = 0;
   let syncMode = 'local';      // 'local' | 'host' | 'team'
   let currentGameId = null;
   let myTeamId = null;
@@ -1688,9 +1744,11 @@
         personaIdx: t.persona ? PERSONAS.indexOf(t.persona) : -1,
         contributed: t.contributed,
         qAsked: t.qAsked|0, qWrong: t.qWrong|0, rolls: t.rolls|0,
-        spaces: t.spaces|0, personasDrawn: t.personasDrawn|0
+        spaces: t.spaces|0, personasDrawn: t.personasDrawn|0,
+        twoDice: t.twoDice|0, heldBack: t.heldBack|0, helped: t.helped|0
       })),
-      currentIdx, gameOver, finalRound, finalRoundTrigger,
+      currentIdx, gameOver,
+      ticks, footprint, rev: ++stateRev, writer: WRITER_ID,
       world: { adopted: world.adopted, harmful: world.harmful },
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     };
@@ -1704,7 +1762,8 @@
       persona: t.personaIdx >= 0 ? PERSONAS[t.personaIdx] : null,
       contributed: t.contributed,
       qAsked: t.qAsked|0, qWrong: t.qWrong|0, rolls: t.rolls|0,
-      spaces: t.spaces|0, personasDrawn: t.personasDrawn|0
+      spaces: t.spaces|0, personasDrawn: t.personasDrawn|0,
+      twoDice: t.twoDice|0, heldBack: t.heldBack|0, helped: t.helped|0
     };
   }
 
@@ -1713,7 +1772,17 @@
      _el/_badgeEl token DOM references and positionTokens() can still animate smoothly
      between positions instead of popping. Only the very first snapshot after a lobby
      (when local `teams` doesn't exist yet) builds fresh objects and the board itself. */
+  /* Every write stamps a monotonic rev and the id of the device that made it. Without
+     this, a device's OWN earlier snapshot can arrive after a local change and revert it —
+     the codebase already hit that once with turn hand-off, which is why advanceTurn has to
+     push immediately. With a clock deciding when the game ends, the same echo would push
+     ticks back UP and the game could never finish. */
   function applyState(data){
+    if(typeof data.rev === 'number'){
+      if(data.writer === WRITER_ID && data.rev <= stateRev) return;  // our own echo
+      if(data.rev < stateRev) return;                                // stale
+      stateRev = Math.max(stateRev, data.rev);
+    }
     applyingRemote = true;
     gameStarted = true; // we're receiving a live game, so pushes are legitimate from here
     const firstApply = !teams.length;
@@ -1727,6 +1796,7 @@
         local.name = t.name; local.color = t.color; local.memberCount = t.memberCount;
         local.qAsked = t.qAsked|0; local.qWrong = t.qWrong|0; local.rolls = t.rolls|0;
         local.spaces = t.spaces|0; local.personasDrawn = t.personasDrawn|0;
+        local.twoDice = t.twoDice|0; local.heldBack = t.heldBack|0; local.helped = t.helped|0;
         local.nation = NATIONS[t.nationIdx];
         local.position = t.position; local.finished = t.finished;
         local.persona = t.personaIdx >= 0 ? PERSONAS[t.personaIdx] : null;
@@ -1737,8 +1807,11 @@
 
     currentIdx = data.currentIdx;
     gameOver = data.gameOver;
-    finalRound = data.finalRound;
-    finalRoundTrigger = data.finalRoundTrigger;
+    /* Coerced, never bare. A doc written by an older build has no ticks field, and
+       `undefined <= 0` is false — the clock would never run out and the game could
+       never end. */
+    ticks = (data.ticks|0) || ticksTotal();
+    footprint = data.footprint|0;
     world = { adopted: data.world.adopted || {}, harmful: data.world.harmful || [] };
 
     if(firstApply){
@@ -1799,6 +1872,10 @@
      live controls. Everyone else (host, and every non-acting team) sees the same
      board/standings/log but a disabled roll button and a waiting banner instead. */
   function updateActingUI(){
+    /* Ending the game is a teacher action. This button was visible on every device, so
+       any student could cut the whole class's game short. */
+    const endBtn = document.getElementById('endNowBtn');
+    if(endBtn) endBtn.classList.toggle('hidden', syncMode === 'team' || gameOver);
     const banner = document.getElementById('waitingTurnBanner');
     if(syncMode === 'local' || gameOver){
       if(banner) banner.classList.add('hidden');
@@ -2033,7 +2110,8 @@
     gameDocRef(currentGameId).set({
       code: currentGameId, phase: 'playing',
       teams: teamDocs,
-      currentIdx: 0, gameOver: false, finalRound: false, finalRoundTrigger: null,
+      currentIdx: 0, gameOver: false,
+      ticks: TICKS_BASE + TICKS_PER_TEAM * teamDocs.length, footprint: 0, rev: 1, writer: WRITER_ID,
       world: { adopted: {}, harmful: [] },
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     });
@@ -2214,8 +2292,7 @@
     }));
     currentIdx = 0;
     gameOver = false;
-    finalRound = false;
-    finalRoundTrigger = null;
+    ticks = ticksTotal(); footprint = 0; turnCharged = false;
     questionQueues = {};
     personaDeck = [];
     consequenceDeck = [];
@@ -2271,8 +2348,7 @@
     currentIdx = 0;
     rolling = false;
     gameOver = false;
-    finalRound = false;
-    finalRoundTrigger = null;
+    ticks = ticksTotal(); footprint = 0; turnCharged = false;
     lastBriefedTeamId = null;
     world = { adopted:{}, harmful:[] };
     move = null;
@@ -2619,7 +2695,7 @@
       }
       const pos = document.createElement('div');
       pos.className = 'pos';
-      pos.textContent = p.position === 0 ? 'Start' : (p.position===FINISH ? '2030 🏆' : 'Space ' + p.position);
+      pos.textContent = p.position === 0 ? 'Start' : 'Space ' + p.position;
       row.appendChild(pos);
       list.appendChild(row);
     });
@@ -2679,11 +2755,30 @@
      roll without having seen what their nation can and can't do this game. */
   let lastBriefedTeamId = null;
 
+  /* Deliberately visible. Everything else in this game stays hidden until 2030, but a
+     lock nobody can see is indistinguishable from a bug — and twelve of the eighteen
+     nations cannot move footprint at all, so they need to see what is holding the goals
+     shut and who is doing it. */
+  function renderClock(){
+    const card = document.getElementById('clockCard');
+    if(!card) return;
+    document.getElementById('clockTicks').textContent = Math.max(0, ticks);
+    card.classList.toggle('urgent', ticks <= 5);
+    const row = card.querySelector('.foot-row');
+    const over = footprint >= FOOTPRINT_CAP;
+    row.classList.toggle('over', over);
+    document.getElementById('footFill').style.width =
+      Math.min(100, (footprint / (FOOTPRINT_CAP * 1.5)) * 100) + '%';
+    document.getElementById('footNote').textContent = over
+      ? 'Too high — Goals 12, 13 and 15 are locked for everyone, and every turn now costs two.'
+      : 'Under control. Wealthy nations rolling two dice push this up.';
+  }
+
   function updateTurnUI(){
     const p = teams[currentIdx];
     if(typeof WALK !== 'undefined' && WALK.active) WALK.jump();
     const titleEl = document.getElementById('turnTitle');
-    titleEl.textContent = finalRound ? '🏁 Final Round — Current Turn' : 'Current Turn';
+    titleEl.textContent = 'Current Turn';
     const nameEl = document.getElementById('turnName');
     nameEl.innerHTML = '';
     const dot = document.createElement('div');
@@ -2713,8 +2808,14 @@
       personaEl.classList.add('hidden');
     }
 
-    rollBtn.disabled = false;
-    rollBtn.textContent = 'Roll the Die';
+    if(gameOver) return;
+    const holdBtn = document.getElementById('holdBtn');
+    const canHold = p.nation.rollMultiplier > 1 && ticks > 0 && !gameOver;
+    holdBtn.classList.toggle('hidden', !canHold);
+    holdBtn.disabled = !canHold;
+    rollBtn.textContent = p.nation.rollMultiplier > 1 ? 'Roll two dice' : 'Roll the Die';
+    rollBtn.disabled = ticks <= 0 || gameOver;
+    renderClock();
 
     /* Auto-brief only where the turn will actually be played: everywhere in local
        mode, but in hosted games only on the acting team's own device — spectators
@@ -2729,14 +2830,14 @@
 
   function advanceTurn(){
     if(gameOver) return;
-    const startIdx = currentIdx;
-    do{
-      currentIdx = (currentIdx + 1) % teams.length;
-      if(finalRound && teams[currentIdx].id === finalRoundTrigger){
-        endGame();
-        return;
-      }
-    } while(teams[currentIdx].finished && currentIdx !== startIdx);
+    turnCharged = false;
+    /* The only place the game can end. The tick is spent at roll time, so the move that
+       spends the last one still finishes all its goal stops — checking any earlier could
+       kill a move mid-flight with a question modal open, and endGame() does not hide
+       modals, so the reveal would render underneath it. Nobody is ever skipped now: with
+       the board looping there is no 'finished' state to skip over, so this cannot hang. */
+    if(ticks <= 0){ endGame(); return; }
+    currentIdx = (currentIdx + 1) % teams.length;
     updateTurnUI();
     /* Must broadcast AFTER currentIdx moves. renderStandings() pushes mid-move, while
        the turn still belongs to the previous team, so without this the stale snapshot
@@ -2755,28 +2856,38 @@
     return !!p && p.nation.rollMultiplier > 1;
   }
 
+  /* Set when a two-dice nation chooses restraint for this roll. */
+  let holdThisRoll = false;
+  document.getElementById('holdBtn').addEventListener('click', ()=>{
+    if(rolling || gameOver) return;
+    holdThisRoll = true;
+    rollBtn.click();
+  });
+
   rollBtn.addEventListener('click', ()=>{
     if(rolling || gameOver) return;
+    if(ticks <= 0) return;
     rolling = true;
     rollBtn.disabled = true;
-    const twin = rollsTwoDice();
+    document.getElementById('holdBtn').disabled = true;
+    const twin = rollsTwoDice() && !holdThisRoll;
     dice2El.classList.toggle('hidden', !twin);
     diceEl.classList.add('rolling');
     if(twin) dice2El.classList.add('rolling');
 
-    let ticks = 0;
+    let spins = 0;   // renamed: `ticks` is now the shared 2030 clock
     const spin = setInterval(()=>{
       diceEl.textContent = String(d6());
       if(twin) dice2El.textContent = String(d6());
-      ticks++;
-      if(ticks > 8){
+      spins++;
+      if(spins > 8){
         clearInterval(spin);
         diceEl.classList.remove('rolling');
         dice2El.classList.remove('rolling');
         const a = d6(), b = twin ? d6() : 0;
         diceEl.textContent = String(a);
         if(twin) dice2El.textContent = String(b);
-        handleRoll(a + b, twin ? [a, b] : null);
+        handleRoll(a + b, twin ? [a, b] : null, twin);
       }
     }, 70);
   });
@@ -2800,8 +2911,13 @@
     return stops;
   }
 
-  function handleRoll(roll, pair){
+  function handleRoll(roll, pair, usedTwo){
     const p = teams[currentIdx];
+    if(p.nation.rollMultiplier > 1){
+      if(usedTwo){ p.twoDice = (p.twoDice|0) + 1; bumpFootprint(1); }
+      else { p.heldBack = (p.heldBack|0) + 1; bumpFootprint(-1); log(p.name + ' held back and rolled one die.'); }
+    }
+    holdThisRoll = false;
     /* A nation's privilege shows up twice: wealthy nations roll two dice rather than
        one, and — the bigger gap — they need one correct answer where others need two. */
     const steps = roll;
@@ -2812,15 +2928,27 @@
     } else {
       log(p.name + ' rolled a ' + roll + '.');
     }
+    /* Spend the tick once per turn, however many bonus rolls the turn goes on to earn.
+       While footprint is over the cap a turn costs two — consumption shortening the
+       deadline for everybody, the consumer included. */
+    if(!turnCharged){ ticks = Math.max(0, ticks - tickCost()); turnCharged = true; }
+    renderClock();   // the clock and footprint move mid-turn, not just at hand-off
+
     const from = p.position;
-    const target = from + steps;
+    /* The track loops. Nobody 'finishes': a nation that passes 2030 comes round again and
+       keeps crossing goal spaces. If teams could finish they would stop rolling, stop
+       spending ticks and stop answering — handing the rest of the clock to everyone else,
+       which is the exact inverse of the lesson. */
+    let finalPos = from + steps;
+    const wrapped = finalPos > FINISH;
+    if(wrapped) finalPos = ((finalPos - 1) % FINISH) + 1;
 
-    /* Reaching OR passing 2030 means you have arrived — no exact landing needed. */
-    const finalPos = Math.min(target, FINISH);
-
-    const path = buildPath(from, finalPos);
+    const path = wrapped
+      ? buildPath(from, FINISH).concat(buildPath(0, finalPos))
+      : buildPath(from, finalPos);
     const stops = computeStops(path, finalPos);
-    move = { p, stops, idx:0, finalPos };
+    move = { p, stops, idx:0, finalPos, wrapped };
+    if(wrapped) log(p.name + ' passed 2030 and came round again.');
     advanceMove();
   }
 
@@ -2837,7 +2965,6 @@
 
     setTimeout(()=>{
       const isLastStop = (mv.idx === mv.stops.length - 1);
-      if(cellNum === FINISH){ finishGame(mv.p); return; }
       if(GOAL_CELLS[cellNum]){
         openQuestion(mv.p, GOAL_CELLS[cellNum], {
           isFinalStop: isLastStop,
@@ -2860,26 +2987,10 @@
   }
 
   function settleFinal(p, pos){
-    if(pos === FINISH){ finishGame(p); return; }
+
     if(PERSONA_CELLS.includes(pos)){ openPersona(p); return; }
     if(CONSEQUENCE_CELLS.includes(pos)){ openConsequence(p); return; }
     if(ADVOCATE_CELLS.includes(pos)){ openAdvocate(p); return; }
-    rolling = false;
-    advanceTurn();
-  }
-
-  /* 2030 is a deadline, not a finish line: reaching it doesn't win the game, it starts
-     a final round so every other nation gets one last turn before the world is judged. */
-  function finishGame(p){
-    p.finished = true;
-    renderStandings();
-    if(!finalRound){
-      finalRound = true;
-      finalRoundTrigger = p.id;
-      log('🏁 ' + p.name + ' reached 2030 first! Every other nation gets one final turn before we see how the world turned out.');
-    } else {
-      log('🏁 ' + p.name + ' also reached 2030.');
-    }
     rolling = false;
     advanceTurn();
   }
@@ -2900,7 +3011,7 @@
     gameOver = true;
     rollBtn.disabled = true;
     renderStandings();
-    log('⏳ 2030 has arrived. The results are in.');
+    log('⏳ 2030 has arrived — the clock ran out. The results are in.');
     showReveal();
     schedulePushState(true); // phase:'revealed' — sends every other device to the reveal too
   }
@@ -3190,6 +3301,10 @@
 
     if(correct){
       adoptBehavior(p, goalNum);
+      /* The twelve nations that cannot touch footprint get a lever here: answering one of
+         the three blocked goals eases the world's footprint by one. Otherwise most of the
+         table is locked out of three goals by a decision they cannot influence. */
+      if(FOOTPRINT_LOCKS.includes(goalNum)){ bumpFootprint(-1); renderClock(); }
       if(moveInfo.isFinalStop && moveInfo.onlyStop){
         qFeedback.textContent = '✅ ' + p.name + ' got it! Rolling again.';
       } else if(moveInfo.isFinalStop){
@@ -4186,6 +4301,8 @@
       travel(from, to){
         if(!active) return 0;
         const a = Math.max(1, from || 1), b = Math.max(1, to || 1);
+        /* Coming round the board is a jump, not a walk backwards past every space. */
+        if(b < a){ camPos = b; anim = null; bob = sway = roll = 0; start(); return 0; }
         const dur = Math.min(3000, Math.max(340, Math.abs(b - a) * MS_PER_CELL));
         anim = { from:a, to:b, t0: performance.now(), dur };
         start();
