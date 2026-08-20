@@ -18,28 +18,30 @@ Retrieved 19 August 2026.
 
 ## Overall standing (SDR)
 
-Roll speed is set purely by SDG Index score: **≥80 → ×2**, **65–80 → ×1**, **<65 → ×0.5**.
+There are only two speeds. The six World Bank **high-income** countries roll **two dice**;
+every other nation rolls **one**. There is no slow tier — the real gap is in how many goals
+a nation can clear with a single correct answer.
 
-| Country | Rank | Score | Speed | Goals in 1 Q |
+| Country | Rank | Score | Dice | Goals in 1 Q |
 |---|---|---|---|---|
-| Finland | 1 | 87.4 | ×2 | 13 / 17 |
-| Germany | 5 | 84.0 | ×2 | 12 / 17 |
-| Poland | 11 | 82.1 | ×2 | 11 / 17 |
-| Japan | 20 | 81.0 | ×2 | 10 / 17 |
-| Chile | 33 | 78.5 | ×1 | 11 / 17 |
-| United States | 45 | 75.3 | ×1 | 8 / 17 |
-| Brazil | 53 | 74.2 | ×1 | 8 / 17 |
-| Viet Nam | 58 | 73.8 | ×1 | 8 / 17 |
-| Fiji | 62 | 73.4 | ×1 | 8 / 17 |
-| Peru | 66 | 72.9 | ×1 | 5 / 17 |
-| Indonesia | 74 | 70.8 | ×1 | 7 / 17 |
-| Jordan | 82 | 69.7 | ×1 | 7 / 17 |
-| India | 94 | 68.3 | ×1 | 5 / 17 |
-| Kenya | 106 | 65.6 | ×1 | 3 / 17 |
-| Bangladesh | 110 | 64.8 | ×0.5 | 4 / 17 |
-| Côte d'Ivoire | 119 | 63.2 | ×0.5 | 3 / 17 |
-| DR Congo | 163 | 48.3 | ×0.5 | 3 / 17 |
-| Chad | 167 | 43.9 | ×0.5 | 3 / 17 |
+| Finland | 1 | 87.4 | two dice | 13 / 17 |
+| Germany | 5 | 84.0 | two dice | 12 / 17 |
+| Poland | 11 | 82.1 | two dice | 11 / 17 |
+| Japan | 20 | 81.0 | two dice | 10 / 17 |
+| Chile | 33 | 78.5 | two dice | 11 / 17 |
+| United States | 45 | 75.3 | two dice | 8 / 17 |
+| Brazil | 53 | 74.2 | one die | 8 / 17 |
+| Viet Nam | 58 | 73.8 | one die | 8 / 17 |
+| Fiji | 62 | 73.4 | one die | 8 / 17 |
+| Peru | 66 | 72.9 | one die | 5 / 17 |
+| Indonesia | 74 | 70.8 | one die | 7 / 17 |
+| Jordan | 82 | 69.7 | one die | 7 / 17 |
+| India | 94 | 68.3 | one die | 5 / 17 |
+| Kenya | 106 | 65.6 | one die | 3 / 17 |
+| Bangladesh | 110 | 64.8 | one die | 4 / 17 |
+| Côte d'Ivoire | 119 | 63.2 | one die | 3 / 17 |
+| DR Congo | 163 | 48.3 | one die | 3 / 17 |
+| Chad | 167 | 43.9 | one die | 3 / 17 |
 
 ## Indicator table (OWID unless noted)
 
